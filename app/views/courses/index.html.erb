@@ -19,7 +19,6 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><span class="text-muted"><%= course.time_from.strftime("%H:%M") %>-<%= course.time_to.strftime("%H:%M") %></li>
           <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
-          <li class="list-group-item"><span class="text-muted">Specialty:</span> </li>
         </ul>
           <div class="row" style="margin: 0;text-align:center">
             <%= link_to 'Kjøp', root_path, class: 'col-md-6 col-sm-6 col-xs-6 card-btn-1' %>
