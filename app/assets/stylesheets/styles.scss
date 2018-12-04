@@ -1,0 +1,94 @@
+body, .navbar {
+	background: #1c1c1c !important;
+	color: #f3f2f2 !important;
+	border: none !important;
+	font-family: helvetica neue !important;
+}
+
+body {
+	font-size: 20px !important;
+}
+
+p, ol, ul, td, h1, h2, h3, h4, h5, h6, a {
+	font-family: helvetica neue !important
+}
+
+@media only screen and (min-width: 765px) {
+	.course-image {
+    width: 100%;
+    height: 26vw;
+    object-fit: cover;
+    transition: 0.3s;
+    }
+	.card-body {
+	height: 102px;
+	}
+}
+@media only screen and (max-width: 765px) {
+	.course-image {
+	    width: 100%;
+	    height: 66vw;
+	    object-fit: cover;
+	    transition: 0.3s;
+	    }
+}
+.card {
+	margin-bottom: 40px;
+	border: 1px solid #e5e5e5;
+	border-radius: .45rem;
+}
+.card-body {
+	padding: 20px;
+}
+.list-group-item {
+	padding-left: 0.85rem !important;
+	padding-right: 0.85rem !important;
+	padding-top: 0.35rem !important;
+	padding-bottom: 0.35rem !important;
+	font-size: 14px;
+}
+
+.card-btn-1 {
+	padding: 10px;
+	background: linear-gradient(to right, #f3f2f2, #DBDADA);
+	text-align: center;
+	border-right: 1px solid #fff;
+	color: #1c1c1c;
+    transition: 0.3s;
+}
+.card-btn-1:hover {
+	opacity: 0.5;
+	text-decoration: none;
+	color: #1c1c1c
+}
+.card-btn-2 {
+	padding: 10px;
+	background: linear-gradient(to right, #DBDADA, #c3c2c2);
+	text-align: center;
+	color: #1c1c1c;
+    transition: 0.3s;
+}
+.card-btn-2:hover {
+	opacity: 0.5;
+	text-decoration: none;
+	color: #1c1c1c
+}
+
+.card-text {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	background: #fff
+}
+.list-group {
+	margin-bottom: 0 !important
+}
+
+.list-group-item:first-child {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+.list-group-item:last-child {
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}

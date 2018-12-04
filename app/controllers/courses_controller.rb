@@ -5,6 +5,11 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+
+    if params[:course_place_id]
+      name = params[:course_place_id].capitalize
+      @courses_place = Course.where(course_place_id: course_place_id)
+    end
   end
 
   # GET /courses/1
@@ -69,6 +74,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :age_from, :age_to, :time_from, :time_to)
+      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :age_from, :age_to, :time_from, :time_to, :course_image)
     end
 end
