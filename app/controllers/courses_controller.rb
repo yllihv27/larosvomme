@@ -1,8 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!, only: [:edit_courses, :edit, :update, :destroy]
 
-  # GET /courses
-  # GET /courses.json
   def index
     @courses = Course.all
 
@@ -10,6 +9,11 @@ class CoursesController < ApplicationController
       name = params[:course_place_id].capitalize
       @courses_place = Course.where(course_place_id: course_place_id)
     end
+  end
+
+  def edit_courses
+    @courses = Course.all
+    render :edit_courses
   end
 
   # GET /courses/1
