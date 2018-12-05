@@ -2,7 +2,9 @@
 
 class Coaches::SessionsController < Devise::SessionsController
   #include Accessible
-  #skip_before_action :check_coach, only: :destroy
+  #prepend_before_action :verify_signed_out_coach, only: :destroy
+
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -26,4 +28,5 @@ class Coaches::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
 end

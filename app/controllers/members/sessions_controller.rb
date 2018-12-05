@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Members::SessionsController < Devise::SessionsController
-  include Accessible
-  skip_before_action :check_member, only: :destroy
+  #include Accessible
+  #skip_before_action :check_coach, only: :destroy
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

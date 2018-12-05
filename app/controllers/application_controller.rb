@@ -7,22 +7,24 @@ class ApplicationController < ActionController::Base
 	helper_method :current_coach
 	helper_method :current_member
 
-	def current_coach
-	  @current_coach ||= Coach.find session[:coach_id] if session[:coach_id]
-	  if @current_coach
-	    @current_coach
-	  else
-	    OpenStruct.new(name: 'Gæst')
-	  end
-	end
-	def current_member
-	  @current_member ||= Member.find session[:member_id] if session[:member_id]
-	  if @current_member
-	    @current_member
-	  else
-	    OpenStruct.new(name: 'Gæst')
-	  end
-	end
+	#def current_coach
+	#  @current_coach ||= Coach.find session[:coach_id] if session[:coach_id]
+	#  if @current_coach
+	#    @current_coach
+	#  else
+	#    OpenStruct.new(name: 'Gæst')
+	#  end
+	#end
+	#def current_member
+	#  @current_member ||= Member.find session[:member_id] if session[:member_id]
+	#  if @current_member
+	#    @current_member
+	#  else
+	#    OpenStruct.new(name: 'Gæst')
+	#  end
+	#end
+
+
 
   protected
 
