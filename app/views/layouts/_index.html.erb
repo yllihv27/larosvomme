@@ -54,6 +54,7 @@
               <%= link_to "Logg inn", new_member_session_path if !member_signed_in? and !coach_signed_in? %>
               <%= link_to "Konto", edit_member_registration_path if member_signed_in? %>
               <%= link_to "Logg utt", destroy_member_session_path, method: :delete if member_signed_in? %>
+              <%= link_to pluralize(current_cart.items_count, 'item'), kurv_path if !coach_signed_in? %>
             </div>
               
           </div>

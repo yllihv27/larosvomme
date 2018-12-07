@@ -28,6 +28,13 @@
           <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
         </ul>
           <div class="row" style="margin: 0;text-align:center">
+
+            <%= form_tag order_items_path do %>
+              <%= hidden_field_tag :course_id, course.id %>
+              <%= number_field_tag :quantity, 1 %>
+              <%= submit_tag "Tilføj" %>
+            <% end %>
+
             <%= link_to 'Kjøp', root_path, class: 'col-md-6 col-sm-6 col-xs-6 card-btn-1' %>
             <%= link_to 'Info', course_path(course), class: 'col-md-6 col-sm-6 col-xs-6 card-btn-2' %>
         </div>

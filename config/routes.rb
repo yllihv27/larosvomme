@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :order_items
+  resources :orders
   resources :course_ages
   resources :course_categories
   resources :categories
@@ -14,4 +16,8 @@ Rails.application.routes.draw do
   resources :members, only: [:index, :show, :edit, :update, :destroy]
   resources :coaches, only: [:index, :show, :edit, :update, :destroy]
   get '/edit-courses', to: 'courses#edit_courses'
+  get '/kurv', to: 'order_items#index'
+  resources :order_items, path: '/kurv/kurs'
+  get 'kurv/sjekk-ut', to: 'orders#new', as: :checkout
+  patch '/kurv/sjekk-ut', to: 'orders#create'
 end

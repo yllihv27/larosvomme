@@ -29,6 +29,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
 gem 'has_scope'
+gem 'nokogiri', '~> 1.8.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
