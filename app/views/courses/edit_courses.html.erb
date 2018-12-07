@@ -4,29 +4,30 @@
   <% @courses.each do |course| %>
     <%= link_to edit_course_path(course) do %>
       <div class="col-md-4 col-sm-6">
-        <h3 class="title">Text fadeIn top</h3>
         <div class="content">
           <div class="content-overlay"></div>
 
-            <div class="card content-image">
+          <div class="card content-image">
 
-              <% if course.course_image? %>
-              <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), edit_course_path(course) if course.course_image %>
-              <% end %>
-              <div class="card-body">
-                <div class="row" style="margin: 0">
-                  <h4 class="card-title row"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h4>
-                </div>
+            <% if course.course_image? %>
+            <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), edit_course_path(course) if course.course_image %>
+            <% end %>
+            <div class="card-body">
+              <div class="row" style="margin: 0">
+                <h4 class="card-title row"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h4>
               </div>
-                <div class="card-text"> <%= number_to_currency(course.price, :unit => "NOK") if course.price %></div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span class="text-muted"><%= course.time_from.strftime("%H:%M") %>-<%= course.time_to.strftime("%H:%M") %></li>
-                <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
-              </ul>
             </div>
-          <div class="content-details fadeIn-top">
-            <h3>Edit course</h3>
+              <div class="card-text"> <%= number_to_currency(course.price, :unit => "NOK") if course.price %></div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><span class="text-muted"><%= course.time_from.strftime("%H:%M") %>-<%= course.time_to.strftime("%H:%M") %></li>
+              <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
+            </ul>
           </div>
+          <%= link_to edit_course_path(course) do %>
+            <div class="content-details fadeIn-top">
+              <h3>Edit course</h3>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

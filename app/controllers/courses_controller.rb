@@ -1,14 +1,34 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, only: [:edit_courses, :edit, :update, :destroy]
+  has_scope :by_niveau
+  has_scope :by_place
+  has_scope :by_category
 
   def index
     @courses = Course.all
 
-    if params[:course_place_id]
-      name = params[:course_place_id].capitalize
-      @courses_place = Course.where(course_place_id: course_place_id)
+    if params[:course_niveau_id]
+        course_niveau = CourseNiveau.find(params[:course_niveau_id])
+        @courses = course_niveau.courses
+     else
+    @courses = @courses
     end
+
+    if params[:course_place_id]
+      course_place = CoursePlace.find(params[:course_place_id])
+      @courses = course_place.courses
+     else
+    @courses = @courses
+    end
+
+    if params[:course_category_id]
+      course_category = CourseCategory.find(params[:course_category_id])
+      @courses = course_category.courses
+     else
+    @courses = @courses
+    end
+
   end
 
   def edit_courses
@@ -78,6 +98,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :age_from, :age_to, :time_from, :time_to, :course_image)
+      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :age_from, :age_to, :time_from, :time_to, :course_image, :day)
     end
 end

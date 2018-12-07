@@ -1,6 +1,11 @@
 <h1>Editing Course</h1>
-
+<%= @course.course_category.name %> <%= @course.course_niveau.name %> <%= @course.course_place.name %>
 <%= render 'form', course: @course %>
+<hr>
+
+<%= link_to "Slett kurs", course_path(@course),
+            data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-danger', style: "color: #fff !important" %>
+
 
 <%= link_to 'Show', @course %> |
 <%= link_to 'Back', courses_path %>

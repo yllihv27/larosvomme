@@ -1,0 +1,59 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.first_name, edit_member_path(member) %></td>
+        <td><%= member.last_name %></td>
+        <td><%= member.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<div class="row">
+  <% @members.each do |member| %>
+    <%= link_to edit_member_registration_path(member) do %>
+      <div class="col-md-4 col-sm-6">
+        <div class="content">
+          <div class="content-overlay"></div>
+
+          <div class="card content-image">
+
+            <%# if member.image? %>
+            <%#= link_to (image_tag (member.image.url(:profile)), class: 'course-image'), course_path(course) if course.course_image %>
+            <%# end %>
+            <div class="card-body">
+              <div class="row" style="margin: 0">
+                  <h4 class="card-title row"><%= member.first_name if member.first_name %> <%= member.last_name if member.last_name %></h4>
+              </div>
+            </div>
+              <div class="card-text"> <%= member.email %></div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><span class="text-muted"><div class="card-text"> <%= member.email %></div></li>
+              <%#li class="list-group-item"><span class="text-muted">Kurs:</span> <%= member.kurs.name if member.kurs %></li>
+            </ul>
+            <div class="row" style="margin: 0;text-align:center">
+              <%= link_to 'Kjøp', root_path, class: 'col-md-6 col-sm-6 col-xs-6 card-btn-1' %>
+              <%= link_to 'Info', member_path(member), class: 'col-md-6 col-sm-6 col-xs-6 card-btn-2' %>
+            </div>
+            <%= link_to edit_member_registration_path(member) do %>
+              <div class="content-details fadeIn-top">
+                <h3>Edit deltaker</h3>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

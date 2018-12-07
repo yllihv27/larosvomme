@@ -19,8 +19,13 @@ p, ol, ul, td, h1, h2, h3, h4, h5, h6, a {
 	font-family: helvetica neue !important
 }
 
+td:hover { background: #4c1200 }
+
 a { color: #f3f2f2 !important }
 
+#error_explanation ul li {color: #1c1c1c }
+
+select { color: #1c1c1c !important }
 
 /* COURSE INDEX PAGE */
 
