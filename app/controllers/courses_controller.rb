@@ -8,21 +8,21 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
 
-    if params[:course_niveau_id]
+    if params[:course_niveau_id].present?
         course_niveau = CourseNiveau.find(params[:course_niveau_id])
         @courses = course_niveau.courses
      else
     @courses = @courses
     end
 
-    if params[:course_place_id]
+    if params[:course_place_id].present?
       course_place = CoursePlace.find(params[:course_place_id])
       @courses = course_place.courses
      else
     @courses = @courses
     end
 
-    if params[:course_category_id]
+    if params[:course_category_id].present?
       course_category = CourseCategory.find(params[:course_category_id])
       @courses = course_category.courses
      else
