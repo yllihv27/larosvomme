@@ -1,23 +1,24 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
+<% @courses.each do |c| %>
+<% if c.members %>
+  <div style="background: #fff; padding: 20px;margin-bottom: 20px">
+    <div style="font-size: 14px;font-weight: 500"><%= c.course_day %> <%= c.course_category.name %> <%= c.course_niveau.name %> <%= c.course_place.name %></div>
+    <table class="table table-hover">
+      <tbody>
+        <% @members.each do |member| %>
+          <% if member.course_id == c.id %>
+            <tr style="color:#1c1c1c !important">
+              <td style="padding-right: 20px"><%= link_to member.first_name, edit_member_path(member) %> <%= link_to member.last_name, edit_member_path(member) %></td>   
+              <td><%= link_to member.email, edit_member_path(member) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-  <tbody>
-  <% @members.each do |member| %>
-      <tr>
-        <td><%= link_to member.first_name, edit_member_path(member) %></td>
-        <td><%= member.last_name %></td>
-        <td><%= member.email %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
+<% end %>
+<% end %>
 
 
 <div class="row">

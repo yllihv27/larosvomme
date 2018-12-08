@@ -19,9 +19,14 @@ p, ol, ul, td, h1, h2, h3, h4, h5, h6, a {
 	font-family: helvetica neue !important
 }
 
-td:hover { background: #4c1200 }
+.coach {
+  background: #f3f2f2;
+  color: #1c1c1c;
+}
 
 a { color: #f3f2f2 !important }
+a:hover { text-decoration: none !important; background: none !important }
+.coach a { color: #1c1c1c !important }
 
 #error_explanation ul li {color: #1c1c1c }
 
@@ -258,7 +263,6 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     EDIT COURSE
 ----------------------------------------------------- */
-
 
 
 @import url(https://fonts.googleapis.com/css?family=Raleway);

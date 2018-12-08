@@ -3,8 +3,15 @@ class Course < ApplicationRecord
 	belongs_to :course_place
 	belongs_to :course_category
 	belongs_to :coach
+	has_many :members
   mount_uploader :course_image, CourseImageUploader
-  scope :by_niveau, -> course_niveau_id { where(:course_niveau_id => course_niveau_id) }
-  scope :by_place, -> course_place_id { where(:course_place_id => course_place_id) }
-  scope :by_category, -> course_category_id { where(:course_category_id => course_category_id) }
+
+  def course_day
+  	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ')
+  end
+
+  def course_name
+  	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ') + (' | ') + course_category.name + (' ') + course_niveau.name + (' ') + course_place.name
+  end
+
 end

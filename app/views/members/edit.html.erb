@@ -2,6 +2,8 @@
 
 <%= form_for(@member, html: { method: :put }) do |f| %>
 
+  <%= f.select "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:name]), :prompt => "Kurs" %>
+
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, placeholder: "Fornavn" %>
@@ -45,7 +47,7 @@
 <hr>
 
 
-<%= link_to "Slett kurs", member_path(@member),
+<%= link_to "Slett deltaker", member_path(@member),
             data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-danger', style: "color: #fff !important" %>
 
 

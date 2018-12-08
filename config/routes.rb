@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :courses
   devise_for :members, path: 'members', controllers: { sessions: "members/sessions", registrations: "members/registrations", confirmations: "members/confirmations", passwords: "members/passwords", unlocks: "members/unlocks", sessions: "members/sessions" }
   devise_for :coaches, path: 'coaches', controllers: { sessions: "coaches/sessions", registrations: "coaches/registrations", confirmations: "coaches/confirmations", passwords: "coaches/passwords", unlocks: "coaches/unlocks", sessions: "coaches/sessions" }
-  resources :members, only: [:index, :show, :edit, :update, :destroy]
+  resources :members, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :coaches, only: [:index, :show, :edit, :update, :destroy]
   get '/edit-courses', to: 'courses#edit_courses'
   get '/kurv', to: 'order_items#index'

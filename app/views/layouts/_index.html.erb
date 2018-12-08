@@ -1,71 +1,108 @@
 <div class="wrapper">
-    <!-- Sidebar Holder -->
-    <% if coach_signed_in? %>
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <%= link_to (image_tag '/logo.png'), root_path %>
-            </div>
+  <!-- Sidebar Holder -->
+  <% if coach_signed_in? %>
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <%= link_to (image_tag '/logo.png'), root_path %>
+        </div>
 
-            <ul class="list-unstyled components">
-                <p><em>Konto: <%= current_coach.name %></em></p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li><a href="#">Home 1</a></li>
-                        <li><a href="#">Home 2</a></li>
-                        <li><a href="#">Home 3</a></li>
-                    </ul>
-                </li>
-                <li>
-                  <%= link_to 'Courses', edit_courses_path %>
-                </li>
-                <li>
-                  <%= link_to 'Members', members_path %>
-                </li>
-            </ul>
+        <ul class="list-unstyled components">
+            <p><em>Konto: <%= current_coach.name %></em></p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="#">Home 1</a></li>
+                    <li><a href="#">Home 2</a></li>
+                    <li><a href="#">Home 3</a></li>
+                </ul>
+            </li>
+            <li>
+              <%= link_to 'Courses', edit_courses_path %>
+            </li>
+            <li>
+              <%= link_to 'Members', members_path %>
+            </li>
+        </ul>
 
-        </nav>
-    <% end %>
+    </nav>
+  <% end %>
 
     <!-- Page Content Holder -->
+  <% if !coach_signed_in? %>
     <div id="content">
-
-        <nav class="navbar navbar-default">
-          <div class="container-fluid" style="padding: 10px">
-            
-            <%= link_to (image_tag '/logo.png'), root_path if !coach_signed_in? %>
-            <% if coach_signed_in? %>
-              <div class="col-xs-6">
-                <div class="navbar-header">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                        <i class="glyphicon glyphicon-align-left"></i>
-                    </button>
-                </div>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid" style="padding: 10px">
+          
+          <%= link_to (image_tag '/logo.png'), root_path if !coach_signed_in? %>
+          <% if coach_signed_in? %>
+            <div class="col-xs-6">
+              <div class="navbar-header">
+                  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                      <i class="glyphicon glyphicon-align-left"></i>
+                  </button>
               </div>
-              <div class="col-xs-6">
-                <%= link_to "Sign out", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px' if coach_signed_in? %>
-              </div>
-            <% end %>
-
-            <div style="float:right">
-                <%= link_to "Coach login", new_coach_session_path, class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
-                <br>
-              <%= link_to "Kurs", courses_path if !coach_signed_in? %>
-              <%= link_to "Logg inn", new_member_session_path if !member_signed_in? and !coach_signed_in? %>
-              <%= link_to "Konto", edit_member_registration_path if member_signed_in? %>
-              <%= link_to "Logg utt", destroy_member_session_path, method: :delete if member_signed_in? %>
-              <%= link_to pluralize(current_cart.items_count, 'item'), kurv_path if !coach_signed_in? %>
             </div>
-              
+            <div class="col-xs-6">
+              <%= link_to "Sign out", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px' if coach_signed_in? %>
+            </div>
+          <% end %>
+
+          <div style="float:right">
+              <%= link_to "Coach login", new_coach_session_path, class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
+              <br>
+            <%= link_to "Kurs", courses_path if !coach_signed_in? %>
+            <%= link_to "Logg inn", new_member_session_path if !member_signed_in? and !coach_signed_in? %>
+            <%= link_to "Konto", edit_member_registration_path if member_signed_in? %>
+            <%= link_to "Logg utt", destroy_member_session_path, method: :delete if member_signed_in? %>
+            <%= link_to pluralize(current_cart.items_count, 'item'), kurv_path if !coach_signed_in? %>
           </div>
-        </nav>
-
-
-        <div class="container">
-            <p id="notice"><%= notice %></p>
-          <%= yield %>
+            
         </div>
+      </nav>
+
+
+      <div class="container">
+          <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
     </div>
+  <% end %>
+  <% if coach_signed_in? %>
+    <div id="content" class="coach">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid" style="padding: 10px;background: #f3f2f2;color:#1c1c1c !important">
+          
+          <div class="col-xs-6">
+            <div class="navbar-header">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                    <i class="glyphicon glyphicon-align-left"></i>
+                </button>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <%= link_to "Sign out", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px;color:#1c1c1c !important' %>
+          </div>
+
+          <div style="float:right">
+              <%= link_to "Coach login", new_coach_session_path, class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
+              <br>
+            <%= link_to "Kurs", courses_path if !coach_signed_in? %>
+            <%= link_to "Logg inn", new_member_session_path if !member_signed_in? and !coach_signed_in? %>
+            <%= link_to "Konto", edit_member_registration_path if member_signed_in? and !coach_signed_in? %>
+            <%= link_to "Logg utt", destroy_member_session_path, method: :delete if member_signed_in? and !coach_signed_in? %>
+            <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? %>
+          </div>
+            
+        </div>
+      </nav>
+
+
+      <div class="container">
+          <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

@@ -1,5 +1,5 @@
 <h1>Editing Course</h1>
-<%= @course.course_category.name %> <%= @course.course_niveau.name %> <%= @course.course_place.name %>
+<%= @course.course_category.name if @course.course_category %> <%= @course.course_niveau.name if @course.course_niveau %> <%= @course.course_place.name if @course.course_place %>
 <%= render 'form', course: @course %>
 <hr>
 
