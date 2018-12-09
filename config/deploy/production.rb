@@ -1,5 +1,5 @@
 set :stage, :production
-EDITOR="mate --wait" bin/rails credentials:edit
+
 
 server '193.69.47.102', user: 'deploy', roles: %w{app db web}
 
