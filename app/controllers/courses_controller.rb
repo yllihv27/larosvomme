@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
       @courses = @courses
     end
 
-    if params[:day]
+    if params[:day].present?
       @courses = @courses.where(day: params[:day])
      else
       @courses = @courses
