@@ -15,10 +15,13 @@
   <%= @order.sub_total %>
 </p>
 
-<p>
-  <strong>Token:</strong>
-  <%= @order.token %>
-</p>
+<% @order_items.each do |item| %>
+<%# if item.order_id == @order.id %>
+<%= item.course.course_category.name %> <%= item.course.course_niveau.name %> <%= item.course.course_place.name %><br>
+	<%= item.price %>
+	<hr>
+	<%# end %>
+<% end %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

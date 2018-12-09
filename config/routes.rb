@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :order_items, path: '/kurv/kurs'
   get 'kurv/sjekk-ut', to: 'orders#new', as: :checkout
   patch '/kurv/sjekk-ut', to: 'orders#create'
+  get :search, controller: :application
 end

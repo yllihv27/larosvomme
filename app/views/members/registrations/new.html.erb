@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, placeholder: "Fornavn" %>
+    <%= f.text_field :first_name, autofocus: true, placeholder: "Fornavn" %>
   </div>
   
   <div class="field">
@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">

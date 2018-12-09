@@ -1,6 +1,7 @@
+<div class="row">
 <% @courses.each do |c| %>
-<% if c.members %>
-  <div style="background: #fff; padding: 20px;margin-bottom: 20px">
+  <div class="col-sm-6">
+  <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
     <div style="font-size: 14px;font-weight: 500"><%= c.course_day %> <%= c.course_category.name %> <%= c.course_niveau.name %> <%= c.course_place.name %></div>
     <table class="table table-hover">
       <tbody>
@@ -15,10 +16,9 @@
       </tbody>
     </table>
   </div>
-
-
+</div>
 <% end %>
-<% end %>
+</div>
 
 
 <div class="row">

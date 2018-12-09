@@ -1,7 +1,22 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :current_cart
-  
+
+	def not_found
+		rescue_from ActiveRecord::RecordNotFound, with: :not_found
+	end
+
+	def search
+		@members = Member.ransack(name_cont: params[:q]).result(distinct: true)
+
+		respond_to do |format|
+			format.html {}
+			format.json {
+				@members = @members.limit(5)
+			}
+		end
+	end
+	
   def current_cart
   	@current_cart ||= ShoppingCart.new(token: cart_token)
   end
@@ -40,10 +55,10 @@ class ApplicationController < ActionController::Base
 	end
 
   protected
-  
-    def after_sign_in_path_for(resource)
-      request.env['omniauth.origin'] || stored_location_for(resource) || edit_courses_path
-    end
+
+  #def after_sign_in_path_for(coach)
+  #  request.env['omniauth.origin'] || stored_location_for(coach) || edit_courses_path
+  #end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :course_id])
