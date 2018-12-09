@@ -23,3 +23,4 @@ test:
 production:
   <<: *default
   database: prod_larosvomme
+  secret_key_base: b0954a3fe724190909d3e10277b8099e8a276f71d1c354a02721cfaae998be9112440f97c1a5b8f2ea51c574dc966cdd52d14c560f4d27cc2f719205fe220eef
