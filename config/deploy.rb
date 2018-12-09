@@ -5,4 +5,5 @@ set :repo_url, "git@github.com:jonaspreisler/larosvomme.git"
 
 set :deploy_to, '/home/deploy/larosvomme'
 
-#append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+
