@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_cart.order
+    @items = Item.all
 
     if @order.update_attributes(order_params.merge(status: 'open'))
       session[:cart_token] = nil

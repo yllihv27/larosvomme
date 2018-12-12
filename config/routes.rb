@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pages
+  resources :navs
   resources :order_items
   resources :orders
   resources :course_ages

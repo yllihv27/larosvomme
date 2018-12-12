@@ -2,7 +2,7 @@
 <% @courses.each do |c| %>
   <div class="col-sm-6">
   <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
-    <div style="font-size: 14px;font-weight: 500"><%= c.course_day %> <%= c.course_category.name %> <%= c.course_niveau.name %> <%= c.course_place.name %></div>
+    <div style="font-size: 14px;font-weight: 500"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
     <table class="table table-hover">
       <tbody>
         <% @members.each do |member| %>
