@@ -16,5 +16,7 @@ module Larosvomme
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :'nb'
+		config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+		config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
   end
 end

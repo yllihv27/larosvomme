@@ -33,6 +33,8 @@ gem 'nokogiri', '~> 1.8.5'
 gem 'i18n', '~> 1.1', '>= 1.1.1'
 gem 'jquery-ui-rails'
 gem 'ransack'
+gem 'dotenv-rails'
+gem 'faraday'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

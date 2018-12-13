@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
-  # GET /pages
-  # GET /pages.json
+  def home
+    @courses = Course.all.limit(6)
+    @course_places = CoursePlace.where(city: params[:city])
+  end
+
   def index
     @pages = Page.all
   end
@@ -69,6 +72,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :content)
+      params.require(:page).permit(:title, :content, :city)
     end
 end

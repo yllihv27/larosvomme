@@ -2,7 +2,8 @@ body, .navbar {
 	background: #1c1c1c !important;
 	color: #f3f2f2 !important;
 	border: none !important;
-	font-family: helvetica neue !important;
+	font-family: "Open Sans", Arian, Helvetica, sans-serif !important;
+  font-weight: 400
 }
 
 body {
@@ -11,13 +12,19 @@ body {
 
 .container {
     width: 100% !important;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
-p, ol, ul, td, h1, h2, h3, h4, h5, h6, a {
-	font-family: helvetica neue !important
+p, ol, ul, td, h1, h3, h4, h5, h6, a {
+	font-family: "Open Sans", Arian, Helvetica, sans-serif !important;
 }
+@font-face {
+    font-family: 'JuliusSansOne';
+    src: asset_url('JuliusSansOne-Regular.ttf') format('truetype');
+}
+
+h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
 
 .coach {
   background: #f3f2f2;
@@ -44,6 +51,7 @@ select { color: #1c1c1c !important }
 	.card-body {
 	height: 102px;
 	}
+  .width65 { width: 65% }
 }
 @media only screen and (max-width: 765px) {
 	.course-image {
@@ -385,3 +393,35 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     END OF EDIT COURSE
 ----------------------------------------------------- */
+
+
+/* HOME PAGE */
+
+.fusion-section-separator { position: relative }
+.fusion-section-separator .divider-candy-arrow.bottom { border-width: 29px 29px 0 29px }
+.fusion-section-separator .divider-candy-arrow { 
+left: 50%;
+margin-left: -29px;
+height: 0;
+width: 0;
+border-color: transparent;
+    border-top-color: transparent;
+border-style: solid; }
+
+.padding {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.main-button {
+  background: #f72000;
+  border-radius: 25px;
+  padding: 13px 29px;
+  font-size: 14px;
+  -webkit-transition: background 0.3s; /* Safari */
+  transition: background 0.3s;
+}
+.main-button:hover {
+  background: #FF5E28 !important;
+}
+
+/* END OF HOME PAGE */

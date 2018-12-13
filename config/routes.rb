@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :course_ages
   resources :course_categories
   resources :categories
-  root 'courses#index'
+  root 'pages#home'
 
   resources :course_days
   resources :days

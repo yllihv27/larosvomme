@@ -1,0 +1,48 @@
+<center style="margin-bottom: 60px">
+<h2 style="font-weight: 300;color:#ff3f00">EN VERDEN AV TRIVSEL I VANN</h2>
+<br>
+<p style="color:#aaa9a9;line-height: 1.8em" class="width65">
+Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevelsen av å sette sammen brikkene i form av øvelser bidrar til at barnet har det gøy. Vi bruker øvelser på pust, flyt, rotasjon, fremdrift, dykk og stup gjennom disse kursene. Dette gir mestringsfølelse og barnet vil bli trygg i vann.</p>
+
+<div class="fusion-section-separator section-separator" style="border-bottom:0px solid #ff3f00;margin-left:-0px;margin-right:-0px;"><div class="divider-candy-arrow bottom" style="border-top-color: #ff3f00;"></div></div>
+
+</center>
+
+<div style="background: #fff;color:#aaa9a9;padding-top:100px">
+<center>
+	<h2 style="color: #aaa9a9;padding-bottom: 60px">HOS OSS TRIVES BARNET</h2>
+
+		<div class="row">
+			<% @courses.each do |c| %>
+				<div class="col-xs-6 col-md-4">
+					<%= link_to (image_tag c.course_image.url, style: 'width:95%;padding:10px') if c.course_image %>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="padding">
+			<%= link_to "SE ALLE KURSENE", courses_path, class: 'main-button padding' %>
+		</div>
+
+	</center>
+</div>
+
+<center class="padding">
+
+<iframe src="https://player.vimeo.com/video/295754560?color=ff3f00&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="padding-bottom: 40px"></iframe>
+
+<div class="fusion-section-separator section-separator" style="border-bottom:0px solid #ff3f00;margin-left:-0px;margin-right:-0px;"><div class="divider-candy-arrow bottom" style="border-top-color: #ff3f00;"></div></div>
+
+</center>
+
+<div style="background-image: url(jente-som-svømmer-under-vann.jpg);color:#aaa9a9;padding-top:100px;">
+
+<div class="row">
+	<% @course_places.each do |place| %>
+		<div class="col-xs-6 col-sm-3">
+			<%= place.course_ids %>
+		</div>
+	<% end %>
+</div>
+
+</div>
