@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cities
   resources :pages
   resources :navs
   resources :order_items

@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @courses = Course.all.limit(6)
-    @course_places = CoursePlace.where(city: params[:city])
+    @cities = City.all
+    @course_places = CoursePlace.all
+
   end
 
   def index
