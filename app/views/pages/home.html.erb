@@ -29,7 +29,7 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 		<div class="row">
 			<% @courses.each do |c| %>
 				<div class="col-xs-6 col-md-4">
-					<%= link_to (image_tag c.course_image.url, class: 'hover', style: 'width:95%;padding:10px') if c.course_image %>
+					<%= link_to (image_tag c.course_image.url, class: 'hover', style: 'width:95%;padding:10px'), c if c.course_image %>
 				</div>
 			<% end %>
 		</div>

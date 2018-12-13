@@ -16,13 +16,25 @@ body {
     padding-right: 0px !important;
 }
 
-p, ol, ul, td, h1, h3, h4, h5, h6, a {
+p, ol, ul, td, h1, h3, h4, h5, h6 {
 	font-family: "Open Sans", Arian, Helvetica, sans-serif !important;
 }
+
 @font-face {
     font-family: 'JuliusSansOne';
     src: asset_url('JuliusSansOne-Regular.ttf') format('truetype');
 }
+
+.navbar a {
+  font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important;
+  font-size: 14px;
+}
+
+.navbar li {
+  padding-right: 45px;
+  display:inline;
+}
+
 
 h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
 
@@ -157,6 +169,10 @@ li a:hover { text-decoration: none }
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
 }
+
+
+/* END OF NAVBAR*/
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
