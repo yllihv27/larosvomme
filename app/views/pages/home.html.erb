@@ -1,4 +1,4 @@
-<header class="bg-header cover">
+<header class="bg-header cover" style="background-image: url(Forside-gutt-jente-som-svømmer-bli-trygg-i-vannet-lær-a-svømme.jpg)">
   <center style="padding-top:65px;">
   	<div class="row">
   		<div class="col-xs-6">
@@ -10,7 +10,6 @@
 	</div>
   </center>
 </header>
-
 
 <center style="margin-bottom: 60px" class="padding">
 <h2 style="font-weight: 300;color:#ff3f00">EN VERDEN AV TRIVSEL I VANN</h2>
@@ -49,7 +48,7 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 
 </center>
 
-<div style="background-image: url(jente-som-svømmer-under-vann.jpg);color:#aaa9a9;padding-top:100px;">
+<div class="bg-header cover" style="background-image: url(jente-som-svømmer-under-vann.jpg);color:#aaa9a9;padding-top:100px;">
 <center>
 <div class="row" style="padding: 50px">
 	<% @cities.each do |city| %>
@@ -67,11 +66,11 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 						</div>
 					</div>
 					<div class="back">
-						<div class="place">
+						<div class="place" style="background: #1c1c1c !important;border: 1px solid #323232">
 							<h2 style="color:#ff3f00">VELG KURSSTED</h2>
 							<% @course_places.each do |place| %>
 								<% if city.id == place.id %>
-									<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#1c1c1c' %></p><br>
+									<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#f3f2f2 !important' %></p><br>
 								<% end %>
 							<% end %>
 						</div>

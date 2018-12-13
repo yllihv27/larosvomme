@@ -33,44 +33,57 @@
     <!-- Page Content Holder -->
   <% if !coach_signed_in? %>
     <div id="content">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid" style="padding: 10px">
           
-          <%= link_to (image_tag '/logo.png'), root_path if !coach_signed_in? %>
-          <% if coach_signed_in? %>
-            <div class="col-xs-6">
-              <div class="navbar-header">
-                  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                      <i class="glyphicon glyphicon-align-left"></i>
-                  </button>
-              </div>
-            </div>
-
-            <div class="col-xs-6">
-              <%= link_to "Logg utt", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px' if coach_signed_in? %>
-            </div>
-          <% end %>
-
-
-
-          <div style="float:right">
-            <%= link_to "Coach login", new_coach_session_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
-            <ul>
-              <br>
-              <%= link_to "<li>Kurs</li>".html_safe, courses_path if !coach_signed_in? %></li>
-              <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? and !coach_signed_in? %>
-              <%= link_to "<li>Konto</li>".html_safe, edit_member_registration_path if member_signed_in? %>
-              <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
-              <li><i class="fa fa-shopping-cart"></i> <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? %></li>
-            </ul>
+      <% if coach_signed_in? %>
+        <div class="col-xs-6">
+          <div class="navbar-header">
+              <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                  <i class="glyphicon glyphicon-align-left"></i>
+              </button>
           </div>
-            
         </div>
+
+        <div class="col-xs-6">
+          <%= link_to "Logg utt", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px' if coach_signed_in? %>
+        </div>
+      <% end %>
+      <div style="float:right">
+        <%= link_to "Coach login", new_coach_session_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
+      </div><br>
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <%= link_to (image_tag '/logo.png'), root_path if !coach_signed_in? %>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registrer deg <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !coach_signed_in? %></li></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Link</a></li>
+              <li style="padding: 8px"><i class="fa fa-shopping-cart"> <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? %></i></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
       </nav>
 
 
+
       <div class="container">
-          <p id="notice"><%= notice %></p>
+        <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
     </div>
