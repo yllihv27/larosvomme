@@ -10,6 +10,8 @@ body {
 	font-size: 20px !important;
 }
 
+.btn-primary { background: #ff3f00 !important; border: none !important }
+
 #footer { margin-top: 20px; font-size: 13px; color: #999 }
 #footer a { color: #999 !important }
 
@@ -546,3 +548,17 @@ border-style: solid; }
     END OF HOME PAGE
 ----------------------------------------------------- */
 
+/* ---------------------------------------------------
+    ORDER SHOW PAGE
+----------------------------------------------------- */
+
+.transparent {
+  background: rgba(243, 242, 242, 0.1);
+  border-radius: 15px;
+  border: 3px solid rgba(243, 242, 242, 0.2);
+  margin: 50px;
+}
+
+/* ---------------------------------------------------
+    END OF ORDER SHOW PAGE
+----------------------------------------------------- */

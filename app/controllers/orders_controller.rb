@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.where(member_id: current_member.id)
+    @courses = Course.all
   end
 
   def show
@@ -19,8 +20,7 @@ class OrdersController < ApplicationController
 
     if @order.update_attributes(order_params.merge(status: 'open'))
       session[:cart_token] = nil
-      redirect_to @order
-
+      redirect_to @order, alert: 'Ordre er fuldført'
     else
       render :new
     end

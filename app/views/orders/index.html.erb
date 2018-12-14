@@ -6,23 +6,20 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>First name</th>
-        <th>Last name</th>
+        <th>Ordre</th>
+        <th>Navn</th>
         <th>Sub total</th>
-        <th>Token</th>
+        <th>Dato</th>
         <th colspan="3"></th>
       </tr>
     </thead>
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <td><%= order.id %></td>
-          <td><%= order.first_name %></td>
-          <td><%= order.last_name %></td>
+          <td>#<%= order.id %></td>
+          <td><%= order.first_name %> <%= order.last_name %></td>
           <td><%= number_to_currency order.sub_total %></td>
-          <td><%= order.token %></td>
-          <td><%= link_to 'Vis', order %></td>
+          <td><%= I18n.localize(order.created_at, format: '%A / %b %d / %Y').split.map(&:capitalize).join(' ') %></td>
         </tr>
       <% end %>
     </tbody>

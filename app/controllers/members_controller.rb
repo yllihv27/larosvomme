@@ -70,6 +70,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:id, :name, :email, :password, :password_confirmation, :course_id)
+      params.require(:member).permit(:id, :name, :email, :password, :password_confirmation, :course_id, :profile_pic)
     end
 end

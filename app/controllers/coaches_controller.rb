@@ -16,4 +16,8 @@ class CoachesController < ApplicationController
     def set_coach
       @coach = Coach.find(params[:id])
     end
+
+    def coach_params
+      params.require(:coach).permit(:id, :name, :email, :password, :password_confirmation, :course_id, :profile_pic)
+    end
 end

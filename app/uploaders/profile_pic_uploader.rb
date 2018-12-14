@@ -1,4 +1,4 @@
-class CourseImageUploader < CarrierWave::Uploader::Base
+class ProfilePicUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   if Rails.env.production?
@@ -10,7 +10,7 @@ class CourseImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-version :product do
+version :profile_pic do
     process resize_to_fit: [300, 311]
   end
 

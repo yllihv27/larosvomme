@@ -1,6 +1,6 @@
 <div class="row" style="padding: 50px">
 	<div class="col-xs-6 col-md-4">
-		<%#= image_tag @member.image.url(:profile) %>
+		<%= image_tag @member.profile_pic.url(:profile_pic) if @member.profile_pic %>
 	</div>
 	<div class="col-xs-6 col-md-4">
 		<%= @member.first_name %> <%= @member.last_name %><br>
@@ -19,6 +19,7 @@
 		<% end %>
 	</div>
 	<div class="col-xs-6 col-md-4">
+		<%= link_to "Redigér konto", edit_member_registration_path, class: 'btn btn-primary' %><br><br>
 		<%= link_to "Dine ordrer", orders_path, class: 'btn btn-primary' %>
 	</div>
 </div>

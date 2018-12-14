@@ -60,8 +60,8 @@ class ApplicationController < ActionController::Base
   #  request.env['omniauth.origin'] || stored_location_for(coach) || edit_courses_path
   #end
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :course_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id, :profile_pic])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :course_id, :profile_pic])
     #in keys you list all the input you want to accept.
   end
 
