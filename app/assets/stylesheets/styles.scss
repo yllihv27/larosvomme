@@ -168,6 +168,9 @@ li a:hover { text-decoration: none }
     margin: 40px 0;
 }
 
+.navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background: none !important;
+}
 
 /* END OF NAVBAR*/
 
@@ -243,9 +246,17 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #ff6532;
 }
 
+.dropdown-menu { 
+  font-size: 20px !important;
+  background: #1c1c1c !important;
+  color: #aaa9a9 !important;
+  font-size: 16px !important;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+}
+
+.navbar .dropdown-menu li { border-bottom: 1px solid #ff3f00 !important; padding: 10px !important }
 
 a.article, a.article:hover {
     background: #ff6532 !important;

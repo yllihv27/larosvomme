@@ -62,19 +62,31 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registrer deg <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Registrer deg <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !coach_signed_in? %></li></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
+                  <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>
-              <li><a href="#">Link</a></li>
-              <li style="padding: 8px"><i class="fa fa-shopping-cart"> <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? %></i></li>
+              <li><a href="#">OM OSS</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">GDPR - BE OM PERSONLIG DATA <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
+                  <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">BESTILL KURSPLASS <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
+                  <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
+                </ul>
+              </li>
+              <li style="padding: 8px"><i class="fa fa-shopping-cart"> <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? and current_cart.items_count > 0 %></i></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

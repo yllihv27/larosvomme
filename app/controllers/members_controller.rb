@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!
+  before_action :authenticate_coach!, except: :show
+  before_action :check_member
 
 
   def show
@@ -56,7 +57,13 @@ class MembersController < ApplicationController
     end
   end
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def check_member
+      if current_member != @member
+        redirect_to root_url, alert: "Beklager, denne profilen tilhører noen andre."
+      end
+    end
+
     def set_member
       @member = Member.find(params[:id])
     end
