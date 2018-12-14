@@ -14,33 +14,35 @@
 
 <div class="row">
   <% @courses.each do |course| %>
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <% if course.course_image? %>
-        <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_image %>
-        <% end %>
-        <div class="card-body">
-          <div class="row" style="margin: 0">
-              <h4 class="card-title row"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h4>
+    <% unless course.day.past? %>
+      <div class="col-md-4 col-sm-6">
+        <div class="card">
+          <% if course.course_image? %>
+          <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_image %>
+          <% end %>
+          <div class="card-body">
+            <div class="row" style="margin: 0">
+                <h4 class="card-title row"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h4>
+            </div>
+          </div>
+            <div class="card-text"> <%= number_to_currency(course.price, :unit => "NOK") if course.price %></div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="text-muted"><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></li>
+            <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
+          </ul>
+            <div class="row" style="margin: 0;text-align:center">
+
+              <%= form_tag order_items_path do %>
+                <%= hidden_field_tag :course_id, course.id %>
+                <%= number_field_tag :quantity, 1 %>
+                <%= submit_tag "Tilføj" %>
+              <% end %>
+
+              <%= link_to 'Kjøp', root_path, class: 'col-md-6 col-sm-6 col-xs-6 card-btn-1' %>
+              <%= link_to 'Info', course_path(course), class: 'col-md-6 col-sm-6 col-xs-6 card-btn-2' %>
           </div>
         </div>
-          <div class="card-text"> <%= number_to_currency(course.price, :unit => "NOK") if course.price %></div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><span class="text-muted"><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></li>
-          <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
-        </ul>
-          <div class="row" style="margin: 0;text-align:center">
-
-            <%= form_tag order_items_path do %>
-              <%= hidden_field_tag :course_id, course.id %>
-              <%= number_field_tag :quantity, 1 %>
-              <%= submit_tag "Tilføj" %>
-            <% end %>
-
-            <%= link_to 'Kjøp', root_path, class: 'col-md-6 col-sm-6 col-xs-6 card-btn-1' %>
-            <%= link_to 'Info', course_path(course), class: 'col-md-6 col-sm-6 col-xs-6 card-btn-2' %>
-        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

@@ -31,6 +31,8 @@
     <%= form.text_field :token %>
   </div>
 
+  <%= f.hidden_field :member_id, :value => current_member.id %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

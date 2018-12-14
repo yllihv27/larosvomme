@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_100150) do
+ActiveRecord::Schema.define(version: 2018_12_14_083823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(version: 2018_12_13_100150) do
     t.time "time_to"
     t.string "course_image"
     t.date "day"
+    t.integer "member_id"
+  end
+
+  create_table "courses_members", id: false, force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "member_id", null: false
+    t.index ["course_id", "member_id"], name: "index_courses_members_on_course_id_and_member_id"
+    t.index ["member_id", "course_id"], name: "index_courses_members_on_member_id_and_course_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -127,6 +135,8 @@ ActiveRecord::Schema.define(version: 2018_12_13_100150) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "kurv"
+    t.integer "member_id"
+    t.string "email"
   end
 
   create_table "pages", force: :cascade do |t|

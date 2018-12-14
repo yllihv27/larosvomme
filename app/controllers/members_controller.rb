@@ -6,6 +6,7 @@ class MembersController < ApplicationController
 
   def show
 	  @member = Member.find(params[:id])
+    @courses = Course.where(member_id: @member)
   end
 
   def index

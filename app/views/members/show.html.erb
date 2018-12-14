@@ -1,4 +1,24 @@
-<%= @member.first_name %> <%= @member.last_name %><br>
-
-
-<%= @member.email %>
+<div class="row" style="padding: 50px">
+	<div class="col-xs-6 col-md-4">
+		<%#= image_tag @member.image.url(:profile) %>
+	</div>
+	<div class="col-xs-6 col-md-4">
+		<%= @member.first_name %> <%= @member.last_name %><br>
+		<%= @member.email %><br>
+		<% @courses.each do |c| %>
+			<% if c.day.past? %>
+				<div class="text-muted">
+					<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+				</div>
+			<% end %>
+		<% end %>
+		<% @courses.each do |c| %>
+			<% if c.day.future? %>
+				<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="col-xs-6 col-md-4">
+		<%= link_to "Dine ordrer", orders_path, class: 'btn btn-primary' %>
+	</div>
+</div>
