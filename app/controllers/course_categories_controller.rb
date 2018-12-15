@@ -10,6 +10,7 @@ class CourseCategoriesController < ApplicationController
   # GET /course_categories/1
   # GET /course_categories/1.json
   def show
+    @course_niveaus = CourseNiveau.all
   end
 
   # GET /course_categories/new
@@ -69,6 +70,6 @@ class CourseCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_category_params
-      params.require(:course_category).permit(:name)
+      params.require(:course_category).permit(:name, :age_from, :age_to)
     end
 end

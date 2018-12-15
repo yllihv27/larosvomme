@@ -53,6 +53,12 @@
 
       <nav class="navbar navbar-default">
         <div class="container-fluid">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <%= link_to (image_tag '/logo.png'), root_path if !coach_signed_in? %>
@@ -122,7 +128,7 @@
           </div>
 
           <div class="col-xs-6 col-md-4">
-            <%= link_to "Sign out", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px;color:#1c1c1c !important' %>
+            <%= link_to "Logg utt", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px;color:#1c1c1c !important' %>
           </div>
 
           <div style="float:right">

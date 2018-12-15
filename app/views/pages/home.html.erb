@@ -22,8 +22,8 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 </center>
 
 <div style="background: #fff;color:#aaa9a9;padding-top:100px" id="kurs">
-<center>
-	<h2 style="color: #aaa9a9;padding-bottom: 60px">HOS OSS TRIVES BARNET</h2>
+	<center>
+		<h2 style="color: #aaa9a9;padding-bottom: 60px">HOS OSS TRIVES BARNET</h2>
 
 		<div class="row">
 			<% @courses.each do |c| %>
@@ -49,36 +49,36 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 </center>
 
 <div class="bg-header cover" style="background-image: url(jente-som-svømmer-under-vann.jpg);color:#aaa9a9;padding-top:100px;">
-<center>
-<div class="row" style="padding: 50px">
-	<% @cities.each do |city| %>
-		<div class="col-xs-6 col-sm-3">
-			<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-				<div class="flipper">
-					<div class="front">
-						<div class="place">
-							<h2><%= city.name %></h2>							
-							<% @courses.each do |c| %>
-								<% if city.id == c.course_place.city.id %>
-										<span style="font-size: 16px"><%= I18n.localize(c.day, format: '%A').capitalize %>, </span>
+	<center>
+		<div class="row" style="padding: 50px">
+			<% @cities.each do |city| %>
+				<div class="col-xs-6 col-sm-3">
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+								<div class="place">
+									<h2><%= city.name %></h2>							
+									<% @courses.each do |c| %>
+										<% if city.id == c.course_place.city.id %>
+												<span style="font-size: 16px"><%= I18n.localize(c.day, format: '%A').capitalize %>, </span>
+											<% end %>
 									<% end %>
-							<% end %>
-						</div>
-					</div>
-					<div class="back">
-						<div class="place" style="background: #1c1c1c !important;border: 1px solid #323232">
-							<h2 style="color:#ff3f00">VELG KURSSTED</h2>
-							<% @course_places.each do |place| %>
-								<% if city.id == place.id %>
-									<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#f3f2f2 !important' %></p><br>
-								<% end %>
-							<% end %>
+								</div>
+							</div>
+							<div class="back">
+								<div class="place" style="background: #1c1c1c !important;border: 1px solid #323232">
+									<h2 style="color:#ff3f00">VELG KURSSTED</h2>
+									<% @course_places.each do |place| %>
+										<% if city.id == place.id %>
+											<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#f3f2f2 !important' %></p><br>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
-	<% end %>
-</div>
-</center>
+	</center>
 </div>
