@@ -1,6 +1,12 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
+  def personvern
+  end
+
+  def cookies
+  end
+
   def home
     @courses = Course.all.limit(6)
     @cities = City.all

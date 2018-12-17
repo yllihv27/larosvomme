@@ -7,7 +7,7 @@
         </div>
 
         <ul class="list-unstyled components">
-            <p><em>Konto: <%= current_coach.name %></em></p>
+            <p><em><%= "#Konto: {current_coach.name}" if current_coach.name %></em></p>
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -17,10 +17,10 @@
                 </ul>
             </li>
             <li>
-              <%= link_to 'Courses', edit_courses_path %>
+              <%= link_to 'Kurs', edit_courses_path %>
             </li>
             <li>
-              <%= link_to 'Members', members_path %>
+              <%= link_to 'Deltakere', members_path %>
             </li>
             <li>
               <%= link_to 'Redigér website', members_path %>
@@ -48,7 +48,7 @@
         </div>
       <% end %>
       <div style="float:right">
-        <%= link_to "Coach login", new_coach_session_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
+        <%= link_to "Admin", new_coach_session_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
       </div><br>
 
       <nav class="navbar navbar-default">
@@ -79,9 +79,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">GDPR - BE OM PERSONLIG DATA <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
-                  <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
-                  <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
+                  <%= link_to "<li>Personvern</li>".html_safe, personvern_path %>
+                  <%= link_to "<li>Cookies</li>".html_safe, cookies_path %>
                 </ul>
               </li>
               <li class="dropdown">

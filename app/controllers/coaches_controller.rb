@@ -7,6 +7,7 @@ class CoachesController < ApplicationController
 
   def show
 	  @coach = Coach.find(params[:id])
+    @courses = Course.where(coach_id: @coach)
   end
 
 

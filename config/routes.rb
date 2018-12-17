@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   get 'kurv/sjekk-ut', to: 'orders#new', as: :checkout
   patch '/kurv/sjekk-ut', to: 'orders#create'
   get :search, controller: :application
+
+  get '/personvern', to: 'pages#personvern'
+  get '/cookies', to: 'pages#cookies'
 end
