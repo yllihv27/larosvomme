@@ -693,3 +693,19 @@ border-style: solid; }
 /* ---------------------------------------------------
     END OF HOVICON
 ----------------------------------------------------- */
+
+.dropdown-course select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    text-indent: 1px !important;
+    text-overflow: '' !important;
+    border-radius: 5px;
+    border: 0;
+    padding: 4px;
+    background: #f3f2f2;
+    -moz-box-shadow: inset 0 0 5px #000000; -webkit-box-shadow: inset 0 0 5px #000000; box-shadow: inset 0 0 5px #000000;
+}
+
+.black-text {
+  color: #1c1c1c !important;
+}

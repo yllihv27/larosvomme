@@ -1,8 +1,12 @@
-<h1>Courses</h1>
+<div style="padding: 50px">
 
+<h1>Kurs</h1>
+
+<div class="dropdown-course">
 <%= form_tag('/courses',:method=>:get) do %>                          
 
   <%= select_tag "course_niveau_id", options_from_collection_for_select(CourseNiveau.all, "id", "name",params[:course_niveau_id]), :prompt => "Nivå", onchange: 'this.form.submit();' %>
+
 
   <%= select_tag "course_category_id", options_from_collection_for_select(CourseCategory.all, "id", "name",params[:course_category_id]), :prompt => "Kategori", onchange: 'this.form.submit();' %>
 
@@ -11,6 +15,9 @@
   <%= select_tag "day", options_from_collection_for_select(Course.all.uniq { |h| h[:day] }, "day", "course_day"), :prompt => "Dag", onchange: 'this.form.submit();' %>
 
 <% end %>
+</div>
+
+<br>
 
 <div class="row">
   <% @courses.each do |course| %>
@@ -27,22 +34,21 @@
           </div>
             <div class="card-text"> <%= number_to_currency(course.price, :unit => "NOK") if course.price %></div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span class="text-muted"><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></li>
-            <li class="list-group-item"><span class="text-muted">Coach:</span> <%= course.coach.name if course.coach %></li>
+            <li class="list-group-item"><span class="text-muted">Tid </span><span style="color:#1c1c1c"><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></span></li>
+            <li class="list-group-item"><span class="text-muted">Coach:</span> <%= link_to course.coach.name, coach_path(course), class: 'black-text' if course.coach %></li>
           </ul>
-            <div class="row" style="margin: 0;text-align:center">
+          <div class="row" style="margin: 0;text-align:center">
 
-              <%= form_tag order_items_path do %>
-                <%= hidden_field_tag :course_id, course.id %>
-                <%= number_field_tag :quantity, 1 %>
-                <%= submit_tag "Tilføj" %>
-              <% end %>
-
-              <%= link_to 'Kjøp', root_path, class: 'col-md-6 col-sm-6 col-xs-6 card-btn-1' %>
-              <%= link_to 'Info', course_path(course), class: 'col-md-6 col-sm-6 col-xs-6 card-btn-2' %>
+            <%= form_tag order_items_path do %>
+              <%= hidden_field_tag :course_id, course.id %>
+              <%= number_field_tag :quantity, 1 %>
+              <%= submit_tag "Tilføj" %>
+            <% end %>
           </div>
         </div>
       </div>
     <% end %>
   <% end %>
+</div>
+
 </div>
