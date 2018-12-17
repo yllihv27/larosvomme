@@ -2,7 +2,12 @@
 
 	<p id="notice"><%= notice %></p>
 
-	<%= @course_place.name %><br><br>
+	<%= @course_place.name %>
+	<br>
+
+	<%= @course_place.address if @course_place.address %> <%= "#tlf: {@course_place.phone}" if @course_place.phone %>
+
+	<br>
 
 	<table class="table">
 	  <thead style="background: #ff3f00;">
@@ -29,27 +34,11 @@
 		</div>
 	</center>
 
-	<p>
-	  <strong>Name:</strong>
-	  <%= @course_place.name %>
-	</p>
+	<div style="color: #a9a9a9;font-size: 16px">
 
-	<p>
-	  <strong>Address:</strong>
-	  <%= @course_place.address %>
-	</p>
 
-	<p>
-	  <strong>Phone:</strong>
-	  <%= @course_place.phone %>
-	</p>
-
-	<p>
-	  <strong>Description:</strong>
-	  <%= @course_place.description %>
-	</p>
-
-	<%= link_to 'Edit', edit_course_place_path(@course_place) %> |
-	<%= link_to 'Back', course_places_path %>
+		<%= link_to 'Alle steder', courses_path %> | 
+		<%= link_to 'Tilbake', root_path %>
+	</div>
 
 </div>
