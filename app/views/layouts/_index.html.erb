@@ -91,7 +91,7 @@
                   <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>
-              <li style="padding: 8px">
+              <li>
                 <%= link_to kurv_path do %>
                 <i class="fa fa-shopping-cart"> <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? and current_cart.items_count > 0 %></i>
                 <% end %>

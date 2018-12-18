@@ -1,13 +1,17 @@
-<header class="bg-header cover" style="background-image: url(Forside-gutt-jente-som-svømmer-bli-trygg-i-vannet-lær-a-svømme.jpg)">
+<header class="bg-header cover" style="background-image: url(Forside-gutt-jente-som-svommer-bli-trygg-i-vannet-lær-a-svomme.jpg)">
   <center style="padding-top:65px;">
-  	<div class="row">
+  	<div class="row desktop">
   		<div class="col-xs-6">
   		</div>
   		<div class="col-xs-6">
+		  	<h2>Noget tekst hér</h2><br><br>
+		  	<%= link_to "SE KURSENE", courses_path, class: "large-button" %>
+		  </div>
+		</div>
+	  <div class="mobile">
 	  	<h2>Noget tekst hér</h2><br><br>
 	  	<%= link_to "SE KURSENE", courses_path, class: "large-button" %>
 	  </div>
-	</div>
   </center>
 </header>
 
@@ -42,17 +46,17 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 
 <center class="padding">
 
-<iframe src="https://player.vimeo.com/video/295754560?color=ff3f00&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="padding-bottom: 40px"></iframe>
+<iframe src="https://player.vimeo.com/video/295754560?color=ff3f00&title=0&byline=0&portrait=0" class="video" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="padding-bottom: 40px"></iframe>
 
 <div class="fusion-section-separator section-separator" style="border-bottom:0px solid #ff3f00;margin-left:-0px;margin-right:-0px;"><div class="divider-candy-arrow bottom" style="border-top-color: #ff3f00;"></div></div>
 
 </center>
 
-<div class="bg-header cover" style="background-image: url(jente-som-svømmer-under-vann.jpg);color:#aaa9a9;padding-top:100px;">
+<div class="bg-header" style="background-image: url(jente-som-svommer-under-vann.jpg);color:#aaa9a9;padding-top:50px;">
 	<center>
 		<div class="row" style="padding: 50px">
 			<% @cities.each do |city| %>
-				<div class="col-xs-6 col-sm-3">
+				<div class="col-md-3 col-sm-3">
 					<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 						<div class="flipper">
 							<div class="front">
@@ -77,6 +81,7 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 							</div>
 						</div>
 					</div>
+					<br>
 				</div>
 			<% end %>
 		</div>
