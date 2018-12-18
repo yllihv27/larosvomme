@@ -1,3 +1,5 @@
+<div style="padding:50px">
+
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -11,56 +13,63 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :day %>
-    <%= form.date_field :day %>
+  <div class="row form-padding">
+    <div class="col-md-6">
+
+      <div class="field">
+        <%= form.label :dato %>
+        <%= form.date_field :day %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <%= form.label :fra_kl %>
+        <%= form.time_field :time_from %>  
+        <%= form.label :tiL_kl %>
+        <%= form.time_field :time_to %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <%= form.label :bilde %>
+        <%= form.file_field :course_image %>
+      </div>
+    </div>
+
+    <div class="col-md-6 dropdown-course">
+
+      <%= form.collection_select :coach_id, Coach.order(:name),:id,:name, :prompt => "Velg trener" %>
+    </div>
+    <div class="col-md-6 dropdown-course">
+      <%= form.collection_select :course_niveau_id, CourseNiveau.order(:name),:id,:name, :prompt => "Velg nivå" %>
+    </div>
+    <div class="col-md-6 dropdown-course">
+      <%= form.collection_select :course_category_id, CourseCategory.order(:name),:id,:name, :prompt => "Velg kategori" %>
+    </div>
+    <div class="col-md-6 dropdown-course">
+      <%= form.collection_select :course_place_id, CoursePlace.order(:name),:id,:name, :prompt => "Velg sted" %>
+    </div>
+
+
+    <div class="col-md-6">
+      <div class="field">
+        <%= form.text_area :description, placeholder: 'Beskrivelse' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="field">
+        <%= form.text_field :price, placeholder: 'Pris' %> NOK
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="actions">
+        <%= form.submit "Oprett kurs" %>
+      </div>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :course_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :coach_id %>
-    <%= form.number_field :coach_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :course_niveau_id %>
-    <%= form.number_field :course_niveau_id %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :course_place_id %>
-    <%= form.number_field :course_place_id %>
-  </div>
-  <div class="field">
-    <%= form.label :course_category_id %>
-    <%= form.number_field :course_category_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :time_from %>
-    <%= form.time_field :time_from %>
-  </div>
-  <div class="field">
-    <%= form.label :time_to %>
-    <%= form.time_field :time_to %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+
+</div>
