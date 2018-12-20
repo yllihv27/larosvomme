@@ -16,7 +16,6 @@
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap-sprockets
-//= require jquery.easy-autocomplete
 //= require activestorage
 //= require aos
 //= require fstdropdown
