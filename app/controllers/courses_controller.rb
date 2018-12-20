@@ -10,29 +10,29 @@ class CoursesController < ApplicationController
 
     if params[:course_niveau_id].present?
         course_niveau = CourseNiveau.find(params[:course_niveau_id])
-        @courses = course_niveau.courses
+        @courses = course_niveau.courses.page(params[:page])
      else
-      @courses = @courses
+      @courses = @courses.page(params[:page])
     end
 
     if params[:course_place_id].present?
       course_place = CoursePlace.find(params[:course_place_id])
-      @courses = course_place.courses
+      @courses = course_place.courses.page(params[:page])
      else
-      @courses = @courses
+      @courses = @courses.page(params[:page])
     end
 
     if params[:course_category_id].present?
       course_category = CourseCategory.find(params[:course_category_id])
-      @courses = course_category.courses
+      @courses = course_category.courses.page(params[:page])
      else
-      @courses = @courses
+      @courses = @courses.page(params[:page])
     end
 
     if params[:day].present?
-      @courses = @courses.where(day: params[:day])
+      @courses = @courses.where(day: params[:day]).page(params[:page])
      else
-      @courses = @courses
+      @courses = @courses.page(params[:page])
     end
 
   end
