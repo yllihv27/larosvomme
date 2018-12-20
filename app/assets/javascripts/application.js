@@ -11,16 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap-sprockets
+//= require jquery.easy-autocomplete
 //= require activestorage
 //= require aos
 //= require fstdropdown
 //= require global
 //= require turbolinks
-//= require jquery.easy-autocomplete
 //= require_tree .
 
 
