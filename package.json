@@ -1,5 +1,7 @@
 {
   "name": "larosvomme",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "micromodal": "^0.3.2"
+  }
 }

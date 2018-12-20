@@ -1,5 +1,5 @@
 body, .navbar {
-	background: #1c1c1c !important;
+	background: #000 !important;
 	color: #f3f2f2 !important;
 	border: none !important;
 	font-family: "Open Sans", Arian, Helvetica, sans-serif !important;
@@ -45,16 +45,16 @@ h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
 
 .coach {
   background: #f3f2f2;
-  color: #1c1c1c;
+  color: #000;
 }
 
 a { color: #f3f2f2 !important }
 a:hover { text-decoration: none !important; background: none !important }
-.coach a { color: #1c1c1c !important }
+.coach a { color: #000 !important }
 
-#error_explanation ul li {color: #1c1c1c }
+#error_explanation ul li {color: #000 }
 
-select { color: #1c1c1c !important }
+select { color: #000 !important }
 
 
 /* COURSE INDEX PAGE */
@@ -89,16 +89,16 @@ select { color: #1c1c1c !important }
 
 .fstdropdown > .fstlist {
   background: #fff;
-  color: #1c1c1c;
+  color: #000;
 }
 .fstdropdown.open > .fstsearch {
   padding: 1px !important;
 }
 .fstlist > div { font-size: 16px }
 .dropdown-course .col-sm-3 { padding: 5px; }
-.fstdropdown > .fstselected { font-size: 16px !important; color: #1c1c1c !important }
+.fstdropdown > .fstselected { font-size: 16px !important; color: #000 !important }
 
-.fstlist > div:hover { background: #f3f2f2 !important; color: #1c1c1c !important; }
+.fstlist > div:hover { background: #f3f2f2 !important; color: #000 !important; }
 .fstlist > div > .hover { opacity: none !important }
 
 .course-card {
@@ -199,25 +199,25 @@ select { color: #1c1c1c !important }
 	background: linear-gradient(to right, #f3f2f2, #DBDADA);
 	text-align: center;
 	border-right: 1px solid #fff;
-	color: #1c1c1c;
+	color: #000;
     transition: 0.3s;
 }
 .card-btn-1:hover {
 	opacity: 0.5;
 	text-decoration: none;
-	color: #1c1c1c
+	color: #000
 }
 .card-btn-2 {
 	padding: 10px;
 	background: linear-gradient(to right, #DBDADA, #c3c2c2);
 	text-align: center;
-	color: #1c1c1c;
+	color: #000;
     transition: 0.3s;
 }
 .card-btn-2:hover {
 	opacity: 0.5;
 	text-decoration: none;
-	color: #1c1c1c
+	color: #000
 }
 
 .card-text {
@@ -252,7 +252,7 @@ select { color: #1c1c1c !important }
 
 /* END OF COURSE INDEX PAGE */
 
-input { color: #1c1c1c !important }
+input { color: #000 !important }
 
 
 /* NAVBAR */
@@ -369,7 +369,7 @@ ul ul a {
 
 .dropdown-menu { 
   font-size: 20px !important;
-  background: #1c1c1c !important;
+  background: #000 !important;
   color: #aaa9a9 !important;
   font-size: 16px !important;
   font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
@@ -614,7 +614,7 @@ border-style: solid; }
   margin-bottom: 20px;
   height: 100%;
   width: 100%;
-  color: #1c1c1c;
+  color: #000;
   text-align: center;
 }
 
@@ -842,7 +842,7 @@ border-style: solid; }
 
 
 .black-text {
-  color: #1c1c1c !important;
+  color: #000 !important;
 }
 
 .page-text {

@@ -5,6 +5,13 @@ class CoursesController < ApplicationController
   has_scope :by_place
   has_scope :by_category
 
+  def modal
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def index
     @courses = Course.all.order('day ASC').page(params[:page])
 
