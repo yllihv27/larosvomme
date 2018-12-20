@@ -34,6 +34,7 @@ gem 'i18n', '~> 1.1', '>= 1.1.1'
 gem 'jquery-ui-rails'
 gem 'ransack'
 gem 'fog'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

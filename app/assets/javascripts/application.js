@@ -16,7 +16,23 @@
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require activestorage
+//= require aos
+//= require fstdropdown
 //= require global
 //= require turbolinks
 //= require jquery.easy-autocomplete
 //= require_tree .
+
+
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function replaceword(that, word, oword) {
+    that.textContent = that.textContent == word ? oword : word;
+}

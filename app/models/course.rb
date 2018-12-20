@@ -5,6 +5,7 @@ class Course < ApplicationRecord
 	belongs_to :coach, optional: :true
 	has_many :members
   mount_uploader :course_image, CourseImageUploader
+  paginates_per 20
 
   def course_day
   	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ')

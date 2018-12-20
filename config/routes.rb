@@ -27,4 +27,7 @@ Rails.application.routes.draw do
 
   get '/personvern', to: 'pages#personvern'
   get '/cookies', to: 'pages#cookies'
+
+  get '/kurs', to: 'courses#index'
+
 end

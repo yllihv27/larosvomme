@@ -1,6 +1,8 @@
 <% if @items.any? %>
 
-<h2>Current cart</h2>
+<div class="padding">
+
+<h2>Bestil</h2>
 
 	<table class="table">
 		<thead>
@@ -19,7 +21,7 @@
 					<td><%= item.quantity %></td>
 					<td>
 						<%= form_for item, method: :delete do |f| %>
-							<%= f.submit "Slett" %>
+							<%= f.submit "Slett", style: 'btn btn-danger' %>
 						<% end %>
 					</td>
 				</tr>
@@ -32,7 +34,7 @@
 		</tfoot>
 	</table>
 
-	<%= link_to "Sjekk ut", checkout_path, class: 'btn btn-primary' %>
+	<%= link_to "Sjekk ut", checkout_path, class: 'buy-button' %>
 <% else %>
 <center style="padding-top:50px">
 <h2>Handlekurven din er tom.</h2>
@@ -40,3 +42,5 @@
 <%= link_to '← Tilbake til butikken', courses_path %>
 </center>
 <% end %>
+
+</div>

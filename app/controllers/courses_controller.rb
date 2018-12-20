@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   has_scope :by_category
 
   def index
-    @courses = Course.all
+    @courses = Course.all.order('day ASC').page(params[:page])
 
     if params[:course_niveau_id].present?
         course_niveau = CourseNiveau.find(params[:course_niveau_id])

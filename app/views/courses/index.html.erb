@@ -1,59 +1,119 @@
-<div style="padding: 50px">
 
+<header class="bg-header cover" style="background-image: url(kurs-bg2.jpg);height:100%">
+<div style="padding: 50px">
 <h1>Kurs</h1>
 
-<div class="dropdown-course">
+<div class="dropdown-course row">
+
 <%= form_tag('/courses',:method=>:get) do %>                          
 
-  <%= select_tag "course_niveau_id", options_from_collection_for_select(CourseNiveau.all, "id", "name",params[:course_niveau_id]), :prompt => "Nivå", onchange: 'this.form.submit();' %>
+  <div class="col-sm-3">
+    <%= select_tag "course_niveau_id", options_from_collection_for_select(CourseNiveau.all, "id", "name",params[:course_niveau_id]), :prompt => "Nivå", class: "fstdropdown-select", onchange: 'this.form.submit();' %>
+  </div>
 
+  <div class="col-sm-3">
+    <%= select_tag "course_category_id", options_from_collection_for_select(CourseCategory.all, "id", "name",params[:course_category_id]), :prompt => "Kategori", class: "fstdropdown-select", onchange: 'this.form.submit();' %>
+  </div>
 
-  <%= select_tag "course_category_id", options_from_collection_for_select(CourseCategory.all, "id", "name",params[:course_category_id]), :prompt => "Kategori", onchange: 'this.form.submit();' %>
+  <div class="col-sm-3">
+    <%= select_tag "course_place_id", options_from_collection_for_select(CoursePlace.all, "id", "name",params[:course_place_id]), :prompt => "Sted", class: "fstdropdown-select", onchange: 'this.form.submit();' %>
+  </div>
 
-  <%= select_tag "course_place_id", options_from_collection_for_select(CoursePlace.all, "id", "name",params[:course_place_id]), :prompt => "Sted", onchange: 'this.form.submit();' %>
-
-  <%= select_tag "day", options_from_collection_for_select(Course.all.uniq { |h| h[:day] }, "day", "course_day"), :prompt => "Dag", onchange: 'this.form.submit();' %>
+  <div class="col-sm-3">
+    <%= select_tag "day", options_from_collection_for_select(Course.all.uniq { |h| h[:day] }, "day", "course_day"), :prompt => "Dag", class: "fstdropdown-select", onchange: 'this.form.submit();' %>
+  </div>
 
 <% end %>
 </div>
+</header>
 
 <br>
+
+
 
 <div class="row">
   <% @courses.each do |course| %>
     <% unless course.day.past? %>
-      <div class="col-xs-6 col-sm-3">
-        <div class="card">
-          <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_image %>
-          <div class="card-body">
-            <div class="row" style="margin: 0">
-                <h4 class="card-title row"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h4>
+      <ul style="list-style: none;">
+        <li>
+          <div class="row course-card">
+            <div class="col-sm-3">
+              <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_image %>
             </div>
-          </div>
-            <div class="card-text"> <%= number_to_currency(course.price, :unit => "NOK") if course.price %></div>
-          <ul class="list-group list-group-flush">
-            <div class="row list-group-item">
-              <div class="col-xs-6" style="border-right: 1px solid #c3c2c2;padding:3px">
-              <span class="text-muted">Tid </span><span style="color:#1c1c1c"><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></span></li>
-            </div>
-              <div class="col-xs-6" style="padding:3px">
-              <span class="text-muted">Trener:</span> <%= link_to course.coach.name, coach_path(course), class: 'black-text' if course.coach %>
+            <div class="col-sm-7">
+              <div class="card-wrapper">
+                <h4 class="card-title"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %></h4>
+                <p class="card-date"><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %></p>
               </div>
             </div>
-          </ul>
-          <div class="row add-to-cart" style="margin: 0;text-align:center">
+            <div class="col-sm-2 desktop">
+              <div class="card-wrapper">
+                <div onclick="myFunction('<%= course.id %>');replaceword(this,'Skjul','Vis');" style="cursor:pointer">Vis  <i class="arrow down"></i></div>
+              </div>
+            </div>
+            <div class="mobile">
+              <center>
+              <div onclick="myFunction('<%= course.id %>');replaceword(this,'Skjul','Vis');" style="cursor:pointer;background:rgba(243, 242, 242, 0.1);width:20%;margin-top:-20px;margin-bottom:20px;border-radius: 20px">Vis  <i class="arrow down"></i></div>
+            </center>
+            </div>
+          </div>
+        </li>
 
-            <%= form_tag order_items_path do %>
-              <%= hidden_field_tag :course_id, course.id %>
-              <%#= number_field_tag :quantity, 1 %>
-              <%= submit_tag "Legg i" %>
-            <% end %>
+        <div id="<%= course.id %>" style="display: none">
+          <div class="desktop">
+            <li>
+            <div class="row padding-small">
+              <div class="col-sm-6">
+                <br>
+                <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %></h4>
+                <div class="card-sub">
+                  <p style="font-weight: 700;font-size: 28px;" ><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card-sub" style="font-size: 16px;padding-top:60px">
+                  Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br>
+                  Pris:   <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div style="padding-top:60px">
+                  <%= form_tag order_items_path do %>
+                    <%= hidden_field_tag :course_id, course.id %>
+                    <%#= number_field_tag :quantity, 1 %>
+                    <%= submit_tag "Delta", class: 'buy-button' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            </li>
+          </div>
+          <div class="mobile">
+            <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %></h4>
+                <div class="card-sub">
+                  <p style="font-weight: 700;font-size: 28px;" ><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></p>
+                </div>
+                <div class="card-sub" style="font-size: 16px">
+                  Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br>
+                  <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
+                </div>
+                <br>
+                <%= form_tag order_items_path do %>
+                  <%= hidden_field_tag :course_id, course.id %>
+                  <%#= number_field_tag :quantity, 1 %>
+                  <%= submit_tag "Delta", class: 'buy-button' %>
+                <% end %>
+                <br>
           </div>
         </div>
-      <hr style="border:0;padding:5px">
-      </div>
+      </ul>
     <% end %>
   <% end %>
+</div>
+<div class="paginate-parent">
+    <div class="paginate" style="font-size: 16px">
+        <%= paginate @courses %>
+    </div>
 </div>
 
 </div>

@@ -213,3 +213,5 @@ nb:
       long: "%A, %e. %B %Y, %H:%M"
       short: "%e. %B, %H:%M"
     pm: ''
+  pagination:
+    next: 'neste'
