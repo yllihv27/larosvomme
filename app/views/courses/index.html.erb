@@ -1,9 +1,9 @@
 <script>
-  $("#modal-window").html("<%= escape_javascript(render 'courses/modal') %>");
+  $("#modal-window").html("<%= escape_javascript(render 'members/modal') %>");
 </script>
 
 <div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
-  <%= render 'courses/modal' %>
+  <%= render 'members/modal' %>
 </div>
 
 <header class="bg-header cover" style="background-image: url(kurs-bg2.jpg);height:100%">
@@ -45,7 +45,7 @@
         <li>
           <div class="row course-card">
             <div class="col-sm-3">
-              <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_image %>
+              <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_image? %>
             </div>
             <div class="col-sm-7">
               <div class="card-wrapper">

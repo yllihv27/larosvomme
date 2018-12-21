@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: :show
+  before_action :authenticate_coach!, except: [:show, :create]
   before_action :check_member
 
 
@@ -26,15 +26,10 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
-
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to @member, notice: 'Velkommen! Din registrering er vellykket..' }
-        format.json { render :show, status: :created, location: @member }
-      else
-        format.html { render :new }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
+    if @member.save
+      MemberMailer.welcome(@member).deliver
+      sign_in(@member)
+      redirect_to @member
     end
   end
 
@@ -70,6 +65,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:id, :name, :email, :password, :password_confirmation, :course_id, :profile_pic)
+      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id)
     end
 end

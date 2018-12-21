@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require popper
+//= require search.js
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require activestorage
@@ -22,6 +23,7 @@
 //= require fstdropdown
 //= require global
 //= require turbolinks
+//= require jquery.easy-autocomplete
 //= require_tree .
 
 
@@ -37,3 +39,5 @@ function myFunction(id) {
 function replaceword(that, word, oword) {
     that.textContent = that.textContent == word ? oword : word;
 }
+
+

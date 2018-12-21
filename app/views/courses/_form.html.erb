@@ -25,6 +25,8 @@
       <div class="field">
         <%= form.label :fra_kl %>
         <%= form.time_field :time_from %>  
+      </div><br>
+      <div class="field">
         <%= form.label :tiL_kl %>
         <%= form.time_field :time_to %>
       </div>
@@ -37,29 +39,28 @@
     </div>
 
     <div class="col-md-6 dropdown-course">
-
-      <%= form.collection_select :coach_id, Coach.order(:name),:id,:name, :prompt => "Velg trener" %>
+      Trener: <br> <%= form.collection_select :coach_id, Coach.order(:name),:id,:name, :prompt => "Velg trener" %>
     </div>
     <div class="col-md-6 dropdown-course">
-      <%= form.collection_select :course_niveau_id, CourseNiveau.order(:name),:id,:name, :prompt => "Velg nivå" %>
+      Nivå: <br> <%= form.collection_select :course_niveau_id, CourseNiveau.order(:name),:id,:name, :prompt => "Velg nivå" %>
     </div>
     <div class="col-md-6 dropdown-course">
-      <%= form.collection_select :course_category_id, CourseCategory.order(:name),:id,:name, :prompt => "Velg kategori" %>
+      Kategori: <br> <%= form.collection_select :course_category_id, CourseCategory.order(:name),:id,:name, :prompt => "Velg kategori" %>
     </div>
     <div class="col-md-6 dropdown-course">
-      <%= form.collection_select :course_place_id, CoursePlace.order(:name),:id,:name, :prompt => "Velg sted" %>
+      Sted: <br> <%= form.collection_select :course_place_id, CoursePlace.order(:name),:id,:name, :prompt => "Velg sted" %>
     </div>
 
 
     <div class="col-md-6">
       <div class="field">
-        <%= form.text_area :description, placeholder: 'Beskrivelse' %>
+        Beskrivelse: <br> <%= form.text_area :description, placeholder: 'Beskrivelse' %>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="field">
-        <%= form.text_field :price, placeholder: 'Pris' %> NOK
+        Pris: <br> <%= form.text_field :price, placeholder: 'Pris' %> NOK
       </div>
     </div>
     <div class="col-md-6">

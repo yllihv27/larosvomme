@@ -7,10 +7,10 @@ document.addEventListener("turbolinks:load", function() {
 			return "/search.json?q=" + phrase;
 		},
 		categories: [
-		{
-			listLocation: "members",
-			header: "<strong>Members</strong>",
-		}
+			{
+				listLocation: "members",
+				header: "<strong>Members</strong>",
+			}
 		],
 		list: {
 			onChooseEvent: function() {
