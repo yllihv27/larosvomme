@@ -1,10 +1,10 @@
-<%= link_to 'Add user', root_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
-  </div>
-</div>
+<script>
+  $("#modal-window").html("<%= escape_javascript(render 'courses/modal') %>");
+</script>
 
+<div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <%= render 'courses/modal' %>
+</div>
 
 <header class="bg-header cover" style="background-image: url(kurs-bg2.jpg);height:100%">
 <div style="padding: 50px">
@@ -70,7 +70,7 @@
           <div class="desktop">
             <li>
             <div class="row padding-small">
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <br>
                 <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %></h4>
                 <div class="card-sub">
@@ -83,12 +83,17 @@
                   Pris:   <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
                 </div>
               </div>
-              <div class="col-sm-2">
+                  
+              <div class="col-sm-4">
                 <div style="padding-top:60px">
+
                   <%= form_tag order_items_path do %>
                     <%= hidden_field_tag :course_id, course.id %>
-                    <%#= number_field_tag :quantity, 1 %>
-                    <%= submit_tag "Delta", class: 'buy-button' %>
+                    <%#= hidden_field :quantity, 1 %>
+                    <%= number_field_tag :quantity, 1, style: 'display:none' %>
+
+                    <%= link_to 'Opprett konto for å delta', new_member_registration_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'buy-button'} if !member_signed_in? %>
+                    <%= submit_tag "Delta", class: 'buy-button' if member_signed_in? %>
                   <% end %>
                 </div>
               </div>

@@ -42,6 +42,8 @@ class CoursesController < ApplicationController
       @courses = @courses.page(params[:page])
     end
 
+    @member = Member.new
+
   end
 
   def edit_courses

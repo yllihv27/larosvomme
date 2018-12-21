@@ -93,7 +93,8 @@
               </li>
               <li>
                 <%= link_to kurv_path do %>
-                <i class="fa fa-shopping-cart"> <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? and current_cart.items_count > 0 %></i>
+                <i class="fa fa-shopping-cart" style="font-size: 18px"></i>
+                </p>
                 <% end %>
               </li>
             </ul>

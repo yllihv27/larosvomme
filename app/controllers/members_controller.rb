@@ -29,7 +29,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'member category was successfully created.' }
+        format.html { redirect_to @member, notice: 'Velkommen! Din registrering er vellykket..' }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }

@@ -29,9 +29,9 @@ class OrdersController < ApplicationController
   private
 
   def check_member
-    if current_member.id != @order.member_id
-      redirect_to root_url, alert: "Kan ikke finde din ordre."
-    end
+    #if current_member.id != @order.member_id
+      #redirect_to root_url, alert: "Kan ikke finde din ordre."
+    #end
   end
 
   def set_order
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total)
+    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy])
   end
 
 end
