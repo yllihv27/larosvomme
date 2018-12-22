@@ -13,6 +13,10 @@
 				</div>
 			<% end %>
 		<% end %>
+		<hr>
+		<% @participations.each do |p| %>
+			<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
+		<% end %>
 		<% @courses.each do |c| %>
 			<% if c.day.future? %>
 				<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>

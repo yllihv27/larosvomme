@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
 	$input = $("[data-behavior='autocomplete']")
-	
+
 	var options = {
 		getValue: "first_name",
 		url: function(phrase) {

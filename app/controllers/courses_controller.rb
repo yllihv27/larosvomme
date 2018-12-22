@@ -54,6 +54,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @members = Member.all
   end
 
   # GET /courses/new

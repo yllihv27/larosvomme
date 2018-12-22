@@ -18,6 +18,13 @@
 			</div>
 
 		<td colspan="4" align="right">
+			<% @items.each do |i| %>
+				<%= i.course.course_category.name if i.course.course_category %>
+				<%= i.course.course_niveau.name if i.course.course_niveau %>
+				<%= i.course.course_place.name if i.course.course_place %>
+			<% end %>
+
+			<br><br>
 			<%= number_to_currency current_cart.sub_total %>
 		</td><br><br>
 

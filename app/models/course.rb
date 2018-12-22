@@ -12,7 +12,9 @@ class Course < ApplicationRecord
   end
 
   def course_name
-  	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ') + (' | ') + course_category.name + (' ') + course_niveau.name + (' ') + course_place.name
+    if course_niveau.present?
+    	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ') + (' | ') + course_category.name + (' ') + course_niveau.name + (' ') + course_place.name
+    end
   end
 
 end

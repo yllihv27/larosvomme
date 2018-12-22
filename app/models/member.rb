@@ -5,6 +5,6 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :first_name, presence: true
   validates :last_name, presence: true
-  has_and_belongs_to_many :courses, optional: :true
+  has_and_belongs_to_many :courses
   mount_uploader :profile_pic, ProfilePicUploader
 end

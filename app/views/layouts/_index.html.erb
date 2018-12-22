@@ -86,6 +86,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">BESTILL KURSPLASS <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                  <%= link_to "<li>Find Kurs</li>".html_safe, courses_path %>
                   <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
                   <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
                   <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
@@ -105,7 +106,6 @@
 
 
       <div class="container">
-        <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
     </div>

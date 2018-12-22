@@ -1,18 +1,20 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: [:show, :create]
-  before_action :check_member
+  before_action :authenticate_coach!, except: [:show, :new, :create]
+  before_action :check_member, except: [:index]
 
 
   def show
 	  @member = Member.find(params[:id])
     @courses = Course.where(member_id: @member)
+    @participations = Participation.where(member_id: @member)
   end
 
   def index
   	@courses = Course.all
     # = Course.find_by(params[:course_id])
   	@members = Member.all
+    @participations = Participation.all
     #@course_members = Member.where(params[:course_id] == @course.id)
     #@course_members = Member.where(params[:course_id] == course.id)
   end

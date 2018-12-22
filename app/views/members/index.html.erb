@@ -2,14 +2,14 @@
 <% @courses.each do |c| %>
   <div class="col-sm-6">
   <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
-    <div style="font-size: 14px;font-weight: 500"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
+    <div style="font-size: 14px;font-weight: 700"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
     <table class="table table-hover">
       <tbody>
-        <% @members.each do |member| %>
-          <% if member.course_id == c.id %>
+        <% @participations.each do |p| %>
+          <% if p.course_id == c.id %>
             <tr style="color:#000 !important">
-              <td style="padding-right: 20px"><%= link_to member.first_name, edit_member_path(member) %> <%= link_to member.last_name, edit_member_path(member) %></td>   
-              <td><%= link_to member.email, edit_member_path(member) %></td>
+              <td style="padding-right: 20px"><%= link_to p.member.first_name, edit_member_path(p) %> <%= link_to p.member.last_name, edit_member_path(p) %></td>   
+              <td><%= link_to p.member.email, edit_member_path(p) %></td>
             </tr>
           <% end %>
         <% end %>
