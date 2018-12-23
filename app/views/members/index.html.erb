@@ -1,22 +1,51 @@
 <div class="row">
 <% @courses.each do |c| %>
-  <div class="col-sm-6">
-  <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
-    <div style="font-size: 14px;font-weight: 700"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
-    <table class="table table-hover">
-      <tbody>
-        <% @participations.each do |p| %>
-          <% if p.course_id == c.id %>
-            <tr style="color:#000 !important">
-              <td style="padding-right: 20px"><%= link_to p.member.first_name, edit_member_path(p) %> <%= link_to p.member.last_name, edit_member_path(p) %></td>   
-              <td><%= link_to p.member.email, edit_member_path(p) %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <% if c.day.future? %>
+    <div class="col-sm-6">
+      <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
+        <div style="font-size: 14px;font-weight: 700;cursor:pointer" onclick="myFunction('<%= c.id %>')"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
+        <div id="<%= c.id %>" style="display:none;">
+          <table class="table table-hover">
+            <tbody>
+              <% @participations.each do |p| %>
+                <% if p.course_id == c.id %>
+                  <tr style="color:#000 !important">
+                    <td style="padding-right: 10px"><%= p.member.id %></td>   
+                    <td><%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></td>   
+                    <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 </div>
+
+<div class="row">
+<% @courses.each do |c| %>
+  <% if c.day.past? %>
+    <div class="col-sm-6" style="opacity: .4">
+      <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
+        <div style="font-size: 14px;font-weight: 700"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
+        <table class="table table-hover">
+          <tbody>
+            <% @participations.each do |p| %>
+              <% if p.course_id == c.id %>
+                <tr style="color:#000 !important">
+                  <td style="padding-right: 20px"><%= link_to p.member.first_name, edit_member_path(p) %> <%= link_to p.member.last_name, edit_member_path(p) %></td>   
+                  <td><%= link_to p.member.email, edit_member_path(p) %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 </div>
 

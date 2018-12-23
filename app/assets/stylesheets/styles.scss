@@ -136,7 +136,7 @@ select { color: #000 !important }
 }
 
 .buy-button {
-  background: linear-gradient(to right, #f72000, #f7005b);
+  background: linear-gradient(to right, #f72000, #f7005b) !important;
   border: 0;
   border-radius: 5px;
   padding: 10px 25px;
@@ -927,4 +927,103 @@ p {
 
 .form-padding .col-md-6 {
   padding-bottom: 50px;
+}
+
+/* ---------------------------------------------------
+    EDIT MEMBER
+----------------------------------------------------- */
+
+.edit-member {
+  margin: 30px;
+  padding:30px;
+  background: #fff;
+  border-radius: 5px;
+  input {
+  background: #f3f2f2
+  }
+  .danger a {
+  color: #fff !important;
+  transition: .3s;
+  }
+  .danger a:hover {
+  color: #1c1c1c !important;
+  }
+}
+.btn-danger {
+  color: #fff !important;
+}
+
+.blue-button {
+  background: #00c0ff;
+  padding: 6px 12px;
+  color: #fff !important;
+  border-radius: 5px;
+  border: 1px solid #0099cc;
+}
+
+.hover-bg {
+  transition: .3s;
+  padding: 10px;
+  a:hover {
+  opacity: .7;
+  }
+}
+.hover-bg:hover {
+  background: #fff;
+}
+.btn-danger-small {
+  display: inline-block;
+margin-bottom: 0;
+font-weight: normal;
+text-align: center;
+vertical-align: middle;
+touch-action: manipulation;
+cursor: pointer;
+background-image: none;
+border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+padding: 3px 6px;
+font-size: 12px;
+line-height: 1.428571429;
+border-radius: 4px;
+color: #fff;
+background-color: #d9534f;
+border-color: #d43f3a;
+}
+
+.btn-blue-small  {
+  display: inline-block;
+margin-bottom: 0;
+font-weight: normal;
+text-align: center;
+vertical-align: middle;
+touch-action: manipulation;
+cursor: pointer;
+background-image: none;
+border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+padding: 3px 6px;
+font-size: 12px;
+line-height: 1.428571429;
+border-radius: 4px;
+color: #fff;
+background-color: #c3c2c2;
+border-color: #777;
+}
+/* ---------------------------------------------------
+    END OF EDIT MEMBER
+----------------------------------------------------- */
+
+
+.page-card {
+  margin: 30px;
+  padding:30px;
+  background: #fff;
+  border-radius: 5px;
 }

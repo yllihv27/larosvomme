@@ -1,8 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: [:show, :new, :create]
-  before_action :check_member, except: [:index]
-
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!, except: [:new, :create]
+  before_action :check_member, only: [:show]
 
   def show
 	  @member = Member.find(params[:id])
@@ -12,14 +12,19 @@ class MembersController < ApplicationController
 
   def index
   	@courses = Course.all
-    # = Course.find_by(params[:course_id])
+    @course = Course.find_by(params[:id])
+    @counts = Participation.where(course_id: @course)
   	@members = Member.all
     @participations = Participation.all
+    @member = Member.find_by(params[:id])
+    @participation = Participation.find_by(params[:id])
     #@course_members = Member.where(params[:course_id] == @course.id)
     #@course_members = Member.where(params[:course_id] == course.id)
   end
 
   def edit
+    @courses = Course.where(member_id: @member)
+    @participations = Participation.where(member_id: @member)
   end
 
   def new
@@ -64,6 +69,10 @@ class MembersController < ApplicationController
 
     def set_member
       @member = Member.find(params[:id])
+    end
+
+    def set_course
+      @course = Course.find(params[:id])
     end
 
     def member_params

@@ -1,9 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, only: [:edit_courses, :edit, :update, :destroy]
-  has_scope :by_niveau
-  has_scope :by_place
-  has_scope :by_category
 
   def modal
     respond_to do |format|
