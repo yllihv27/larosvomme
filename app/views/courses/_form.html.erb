@@ -1,6 +1,6 @@
-<div style="margin:50px;background: #fff;padding:20px;border-radius:10px">
-
-
+<div class="page-card">
+<h1>Nytt kurs</h1>
+<br>
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -40,16 +40,21 @@
     </div>
 
     <div class="col-md-6 dropdown-course">
-      Trener: <br> <%= form.collection_select :coach_id, Coach.order(:name),:id,:name, :prompt => "Velg trener" %>
+      <%= form.select "coach_id", options_from_collection_for_select(Coach.all, "id", "name",params[:coach_id]), :prompt => "Trener", class: "fstdropdown-select" %>
+    </div>
+
+
+    <div class="col-md-6 dropdown-course">
+      Trener: <br> <%= form.collection_select :coach_id, Coach.order(:name),:id,:name, :prompt => "Velg trener", class: "fstdropdown-select" %>
     </div>
     <div class="col-md-6 dropdown-course">
-      Nivå: <br> <%= form.collection_select :course_niveau_id, CourseNiveau.order(:name),:id,:name, :prompt => "Velg nivå" %>
+      Nivå: <br> <%= form.collection_select :course_niveau_id, CourseNiveau.order(:name),:id,:name, :prompt => "Velg nivå", class: "fstdropdown-select" %>
     </div>
     <div class="col-md-6 dropdown-course">
-      Kategori: <br> <%= form.collection_select :course_category_id, CourseCategory.order(:name),:id,:name, :prompt => "Velg kategori" %>
+      Kategori: <br> <%= form.collection_select :course_category_id, CourseCategory.order(:name),:id,:name, :prompt => "Velg kategori", class: "fstdropdown-select" %>
     </div>
     <div class="col-md-6 dropdown-course">
-      Sted: <br> <%= form.collection_select :course_place_id, CoursePlace.order(:name),:id,:name, :prompt => "Velg sted" %>
+      Sted: <br> <%= form.collection_select :course_place_id, CoursePlace.order(:name),:id,:name, :prompt => "Velg sted", class: "fstdropdown-select" %>
     </div>
 
 
@@ -66,7 +71,7 @@
     </div>
     <div class="col-md-6">
       <div class="actions">
-        <%= form.submit "Oprett kurs" %>
+        <%= form.submit "Oprett kurs", class: 'blue-button' %>
       </div>
     </div>
 

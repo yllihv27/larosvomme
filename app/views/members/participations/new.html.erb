@@ -21,7 +21,7 @@
     <div class="field dropdown-course">
       Kurs: <br> <%= form.collection_select :course_id, Course.order(:name),:id,:name, :prompt => "Velg kurs", class: "fstdropdown-select" %>
     </div>
-        <div class="field dropdown-course">
+    <div class="field dropdown-course">
 
     <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "name",params[:course_id]), :prompt => "Nivå", class: "fstdropdown-select" %>
   </div>

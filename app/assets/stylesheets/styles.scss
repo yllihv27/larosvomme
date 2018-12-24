@@ -398,7 +398,7 @@ a.article, a.article:hover {
 ----------------------------------------------------- */
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: -200px;
     }
     #sidebar.active {
         margin-left: 0;
@@ -1026,4 +1026,10 @@ border-color: #777;
   padding:30px;
   background: #fff;
   border-radius: 5px;
+  input {
+  background: #f3f2f2;
+  }
+  .blue-button {
+  background: #00c0ff;
+  }
 }

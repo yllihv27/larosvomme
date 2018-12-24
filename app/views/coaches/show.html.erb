@@ -1,6 +1,6 @@
 <div class="row" style="padding: 50px">
 	<div class="col-xs-6 col-md-4">
-		<%= image_tag @coach.profile_pic.url(:profile_pic) if @coach.profile_pic %>
+		<%= image_tag @coach.profile_pic.url(:profile_pic) if @coach.profile_pic? %>
 	</div>
 	<div class="col-xs-6 col-md-4">
 		<%= @coach.first_name %> <%= @coach.last_name %><br>

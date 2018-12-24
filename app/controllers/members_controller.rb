@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: [:new, :create]
+  before_action :authenticate_coach!, except: [:new, :create, :show]
   before_action :check_member, only: [:show]
 
   def show
@@ -31,14 +31,6 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
-  def create
-    @member = Member.new(member_params)
-    if @member.save
-      MemberMailer.welcome(@member).deliver
-      sign_in(@member)
-      redirect_to @member
-    end
-  end
 
   def update
     respond_to do |format|

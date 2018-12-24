@@ -1,4 +1,5 @@
 <div class="row" style="padding: 50px">
+	<p id="notice"><%= notice.html_safe %></p>
 	<div class="col-xs-6 col-md-4">
 			<%= image_tag @member.profile_pic.url(:profile_pic) if @member.profile_pic? %>
 			<%= image_tag '/profile.png' if !@member.profile_pic? %>

@@ -2,7 +2,7 @@ class Course < ApplicationRecord
 	belongs_to :course_niveau, :optional => true
 	belongs_to :course_place, optional: :true
 	belongs_to :course_category, optional: :true
-	belongs_to :coach, optional: :true
+	belongs_to :coach
 	has_many :members
   mount_uploader :course_image, CourseImageUploader
   paginates_per 20
