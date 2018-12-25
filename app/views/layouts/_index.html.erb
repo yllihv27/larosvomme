@@ -115,7 +115,7 @@
       <nav class="navbar navbar-default">
         <div class="container-fluid" style="padding: 10px;background: #f3f2f2;color:#000 !important">
           
-          <div class="col-xs-6 col-md-4">
+          <div class="col-xs-6 col-md-2">
             <div class="navbar-header">
                 <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                     <i class="glyphicon glyphicon-align-left"></i>
@@ -123,7 +123,7 @@
             </div>
           </div>
 
-          <div class="col-xs-6 col-md-4">
+          <div class="col-xs-6 col-md-6">
             <form class="navbar-form navbar-left collapse navbar-collapse">
               <%= form_with url: search_path, local: true, method: :get, html: { class: 'form-group' } do |form| %>
                 <%= form.text_field :q, placeholder: "Søk", data: { behavior: 'autocomplete' }, class: 'search-form form-control' %>
