@@ -34,9 +34,9 @@
 <div class="row">
 <% @courses.each do |c| %>
   <% if c.day.past? %>
-    <div class="col-sm-6" style="opacity: .4">
-      <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
-        <div style="font-size: 14px;font-weight: 700"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
+    <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
+      <div style="font-size: 14px;font-weight: 700;cursor:pointer" onclick="myFunction('<%= c.id %>')"><div style="opacity: .4"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div></div>
+      <div id="<%= c.id %>" style="display:none;">
         <table class="table table-hover">
           <tbody>
             <% @participations.each do |p| %>

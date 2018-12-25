@@ -25,10 +25,11 @@ class ParticipationsController < ApplicationController
   # POST /participations.json
   def create
     @participation = Participation.new(participation_params)
+    @member = @participation.member_id
 
     respond_to do |format|
       if @participation.save
-        format.html { redirect_to @participation, notice: 'Participation was successfully created.' }
+        format.html { redirect_to edit_member_path(@member), notice: 'Participation was successfully created.' }
         format.json { render :show, status: :created, location: @participation }
       else
         format.html { render :new }

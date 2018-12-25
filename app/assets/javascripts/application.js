@@ -38,5 +38,5 @@ function myFunction(id) {
 
 function replaceword(that, word, oword) {
     that.textContent = that.textContent == word ? oword : word;
-
+}
 

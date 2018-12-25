@@ -1,3 +1,11 @@
+<script>
+  $("#modal-window").html("<%= escape_javascript(render 'participations/new') %>");
+</script>
+
+<div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <%= render 'participations/new' %>
+</div>
+
 <div class="edit-member">
 <h2>Rediger deltaker </h2> <%= @member.first_name %> <%= @member.last_name %> (<%= @member.id %>)
 <br><br>
@@ -56,7 +64,8 @@
     <% end %>
   </div>
   <div class="col-md-6" style="font-size: 14px;background: #f3f2f2;padding: 20px;border-radius: 5px;">
-    <div class="row"><div class="col-md-6"><strong style="font-size: 18px;">Registrerte kurs</strong></div><div class="col-md-6" style="float: right"><div class="danger"><%= link_to 'Tilføj deltakelse', new_member_participation_path(@member), class: 'blue-button' %></div></div></div>
+    <div class="row"><div class="col-md-6"><strong style="font-size: 18px;">Registrerte kurs</strong></div><div class="col-md-6" style="float: right"><div class="danger"><%= link_to 'Tilføj deltakelse', new_member_participation_path(@member), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'blue-button'} %>
+    </div></div></div>
     <br><br>
 
     <% @participations.each do |p| %>

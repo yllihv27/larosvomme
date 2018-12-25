@@ -1,8 +1,8 @@
 class MembersController < ApplicationController
+  before_action :check_member, only: [:show]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, except: [:new, :create, :show]
-  before_action :check_member, only: [:show]
 
   def show
 	  @member = Member.find(params[:id])
@@ -25,6 +25,7 @@ class MembersController < ApplicationController
   def edit
     @courses = Course.where(member_id: @member)
     @participations = Participation.where(member_id: @member)
+    @participation = Participation.new
   end
 
   def new
@@ -54,8 +55,10 @@ class MembersController < ApplicationController
   private
 
     def check_member
-      if current_member != @member
-        redirect_to root_url, alert: "Beklager, denne profilen tilhører noen andre."
+      unless current_coach
+        if current_member != @member
+          redirect_to root_url, alert: "Beklager, denne profilen tilhører noen andre."
+        end
       end
     end
 
