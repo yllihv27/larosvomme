@@ -4,7 +4,7 @@
 <%= form_for(@member, url: registration_path(@member)) do |f| %>
 
 
-    <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Kurs", class: "fstdropdown-select" %>
+    <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Kurs", class: "chosen-select" %>
 
 
   <div class="field">

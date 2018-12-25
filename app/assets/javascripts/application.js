@@ -12,22 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 //= require jquery.easy-autocomplete
 //= require popper
+//= require chosen-jquery
+//= require chosen
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require jquery.turbolinks
 //= require activestorage
 //= require aos
-//= require fstdropdown
 //= require global
 //= require_tree .
 
 
 function myFunction(id) {
   var x = document.getElementById(id);
+  $(x).slideToggle();
   if (x.style.display === "block") {
     x.style.display = "none";
   } else {
@@ -37,6 +38,5 @@ function myFunction(id) {
 
 function replaceword(that, word, oword) {
     that.textContent = that.textContent == word ? oword : word;
-}
 
 

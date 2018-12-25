@@ -19,13 +19,14 @@
 
 
     <div class="field dropdown-course">
-      Kurs: <br> <%= form.collection_select :course_id, Course.order(:name),:id,:name, :prompt => "Velg kurs", class: "fstdropdown-select" %>
+      Kurs: <br> <%= form.collection_select :course_id, Course.order(:name),:id,:course_category, :prompt => "Velg kurs", class: "chosen-select" %>
     </div>
     <div class="field dropdown-course">
 
-    <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "name",params[:course_id]), :prompt => "Nivå", class: "fstdropdown-select" %>
+    <%#= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "name",params[:course_id]), :prompt => "Kurs", class: "chosen-select" %>
   </div>
 
+  <%= form.hidden_field :member_id, value: @member.id %>
   <div class="actions">
     <%= form.submit "Lag deltakelse", class: 'blue-button' %>
   </div>

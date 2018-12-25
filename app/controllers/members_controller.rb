@@ -11,7 +11,7 @@ class MembersController < ApplicationController
   end
 
   def index
-  	@courses = Course.all
+  	@courses = Course.all.order('day ASC')
     @course = Course.find_by(params[:id])
     @counts = Participation.where(course_id: @course)
   	@members = Member.all

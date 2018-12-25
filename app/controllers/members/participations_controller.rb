@@ -29,8 +29,7 @@ class Members::ParticipationsController < ApplicationController
 
     respond_to do |format|
       if @participation.save
-        format.html { redirect_to @participation, notice: 'Participation was successfully created.' }
-        format.json { render :show, status: :created, location: @participation }
+        format.html { redirect_to @member, notice: 'Participation was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @participation.errors, status: :unprocessable_entity }

@@ -14,7 +14,7 @@
  *= require easy-autocomplete.themes
  *= require jquery-ui
  *= require aos
- *= require fstdropdown
+ *= require chosen
  *= require_tree .
  *= require_self
  */
@@ -22,5 +22,4 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "aos";
-@import "fstdropdown";
 

@@ -1,13 +1,23 @@
+<div class="page-card">
+
 <% @courses.each do |c| %>
   <% if c.day.future? %>
-      <div style="background: #fff; padding: 20px;margin-bottom: 20px;border-radius: 5px">
-        <div style="font-size: 14px;font-weight: 700;cursor:pointer" onclick="myFunction('<%= c.id %>')"><%= c.course_day %> <%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %></div>
+      <div style="background: #f3f2f2; padding: 20px;margin-bottom: 20px;border-radius: 5px">
+        <div style="font-size: 16px;font-weight: 700;cursor:pointer" onclick="myFunction('<%= c.id %>')"><%= c.course_category.name if c.course_category %> <%= c.course_niveau.name if c.course_niveau %> <%= c.course_place.name %> <%= c.course_day %></div>
         <div id="<%= c.id %>" style="display:none;">
           <table class="table table-hover">
+          <thead>
+            <tr style="font-size: 14px">
+              <th>ID</th>
+              <th>Navn</th>
+              <th>Email</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
             <tbody>
               <% @participations.each do |p| %>
                 <% if p.course_id == c.id %>
-                  <tr style="color:#000 !important">
+                  <tr style="color:#000 !important;">
                     <td style="padding-right: 10px"><%= p.member.id %></td>   
                     <td><%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></td>   
                     <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
@@ -77,4 +87,6 @@
       </div>
     <% end %>
   <% end %>
+</div>
+
 </div>
