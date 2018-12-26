@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :contents
+  get '/nav', to: 'contents#nav'
+  get '/sub_nav', to: 'contents#sub_nav'
+  get '/page', to: 'contents#page'
   resources :participations
   resources :cities
   resources :pages

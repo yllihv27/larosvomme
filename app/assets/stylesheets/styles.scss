@@ -277,7 +277,7 @@ input { color: #000 !important; border-radius: 5px; border: 0; padding: 7px; fon
 
 .navbar { margin-bottom: 0px !important }
 
-.btn-info {background: #ff6532 !important; border-color: #ff3f00 !important}
+.btn-info {background: #00394c !important; border-color: #32606f !important}
 
 li a:hover { text-decoration: none }
 
@@ -323,7 +323,7 @@ li a:hover { text-decoration: none }
 #sidebar {
     min-width: 200px;
     max-width: 200px;
-    background: #ff3f00;
+    background: #00394c;
     color: #fff;
     transition: all 0.3s;
 }
@@ -334,7 +334,7 @@ li a:hover { text-decoration: none }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #ff3f00;
+    background: #00394c;
 }
 
 #sidebar ul.components {
@@ -346,39 +346,19 @@ li a:hover { text-decoration: none }
     padding: 10px;
 }
 
+#sidebar ul li {
+    padding: 15px;
+    transition: .2s;
+    &:hover {
+    background: #194c5d;
+    }
+}
 #sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
+    display: inline;
+    &:hover {
+    background: none !important;
+    }
 }
-#sidebar ul li a:hover {
-    background: #ff6532 !important;
-}
-#sidebar ul li a { transition: 0.5s; }
-
-
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #ff3f00;
-}
-
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-}
-a[aria-expanded="true"]::before {
-    content: '\e260';
-}
-
 
 ul ul a {
     font-size: 0.9em !important;
@@ -1099,4 +1079,42 @@ table a:hover { color: #8d8d8d !important; }
 
 /* ---------------------------------------------------
     END OF MEMBER INDEX
+----------------------------------------------------- */
+
+
+/* ---------------------------------------------------
+    CONTENTS INDEX
+----------------------------------------------------- */
+
+.contents {
+  text-align: center;
+  .col-md-4 {
+    border: 1px solid #c3c2c2;
+    padding: 30px;
+    background: #00394c;
+    transition: .3s;
+    a {
+      color: #f3f2f2 !important;
+    }
+    &:hover {
+    opacity: .9;
+    }
+  }
+  .col-sm-4 {
+    border: 1px solid #c3c2c2;
+    padding: 30px;
+    background: #00394c;
+    transition: .3s;
+    a {
+      color: #f3f2f2 !important;
+    }
+    &:hover {
+    opacity: .9;
+    }
+  }
+}
+
+
+/* ---------------------------------------------------
+    END OF CONTENTS INDEX
 ----------------------------------------------------- */

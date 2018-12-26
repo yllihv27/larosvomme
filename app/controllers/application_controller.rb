@@ -56,9 +56,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  #def after_sign_in_path_for(coach)
-  #  request.env['omniauth.origin'] || stored_location_for(coach) || edit_courses_path
-  #end
+  def after_sign_in_path_for(coach)
+    request.env['omniauth.origin'] || stored_location_for(current_coach) || members_path
+  end
+  def after_sign_in_path_for(member)
+    request.env['omniauth.origin'] || stored_location_for(current_member) || courses_path
+  end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone])
