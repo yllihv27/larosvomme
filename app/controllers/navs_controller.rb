@@ -15,6 +15,7 @@ class NavsController < ApplicationController
   # GET /navs/new
   def new
     @nav = Nav.new
+    @pages = Page.all
   end
 
   # GET /navs/1/edit

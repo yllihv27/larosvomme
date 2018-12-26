@@ -11,13 +11,13 @@ class MembersController < ApplicationController
   end
 
   def index
-  	@courses = Course.all.order('day ASC')
+  	@courses = Course.all.order('day DESC')
     @course = Course.find_by(params[:id])
     @counts = Participation.where(course_id: @course)
   	@members = Member.all
     @participations = Participation.all
-    @member = Member.find_by(params[:id])
     @participation = Participation.find_by(params[:id])
+    @member = Member.find_by(params[:id])
     #@course_members = Member.where(params[:course_id] == @course.id)
     #@course_members = Member.where(params[:course_id] == course.id)
   end
@@ -71,6 +71,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id)
+      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone)
     end
 end

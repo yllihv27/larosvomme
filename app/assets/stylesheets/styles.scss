@@ -7,7 +7,7 @@ body, .navbar {
 }
 
 body {
-	font-size: 20px !important;
+	font-size: 18px !important;
 }
 
 .btn-primary { background: #ff3f00 !important; border: none !important; color: #fff !important; }
@@ -50,7 +50,6 @@ h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
 
 a { color: #f3f2f2 !important }
 a:hover { text-decoration: none !important; background: none !important }
-.coach a { color: #000 !important }
 
 #error_explanation ul li {color: #000 }
 
@@ -960,8 +959,12 @@ p {
   padding:30px;
   background: #fff;
   border-radius: 5px;
+  a {
+  color: #1c1c1c !important;
+  }
   input {
-  background: #f3f2f2
+  background: #f3f2f2;
+  border: 1px solid #c3c2c2;
   }
   .danger a {
   color: #fff !important;
@@ -1071,6 +1074,28 @@ border-color: #777;
   background: #fff !important;
   }
 }
+
+.small-form {
+  font-size: 14px;
+  background: rgba(0, 57, 76, 0.3);
+  padding: 10px;
+  border-radius: 5px;
+  .col-md-3 { padding-left: 5px; padding-right: 5px }
+  .col-sm-3 { padding-left: 5px; padding-right: 5px }
+  input {
+  background: #fff;
+  border: 1px solid #c3c2c2;
+  width: 100%;
+  }
+}
+
+.btn-dark { background: #00394c !important; border: none !important; color: #fff !important; width: 100%;transition: .2s; }
+.btn-dark:hover { opacity: 0.7; }
+.btn-red { background-color: #d9534f;border-color: #d43f3a;; border: none !important; color: #fff !important; width: 100%;transition: .2s; }
+.btn-red:hover { opacity: 0.7;  }
+
+table a { color: #1c1c1c !important; transition: .2s; }
+table a:hover { color: #8d8d8d !important; }
 
 /* ---------------------------------------------------
     END OF MEMBER INDEX

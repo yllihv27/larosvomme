@@ -26,6 +26,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :telefon %><br />
+    <%= f.email_field :phone, placeholder: "Telefon" %>
+  </div>
+
+  <div class="field">
     <%= f.label :passord %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> tegn minimum)</em>

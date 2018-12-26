@@ -5,6 +5,7 @@
 	<div class="col-xs-6 col-md-4">
 		<%= @coach.first_name %> <%= @coach.last_name %><br>
 		<%= @coach.email %><br>
+		<%= @coach.phone if @coach.phone %><br>
 		<% @courses.each do |c| %>
 			<% if c.day.past? %>
 				<div class="text-muted">
