@@ -28,6 +28,7 @@
 //= require_tree .
 
 
+
 function myFunction(id) {
   var x = document.getElementById(id);
   $(x).slideToggle();

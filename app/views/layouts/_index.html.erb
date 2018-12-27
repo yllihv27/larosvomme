@@ -8,14 +8,6 @@
 
         <ul class="list-unstyled components">
             <p><em><%= "#Konto: {current_coach.name}" if current_coach.name %></em></p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li><a href="#">Home 1</a></li>
-                    <li><a href="#">Home 2</a></li>
-                    <li><a href="#">Home 3</a></li>
-                </ul>
-            </li>
             <li>
               <i class="fa fa-calendar" aria-hidden="true"></i> <%= link_to 'Kurs', edit_courses_path %>
             </li>
@@ -69,7 +61,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% @navs.each do |nav| %>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><% if nav.page_id.present %><%= link_to nav.title, page_path(nav) %><% elsif nav.link.present? %><%= link_to nav.title, nav.link %><% else %><%= nav.title %><% end %><span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><% if nav.page_id.present? %><%= link_to nav.title, page_path(nav) %><% elsif nav.link.present? %><%= link_to nav.title, nav.link %><% else %><%= nav.title %><% end %><span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <% @sub_navs.each do |sub_nav| %>
                       <% if sub_nav.nav_id == nav.id %>

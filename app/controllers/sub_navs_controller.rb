@@ -28,7 +28,7 @@ class SubNavsController < ApplicationController
 
     respond_to do |format|
       if @sub_nav.save
-        format.html { redirect_to @sub_nav, notice: 'Sub nav was successfully created.' }
+        format.html { redirect_to rediger_path, notice: 'Sub lenke ble opprettet.' }
         format.json { render :show, status: :created, location: @sub_nav }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SubNavsController < ApplicationController
   def update
     respond_to do |format|
       if @sub_nav.update(sub_nav_params)
-        format.html { redirect_to @sub_nav, notice: 'Sub nav was successfully updated.' }
+        format.html { redirect_to rediger_path, notice: 'Sub lenke ble oppdatert.' }
         format.json { render :show, status: :ok, location: @sub_nav }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SubNavsController < ApplicationController
   def destroy
     @sub_nav.destroy
     respond_to do |format|
-      format.html { redirect_to sub_navs_url, notice: 'Sub nav was successfully destroyed.' }
+      format.html { redirect_to rediger_path, notice: 'Sub lenke ble slettet.' }
       format.json { head :no_content }
     end
   end

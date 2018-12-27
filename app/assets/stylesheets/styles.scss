@@ -1073,7 +1073,6 @@ border-color: #777;
   input {
   background: #fff;
   border: 1px solid #c3c2c2;
-  width: 100%;
   }
 }
 
@@ -1091,38 +1090,15 @@ table a:hover { color: #8d8d8d !important; }
 
 
 /* ---------------------------------------------------
-    CONTENTS INDEX
+    REDIGER
 ----------------------------------------------------- */
 
-.contents {
-  text-align: center;
-  .col-md-4 {
-    border: 1px solid #c3c2c2;
-    padding: 30px;
-    background: #00394c;
-    transition: .3s;
-    a {
-      color: #f3f2f2 !important;
-    }
-    &:hover {
-    opacity: .9;
-    }
-  }
-  .col-sm-4 {
-    border: 1px solid #c3c2c2;
-    padding: 30px;
-    background: #00394c;
-    transition: .3s;
-    a {
-      color: #f3f2f2 !important;
-    }
-    &:hover {
-    opacity: .9;
-    }
-  }
+
+.rediger {
+  font-size: 14px;
 }
 
-
+.full-width { width: 100%; }
 /* ---------------------------------------------------
-    END OF CONTENTS INDEX
+    END OF REDIGER
 ----------------------------------------------------- */
