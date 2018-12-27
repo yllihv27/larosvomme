@@ -23,7 +23,7 @@
               <i class="fa fa-users" aria-hidden="true"></i> <%= link_to 'Deltakere', members_path %>
             </li>
             <li>
-              <i class="fa fa-pencil" aria-hidden="true"></i> <%= link_to 'Redigér website', contents_path %>
+              <i class="fa fa-pencil" aria-hidden="true"></i> <%= link_to 'Redigér website', rediger_path %>
             </li>
         </ul>
 
@@ -67,8 +67,25 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+              <% @navs.each do |nav| %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"><% if nav.page_id.present %><%= link_to nav.title, page_path(nav) %><% elsif nav.link.present? %><%= link_to nav.title, nav.link %><% else %><%= nav.title %><% end %><span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <% @sub_navs.each do |sub_nav| %>
+                      <% if sub_nav.nav_id == nav.id %>
+                        <% if sub_nav.page_id.present? %>
+                          <%= link_to "<li>#{sub_nav.title}</li>".html_safe, page_path(sub_nav) %>
+                        <% elsif sub_nav.link.present? %>
+                          <%= link_to "<li>#{sub_nav.title}</li>".html_safe, sub_nav.link %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    <hr style="border: 1px solid #ff3f00 !important;margin:0;">
+                  </ul>
+                </li>
+              <% end %>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Registrer deg <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Registrer deg<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
                   <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>

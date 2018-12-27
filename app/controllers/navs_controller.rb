@@ -70,6 +70,6 @@ class NavsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nav_params
-      params.require(:nav).permit(:title, :link)
+      params.require(:nav).permit(:title, :page_id, :number, :link)
     end
 end

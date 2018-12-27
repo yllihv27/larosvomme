@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :current_cart
+  before_action :nav, :sub_nav
 
 	def not_found
 		rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -56,11 +57,20 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_in_path_for(coach)
-    request.env['omniauth.origin'] || stored_location_for(current_coach) || members_path
+  def after_sign_in_path_for(resource)
+		case resource.class
+    when current_coach
+      members_path  
+    when current_member
+      courses_path
+    end
   end
-  def after_sign_in_path_for(member)
-    request.env['omniauth.origin'] || stored_location_for(current_member) || courses_path
+
+  def nav
+  	@navs = Nav.all.order('number ASC')
+  end
+  def sub_nav
+  	@sub_navs = SubNav.all.order('number ASC')
   end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone])

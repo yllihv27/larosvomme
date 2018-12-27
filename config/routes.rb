@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  resources :sub_navs
   resources :contents
-  get '/nav', to: 'contents#nav'
-  get '/sub_nav', to: 'contents#sub_nav'
-  get '/page', to: 'contents#page'
   resources :participations
   resources :cities
   resources :pages
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   resources :course_categories
   resources :categories
   root 'pages#home'
+  get '/rediger', to: 'pages#rediger'
 
   resources :course_days
   resources :days

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!
 
   def personvern
   end
@@ -11,7 +12,12 @@ class PagesController < ApplicationController
     @courses = Course.all.limit(6)
     @cities = City.all
     @course_places = CoursePlace.all
+  end
 
+  def rediger
+    @pages = Page.all
+    @navs = Nav.all
+    @sub_navs = SubNav.all
   end
 
   def index
@@ -39,7 +45,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to @page, notice: 'Siden ble opprettet.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -53,7 +59,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to @page, notice: 'Siden ble oppdatteret.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -67,7 +73,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to pages_url, notice: 'Siden ble slettet.' }
       format.json { head :no_content }
     end
   end

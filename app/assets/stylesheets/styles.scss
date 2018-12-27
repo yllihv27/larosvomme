@@ -373,8 +373,16 @@ ul ul a {
   font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
 }
 
-.navbar .dropdown-menu li { border-bottom: 1px solid #ff3f00 !important; padding: 10px !important }
-
+.navbar .dropdown-menu li {
+  padding: 10px !important;
+  transition: .2s;
+  &:hover {
+  background: #323232;
+  }
+}
+.navbar ul ul a {
+  padding: 0 !important
+}
 a.article, a.article:hover {
     background: #ff6532 !important;
     color: #fff !important;

@@ -31,6 +31,8 @@ module Larosvomme
       enable_starttls_auto: true
     }
 
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+
 
   end
 end

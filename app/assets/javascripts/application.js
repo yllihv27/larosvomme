@@ -22,6 +22,8 @@
 //= require jquery.turbolinks
 //= require activestorage
 //= require aos
+//= require ckeditor/init
+//= require init_ckeditor
 //= require global
 //= require_tree .
 
