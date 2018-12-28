@@ -1,5 +1,3 @@
-
-	<p id="notice"><%= notice %></p>
 <center>
 	<h1>Rediger website</h1>
 </center>
@@ -8,7 +6,6 @@
 
 <div class="page-card">
 
-<p id="notice"><%= notice %></p>
 
 <div class="row">
 	<div class="col-md-6 col-sm-6">
@@ -44,8 +41,6 @@
 
 <div class="page-card">
 
-<p id="notice"><%= notice %></p>
-
 
 <div class="row">
 	<div class="col-md-6 col-sm-6">
@@ -71,7 +66,11 @@
       <% @navs.each do |nav| %>
         <tr style="font-size:14px !important;">
           <td><%= nav.title if nav.title %></td>
-          <td><%= nav.page.title if nav.page.present? %><%= nav.link if nav.link.present? %><%= "Slett side_id eller lenke" if nav.link.present? and nav.page.present? %></td>
+          <td>
+          	<% if nav.link.present? and nav.page.present? %>
+	          	<div class="btn-danger-small">!</div>
+          	<% end %>
+          	<%= nav.page.title if nav.page.present? %><%= nav.link if nav.link.present? %></td>
           <td>
           	<div style="cursor:pointer;display: inline"" onclick="myFunction('nav<%= nav.id %>');">
           		<a class="fa fa-cogs" aria-hidden="true"></a>
@@ -126,7 +125,7 @@
 							  <div class="field">
 							    <%= form.label :link %><br>
 							    <%= form.text_field :link, class: 'full-width' %>
-							  </div>
+							  </div><div class="text-muted" style="font-size: 12px">Bare velg side ELLER lenke. Ikke begge!</div>
 							</div>
 						</div>
 
@@ -142,9 +141,6 @@
 </div>
 
 <div class="page-card">
-
-<p id="notice"><%= notice %></p>
-
 
 <div class="row">
 	<div class="col-md-6 col-sm-6">
@@ -172,7 +168,11 @@
         <tr style="font-size:14px !important;">
           <td><%= sub_nav.title if sub_nav.title %></td>
           <td><%= sub_nav.nav.title if sub_nav.nav %></td>
-          <td><%= sub_nav.page.title if sub_nav.page.present? %><%= sub_nav.link if sub_nav.link.present? %><%= "Slett side_id eller lenke" if sub_nav.link.present? and sub_nav.page.present? %></td>
+          <td>
+          	<% if sub_nav.link.present? and sub_nav.page.present? %>
+	          	<div class="btn-danger-small">!</div>
+          	<% end %>
+          	<%= sub_nav.page.title if sub_nav.page.present? %><%= sub_nav.link if sub_nav.link.present? %></td>
           <td>
           	<div style="cursor:pointer;display: inline" onclick="myFunction('sub<%= sub_nav.id %>');">
           		<a class="fa fa-cogs" aria-hidden="true"></a>
@@ -224,15 +224,14 @@
 							  </div>
 							</div>
 							<div class="col-md-6 col-sm-6">
-							  <div class="field">
 							    <%= form.label :side_for_å_lenke_til %><br>
 							    <%= form.select :page_id, Page.all.map { |u| [u.title, u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
-						  <div class="field">
-						    <%= form.label :link %><br>
-						    <%= form.text_field :link, class: 'full-width' %>
-						  </div><br>
 
-							  </div>
+							  <div class="field">
+							    <%= form.label :link %><br>
+							    <%= form.text_field :link, class: 'full-width' %>
+							  </div><div class="text-muted" style="font-size: 12px">Bare velg side ELLER lenke. Ikke begge!</div><br>
+
 							</div><br>
 						</div>
 

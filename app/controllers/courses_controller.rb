@@ -9,6 +9,14 @@ class CoursesController < ApplicationController
     end
   end
 
+  def oversigt
+    @courses = Course.all
+    @course_categories = CourseCategory.all
+    @course_places = CoursePlace.all
+    @course_niveaus = CourseNiveau.all
+    @cities = City.all
+  end
+
   def index
     @courses = Course.all.order('day ASC').page(params[:page])
 
