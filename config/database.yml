@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  host: 193.69.47.102
+  host: 193.69.47.103
   adapter: postgresql
   encoding: utf8
   database: prod_larosvomme
