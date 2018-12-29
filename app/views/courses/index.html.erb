@@ -15,11 +15,7 @@
 <%= form_tag('/courses',:method=>:get) do %>                          
 
   <div class="col-sm-3">
-    <%= select_tag "course_niveau_id", options_from_collection_for_select(CourseNiveau.all, "id", "name",params[:course_niveau_id]), :prompt => "Nivå", class: "chosen-select", onchange: 'this.form.submit();' %>
-  </div>
-
-  <div class="col-sm-3">
-    <%= select_tag "course_category_id", options_from_collection_for_select(CourseCategory.all, "id", "name",params[:course_category_id]), :prompt => "Kategori", class: "chosen-select", onchange: 'this.form.submit();' %>
+    <%= select_tag "id", options_from_collection_for_select(Course.all, "id", "course_name",params[:id]), :prompt => "Kurs", class: "chosen-select", onchange: 'this.form.submit();' %>
   </div>
 
   <div class="col-sm-3">
@@ -27,7 +23,15 @@
   </div>
 
   <div class="col-sm-3">
-    <%= select_tag "day", options_from_collection_for_select(Course.all.uniq { |h| h[:day] }, "day", "course_day"), :prompt => "Dag", class: "chosen-select", onchange: 'this.form.submit();' %>
+    <%= select_tag "day", options_from_collection_for_select(Course.all.uniq { |h| h[:day].future? }, "day", "course_day"), :prompt => "Dag", class: "chosen-select", onchange: 'this.form.submit();' %>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="reset-button">
+      <%= link_to kurs_path do %>
+      <div class="reset-button-inner">Alle kurs</div>
+      <% end %>
+    </div>
   </div>
 
 <% end %>

@@ -7,13 +7,16 @@ class Course < ApplicationRecord
   mount_uploader :course_image, CourseImageUploader
   paginates_per 20
 
+
   def course_day
   	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ')
   end
 
   def course_name
-    if course_niveau.present?
-    	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ') + (' | ') + course_category.name + (' ') + course_niveau.name + (' ') + course_place.name
+    unless day.past?
+      if course_niveau.present?
+      	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ') + (' | ') + course_category.name + (' ') + course_niveau.name + (' ') + course_place.name
+      end
     end
   end
 
