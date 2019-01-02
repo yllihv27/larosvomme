@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_29_154543) do
+ActiveRecord::Schema.define(version: 2019_01_02_100101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "children", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "member_id"
+    t.integer "course_id"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -118,6 +128,16 @@ ActiveRecord::Schema.define(version: 2018_12_29_154543) do
     t.index ["member_id", "course_id"], name: "index_courses_members_on_member_id_and_course_id"
   end
 
+  create_table "grandparents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "member_id"
+    t.integer "child_id"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -165,6 +185,8 @@ ActiveRecord::Schema.define(version: 2018_12_29_154543) do
     t.string "status", default: "kurv"
     t.integer "member_id"
     t.string "email"
+    t.string "child_first_name"
+    t.string "child_last_name"
   end
 
   create_table "pages", force: :cascade do |t|

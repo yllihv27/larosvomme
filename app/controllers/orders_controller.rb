@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy])
+    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total, :child_first_name, :child_last_name, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy], childrens_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])
   end
 
 end

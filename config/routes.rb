@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :grandparents
+  resources :children
+  resources :people
   mount Ckeditor::Engine => '/ckeditor'
   resources :sub_navs
   resources :contents

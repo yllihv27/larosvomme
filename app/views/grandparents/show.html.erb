@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @grandparent.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @grandparent.last_name %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @grandparent.member_id %>
+</p>
+
+<p>
+  <strong>Child:</strong>
+  <%= @grandparent.child_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @grandparent.course_id %>
+</p>
+
+<%= link_to 'Edit', edit_grandparent_path(@grandparent) %> |
+<%= link_to 'Back', grandparents_path %>

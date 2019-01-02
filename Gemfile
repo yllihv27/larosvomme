@@ -39,6 +39,7 @@ gem 'kaminari'
 gem 'popper_js'
 gem 'chosen-rails'
 gem 'ckeditor'
+gem 'cocoon'
 
 
 group :development, :test do

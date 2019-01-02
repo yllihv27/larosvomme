@@ -23,6 +23,7 @@
 //= require aos
 //= require ckeditor/init
 //= require init_ckeditor
+//= require cocoon
 //= require global
 //= require_tree .
 

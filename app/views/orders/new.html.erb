@@ -1,21 +1,52 @@
 <h3>Sjekk utt</h3>
 
 
-<div class="row">
-	<div class="col-sm-6" style="padding: 50px">
+	<div class="order-page">
 		<%= form_for @order, url: checkout_path do |f| %>
-			<div class="form-group">
-				<%= f.label :fornavn %><br>
-				<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<%= f.label :dit_fornavn %><br>
+					<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
+				</div>
 			</div>
-			<div class="form-group">
-				<%= f.label :efternavn %><br>
-				<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
+			<div class="col-md-6">
+				<div class="form-group">
+					<%= f.label :dit_etternavn %><br>
+					<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<%= f.label :barn_fornavn %><br>
+					<%= f.text_field :child_first_name, :class => 'textField' %>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<%= f.label :barn_etternavn %><br>
+					<%= f.text_field :child_last_name, :class => 'textField' %>
+				</div>
 			</div>
 			<div class="form-group">
 				<%= f.label :email %><br>
 				<%= f.text_field :email, :class => 'textField' , value: current_member.email %>
 			</div>
+
+
+      <div id="children">
+        <%= f.fields_for :children do |children| %>
+        <%= render 'children_fields', f: children %>
+        <% end %>
+      </div>
+
+
+      <div class="links">
+        <span style="font-size:14px;background:#bbb;padding:14px;padding-left:50px;padding-right:50px;border-radius:5px;width:100%;"><%= link_to_add_association 'Legg til et barn', f, :children %></span>
+      </div>
+
+		</div>
+
 
 		<td colspan="4" align="right">
 			<% @items.each do |i| %>
@@ -39,4 +70,3 @@
 
 
 	</div>
-</div>

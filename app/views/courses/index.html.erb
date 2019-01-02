@@ -65,7 +65,7 @@
             </div>
             <div class="col-sm-7">
               <div class="card-wrapper">
-                <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %></h4>
+                <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %></h4>
                 <p class="card-date"><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %></p>
               </div>
             </div>
