@@ -1,35 +1,42 @@
-<header class="bg-header cover">
+<script>
+  AOS.init();
+</script>
+<header class="bg-header cover" style="background-image: url(Forside-gutt-jente-som-svommer-bli-trygg-i-vannet-lær-a-svomme.jpg)">
   <center style="padding-top:65px;">
-  	<div class="row">
+  	<div class="row desktop">
   		<div class="col-xs-6">
   		</div>
-  		<div class="col-xs-6">
+  		<div class="col-xs-6" data-aos="fade-up"
+     data-aos-duration="3000">
+		  	<h2>Noget tekst hér</h2><br><br>
+		  	<%= link_to "SE KURSENE", kurs_path, class: "large-button" %>
+		  </div>
+		</div>
+	  <div class="mobile">
 	  	<h2>Noget tekst hér</h2><br><br>
-	  	<%= link_to "SE KURSENE", "#kurs", class: "large-button" %>
+	  	<%= link_to "SE KURSENE", kurs_path, class: "large-button" %>
 	  </div>
-	</div>
   </center>
 </header>
 
-
 <center style="margin-bottom: 60px" class="padding">
-<h2 style="font-weight: 300;color:#ff3f00">EN VERDEN AV TRIVSEL I VANN</h2>
+<h2 style="font-weight: 300;color:#ff3f00" data-aos="fade-up">EN VERDEN AV TRIVSEL I VANN</h2>
 <br>
-<p style="color:#aaa9a9;line-height: 1.8em" class="width65">
+<p style="color:#aaa9a9;line-height: 1.8em" class="width65" data-aos="fade-up">
 Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevelsen av å sette sammen brikkene i form av øvelser bidrar til at barnet har det gøy. Vi bruker øvelser på pust, flyt, rotasjon, fremdrift, dykk og stup gjennom disse kursene. Dette gir mestringsfølelse og barnet vil bli trygg i vann.</p>
 
 <div class="fusion-section-separator section-separator" style="border-bottom:0px solid #ff3f00;margin-left:-0px;margin-right:-0px;"><div class="divider-candy-arrow bottom" style="border-top-color: #ff3f00;"></div></div>
 
 </center>
 
-<div style="background: #fff;color:#aaa9a9;padding-top:100px" id="kurs">
-<center>
-	<h2 style="color: #aaa9a9;padding-bottom: 60px">HOS OSS TRIVES BARNET</h2>
+<div style="background: #fff;color:#aaa9a9;padding-top:100px" data-aos="fade-up">
+	<center>
+		<h2 style="color: #aaa9a9;padding-bottom: 60px">HOS OSS TRIVES BARNET</h2>
 
 		<div class="row">
 			<% @courses.each do |c| %>
 				<div class="col-xs-6 col-md-4">
-					<%= link_to (image_tag c.course_image.url, class: 'hover', style: 'width:95%;padding:10px'), c if c.course_image %>
+					<%= link_to (image_tag c.course_image.url, class: 'hovering', style: 'width:95%;padding:10px'), c if c.course_image? %>
 				</div>
 			<% end %>
 		</div>
@@ -41,45 +48,46 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 	</center>
 </div>
 
-<center class="padding">
+<center class="padding" data-aos="fade-up">
 
-<iframe src="https://player.vimeo.com/video/295754560?color=ff3f00&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="padding-bottom: 40px"></iframe>
+<iframe src="https://player.vimeo.com/video/295754560?color=ff3f00&title=0&byline=0&portrait=0" class="video" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="padding-bottom: 40px"></iframe>
 
 <div class="fusion-section-separator section-separator" style="border-bottom:0px solid #ff3f00;margin-left:-0px;margin-right:-0px;"><div class="divider-candy-arrow bottom" style="border-top-color: #ff3f00;"></div></div>
 
 </center>
 
-<div style="background-image: url(jente-som-svømmer-under-vann.jpg);color:#aaa9a9;padding-top:100px;">
-<center>
-<div class="row" style="padding: 50px">
-	<% @cities.each do |city| %>
-		<div class="col-xs-6 col-sm-3">
-			<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-				<div class="flipper">
-					<div class="front">
-						<div class="place">
-							<h2><%= city.name %></h2>							
-							<% @courses.each do |c| %>
-								<% if city.id == c.course_place.city.id %>
-										<span style="font-size: 16px"><%= I18n.localize(c.day, format: '%A').capitalize %>, </span>
+<div class="bg-header" style="background-image: url(jente-som-svommer-under-vann.jpg);color:#aaa9a9;padding-top:50px;">
+	<center>
+		<div class="row" style="padding: 50px" data-aos="fade-up">
+			<% @cities.each do |city| %>
+				<div class="col-md-3 col-sm-3">
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+								<div class="place">
+									<h2><%= city.name %></h2>							
+									<% @courses.each do |c| %>
+										<% if city.id == c.course_place.city.id %>
+												<span style="font-size: 16px"><%= I18n.localize(c.day, format: '%A').capitalize %>, </span>
+											<% end %>
 									<% end %>
-							<% end %>
+								</div>
+							</div>
+							<div class="back">
+								<div class="place" style="background: #000 !important;border: 1px solid #323232">
+									<h2 style="color:#ff3f00">VELG KURSSTED</h2>
+									<% @course_places.each do |place| %>
+										<% if city.id == place.id %>
+											<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#f3f2f2 !important' %></p><br>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="back">
-						<div class="place">
-							<h2 style="color:#ff3f00">VELG KURSSTED</h2>
-							<% @course_places.each do |place| %>
-								<% if city.id == place.id %>
-									<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#1c1c1c' %></p><br>
-								<% end %>
-							<% end %>
-						</div>
-					</div>
+					<br>
 				</div>
-			</div>
+			<% end %>
 		</div>
-	<% end %>
-</div>
-</center>
+	</center>
 </div>

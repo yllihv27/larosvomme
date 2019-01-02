@@ -15,6 +15,7 @@ class NavsController < ApplicationController
   # GET /navs/new
   def new
     @nav = Nav.new
+    @pages = Page.all
   end
 
   # GET /navs/1/edit
@@ -28,11 +29,11 @@ class NavsController < ApplicationController
 
     respond_to do |format|
       if @nav.save
-        format.html { redirect_to @nav, notice: 'Nav was successfully created.' }
+        format.html { redirect_to rediger_path, notice: 'Meny lenke ble opprettet.' }
         format.json { render :show, status: :created, location: @nav }
       else
         format.html { render :new }
-        format.json { render json: @nav.errors, status: :unprocessable_entity }
+        format.json { render json: rediger_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +43,11 @@ class NavsController < ApplicationController
   def update
     respond_to do |format|
       if @nav.update(nav_params)
-        format.html { redirect_to @nav, notice: 'Nav was successfully updated.' }
+        format.html { redirect_to rediger_path, notice: 'Meny lenke ble oppdatteret.' }
         format.json { render :show, status: :ok, location: @nav }
       else
         format.html { render :edit }
-        format.json { render json: @nav.errors, status: :unprocessable_entity }
+        format.json { render json: rediger_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +57,7 @@ class NavsController < ApplicationController
   def destroy
     @nav.destroy
     respond_to do |format|
-      format.html { redirect_to navs_url, notice: 'Nav was successfully destroyed.' }
+      format.html { redirect_to rediger_path, notice: 'Meny lenke ble slettet.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class NavsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nav_params
-      params.require(:nav).permit(:title, :link)
+      params.require(:nav).permit(:title, :page_id, :number, :link)
     end
 end

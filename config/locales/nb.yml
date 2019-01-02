@@ -213,3 +213,13 @@ nb:
       long: "%A, %e. %B %Y, %H:%M"
       short: "%e. %B, %H:%M"
     pm: ''
+  pagination:
+    next: 'neste'
+  ckeditor:
+    page_title: 'Fil manager'
+    confirm_delete: 'Slett fil?'
+    buttons:
+      cancel: 'Avbryt'
+      upload: 'Upload'
+      delete: 'Slett'
+      next: 'Neste'

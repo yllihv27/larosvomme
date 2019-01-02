@@ -1,3 +1,6 @@
+<div class="page-card">
+<h3>Ny Side</h3>
+<br>
 <%= form_with(model: page, local: true) do |form| %>
   <% if page.errors.any? %>
     <div id="error_explanation">
@@ -13,16 +16,18 @@
 
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :titel %><br>
     <%= form.text_field :title %>
-  </div>
+  </div><br>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
+    <%= form.label :indhold %><br>
+    <%= form.cktext_area :content, ckeditor: { language: 'nb'} %>
+  </div><br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Opprett", class: 'btn btn-dark' %>
   </div>
 <% end %>
+
+</div>

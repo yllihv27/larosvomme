@@ -18,5 +18,21 @@ module Larosvomme
     config.i18n.default_locale = :'nb'
 		config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 		config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+
+    config.action_mailer.default_url_options = { host: "vehiclecsv.herokuapp.com" }
+
+    ActionMailer::Base.smtp_settings = {
+      address: "send.one.com",
+      domain: "jonaspreisler.com",
+      port: 587,
+      user_name: "bestdealerchat@jonaspreisler.com", #ENV["GMAIL_USERNAME"]
+      password: "password", #ENV["GMAIL_PASSWORD"]
+      authentication: :login,
+      enable_starttls_auto: true
+    }
+
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+
+
   end
 end

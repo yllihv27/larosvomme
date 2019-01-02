@@ -31,6 +31,10 @@
     <%= form.text_field :token %>
   </div>
 
+  <%= f.text_field :password, value: ('a'..'z').to_a.shuffle[0,8].join %>
+
+  <%= f.hidden_field :member_id, :value => current_member.id if member_signed_in? %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

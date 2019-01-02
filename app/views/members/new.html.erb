@@ -1,12 +1,15 @@
+<div class="padding">
 <h2>Tilføj deltaker</h2>
 
 <%= form_for(@member, url: registration_path(@member)) do |f| %>
 
-  <%= f.select "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:name]), :prompt => "Kurs" %>
+
+    <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Kurs", class: "chosen-select" %>
+
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, placeholder: "Fornavn" %>
+    <%= f.text_field :first_name, autofocus: true, placeholder: "Fornavn" %>
   </div>
   
   <div class="field">
@@ -16,7 +19,12 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefon %><br />
+    <%= f.email_field :phone, placeholder: "Telefon" %>
   </div>
 
   <div class="field">
@@ -37,3 +45,5 @@
   </div>
 <% end %>
 
+
+</div>

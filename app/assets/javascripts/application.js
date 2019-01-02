@@ -12,10 +12,34 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require bootstrap-sprockets
-//= require activestorage
-//= require global
-//= require turbolinks
 //= require jquery.easy-autocomplete
+//= require popper
+//= require chosen-jquery
+//= require chosen
+//= require bootstrap
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require jquery.turbolinks
+//= require activestorage
+//= require aos
+//= require ckeditor/init
+//= require init_ckeditor
+//= require global
 //= require_tree .
+
+
+
+function myFunction(id) {
+  var x = document.getElementById(id);
+  $(x).slideToggle();
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function replaceword(that, word, oword) {
+    that.textContent = that.textContent == word ? oword : word;
+}
+

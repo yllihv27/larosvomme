@@ -1,40 +1,37 @@
 class MembersController < ApplicationController
+  before_action :check_member, only: [:show]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!
-
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!, except: [:new, :create, :show]
 
   def show
 	  @member = Member.find(params[:id])
+    @courses = Course.where(member_id: @member)
+    @participations = Participation.where(member_id: @member)
   end
 
   def index
-  	@courses = Course.all
-    # = Course.find_by(params[:course_id])
+  	@courses = Course.all.order('day DESC')
+    @course = Course.find_by(params[:id])
+    @counts = Participation.where(course_id: @course)
   	@members = Member.all
+    @participations = Participation.all
+    @participation = Participation.find_by(params[:id])
+    @member = Member.find_by(params[:id])
     #@course_members = Member.where(params[:course_id] == @course.id)
     #@course_members = Member.where(params[:course_id] == course.id)
   end
 
   def edit
+    @courses = Course.where(member_id: @member)
+    @participations = Participation.where(member_id: @member)
+    @participation = Participation.new
   end
 
   def new
     @member = Member.new
   end
 
-  def create
-    @member = Member.new(member_params)
-
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to @member, notice: 'member category was successfully created.' }
-        format.json { render :show, status: :created, location: @member }
-      else
-        format.html { render :new }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def update
     respond_to do |format|
@@ -56,12 +53,24 @@ class MembersController < ApplicationController
     end
   end
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def check_member
+      unless current_coach
+        if current_member != @member
+          redirect_to root_url, alert: "Beklager, denne profilen tilhører noen andre."
+        end
+      end
+    end
+
     def set_member
       @member = Member.find(params[:id])
     end
 
+    def set_course
+      @course = Course.find(params[:id])
+    end
+
     def member_params
-      params.require(:member).permit(:id, :name, :email, :password, :password_confirmation, :course_id)
+      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone)
     end
 end

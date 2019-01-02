@@ -1,5 +1,4 @@
 class OrderItemsController < ApplicationController
-  before_action :authenticate_member!
 
   def index
     @items = current_cart.order.items
@@ -20,11 +19,5 @@ class OrderItemsController < ApplicationController
 	end
 
   private
-  def authenticate_member!
-    unless current_member
-      flash[:notice] = 'Du må logge inn først for å bestille.'
-      redirect_to new_member_session_path
-    end
-  end
 
 end
