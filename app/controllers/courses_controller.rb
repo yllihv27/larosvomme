@@ -19,17 +19,18 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all.order('day ASC').page(params[:page])
+    @courses = Course.where(Course.status[:ledig]).order('day ASC').page(params[:page])
 
     if params[:course_niveau_id].present?
-        course_niveau = CourseNiveau.find(params[:course_niveau_id])
-        @courses = course_niveau.courses.page(params[:page])
+      course_niveau = CourseNiveau.find(params[:course_niveau_id])
+      @courses = course_niveau.courses.page(params[:page])
      else
       @courses = @courses.page(params[:page])
     end
 
     if params[:course_place_id].present?
-      course_place = CoursePlace.find(params[:course_place_id])
-      @courses = course_place.courses.page(params[:page])
+      course_places = CoursePlace.find(params[:course_place_id])
+      @courses = course_places.courses.page(params[:page])
      else
       @courses = @courses.page(params[:page])
     end
@@ -60,6 +61,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @members = Member.all
+    @participants = @course.members
   end
 
   # GET /courses/new
@@ -119,6 +121,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :age_from, :age_to, :time_from, :time_to, :course_image, :day, :member_id)
+      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :time_from, :time_to, :course_image, :day, :member_id, :status)
     end
 end

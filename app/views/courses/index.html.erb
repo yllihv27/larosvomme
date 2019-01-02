@@ -6,19 +6,32 @@
   <%= render 'members/modal' %>
 </div>
 
+
 <header class="bg-header cover" style="background-image: url(kurs-bg2.jpg);height:100%">
 <div style="padding: 50px">
 <h1>Kurs</h1>
 
 <div class="dropdown-course row">
 
-<%= form_tag('/courses',:method=>:get) do %>                          
+<%= form_tag('/kurs',:method=>:get) do %>                        
 
   <div class="col-sm-3">
-    <%= select_tag "id", options_from_collection_for_select(Course.all, "id", "course_name",params[:id]), :prompt => "Kurs", class: "chosen-select", onchange: 'this.form.submit();' %>
+
+  <%= select_tag "id", options_from_collection_for_select(Course.all, "id", "course_name", \
+                  {disabled: lambda {|c| c.fullbooket? }}), multiple: true, :prompt => "Kurs", class: "chosen-select", onchange: 'this.form.submit();' %>
   </div>
 
+    <%# Course.all.each do |c| %>
+      <%#= check_box_tag 'type_id_eq[]', c.id %>
+      <label><%#= c.name %></label>
+    <%# end %>
+
   <div class="col-sm-3">
+
+    <%#= grouped_options = [['Europe',["London, UK", "Stockholm, Sweden"]], ['USA', ["San Francisco, USA", "Mountain View"]]] %>
+    <%#= select_tag :course_place_id, grouped_options_for_select(grouped_options) %>
+
+    <%#= select_tag "course_place_id", grouped_options_for_select(grouped_options), :prompt => "Sted", class: "chosen-select", onchange: 'this.form.submit();' %>
     <%= select_tag "course_place_id", options_from_collection_for_select(CoursePlace.all, "id", "name",params[:course_place_id]), :prompt => "Sted", class: "chosen-select", onchange: 'this.form.submit();' %>
   </div>
 

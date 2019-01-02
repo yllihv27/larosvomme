@@ -1,3 +1,8 @@
+
+<% @participants.each do |m| %>
+<%= m.first_name %>
+<% end %>
+
 <div class="row">
   <div class="col-md-4 col-sm-4">
     <% if @course.course_image? %>
