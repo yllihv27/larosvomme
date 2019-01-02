@@ -465,9 +465,9 @@
       return true;
     };
 
-    AbstractChosen.default_multiple_text = "Velg kurs";
+    AbstractChosen.default_multiple_text = "Velg";
 
-    AbstractChosen.default_single_text = "Velg kurs";
+    AbstractChosen.default_single_text = "Velg";
 
     AbstractChosen.default_no_result_text = "Ingen resultater";
 

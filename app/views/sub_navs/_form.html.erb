@@ -14,35 +14,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :titel %><br>
-    <%= form.text_field :title %>
-  </div><br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+        <%= form.label :titel %><br>
+        <%= form.text_field :title %>
+      </div><br>
 
-  <div class="field">
-    <%= form.label :nummer %><br />
-    <%= form.label :number, "1", :value => "1"  %>
-    <%= form.radio_button :number, "1", :value => "1", :checked => true %>
-    <%= form.label :number, "2", :value => "2" %>
-    <%= form.radio_button :number, "2", :value => "2" %>
-    <%= form.label :number, "3", :value => "3" %>
-    <%= form.radio_button :number, "3", :value => "3" %>
-  </div><br>
+      <div class="field">
+        <%= form.label :nummer %><br />
+        <%= form.label :number, "1", :value => "1"  %>
+        <%= form.radio_button :number, "1", :value => "1", :checked => true %>
+        <%= form.label :number, "2", :value => "2" %>
+        <%= form.radio_button :number, "2", :value => "2" %>
+        <%= form.label :number, "3", :value => "3" %>
+        <%= form.radio_button :number, "3", :value => "3" %>
+      </div><%= image_tag '/guide2.png' %><br><br>
 
-  <div class="field">
-    <%= form.label :menyforeldrelink %><br>
-    <%= form.select :nav_id, Nav.all.map { |u| [u.title, u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
-  </div><br>
+      <div class="field">
+        <%= form.label :menyforeldrelink %><br>
+        <%= form.select :nav_id, Nav.all.map { |u| [u.title, u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
+      </div><br>
 
-  <div class="field">
-    <%= form.label :side_for_å_lenke_til %><br>
-    <%= form.select :page_id, Page.all.map { |u| [u.title, u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
-  </div><br>
+      <div class="field">
+        <%= form.label :side_for_å_lenke_til %><br>
+        <%= form.select :page_id, Page.all.map { |u| [u.title, u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
+        <div class="text-muted" style="font-size: 12px">Bare velg side ELLER lenke. Ikke begge!</div><br>
+      </div><br>
+    </div>
+    <div class="col-md-6 dark-link">
 
-  <div class="field">
-    <%= form.label :link %><br>
-    <%= form.text_field :link %>
-  </div><br>
+      <div class="field">
+        <%= form.label :link %><br>
+        <%= form.text_field :link %>
+      </div><br>
+      <strong>Oversigt over siderne:</strong><br>
+
+
+      <%= link_to 'https://larosvomme.no', 'https://larosvomme.no', target: :blank %><br>
+      <%= link_to 'https://larosvomme.no/kurs', 'https://larosvomme.no/kurs', target: :blank %><br>
+      <%= link_to 'https://larosvomme.no/members/sign_in', 'https://larosvomme.no/members/sign_in', target: :blank %><br>
+      <%= link_to 'https://larosvomme.no/personvern', 'https://larosvomme.no/personvern', target: :blank %><br>
+      <%= link_to 'https://larosvomme.no/cookies', 'https://larosvomme.no/cookies', target: :blank %><br>
+      <%= link_to 'https://larosvomme.no/admin', 'https://larosvomme.no/admin', target: :blank %><br>
+
+    </div>
+  </div>
+
 
   <div class="actions">
     <%= form.submit "opprett", class: 'btn btn-dark' %>

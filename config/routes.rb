@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :categories
   root 'pages#home'
   get '/rediger', to: 'pages#rediger'
+  get '/oversigt', to: 'courses#oversigt'
 
   resources :course_days
   resources :days
@@ -24,6 +25,9 @@ Rails.application.routes.draw do
     resources :participations, controller: 'members/participations'
   end
   devise_for :coaches, path: 'coaches', controllers: { sessions: "coaches/sessions", registrations: "coaches/registrations", confirmations: "coaches/confirmations", passwords: "coaches/passwords", unlocks: "coaches/unlocks", sessions: "coaches/sessions" }
+  devise_scope :coach do
+    get '/admin', to: 'coaches/sessions#new'
+  end
   resources :coaches, only: [:index, :show, :edit, :update, :destroy]
   get '/edit-courses', to: 'courses#edit_courses'
   get '/kurv', to: 'order_items#index'

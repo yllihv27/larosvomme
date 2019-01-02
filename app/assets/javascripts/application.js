@@ -15,7 +15,6 @@
 //= require jquery.easy-autocomplete
 //= require popper
 //= require chosen-jquery
-//= require chosen
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require turbolinks
@@ -43,3 +42,9 @@ function replaceword(that, word, oword) {
     that.textContent = that.textContent == word ? oword : word;
 }
 
+
+$(document).on('turbolinks:load', function(){
+	$(".chosen-select").chosen();
+	allow_single_deselect: true
+    no_results_text: 'No results matched';
+});

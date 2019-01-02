@@ -1,0 +1,90 @@
+<div class="page-card">
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="small-card">
+				<strong>Steder</strong>
+				<%= link_to "Opprett", new_course_place_path, class: 'blue-button', style: 'float: right' %><hr>
+				<div class="scrollbox">
+					<% @course_places.each do |cp| %>
+						<div class="oversigt-hover" onclick="myFunction('cp<%= cp.id %>');"><%= cp.name %></div>
+						<div id="cp<%= cp.id %>" style="display: none;">
+							<%= form_for(cp) do |f| %>
+							<div class="micro-form">
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<%= f.label :navn %><br>
+										<%= f.text_field :name %>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<%= f.label :adresse %><br>
+										<%= f.text_field :address %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<%= f.label :tlf %><br>
+										<%= f.text_field :phone %>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<%= f.label :by %><br>
+										<%= select_tag "city_id", options_from_collection_for_select(City.all, "id", "name",params[:city_id]), :prompt => "By", class: "chosen-select" %>
+									</div>
+									<%= f.label :beskrivelse %><br>
+									<%= f.text_area :description %>
+								</div><br>
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= f.submit "Gem", class: 'btn-dark' %><br><br>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= link_to "Slett", course_place_path(cp), data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="small-card">
+				<strong>Nivåer</strong>
+				<%= link_to "Opprett", new_course_niveau_path, class: 'blue-button', style: 'float: right' %><hr>
+				<div class="scrollbox">
+					<% @course_niveaus.each do |cn| %>
+						<%= cn.name %><br>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="small-card">
+				<strong>Kategorier</strong>
+				<%= link_to "Opprett", new_course_category_path, class: 'blue-button', style: 'float: right' %><hr>
+				<div class="scrollbox">
+					<% @course_categories.each do |cc| %>
+						<%= cc.name%><br>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="small-card">
+				<strong>Byer</strong>
+				<%= link_to "Opprett", new_city_path, class: 'blue-button', style: 'float: right' %><hr>
+				<div class="scrollbox">
+					<% @cities.each do |c| %>
+							<%= c.name%><br>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

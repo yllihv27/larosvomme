@@ -5,7 +5,10 @@ body, .navbar {
   font-family: "Helvetica Neue", sans-serif !important;
   font-weight: 400
 }
-
+.dark-link {
+  a { color: #1c1c1c !important; font-size: 14px;
+    &:hover { opacity: .7; } }
+}
 body {
 	font-size: 18px !important;
 }
@@ -112,6 +115,27 @@ select { color: #000 !important }
   color: #1c1c1c;
   background: #f3f2f2;
 }
+
+.reset-button {
+  background: #fff;
+  color: #1c1c1c;
+  width: 100%;
+  border-radius: 0.25rem !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 5px;
+  padding: 7px;
+  postition: relative;
+  box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  line-height: 24px;
+  transition: .2s;
+  .reset-button-inner {
+  color: #1c1c1c !important;
+  }
+  &:hover {
+    background: #c3c2c2;
+  }
+}
+
 .course-index {
   ul { margin-bottom: 0 !important; }
   li { transition: .2s; }
@@ -967,11 +991,16 @@ p {
 }
 
 .blue-button {
-  background: #00c0ff;
-  padding: 6px 12px;
+  background: #00394c !important;
+  padding: 4px 8px;
   color: #fff !important;
   border-radius: 5px;
-  border: 1px solid #0099cc;
+  border: 1px solid #194c5d;
+  font-size: 15px;
+  transition: .2s;
+  &:hover {
+  color: #1c1c1c !important;
+  }
 }
 
 .hover-bg {
@@ -1099,6 +1128,63 @@ table a:hover { color: #8d8d8d !important; }
 }
 
 .full-width { width: 100%; }
+
+
+.chosen-container
+{
+    width: 100% !important;
+}
+
+
 /* ---------------------------------------------------
     END OF REDIGER
+----------------------------------------------------- */
+
+/* ---------------------------------------------------
+    OVERSIGT
+----------------------------------------------------- */
+
+
+.small-card {
+  background: #f3f2f2;
+  border-radius: 5px;
+  padding: 20px;
+}
+.scrollbox {
+  height: 250px;
+  overflow: auto;
+  background: #fff;
+  border-radius: 5px;
+  a { color: #1c1c1c !important; }
+}
+
+.oversigt-hover {
+  padding: 10px;
+  color: #1c1c1c !important;
+  transition: .2s;
+  &:hover {
+  background: #f3f2f2;
+  }
+}
+
+.micro-form {
+  font-size: 11px;
+  background: rgba(0, 57, 76, 0.3);
+  padding: 5px;
+  border-radius: 5px;
+  .col-md-6 { padding-left: 5px; padding-right: 5px }
+  .col-sm-6 { padding-left: 5px; padding-right: 5px }
+  .col-xs-6 { padding-left: 5px; padding-right: 5px }
+  input {
+  background: #fff;
+  border: 1px solid #c3c2c2;
+  width: 100%;
+  }
+  textarea {
+  width: 100%;
+  height: 50px;
+  }
+}
+/* ---------------------------------------------------
+    END OF OVERSIGT
 ----------------------------------------------------- */
