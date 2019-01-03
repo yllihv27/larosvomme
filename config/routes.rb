@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     post '/logg-in', to: 'members/sessions#create'
     get '/registrer', to: 'members/registrations#new'
     post '/registrer', to: 'members/registrations#create'
-    get '/konto', to: 'members#show'
     get '/rediger-konto', to: 'members#edit'
+    get '/:id/konto', to: 'members#show'
   end
   devise_for :coaches, path: 'coaches', controllers: { sessions: "coaches/sessions", registrations: "coaches/registrations", confirmations: "coaches/confirmations", passwords: "coaches/passwords", unlocks: "coaches/unlocks", sessions: "coaches/sessions" }
   devise_scope :coach do

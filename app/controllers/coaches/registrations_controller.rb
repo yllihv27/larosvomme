@@ -21,12 +21,7 @@ class Coaches::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
         #respond_with resource, location: after_sign_up_path_for(resource)
-        redirect_to @coach, notice: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130.2 130.2'>
-  <circle class='path circle' fill='none' stroke='#73AF55' stroke-width='6' stroke-miterlimit='10' cx='65.1' cy='65.1' r='62.1'/>
-  <polyline class='path check' fill='none' stroke='#73AF55' stroke-width='6' stroke-linecap='round' stroke-miterlimit='10' points='100.2,40.2 51.5,88.8 29.8,67.5 '/>
-</svg>
-<br>
-<p class='success' style='text-align: center;margin: 20px 0 60px;font-size: 1.25em;'>Velkommen! Din registrering er vellykket.</p>"
+        redirect_to @coach, notice: "Din konto er opprettet ✓"
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!

@@ -597,7 +597,7 @@
     }
 
     input.email, input.text.w3lpass {
-      margin: 1.5em 0;
+      margin: 1em 0;
     }
 
     input[type="submit"] {
@@ -758,4 +758,5 @@
     opacity: .7;
   }
   input[type="email"] { color: #f3f2f2 !important; }
+  label { font-weight: 400; }
 }

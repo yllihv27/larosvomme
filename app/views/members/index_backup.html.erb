@@ -20,10 +20,10 @@
             <% @participations.each do |p| %>
               <% if p.course_id == c.id %>
                 <tr style="color:#000 !important;">
-                  <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
-                  <td><%= link_to p.child.first_name, edit_child_path(p.child) if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child) if p.child %></td>   
-                  <td><%= link_to p.child.member.email, edit_member_path(p.child) if p.child %></td>
-                  <td><%= link_to p.child.member.phone, edit_child_path(p.child) if p.child %></td>
+                  <td style="padding-right: 10px"><%= p.member.id %></td>   
+                  <td><%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></td>   
+                  <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
+                  <td><%= link_to p.member.phone, edit_member_path(p.member) if p.member.phone %></td>
                   <td><div style="cursor:pointer;float:right" onclick="myFunction('<%= p.id %>');"><a class="fa fa-cogs" aria-hidden="true"></a><a style="font-size: 10px;"> Rask redigering</a></div></td>
                 </tr>
                 <div id="<%= p.id %>" style="display: none;">

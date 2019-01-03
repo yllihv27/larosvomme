@@ -17,10 +17,12 @@
 
   <%= f.text_field :first_name, placeholder: 'Barn Fornavn' %><br />
   <%= f.text_field :last_name, placeholder: 'Barn Etternavn' %><br />
+  <%= f.label :bursdag %><br>
+  <%= f.date_field :birthdate %><br><br>
 
   <%= link_to 'Hopp over', kurs_path, style: 'font-weight:300;font-size: 22px;color:#c3c2c2 !important;font-style:italic;' %>
 
-  <%= f.submit "Tilføj barn", class: 'buy-button' %>
+  <%= f.submit "Legg til barn", class: 'buy-button' %>
 
   </center>
 <% end %>

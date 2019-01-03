@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :check_member, only: [:show]
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  #before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, except: [:new, :create, :show, :tilfoj_barn]
 
   def show
@@ -71,9 +71,9 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
     end
 
-    def set_course
-      @course = Course.find(params[:id])
-    end
+    #def set_course
+    #  @course = Course.find(params[:id])
+    #end
 
     def member_params
       params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone, children_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])

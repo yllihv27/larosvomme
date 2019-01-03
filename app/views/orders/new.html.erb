@@ -22,13 +22,13 @@
 
 	<center>
 		<% current_member.children.each do |child| %>
-		  <%= check_box_tag "child_ids[]", child.id %>
 		  <%= child.first_name %>
+		  <%= check_box_tag "child_ids[]", child.id %>
 		<% end %><br><br>
 
 		<%= link_to 'Legg til barn', barn_path, target: :blank, class: 'buy-button' %>
 		<br><div style="font-size: 12px;padding-top: 8px;color:#c3c2c2;"> og refresh siden</div>
-	</center>
+	</center><br>
 
 	<td colspan="4" align="right">
 		<% @items.each do |i| %>
@@ -38,7 +38,7 @@
 		<% end %>
 
 		<br><br>
-		<%= number_to_currency current_cart.sub_total %>
+		Total: <%= number_to_currency current_cart.sub_total %>
 	</td><br><br>
 
 	  <%= f.hidden_field :sub_total, :value => current_cart.sub_total %>
