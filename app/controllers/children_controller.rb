@@ -9,7 +9,6 @@ class ChildrenController < ApplicationController
   def show
   end
 
-  # GET /children/new
   def new
     @child = Child.new
     @member = current_member
@@ -25,7 +24,6 @@ class ChildrenController < ApplicationController
     @member = current_member
   end
 
-  # GET /children/1/edit
   def edit
   end
 

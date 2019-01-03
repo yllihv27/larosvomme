@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :grandparents
+  get '/besteforeldre', to: 'grandparents#barn'
+  post '/besteforeldre', to: 'grandparents#create'
   resources :children
   get '/barn', to: 'children#barn'
   post '/barn', to: 'children#create'

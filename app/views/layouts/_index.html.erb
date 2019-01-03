@@ -84,6 +84,7 @@
                 <ul class="dropdown-menu">
                   <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
                   <%#= link_to "<li>Din konto</li>".html_safe, konto_path(current_member) if  member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, member_path(current_member) if  member_signed_in? %>
                   <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>
@@ -100,7 +101,7 @@
                 <ul class="dropdown-menu">
                   <%= link_to "<li>Find Kurs</li>".html_safe, kurs_path %>
                   <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
-                  <%#= link_to "<li>Din konto</li>".html_safe, konto_path if  member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, member_path(current_member) if  member_signed_in? %>
                   <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>

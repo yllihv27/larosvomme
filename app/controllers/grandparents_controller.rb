@@ -1,23 +1,25 @@
 class GrandparentsController < ApplicationController
   before_action :set_grandparent, only: [:show, :edit, :update, :destroy]
+  layout 'signup'
 
-  # GET /grandparents
-  # GET /grandparents.json
   def index
     @grandparents = Grandparent.all
   end
 
-  # GET /grandparents/1
-  # GET /grandparents/1.json
   def show
   end
 
   # GET /grandparents/new
   def new
     @grandparent = Grandparent.new
+    @member = current_member
   end
 
-  # GET /grandparents/1/edit
+  def besteforeldre
+    @grandparent = Grandparent.new
+    @member = current_member
+  end
+
   def edit
   end
 
@@ -29,7 +31,7 @@ class GrandparentsController < ApplicationController
 
     respond_to do |format|
       if @grandparent.save
-        format.html { redirect_to @grandparent, notice: 'Grandparent was successfully created.' }
+        format.html { redirect_to kurv_sjekk_ut_path, notice: 'Besteforeldre ble opprettet' }
         format.json { render :show, status: :created, location: @grandparent }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class GrandparentsController < ApplicationController
   def update
     respond_to do |format|
       if @grandparent.update(grandparent_params)
-        format.html { redirect_to @grandparent, notice: 'Grandparent was successfully updated.' }
+        format.html { redirect_to @grandparent, notice: 'Besteforeldre ble oppdattert.' }
         format.json { render :show, status: :ok, location: @grandparent }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class GrandparentsController < ApplicationController
   def destroy
     @grandparent.destroy
     respond_to do |format|
-      format.html { redirect_to grandparents_url, notice: 'Grandparent was successfully destroyed.' }
+      format.html { redirect_to grandparents_url, notice: 'Besteforeldre ble slettet.' }
       format.json { head :no_content }
     end
   end
