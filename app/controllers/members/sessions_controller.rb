@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Members::SessionsController < Devise::SessionsController
+  skip_before_action :verify_authenticity_token, :only => :create
   layout 'signup'
   #include Accessible
   #skip_before_action :check_coach, only: :destroy
@@ -12,9 +13,9 @@ class Members::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

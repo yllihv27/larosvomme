@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Members::RegistrationsController < Devise::RegistrationsController
+  skip_before_action :verify_authenticity_token, :only => :create
   layout 'signup'
   #include Accessible
   #skip_before_action :check_coach, except: [:new, :create]

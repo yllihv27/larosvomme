@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   end
   devise_scope :member do
     get '/logg-in', to: 'members/sessions#new'
+    post '/logg-in', to: 'members/sessions#create'
     get '/registrer', to: 'members/registrations#new'
     post '/registrer', to: 'members/registrations#create'
     get '/konto', to: 'members#show'
