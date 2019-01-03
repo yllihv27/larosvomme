@@ -40,6 +40,7 @@ gem 'popper_js'
 gem 'chosen-rails'
 gem 'ckeditor'
 gem 'cocoon'
+gem 'ovirt-engine-sdk'
 
 
 group :development, :test do
