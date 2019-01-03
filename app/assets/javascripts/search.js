@@ -9,7 +9,7 @@ document.addEventListener("turbolinks:load", function() {
 		categories: [
 			{
 				listLocation: "members",
-				header: "<strong>Deltakere</strong>",
+				header: "<strong>Foreldre</strong>",
 			}
 		],
 		list: {

@@ -4,7 +4,14 @@ class ParticipationsController < ApplicationController
   # GET /participations
   # GET /participations.json
   def index
+    @courses = Course.all.order('day DESC')
+    @course = Course.find_by(params[:id])
+    @counts = Participation.where(course_id: @course)
+    @members = Member.all
     @participations = Participation.all
+    @participation = Participation.find_by(params[:id])
+    @member = Member.find_by(params[:id])
+    @children = Child.all
   end
 
   # GET /participations/1

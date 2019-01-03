@@ -18,7 +18,7 @@
               <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), edit_course_path(course) if course.course_image? %>
               <div class="card-body">
                 <div style="margin: 0">
-                  <h5><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h5>
+                  <h5><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></h5>
                 </div>
               </div>
               <hr style="margin: 3px;border:1px solid #f3f2f2">
@@ -58,7 +58,7 @@
                 <%= link_to (image_tag (course.course_image.url(:product)), class: 'course-image'), edit_course_path(course) if course.course_image? %>
                 <div class="card-body">
                   <div class="row" style="margin: 0">
-                    <h5><strong><%= course.course_category.name %> <% if course.age_from and course.age_to %><%= course.age_from %>-<%= course.age_to %> år<% end %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></strong></h5>
+                    <h5><strong><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %> | <%= course.course_place.name if course.course_place %></strong></h5>
                   </div>
                 </div>
                 <hr style="margin: 3px;border:1px solid #f3f2f2">
