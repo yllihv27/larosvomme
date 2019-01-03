@@ -1,5 +1,6 @@
 class ParticipationsController < ApplicationController
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!, except: [:show]
 
   # GET /participations
   # GET /participations.json
