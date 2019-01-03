@@ -40,7 +40,7 @@
         </div>
       <% end %>
       <div style="float:right">
-        <%= link_to "Admin", new_coach_session_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
+        <%= link_to "Admin", admin_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
       </div><br>
 
       <nav class="navbar navbar-default">
@@ -79,8 +79,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Registrer deg<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
-                  <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
+                  <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, konto_path if  member_signed_in? %>
                   <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>
@@ -95,9 +95,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">BESTILL KURSPLASS <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <%= link_to "<li>Find Kurs</li>".html_safe, courses_path %>
-                  <%= link_to "<li>Logg inn</li>".html_safe, new_member_session_path if !member_signed_in? %>
-                  <%= link_to "<li>Din konto</li>".html_safe, current_member if  member_signed_in? %>
+                  <%= link_to "<li>Find Kurs</li>".html_safe, kurs_path %>
+                  <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
+                  <%= link_to "<li>Din konto</li>".html_safe, konto_path if  member_signed_in? %>
                   <%= link_to "<li>Logg utt</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>
@@ -147,9 +147,9 @@
           <div style="float:right">
               <%= link_to "Coach login", new_coach_session_path, class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
               <br>
-            <%= link_to "Kurs", courses_path if !coach_signed_in? %>
-            <%= link_to "Logg inn", new_member_session_path if !member_signed_in? and !coach_signed_in? %>
-            <%= link_to "Konto", edit_member_registration_path if member_signed_in? and !coach_signed_in? %>
+            <%= link_to "Kurs", kurs_path if !coach_signed_in? %>
+            <%= link_to "Logg inn", logg_in_path if !member_signed_in? and !coach_signed_in? %>
+            <%= link_to "Konto", rediger_konto_path if member_signed_in? and !coach_signed_in? %>
             <%= link_to "Logg utt", destroy_member_session_path, method: :delete if member_signed_in? and !coach_signed_in? %>
             <%= link_to pluralize(current_cart.items_count, 'kurs'), kurv_path if !coach_signed_in? %>
           </div>

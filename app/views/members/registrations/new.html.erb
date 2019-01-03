@@ -1,55 +1,13 @@
-<center>
-<div class="padding" style="background: #191919;margin:50px;border-radius: 5px;border:1px solid #323232">
-<h2>Oppret konto</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :bilde %><br />
-    <%= f.file_field :profile_pic %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fornavn %><br />
-    <%= f.text_field :first_name, autofocus: true, placeholder: "Fornavn" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :etternavn %><br />
-    <%= f.text_field :last_name, placeholder: "Efternavn" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, placeholder: "Email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :telefon %><br />
-    <%= f.text_field :phone, placeholder: "Telefon" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :passord %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> tegn minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Passord' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :passord_bekreftelse %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Passord bekreftelse' %>
-  </div>
-
-  <br>
-
-  <div class="actions">
+    <h2>Opprett konto</h2>
+    <%= f.text_field :first_name, autofocus: true, placeholder: "Fornavn", class: 'text email' %>
+    <%= f.text_field :last_name, autofocus: true, placeholder: "Etternavn", class: 'text email' %>
+    <%= f.email_field :email, placeholder: "Email", class: 'text email' %>
+    <%= f.text_field :phone, placeholder: "Telefon (valgfri)", class: 'text email' %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Passord (6 tegn minimum)', class: 'text email' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Passord bekreftelse', class: 'text email' %>
     <%= f.submit "Opprett konto", class: 'buy-button' %>
-  </div>
+  </form>
+  <p>Har du allerede en konto? <%= link_to 'Logg inn.', logg_in_path %></p>
 <% end %>
-
-<%= render "members/shared/links" %>
-</div>
-</center>

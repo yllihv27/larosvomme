@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order = current_cart.order
     @items = current_cart.order.items
+    render layout:'order'
   end
 
   def index
@@ -19,9 +20,13 @@ class OrdersController < ApplicationController
   def create
     @order = current_cart.order
     @items = current_cart.order.items
+    #@children = current_member.children
+    @children = Child.find(params[:child_ids])
 
-    @items.each do |item|
-      Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}"}])
+    @children.each do |child|
+      @items.each do |item|
+        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}"}])
+      end
     end
 
     if @order.update_attributes(order_params.merge(status: 'open'))
@@ -51,7 +56,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total, :child_first_name, :child_last_name, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy], childrens_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])
+    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy])
   end
 
 end

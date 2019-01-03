@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :grandparents
   resources :children
+  get '/barn', to: 'children#barn'
+  post '/barn', to: 'children#create'
+  get '/barn/flere', to: 'children#flere'
+  post '/barn/flere', to: 'children#create'
   resources :people
   mount Ckeditor::Engine => '/ckeditor'
   resources :sub_navs
@@ -26,6 +30,13 @@ Rails.application.routes.draw do
   devise_for :members, path: 'members', controllers: { sessions: "members/sessions", registrations: "members/registrations", confirmations: "members/confirmations", passwords: "members/passwords", unlocks: "members/unlocks", sessions: "members/sessions" }
   resources :members, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :participations, controller: 'members/participations'
+  end
+  devise_scope :member do
+    get '/logg-in', to: 'members/sessions#new'
+    get '/registrer', to: 'members/registrations#new'
+    post '/registrer', to: 'members/registrations#create'
+    get '/konto', to: 'members#show'
+    get '/rediger-konto', to: 'members#edit'
   end
   devise_for :coaches, path: 'coaches', controllers: { sessions: "coaches/sessions", registrations: "coaches/registrations", confirmations: "coaches/confirmations", passwords: "coaches/passwords", unlocks: "coaches/unlocks", sessions: "coaches/sessions" }
   devise_scope :coach do

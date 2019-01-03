@@ -1,13 +1,18 @@
 class MembersController < ApplicationController
-  before_action :check_member, only: [:show]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :check_member, only: [:show]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: [:new, :create, :show]
+  before_action :authenticate_coach!, except: [:new, :create, :show, :tilfoj_barn]
 
   def show
 	  @member = Member.find(params[:id])
     @courses = Course.where(member_id: @member)
     @participations = Participation.where(member_id: @member)
+  end
+
+  def tilfoj_barn
+    @child = Child.new
+    @member = current_member
   end
 
   def index
@@ -71,6 +76,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone)
+      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone, children_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])
     end
 end

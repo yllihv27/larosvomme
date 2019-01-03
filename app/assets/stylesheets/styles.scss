@@ -34,7 +34,10 @@ p, ol, ul, td, h1, h3, h4, h5, h6 {
 h4 {
   color: #f3f2f2;
 }
-
+input[type='checkbox'] {
+   width: 20px;
+   height: 20px;
+}
 @font-face {
     font-family: 'JuliusSansOne';
     src: asset_url('JuliusSansOne-Regular.ttf') format('truetype');
@@ -1005,7 +1008,10 @@ p {
   color: #1c1c1c !important;
   }
 }
-
+.upload-button {
+  background: #f3f2f2;
+  border-radius: 5px;
+}
 .hover-bg {
   transition: .3s;
   padding: 10px;

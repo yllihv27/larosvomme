@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Members::SessionsController < Devise::SessionsController
+  layout 'signup'
   #include Accessible
   #skip_before_action :check_coach, only: :destroy
   # before_action :configure_sign_in_params, only: [:create]

@@ -1,11 +1,14 @@
-class ChildrenController < ApplicationController
+class Members::ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
-  layout 'signup'
 
+  # GET /children
+  # GET /children.json
   def index
     @children = Child.all
   end
 
+  # GET /children/1
+  # GET /children/1.json
   def show
   end
 
@@ -13,11 +16,7 @@ class ChildrenController < ApplicationController
   def new
     @child = Child.new
     @member = current_member
-  end
-
-  def barn
-    @child = Child.new
-    @member = current_member
+    render layout: 'signup'
   end
   
   def flere
@@ -33,11 +32,11 @@ class ChildrenController < ApplicationController
   # POST /children.json
   def create
     @child = Child.new(child_params)
-    @child.member_id = current_member.id
+    @child.member_id = current_member
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to barn_flere_path, notice: 'Barn ble lagt til.' }
+        format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -51,7 +50,7 @@ class ChildrenController < ApplicationController
   def update
     respond_to do |format|
       if @child.update(child_params)
-        format.html { redirect_to @child, notice: 'Barn ble oppdattert.' }
+        format.html { redirect_to @child, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
         format.html { render :edit }
@@ -65,7 +64,7 @@ class ChildrenController < ApplicationController
   def destroy
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to children_url, notice: 'Barn ble slettet.' }
+      format.html { redirect_to children_url, notice: 'Child was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -78,6 +77,6 @@ class ChildrenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
-      params.permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate)
+      params.require(:child).permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate)
     end
 end
