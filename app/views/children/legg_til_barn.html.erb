@@ -13,7 +13,6 @@
 
   <h2>Legg til barn</h2><br>
 
-  <%= f.select "member_id", options_from_collection_for_select(Member.all.order('first_name ASC'), "id", "full_name",params[:member_id]), :prompt => "Velg konto", class: "chosen-select"if coach_signed_in? %><br><br>
   <%= f.label :fornavn %>
   <%= f.text_field :first_name, placeholder: 'Barn Fornavn' %><br />
   <%= f.label :etternavn %>
@@ -29,4 +28,3 @@
 
   </center>
 <% end %>
-

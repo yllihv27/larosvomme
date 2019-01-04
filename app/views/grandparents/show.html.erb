@@ -1,29 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<center><h2>Besteforelder:</h2></center>
+<br>
 <p>
-  <strong>First name:</strong>
+  <strong>Fornavn:</strong>
   <%= @grandparent.first_name %>
 </p>
-
+<br>
 <p>
-  <strong>Last name:</strong>
+  <strong>Etternavn:</strong>
   <%= @grandparent.last_name %>
 </p>
+<br>
 
 <p>
-  <strong>Member:</strong>
-  <%= @grandparent.member_id %>
+  <strong>Konto:</strong>
+  <%= @grandparent.member.first_name %> <%= @grandparent.member.last_name %> 
 </p>
 
-<p>
-  <strong>Child:</strong>
-  <%= @grandparent.child_id %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @grandparent.course_id %>
-</p>
-
-<%= link_to 'Edit', edit_grandparent_path(@grandparent) %> |
-<%= link_to 'Back', grandparents_path %>

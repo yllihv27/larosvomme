@@ -11,4 +11,7 @@ class Member < ApplicationRecord
   paginates_per 10
   accepts_nested_attributes_for :children, allow_destroy: true,
                               reject_if: ->(attrs) { attrs['first_name'].blank? }
+  def full_name
+    first_name + ' ' + last_name
+  end
 end

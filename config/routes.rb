@@ -2,9 +2,15 @@ Rails.application.routes.draw do
   resources :grandparents
   get '/besteforeldre', to: 'grandparents#new'
   post '/besteforeldre', to: 'grandparents#create'
+  get '/legg-til-besteforeldre', to: 'grandparents#legg_til_besteforelder'
+  post '/legg-til-besteforeldre', to: 'grandparents#create'
   resources :children
   get '/barn', to: 'children#barn'
   post '/barn', to: 'children#create'
+  get '/nytt-barn', to: 'children#nytt_barn'
+  post '/nytt-barn', to: 'children#create'
+  get '/legg-til-barn', to: 'children#legg_til_barn'
+  post '/legg-til-barn', to: 'children#create'
   get '/barn/flere', to: 'children#flere'
   post '/barn/flere', to: 'children#create'
   resources :people

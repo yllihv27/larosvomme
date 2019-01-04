@@ -1,5 +1,6 @@
 class GrandparentsController < ApplicationController
   before_action :set_grandparent, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!, only: :show
   skip_before_action :verify_authenticity_token
   layout 'signup'
 
@@ -16,6 +17,10 @@ class GrandparentsController < ApplicationController
     @member = current_member
   end
 
+  def legg_til_besteforelder
+    @grandparent = Grandparent.new
+  end
+
   def besteforeldre
     @grandparent = Grandparent.new
     @member = current_member
@@ -28,15 +33,25 @@ class GrandparentsController < ApplicationController
   # POST /grandparents.json
   def create
     @grandparent = Grandparent.new(grandparent_params)
-    @grandparent.member_id = current_member.id
+    @grandparent.member_id = current_member.id if member_signed_in?
 
     respond_to do |format|
-      if @grandparent.save
-        format.html { redirect_to kurv_sjekk_ut_path, notice: 'Besteforeldre ble opprettet' }
-        format.json { render :show, status: :created, location: @grandparent }
+      if member_signed_in?
+        if @grandparent.save
+          format.html { redirect_to kurv_sjekk_ut_path, notice: 'Besteforeldre ble opprettet' }
+          format.json { render :show, status: :created, location: @grandparent }
+        else
+          format.html { render :new }
+          format.json { render json: @grandparent.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @grandparent.errors, status: :unprocessable_entity }
+        if @grandparent.save
+          format.html { redirect_to @grandparent, notice: 'Besteforeldre ble opprettet' }
+          format.json { render :show, status: :created, location: @grandparent }
+        else
+          format.html { render :new }
+          format.json { render json: @grandparent.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

@@ -3,7 +3,7 @@ body, .navbar {
 	color: #f3f2f2 !important;
 	border: none !important;
   font-family: "Helvetica Neue", sans-serif !important;
-  font-weight: 400
+  font-weight: 400;
 }
 .dark-link {
   a { color: #1c1c1c !important; font-size: 14px;
@@ -729,6 +729,7 @@ border-style: solid; }
   border-radius: 15px;
   border: 3px solid rgba(243, 242, 242, 0.2);
   margin: 50px;
+  font-weight: 300;
 }
 
 .course_place_table td {
@@ -997,6 +998,12 @@ p {
   .danger a:hover {
   color: #1c1c1c !important;
   }
+  input {
+  width: 100%;
+  }
+  .col-md-6 {
+    padding: 5px;
+  }
 }
 .btn-danger {
   color: #fff !important;
@@ -1206,7 +1213,7 @@ table a:hover { color: #8d8d8d !important; }
 
 
 /* ---------------------------------------------------
-    ORDER NEW
+    NEW ORDER NEW
 ----------------------------------------------------- */
 
 @media only screen and (min-width: 765px) {
@@ -1235,6 +1242,9 @@ table a:hover { color: #8d8d8d !important; }
     width: 100%;
     margin: 2em 0;
     letter-spacing: 4px;
+}
+.order-page {
+  .hr { border: 1px solid #999 }
 }
 /* ---------------------------------------------------
     END OF ORDER NEW

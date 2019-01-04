@@ -43,6 +43,8 @@ class MembersController < ApplicationController
     @courses = Course.where(member_id: @member)
     @participations = Participation.where(member_id: @member)
     @participation = Participation.new
+    @children = Child.where(member_id: @member)
+    @grandparents = Grandparent.where(member_id: @member)
   end
 
   def new

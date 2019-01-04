@@ -1,6 +1,8 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_coach!, only: [:nytt_barn, :edit]
   skip_before_action :verify_authenticity_token
+  
   layout 'signup'
 
   def index
@@ -15,7 +17,16 @@ class ChildrenController < ApplicationController
     @member = current_member
   end
 
+  def nytt_barn
+    @child = Child.new
+  end
+
   def barn
+    @child = Child.new
+    @member = current_member
+  end
+  
+  def legg_til_barn
     @child = Child.new
     @member = current_member
   end
@@ -26,13 +37,14 @@ class ChildrenController < ApplicationController
   end
 
   def edit
+    @member = current_member
   end
 
   # POST /children
   # POST /children.json
   def create
     @child = Child.new(child_params)
-    @child.member_id = current_member.id
+    @child.member_id = current_member.id if member_signed_in?
 
     respond_to do |format|
       if @child.save

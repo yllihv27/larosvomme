@@ -5,24 +5,67 @@
 <div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <%= render 'participations/new' %>
 </div>
-
+<div class="row">
+  <div class="col-md-6">
+    <h2 style="padding-top;padding-left: 50px;">Rediger konto</h2>
+  </div>
+  <div class="col-md-6">
+    ID: <%= @member.id %>
+  </div>
+</div>
 <div class="edit-member">
 <div class="row">
   <div class="col-md-6">
-<h2>Rediger konto </h2> <%= @member.first_name %> <%= @member.last_name %> (<%= @member.id %>)
-<br><br>
     <%= form_for(@member, html: { method: :put }) do |f| %>
 
-      <div class="field">
-        <%= f.label :fornavn %><br />
-        <%= f.text_field :first_name, placeholder: "Fornavn" %>
-      </div>
-      
-      <br>
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <strong>Barn:</strong>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= link_to 'Opprett', nytt_barn_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;float:right' %>
+          </div>
+        </div>
+        <% if @children.any? %>
+          <% @children.each do |c| %>
+            <i class="fa fa-child"></i> <%= c.first_name %> <%= c.first_name %>, <%= c.age %> år. <%= link_to "Rediger", edit_child_path(c), style: 'color: #00394c !important;font-size:12px' %> <br>
+          <% end %>
+        <% else %>
+          <em>Ingen barn ennå</em>
+        <% end %>
+      </div><br>
 
-      <div class="field">
-        <%= f.label :etternavn %><br />
-        <%= f.text_field :last_name, placeholder: "Etternavn" %>
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <strong>Besteforelder:</strong>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= link_to 'Opprett', legg_til_besteforeldre_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;float:right' %>
+          </div>
+        </div>
+
+        <% if @grandparents.any? %>
+          <% @grandparents.each do |g| %>
+            <%= g.first_name %> <%= g.first_name %> <%= link_to "Rediger", edit_grandparent_path(g), style: 'color: #00394c !important;font-size:12px' %> <br>
+          <% end %>
+        <% else %>
+          <em>Ingen besteforeldre</em>
+        <% end %>
+      </div>
+        <br><br>
+
+      <div class="row">
+        <div class="col-md-6">
+
+            <%= f.label :fornavn %><br />
+            <%= f.text_field :first_name, placeholder: "Fornavn" %>
+        </div>
+        <div class="col-md-6">
+            <%= f.label :etternavn %><br />
+            <%= f.text_field :last_name, placeholder: "Etternavn" %>
+        </div>
       </div>
 
       <br>
@@ -66,7 +109,7 @@
 
       <br>
 
-      <%= f.submit "Oppdater konto", class: 'buy-button', style: 'float: right' %>
+      <%= f.submit "Oppdater konto", class: 'buy-button', style: 'float: right' %><br><br><br>
     <% end %>
   </div>
   <div class="col-md-6" style="font-size: 14px;background: #f3f2f2;padding: 20px;border-radius: 5px;">

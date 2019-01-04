@@ -25,13 +25,31 @@
 			<p>
 			  <strong>Deltakere:</strong><br>
 			  <% @participants.each do |p| %>
-				  Barns navn: <%= p.child.first_name %> <%= p.child.last_name %><br>
-				  Barns bursdag: <%= p.child.birthdate.strftime('%A | %b %d') %>
-				  <% @grandparents.each do |g| %>Hentes av:
-					  <% if @order.grandparent_ids == p.grandparent_id %>
-						  Hentes av: <%= g.first_name %> <%= g.last_name %>
-					  <% end %>
-				  <% end %>
+				  <div style="font-size: 14px;"> 
+				  	<div class="row">
+				  		<div class="col-md-4 col-sm-4">
+						  	<i class="fa fa-child"></i> Navn:
+						  </div>
+				  		<div class="col-md-8col-sm-8">
+				  			<%= p.child.first_name %> <%= p.child.last_name %>
+				  		</div><br>
+				  		<div class="col-md-4 col-sm-4">
+							  <i class="fa fa-flag"></i> Alder:
+							</div>
+				  		<div class="col-md-8 col-sm-8">
+								<%= p.child.age %> år
+							</div><br>
+							<% if p.grandparent %>
+					  		<div class="col-md-4 col-sm-4">
+								  <i class="fa fa-car"></i> Hentes av:
+								</div>
+					  		<div class="col-md-8 col-sm-8">
+					  			<%= p.grandparent.first_name.capitalize %> <%= p.grandparent.last_name.capitalize %>
+								</div>
+						  <% end %>
+						</div>
+					</div>
+				  <%= "<hr>".html_safe if @participants.count > 1 %>
 			  <% end %>
 			</p>
 		</div>
@@ -62,7 +80,7 @@
 		</div>
 	</div>
 
-	<%= link_to 'Tilbake til alle ordrer', orders_path %>
+	<%= link_to '← Tilbake til alle ordrer', orders_path %>
 
 	</div>
 </div>

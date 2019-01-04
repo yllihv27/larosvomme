@@ -40,6 +40,7 @@
 		</div>
 	</div><br>
 	<% if current_member.children.any? %>
+	<hr>
 		Velg barn:<br><br>
 
 			<% current_member.children.each do |child| %>
@@ -54,8 +55,6 @@
 			<% end %><br>
 
 			<div style="font-size: 13px;color:#777"> Barnet vises ikke? <span style="color:#666"><%= link_to 'Legg til en', barn_path, target: :blank %></span> (og refresh siden).</div><br>
-		<% else %>
-			<span style="color:#666"><%= link_to 'Legg til barn', barn_path, target: :blank %></span> <br>
 		<% end %>
 
 		<hr>
@@ -63,11 +62,11 @@
 	  <em style="cursor:pointer;font-size:16px;color:#f3f2f2" onclick="myFunction('vis');"></i> Henter en bedsteforeldre?</em><br><br>
 	  <div style="display: none" id="vis">
 	  	<% if current_member.grandparents.any? %>
-		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all, "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforeldre", class: "chosen-select" %><br>
-			  <div style="font-size: 13px;color:#777"> Bedsteforeldre vises ikke? <span style="color:#666"><%= link_to 'Legg til en', besteforeldre_path %></span>.
+		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforeldre", class: "chosen-select" %><br>
+			  <div style="font-size: 13px;color:#777"> <span style="color:#666"><%= link_to 'Legg til', besteforeldre_path %></span> em besteforeldre.
 			  </div>
 	  	<% else %>
-			  <div style="font-size: 16px;color:#777"> Først <span style="color:#666"><%= link_to 'legg til en besteforeldre', besteforeldre_path, style: 'color: #ff3f00 !important' %></span> (og refresh siden).
+			  <div style="font-size: 16px;color:#777"> Først <span style="color:#666"><%= link_to 'legg til en besteforeldre', besteforeldre_path, style: 'color: #ff3f00 !important' %></span>.
 			  </div>
 	  	<% end %>
 	  </div>
@@ -78,7 +77,9 @@
 		<% if current_member.children.any? %>
 			<%= f.submit 'Sjekk ut' %>
 		<% else %>
-			<%= link_to 'Legg til barn', barn_path, target: :blank, class: 'greyed-out-button' %><br><br>
+		<br>
+			<%= link_to 'Legg til barn for å bestille', legg_til_barn_path, target: :blank, class: 'greyed-out-button' %>
+			<div style="font-size: 13px;color:#777"> (og refresh siden).</div><br><br>
 		<% end %>
 		<%= link_to '← Tilbake', kurv_path %>
 
