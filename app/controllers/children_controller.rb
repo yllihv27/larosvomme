@@ -1,5 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
   layout 'signup'
 
   def index
@@ -76,6 +77,6 @@ class ChildrenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
-      params.permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate)
+      params.require(:child).permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate)
     end
 end

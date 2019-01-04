@@ -1,46 +1,9 @@
+<div id="notice"><%= notice %></div
 <div class="order-page">
 	<h2>Sjekk utt</h2>
-	<%= form_for @order, url: checkout_path do |f| %>
-	<div class="row">
-		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.label :dit_fornavn %><br>
-				<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.label :dit_etternavn %><br>
-				<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
-			</div>
-		</div>
-		<div class="form-group">
-			<%= f.label :email %><br>
-			<%= f.text_field :email, :class => 'textField' , value: current_member.email %>
-		</div>
-	</div>
-
-	<center>
-		<% current_member.children.each do |child| %>
-		  <%= child.first_name %>
-		  <%= check_box_tag "child_ids[]", child.id %>
-		<% end %><br><br>
-
-			Legg til:<br><br>
-		<div class="row">
-			<div class="col-md-6">
-				<%= link_to 'Barn', barn_path, target: :blank, class: 'buy-button' %>
-				<br><div style="font-size: 11px;padding-top: 8px;color:#888787;"> og refresh siden</div>
-			</div>
-			<div class="col-md-6">
-				<%= link_to 'Besteforeldre', barn_path, target: :blank, class: 'buy-button' %>
-				<br><div style="font-size: 11px;padding-top: 8px;color:#888787;"> og refresh siden</div>
-			</div>
-		</div><br>
-	</center>
 
 	<hr>
-
+	<div class="text-muted">
 	Dine valg:<br><br>
 
 	<td colspan="4" align="right">
@@ -51,10 +14,59 @@
 		<% end %>
 
 		<br><br>
-		Total: <%= number_to_currency current_cart.sub_total %>
+		<u>Total: <%= number_to_currency current_cart.sub_total %></u>
 	</td><br><br>
+	</div>
 
 	<hr>
+
+	<%= form_for @order, url: checkout_path do |f| %>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<%= f.label :dit_fornavn %><br>
+				<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
+			</div><br>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<%= f.label :dit_etternavn %><br>
+				<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
+			</div><br>
+		</div>
+		<div class="form-group">
+			<%= f.label :email %><br>
+			<%= f.text_field :email, :class => 'textField' , value: current_member.email %>
+		</div>
+	</div><br>
+	Velg barn:<br><br>
+
+		<% current_member.children.each do |child| %>
+			<div class="row">
+				<div class="col-md-1 col-sm-1 col-xs-1">
+				  <%= check_box_tag "child_ids[]", child.id %>
+				</div>
+				<div class="col-md-11 col-sm-11 col-xs-11">
+				  <%= child.first_name %> <%= child.last_name %>
+				</div>
+			</div>
+		<% end %><br>
+
+		<div style="font-size: 13px;color:#777"> Barnet vises ikke? <span style="color:#666"><%= link_to 'Legg til en', barn_path, target: :blank %></span> (og refresh siden).</div><br>
+
+		<hr>
+
+	  <em style="cursor:pointer;font-size:16px;color:#f3f2f2" onclick="myFunction('vis');"><i class="fa fa-car" aria-hidden="true"></i> Henter en bedsteforeldre?</em><br><br>
+	  <div style="display: none" id="vis">
+	  	<% if current_member.grandparents.any? %>
+		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all, "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforeldre", class: "chosen-select" %><br>
+			  <div style="font-size: 13px;color:#777"> Bedsteforeldre vises ikke? <span style="color:#666"><%= link_to 'Legg til en', besteforeldre_path %></span>.
+			  </div>
+	  	<% else %>
+			  <div style="font-size: 16px;color:#777"> Først <span style="color:#666"><%= link_to 'legg til en besteforeldre', besteforeldre_path, style: 'color: #ff3f00 !important' %></span> (og refresh siden).
+			  </div>
+	  	<% end %>
+	  </div>
 
 	  <%= f.hidden_field :sub_total, :value => current_cart.sub_total %>
 	  <%= f.hidden_field :member_id, :value => current_member.id %>
@@ -63,8 +75,4 @@
 		<%= link_to '← Tilbake', kurv_path %>
 
 	<% end %>
-</div>
-<div class="col-sm-6" style="padding: 50px">
-
-
 </div>

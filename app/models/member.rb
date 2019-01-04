@@ -8,6 +8,7 @@ class Member < ApplicationRecord
   has_many :children
   has_many :grandparents
   mount_uploader :profile_pic, ProfilePicUploader
+  paginates_per 10
   accepts_nested_attributes_for :children, allow_destroy: true,
                               reject_if: ->(attrs) { attrs['first_name'].blank? }
 end

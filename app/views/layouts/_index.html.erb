@@ -3,7 +3,7 @@
   <% if coach_signed_in? %>
     <nav id="sidebar">
         <div class="sidebar-header">
-            <%= link_to (image_tag '/logo.png'), root_path %>
+          <%= link_to (image_tag '/logo_trans.png'), root_path %>
         </div>
 
         <ul class="list-unstyled components">
@@ -12,10 +12,10 @@
               <i class="fa fa-calendar" aria-hidden="true"></i> <%= link_to 'Kurs', edit_courses_path %>
             </li>
             <li>
-              <i class="fa fa-users" aria-hidden="true"></i> <%= link_to 'Deltakere', participations_path %>
+              <i class="fa fa-users" aria-hidden="true"></i> <%= link_to 'Deltakere', deltakere_path %>
             </li>
             <li>
-              <i class="fa fa-user-circle" aria-hidden="true"></i> <%= link_to 'Kontoer', members_path %>
+              <i class="fa fa-user-circle" aria-hidden="true"></i> <%= link_to 'Kontoer', kontoer_path %>
             </li>
             <li>
               <i class="fa fa-pencil" aria-hidden="true"></i> <%= link_to 'Redigér website', rediger_path %>
@@ -28,24 +28,12 @@
     <!-- Page Content Holder -->
   <% if !coach_signed_in? %>
     <div id="content">
-          
-      <% if coach_signed_in? %>
-        <div class="col-xs-6">
-          <div class="navbar-header">
-              <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                  <i class="glyphicon glyphicon-align-left"></i>
-              </button>
-          </div>
-        </div>
-
-        <div class="col-xs-6">
-          <%= link_to "Logg utt", destroy_coach_session_path, method: :delete, class: 'top-navbar', style: 'float:right;padding-top:13px' if coach_signed_in? %>
-        </div>
+      <% if member_signed_in? %>
+        <div style="float:right;font-size: 12px;padding-right:13px;">
+          Hei <%= current_member.first_name %>!
+        </div><br>
       <% end %>
-      <div style="float:right">
-        <%= link_to "Admin", admin_path, style: 'float:right', class: 'top-navbar' if !coach_signed_in? and !member_signed_in? %>
-      </div><br>
-
+          
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -56,7 +44,7 @@
           </button>
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <%= link_to (image_tag '/logo23.png'), root_path if !coach_signed_in? %>
+            <%= link_to (image_tag '/logo_transp.png'), root_path if !coach_signed_in? %>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->

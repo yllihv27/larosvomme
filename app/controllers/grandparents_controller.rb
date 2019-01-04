@@ -1,5 +1,6 @@
 class GrandparentsController < ApplicationController
   before_action :set_grandparent, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
   layout 'signup'
 
   def index
@@ -27,7 +28,7 @@ class GrandparentsController < ApplicationController
   # POST /grandparents.json
   def create
     @grandparent = Grandparent.new(grandparent_params)
-    @grandparent.member_id = current_member
+    @grandparent.member_id = current_member.id
 
     respond_to do |format|
       if @grandparent.save

@@ -22,10 +22,11 @@ class OrdersController < ApplicationController
     @items = current_cart.order.items
     #@children = current_member.children
     @children = Child.find(params[:child_ids])
+    @grandparent = Grandparent.find(params[:grandparent_id])
 
     @children.each do |child|
       @items.each do |item|
-        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}"}])
+        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}", grandparent_id: "#{@grandparent.id}"}])
       end
     end
 

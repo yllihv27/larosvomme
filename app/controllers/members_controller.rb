@@ -27,6 +27,18 @@ class MembersController < ApplicationController
     #@course_members = Member.where(params[:course_id] == course.id)
   end
 
+  def kontoer
+    @courses = Course.all.order('day DESC')
+    @course = Course.find_by(params[:id])
+    @counts = Participation.where(course_id: @course)
+    @members = Member.all.order('created_at DESC').page(params[:page])
+    @participations = Participation.all
+    @participation = Participation.find_by(params[:id])
+    @member = Member.find_by(params[:id])
+    #@course_members = Member.where(params[:course_id] == @course.id)
+    #@course_members = Member.where(params[:course_id] == course.id)
+  end
+
   def edit
     @courses = Course.where(member_id: @member)
     @participations = Participation.where(member_id: @member)

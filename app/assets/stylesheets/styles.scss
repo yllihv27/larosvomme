@@ -34,6 +34,9 @@ p, ol, ul, td, h1, h3, h4, h5, h6 {
 h4 {
   color: #f3f2f2;
 }
+#notice {
+  color: #b6dc79;
+}
 input[type='checkbox'] {
    width: 20px;
    height: 20px;
@@ -47,7 +50,7 @@ input[type='checkbox'] {
   font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important;
   font-size: 14px;
 }
-
+.pagination { margin: 10px !important; }
 
 
 h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
@@ -57,7 +60,7 @@ h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
   color: #000;
 }
 
-a { color: #f3f2f2 !important }
+a { color: #f3f2f2 !important; }
 a:hover { text-decoration: none !important; background: none !important }
 
 #error_explanation ul li {color: #000 }
@@ -338,7 +341,7 @@ li a:hover { text-decoration: none }
 .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   background: none !important;
 }
-
+.navbar-default ul { padding-top: 20px; }
 /* END OF NAVBAR*/
 
 
@@ -366,7 +369,6 @@ li a:hover { text-decoration: none }
     padding: 20px;
     background: #00394c;
 }
-
 #sidebar ul.components {
     padding: 20px 0;
 }
@@ -385,6 +387,7 @@ li a:hover { text-decoration: none }
 }
 #sidebar ul li a {
     display: inline;
+    font-weight: 300;
     &:hover {
     background: none !important;
     }
@@ -581,6 +584,7 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     HOME PAGE
 ----------------------------------------------------- */
+.navbar-header { padding: 10px; }
 
 .cover {
   background-size: cover;

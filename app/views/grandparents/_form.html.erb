@@ -12,29 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :first_name %>
+    <%= form.label :fornavn %>
     <%= form.text_field :first_name %>
-  </div>
+  </div><br>
 
   <div class="field">
-    <%= form.label :last_name %>
+    <%= form.label :etternavn %>
     <%= form.text_field :last_name %>
-  </div>
+  </div><br>
 
-  <div class="field">
-    <%= form.label :member_id %>
-    <%= form.number_field :member_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :child_id %>
-    <%= form.number_field :child_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :course_id %>
-    <%= form.number_field :course_id %>
-  </div>
+  <%= link_to '← tilbake', kurv_sjekk_ut_path, style: 'font-weight:300;font-size: 22px;color:#c3c2c2 !important;font-style:italic;' %>
 
   <div class="actions">
     <%= form.submit %>

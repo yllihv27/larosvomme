@@ -10,14 +10,19 @@
       </ul>
     </div>
   <% end %>
-	<center>
 
-  <h2>Legg til barn</h2>
+  <h2>Legg til barn</h2><br>
 
+  <%= f.label :fornavn %>
   <%= f.text_field :first_name, placeholder: 'Barn Fornavn' %><br />
+  <%= f.label :etternavn %>
   <%= f.text_field :last_name, placeholder: 'Barn Etternavn' %><br />
+  <center>
   <%= f.label :bursdag %><br>
-  <%= f.date_field :birthdate %><br><br>
+  <%= f.date_field :birthdate %>
+  <br>
+  <em style="cursor:pointer;font-size:12px;color:#777" onclick="myFunction('vis');">Viser ikke datofelt?</em><br><br>
+  <div style="display: none" id="vis"><%= f.date_select :birthdate, :start_year => 1980, :end_year => 2019 %><br><br></div>
 
   <%= link_to 'Hopp over', kurs_path, style: 'font-weight:300;font-size: 22px;color:#c3c2c2 !important;font-style:italic;' %>
 

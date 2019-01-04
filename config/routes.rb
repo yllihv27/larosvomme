@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :grandparents
-  get '/besteforeldre', to: 'grandparents#barn'
+  get '/besteforeldre', to: 'grandparents#new'
   post '/besteforeldre', to: 'grandparents#create'
   resources :children
   get '/barn', to: 'children#barn'
@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   resources :pages
   resources :navs
   resources :order_items
-  resources :orders
+  resources :orders do
+    resources :grandparents
+    get '/bedsteforelder', to: 'grandparents#new'
+  end
   resources :course_ages
   resources :course_categories
   resources :categories
@@ -33,6 +36,8 @@ Rails.application.routes.draw do
   resources :members, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :participations, controller: 'members/participations'
   end
+  get '/kontoer', to: 'members#kontoer'
+  get '/deltakere', to: 'participations#index'
   devise_scope :member do
     get '/logg-in', to: 'members/sessions#new'
     post '/logg-in', to: 'members/sessions#create'
