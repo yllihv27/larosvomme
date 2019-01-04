@@ -73,6 +73,6 @@ class GrandparentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grandparent_params
-      params.require(:grandparent).permit(:first_name, :last_name, :member_id, :child_id, :course_id)
+      params.require(:grandparent).permit(:first_name, :last_name, :member_id, :child_id, :course_id, :order_id, :participation_id)
     end
 end

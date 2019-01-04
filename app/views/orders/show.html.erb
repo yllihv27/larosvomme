@@ -18,7 +18,21 @@
 
 			<p>
 			  <strong>Sub total:</strong>
-			  <%= @order.sub_total %>
+			  <%= number_to_currency(@order.sub_total) %>
+			</p>
+			<hr>
+
+			<p>
+			  <strong>Deltakere:</strong><br>
+			  <% @participants.each do |p| %>
+				  Barns navn: <%= p.child.first_name %> <%= p.child.last_name %><br>
+				  Barns bursdag: <%= p.child.birthdate.strftime('%A | %b %d') %>
+				  <% @grandparents.each do |g| %>Hentes av:
+					  <% if @order.grandparent_ids == p.grandparent_id %>
+						  Hentes av: <%= g.first_name %> <%= g.last_name %>
+					  <% end %>
+				  <% end %>
+			  <% end %>
 			</p>
 		</div>
 		<div class="col-xs-6">
