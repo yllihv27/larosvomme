@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :emails
   resources :grandparents
   get '/besteforeldre', to: 'grandparents#new'
   post '/besteforeldre', to: 'grandparents#create'

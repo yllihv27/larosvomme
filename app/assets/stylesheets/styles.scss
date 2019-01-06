@@ -149,8 +149,6 @@ select { color: #000 !important }
 
 .course-index {
   ul { margin-bottom: 0 !important; }
-  li { transition: .2s; }
-  li:hover { background: #191919; }
 }
 .course-card {
   padding-bottom: 10px;
@@ -600,6 +598,15 @@ a.article, a.article:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @media only screen and (min-width: 765px) {
+    height: 620px;
+  }
+  @media only screen and (max-width: 765px) {
+    height: 630px;
+  }
+  @media only screen and (max-width: 350px) {
+    height: 530px;
+  }
 }
 
 .fusion-section-separator { position: relative }
@@ -1249,3 +1256,58 @@ table a:hover { color: #8d8d8d !important; }
 /* ---------------------------------------------------
     END OF ORDER NEW
 ----------------------------------------------------- */
+
+/* ---------------------------------------------------
+    HOME PAGE
+----------------------------------------------------- */
+
+
+.navbar-default-transparent {
+  background: rgba(0, 0, 0, .5);
+}
+
+.navbar-transparent {
+  background: rgba(0, 0, 0, .5);
+  color: #f3f2f2 !important;
+  border: none !important;
+  font-family: "Helvetica Neue", sans-serif !important;
+  font-weight: 400;
+  margin-bottom: 0px !important;
+  a {
+    font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+  }
+}
+
+.navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background: none !important;
+}
+.navbar-default ul { padding-top: 20px; }
+
+@media only screen and (max-width: 465px) {
+  .navbar-toggle {
+    background-color: #f3f2f2 !important;
+    margin-top: 30px !important;
+    .icon-bar {
+      border: 1px solid #1c1c1c !important;
+    }
+    .icon-bar + .icon-bar {
+      border: 1px solid #1c1c1c !important;
+    }
+  }
+}
+/* ---------------------------------------------------
+    END OF HOME PAGE
+----------------------------------------------------- */
+
+/* ---------------------------------------------------
+    PARTICIPATIONS INDEX
+----------------------------------------------------- */
+.page-card {
+  td { font-size: 14px; }
+}
+
+/* ---------------------------------------------------
+    END OF PARTICIPATIONS INDEX
+----------------------------------------------------- */
+

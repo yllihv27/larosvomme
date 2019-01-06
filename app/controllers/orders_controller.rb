@@ -24,12 +24,12 @@ class OrdersController < ApplicationController
     @items = current_cart.order.items
     #@children = current_member.children
     @children = Child.find(params[:child_ids])
-    @grandparent = Grandparent.find(params[:grandparent_id])
+    @grandparent = Grandparent.find(params[:grandparent_id]) if @grandparent.present?
     @order.member_id = current_member.id
 
     @children.each do |child|
       @items.each do |item|
-        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}", grandparent_id: "#{@grandparent.id}", order_id: "#{@order.id}"}])
+        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}", grandparent_id: "#{@grandparent.id if @grandparent.present?}", order_id: "#{@order.id}"}])
       end
     end
 

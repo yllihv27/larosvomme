@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   enum status: [:ledig, :fullbooket]
 	belongs_to :coach
 	has_many :members
+  has_many :emails
   mount_uploader :course_image, CourseImageUploader
   paginates_per 20
 

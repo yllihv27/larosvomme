@@ -1,0 +1,55 @@
+
+<%#= @lists %>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2 style="padding-top;padding-left: 50px;">Emails</h2>
+  </div>
+  <div class="col-md-6">
+    <%= link_to 'Opprett', new_email_path, class: 'blue-button', style: 'float:right;margin:15px' %>
+  </div>
+</div>
+<div class="page-card">
+  <% @emails.each do |email| %>
+    <div style="background: #f3f2f2; padding: 20px;margin-bottom: 20px;border-radius: 5px;border: 1px;">
+      <div style="font-size: 16px;font-weight: 500;cursor:pointer" onclick="myFunction('<%#= email.id %>')">
+        <div class="row">
+          <div class="col-md-3">
+            <%= email.course.course_category.name %>
+          </div>
+          <div class="col-md-7">
+            <%= email.subject %>
+          </div>
+          <div class="col-md-2">
+            <% if email.status == "kladde" %>
+                <%= link_to 'SEND', edit_email_path(email), class: 'blue-button' %>
+            <% else %>
+              <span style="color: #777;">Sendt! ✓</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div id="<%= email.id %>" style="display:none;">
+        <br>
+        <table class="table table-hover">
+          <thead>
+            <tr style="font-size: 14px">
+              <th>Subject</th>
+              <th>Content</th>
+              <th>Course</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="color:#000 !important;">
+              <td style="padding-right: 10px"><%= email.subject %></td>   
+              <td><%= email.subject %></td>
+              <td><%= email.content %></td>
+              <td><%= email.course_id %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

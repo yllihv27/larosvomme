@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, only: [:edit_courses, :edit, :update, :destroy]
+  #require 'gibbon'
 
   def modal
     respond_to do |format|
@@ -18,8 +19,8 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all.order('day ASC').page(params[:page])
-    @courses = Course.where(Course.statuses[0]).order('day ASC').page(params[:page])
+    @courses = Course.all.order('day DESC').page(params[:page])
+    @courses = Course.where(Course.statuses[0]).order('day DESC').page(params[:page])
 
     if params[:course_niveau_id].present?
       course_niveau = CourseNiveau.find(params[:course_niveau_id])
@@ -77,9 +78,10 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
+    create_list
     respond_to do |format|
       if @course.save
+        create_list
         format.html { redirect_to @course, notice: 'Kurset ble opprettet.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -88,6 +90,7 @@ class CoursesController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
@@ -108,13 +111,41 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
+      mailchimp_client.lists(mailchimp_list_id).webhooks("1694275d82").delete
       format.html { redirect_to courses_url, notice: 'Kurset ble slettet.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def create_list
+
+      gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4", api_endpoint: "https://us4.api.mailchimp.com")
+      gibbon.timeout = 10
+      gibbon.lists.create(body: {
+          name: "#{@course.id} #{@course.course_category.name}",
+          contact: {
+              company: "Preisler Media",
+              address1: "address one",
+              address2: "address two",
+              city: "Egedal",
+              state: "Denmark",
+              zip: "3650",
+              country: "Denmark",
+              phone: "+4542836608"
+          },
+          permission_reminder: "You are receiving this email, because you subscribed our product.",
+          campaign_defaults: {
+              from_name: "Jonas Preisler",
+              from_email: "jonas.preisler@gmail.com",
+              subject: "hello!",
+              language: "en"
+          },
+          email_type_option: true
+      })
+    end
+
     def set_course
       @course = Course.find(params[:id])
     end

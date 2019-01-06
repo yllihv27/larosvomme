@@ -14,6 +14,7 @@ class PagesController < ApplicationController
     @courses = Course.all.limit(6)
     @cities = City.all
     @course_places = CoursePlace.all
+    render layout: 'no_menu'
   end
 
   def rediger

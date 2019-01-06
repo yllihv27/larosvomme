@@ -34,9 +34,11 @@ class ParticipationsController < ApplicationController
   def create
     @participation = Participation.new(participation_params)
     @member = @participation.member_id
+    @course = @participation.course_id
 
     respond_to do |format|
       if @participation.save
+        subscribe
         format.html { redirect_to edit_member_path(@member), notice: 'Participation was successfully created.' }
         format.json { render :show, status: :created, location: @participation }
       else
@@ -71,7 +73,19 @@ class ParticipationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  def subscribe
+    gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4")
+    gibbon.timeout = 10
+    gibbon.lists('#{@course.mailchimp_id}').members.create(
+      body:{
+        email_address: @member.email,
+        status: 'subscribed',
+        merge_fields: {FNAME: @member.first_name, LNAME: @member.last_name}
+      })
+    #SubscribeJob.perform_later(@member)
+  end
+
     def set_participation
       @participation = Participation.find(params[:id])
     end
