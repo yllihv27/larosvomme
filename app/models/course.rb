@@ -26,9 +26,7 @@ class Course < ApplicationRecord
 
   def spots_left
     @participations = Participation.where(course_id: @course)
-    if participations.present?
-      limit - participations.count
-    end
+    (limit - participations.count)
   end
 
   #def course_category
