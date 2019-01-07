@@ -7,7 +7,7 @@ class MemberMailer < ActionMailer::Base
 		mail(
 			to: member.email,
 			from: "<bestdealerchat@jonaspreisler.com>",
-			subject: "Velkommen til Larosvomme.no!",
+			subject: "VELKOMMEN TIL LÆR Å SVØMME",
 			body: "#{render 'member_mailer/welcome'}",
 		  content_type: "text/html"
 			)
