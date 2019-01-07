@@ -36,11 +36,6 @@ class ParticipationsController < ApplicationController
     @member = @participation.member_id
     @course = @participation.course_id
 
-    @bookings = Participation.where(course_id: @course)
-    if @bookings.count > @course.limit do
-      @course.status = 'fullbooket'; @course.save!
-    end
-
     respond_to do |format|
       if @participation.save
         subscribe
@@ -79,17 +74,17 @@ class ParticipationsController < ApplicationController
 
   private
 
-  def subscribe
-    gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4")
-    gibbon.timeout = 10
-    gibbon.lists('#{@course.mailchimp_id}').members.create(
-      body:{
-        email_address: @member.email,
-        status: 'subscribed',
-        merge_fields: {FNAME: @member.first_name, LNAME: @member.last_name}
-      })
-    #SubscribeJob.perform_later(@member)
-  end
+    def subscribe
+      gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4")
+      gibbon.timeout = 10
+      gibbon.lists('#{@course.mailchimp_id}').members.create(
+        body:{
+          email_address: @member.email,
+          status: 'subscribed',
+          merge_fields: {FNAME: @member.first_name, LNAME: @member.last_name}
+        })
+      #SubscribeJob.perform_later(@member)
+    end
 
     def set_participation
       @participation = Participation.find(params[:id])

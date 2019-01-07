@@ -46,7 +46,7 @@
 			<% current_member.children.each do |child| %>
 				<div class="row">
 					<div class="col-md-1 col-sm-1 col-xs-1">
-					  <%= check_box_tag "child_ids[]", child.id %>
+					  <%= check_box_tag "child_ids[]", child.id, {checked: true} %>
 					</div>
 					<div class="col-md-11 col-sm-11 col-xs-11">
 					  <%= child.first_name %> <%= child.last_name %>
