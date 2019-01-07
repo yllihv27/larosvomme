@@ -2,7 +2,7 @@
   AOS.init();
 </script>
 
-<center style="margin-bottom: 60px;background:#fff" class="padding">
+<center style="margin-bottom: 60px;background:#000" class="padding">
 <h2 style="font-weight: 300;color:#ff3f00" data-aos="fade-up">EN VERDEN AV TRIVSEL I VANN</h2>
 <br>
 <p style="color:#aaa9a9;line-height: 1.8em" class="width65" data-aos="fade-up">
@@ -11,22 +11,45 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 <div class="fusion-section-separator section-separator" style="border-bottom:0px solid #ff3f00;margin-left:-0px;margin-right:-0px;"><div class="divider-candy-arrow bottom" style="border-top-color: #ff3f00;"></div></div>
 
 </center>
-
-<div style="background: #fff;color:#aaa9a9;padding-top:100px" data-aos="fade-up">
+<div style="background: #fff;color:#aaa9a9;padding-top:100px" data-aos="fade-up" class="image-showcase">
 	<center>
 		<h2 style="color: #aaa9a9;padding-bottom: 60px">HOS OSS TRIVES BARNET</h2>
 
 		<div class="row">
-			<% @courses.each do |c| %>
-				<div class="col-xs-6 col-md-4">
-					<%= link_to (image_tag c.course_image.url, class: 'hovering', style: 'width:95%;padding:10px'), c if c.course_image? %>
-				</div>
-			<% end %>
-		</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<a href="/baby-med-badering.jpg" data-toggle="lightbox">
+          <img src="/baby-med-badering.jpg" class="img-fluid">
+        </a>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<a href="/babyjente-i-rødprikkete-badedrakt.jpg" data-toggle="lightbox">
+          <img src="/babyjente-i-rødprikkete-badedrakt.jpg" class="img-fluid">
+        </a>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<a href="/jente-med-svømmebriller.jpg" data-toggle="lightbox">
+          <img src="/jente-med-svømmebriller.jpg" class="img-fluid">
+        </a>
+			</div>
+		</div><br>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<a href="/hello-baby-som-vinker-under-vann.jpg" data-toggle="lightbox">
+          <img src="/hello-baby-som-vinker-under-vann.jpg" class="img-fluid">
+        </a>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<a href="/Baby-som-svømmer-i-blåbadebukse.jpg" data-toggle="lightbox">
+          <img src="/Baby-som-svømmer-i-blåbadebukse.jpg" class="img-fluid">
+        </a>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<a href="/gutt-med-sløyfe.jpg" data-toggle="lightbox">
+          <img src="/gutt-med-sløyfe.jpg" class="img-fluid">
+        </a>
+			</div>
+		</div><br>
 
-		<div class="padding">
-			<%= link_to "SE ALLE KURSENE", courses_path, class: 'main-button padding' %>
-		</div>
 
 	</center>
 </div>
@@ -39,7 +62,7 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 
 </center>
 
-<div class="bg-header" style="background-image: url(jente-som-svommer-under-vann.jpg);color:#aaa9a9;padding-top:50px;">
+<div class="bg-header-2" style="background-image: url(jente-som-svommer-under-vann.jpg);color:#aaa9a9;padding-top:50px;">
 	<center>
 		<div class="row" style="padding: 50px" data-aos="fade-up">
 			<% @cities.each do |city| %>
@@ -49,11 +72,6 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 							<div class="front">
 								<div class="place">
 									<h2><%= city.name %></h2>							
-									<% @courses.each do |c| %>
-										<% if city.id == c.course_place.city.id %>
-												<span style="font-size: 16px"><%= I18n.localize(c.day, format: '%A').capitalize %>, </span>
-											<% end %>
-									<% end %>
 								</div>
 							</div>
 							<div class="back">

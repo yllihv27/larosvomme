@@ -24,10 +24,16 @@
 //= require ckeditor/init
 //= require init_ckeditor
 //= require cocoon
+//= ekko-lightbox
+//= ekko-lightbox.min
 //= require global
 //= require_tree .
 
 
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
 
 function myFunction(id) {
   var x = document.getElementById(id);

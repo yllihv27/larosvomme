@@ -602,22 +602,32 @@ a.article, a.article:hover {
 .cover-full {
   background-size: cover;
 }
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 .bg-header {
+  position: relative;
+  width:100%;
+  height:100%;
+  background: url(/Forside-gutt-jente-som-svommer-bli-trygg-i-vannet-lær-a-svomme.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+.bg-header-2 {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  @media only screen and (min-width: 765px) {
-    height: 620px;
-  }
-  @media only screen and (max-width: 765px) {
-    height: 630px;
-  }
-  @media only screen and (max-width: 350px) {
-    height: 530px;
-  }
 }
-
 .fusion-section-separator { position: relative }
 .fusion-section-separator .divider-candy-arrow.bottom { border-width: 29px 29px 0 29px }
 .fusion-section-separator .divider-candy-arrow { 
@@ -726,11 +736,15 @@ border-style: solid; }
 
 .row { margin: 0px !important}
 
-
 .video {
   width: 80vw;
   height: 45vw;
 }
+
+.image-showcase img { width: 100%; }
+.image-showcase .col-xs-12 { padding-bottom: 20px !important; }
+
+.modal-body { background: #000 }
 
 /* ---------------------------------------------------
     END OF HOME PAGE
