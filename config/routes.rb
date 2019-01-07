@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get "/404", :to => "errors#not_found", :via => :all
-  get "/500", :to => "errors#internal_server_error", :via => :all
+  get '/kurs', to: 'courses#index'
   resources :emails
   resources :grandparents
   get '/besteforeldre', to: 'grandparents#new'
@@ -70,6 +69,6 @@ Rails.application.routes.draw do
   get '/personvern', to: 'pages#personvern'
   get '/cookies', to: 'pages#cookies'
 
-  get '/kurs', to: 'courses#index'
-
+  get "/404", :to => "errors#not_found", :via => :all
+  get "/500", :to => "errors#internal_server_error", :via => :all
 end
