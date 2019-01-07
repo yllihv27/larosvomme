@@ -1,3 +1,6 @@
+<h2 style="padding-top;padding-left: 50px;">Opprett nivå</h2>
+
+<div class="page-card">
 <%= form_with(model: course_niveau, local: true) do |form| %>
   <% if course_niveau.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +15,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :navn %><br>
+    <%= form.text_field :name %><br><br>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.label :beskrivelse %> (valgfri)<br>
+    <%= form.text_area :description %><br><br>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Opprett nivå", class: 'buy-button' %>
   </div>
 <% end %>
+</div>

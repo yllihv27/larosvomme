@@ -33,6 +33,20 @@ class OrdersController < ApplicationController
       end
     end
 
+    @items.each do |i|
+      @participations = Participation.where(course_id: i.course)
+      if @participations.count == i.course.limit
+        i.course.fullbooket!
+      end
+    end
+
+    @first_item = @items.first
+    @course = @first_item.course
+    @participations = Participation.where(course_id: @course)
+    if @participations.count == @course.limit
+      @course.fullbooket!
+    end
+
     if @order.update_attributes(order_params.merge(status: 'open'))
       session[:cart_token] = nil
       redirect_to @order, notice: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130.2 130.2'>

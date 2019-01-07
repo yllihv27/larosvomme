@@ -35,10 +35,9 @@ class ParticipationsController < ApplicationController
     @participation = Participation.new(participation_params)
     @member = @participation.member_id
     @course = @participation.course_id
-
     respond_to do |format|
       if @participation.save
-        subscribe
+        #subscribe
         format.html { redirect_to edit_member_path(@member), notice: 'Participation was successfully created.' }
         format.json { render :show, status: :created, location: @participation }
       else

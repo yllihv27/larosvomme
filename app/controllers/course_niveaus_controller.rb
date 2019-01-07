@@ -28,7 +28,7 @@ class CourseNiveausController < ApplicationController
 
     respond_to do |format|
       if @course_niveau.save
-        format.html { redirect_to oversigt_path, notice: 'Course niveau was successfully created.' }
+        format.html { redirect_to oversigt_path, notice: 'Kursnivå ble opprettet.' }
         format.json { render :show, status: :created, location: @course_niveau }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CourseNiveausController < ApplicationController
   def update
     respond_to do |format|
       if @course_niveau.update(course_niveau_params)
-        format.html { redirect_to oversigt_path, notice: 'Course niveau was successfully updated.' }
+        format.html { redirect_to oversigt_path, notice: 'Kursnivå ble oppdattert.' }
         format.json { render :show, status: :ok, location: @course_niveau }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CourseNiveausController < ApplicationController
   def destroy
     @course_niveau.destroy
     respond_to do |format|
-      format.html { redirect_to course_niveaus_url, notice: 'Course niveau was successfully destroyed.' }
+      format.html { redirect_to oversigt_path, notice: 'Kursnivå ble slettet.' }
       format.json { head :no_content }
     end
   end

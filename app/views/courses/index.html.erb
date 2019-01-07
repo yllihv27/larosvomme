@@ -63,7 +63,7 @@
             </div>
             <div class="col-sm-7">
               <div class="card-wrapper">
-                <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %> <%= 'Full booket' if course.status == 'fullbooket' %> </h4>
+                <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %> <span style="color: #ff5219"><%= 'Fullbooket!' if course.status == 'fullbooket' %></span></h4>
                 <p class="card-date"><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %></p>
               </div>
             </div>
@@ -92,8 +92,9 @@
                 </div>
               </div>
               <div class="col-sm-4">
-                <div class="card-sub" style="font-size: 16px;padding-top:25px">
-                  Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br><br>
+                <div class="card-sub" style="font-size: 16px;padding-top:30px">
+                  <% if course.status == "ledig" %><%= course.spots_left %> seter igjen<br><% end %>
+                  Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br>
                   Pris:   <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
                 </div>
               </div>
@@ -110,7 +111,7 @@
                       <%= link_to 'Opprett konto for å delta', new_member_registration_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'buy-button'} if !member_signed_in? %>
                       <%= submit_tag "Delta", class: 'buy-button' if member_signed_in? %>
                     <% elsif %>
-                      Kurset er fullbooket!
+                      <span style="color: #ff5219">Kurset er fullbooket!</span>
                     <% end %>
                   <% end %>
                 </div>
@@ -119,19 +120,26 @@
             </li>
           </div>
           <div class="mobile">
-            <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %></h4>
+            <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %> <span style="color: #ff5219"><%= 'Fullbooket!' if course.status == 'fullbooket' %></span></h4>
                 <div class="card-sub">
                   <p style="font-weight: 700;font-size: 28px;" ><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></p><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %>
                 </div>
                 <div class="card-sub" style="font-size: 16px">
+                  <% if course.status == "ledig" %><%= course.spots_left %> seter igjen<br><% end %>
                   Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br>
                   <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
                 </div>
                 <br>
                 <%= form_tag order_items_path do %>
-                  <%= hidden_field_tag :course_id, course.id %>
-                  <%#= number_field_tag :quantity, 1 %>
-                  <%= submit_tag "Delta", class: 'buy-button' %>
+                  <%#= hidden_field :quantity, 1 %>
+                  <%= number_field_tag :quantity, 1, style: 'display:none' %>
+
+                  <% if course.status != 'fullbooket' %>
+                    <%= link_to 'Opprett konto for å delta', new_member_registration_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'buy-button'} if !member_signed_in? %>
+                    <%= submit_tag "Delta", class: 'buy-button' if member_signed_in? %>
+                  <% elsif %>
+                    <span style="color: #ff5219">Kurset er fullbooket!</span>
+                  <% end %>
                 <% end %>
                 <br>
           </div>

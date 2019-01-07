@@ -21,7 +21,10 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all.order('day ASC').page(params[:page])
-    @courses = Course.where(Course.statuses[0]).order('day ASC').page(params[:page])
+    #@courses = Course.where(Course.statuses[0]).order('day ASC').page(params[:page])
+    @course = Course.where(id: @courses)
+    @participations = Participation.where(course_id: @course)
+    @participation = Participation.where(id: @participations)
 
     if params[:course_niveau_id].present?
       course_niveau = CourseNiveau.find(params[:course_niveau_id])

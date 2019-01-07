@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2019_01_07_091313) do
     t.date "day"
     t.integer "member_id"
     t.integer "status", default: 0
-    t.integer "limit"
+    t.integer "limit", default: 100
   end
 
   create_table "courses_members", id: false, force: :cascade do |t|

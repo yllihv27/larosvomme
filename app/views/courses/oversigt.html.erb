@@ -102,7 +102,28 @@
 				<%= link_to "Opprett", new_course_niveau_path, class: 'blue-button', style: 'float: right' %><hr>
 				<div class="scrollbox">
 					<% @course_niveaus.each do |cn| %>
-						<%= cn.name %><br>
+						<div class="oversigt-hover" onclick="myFunction('cn<%= cn.id %>');"><%= cn.name %></div>
+						<div id="cn<%= cn.id %>" style="display: none;">
+							<%= form_for(cn) do |f| %>
+							<div class="micro-form">
+										<%= f.label :navn %><br>
+										<%= f.text_field :name %>
+								<div class="row">
+
+									<%= f.label :beskrivelse %><br>
+									<%= f.text_area :description %>
+								</div><br>
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= f.submit "Gem", class: 'btn-dark' %><br><br>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= link_to "Slett", course_niveau_path(cn), data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
 					<% end %>
 				</div>
 			</div>
@@ -116,7 +137,23 @@
 				<%= link_to "Opprett", new_course_category_path, class: 'blue-button', style: 'float: right' %><hr>
 				<div class="scrollbox">
 					<% @course_categories.each do |cc| %>
-						<%= cc.name%><br>
+						<div class="oversigt-hover" onclick="myFunction('cc<%= cc.id %>');"><%= cc.name %></div>
+						<div id="cc<%= cc.id %>" style="display: none;">
+							<%= form_for(cc) do |f| %>
+							<div class="micro-form">
+								<%= f.label :navn %><br>
+								<%= f.text_field :name %><br><br>
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= f.submit "Gem", class: 'btn-dark' %><br><br>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= link_to "Slett", course_place_path(cc), data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
 					<% end %>
 				</div>
 			</div>
@@ -127,7 +164,23 @@
 				<%= link_to "Opprett", new_city_path, class: 'blue-button', style: 'float: right' %><hr>
 				<div class="scrollbox">
 					<% @cities.each do |c| %>
-							<%= c.name%><br>
+						<div class="oversigt-hover" onclick="myFunction('c<%= c.id %>');"><%= c.name %></div>
+						<div id="c<%= c.id %>" style="display: none;">
+							<%= form_for(c) do |f| %>
+							<div class="micro-form">
+								<%= f.label :navn %><br>
+								<%= f.text_field :name %><br><br>
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= f.submit "Gem", class: 'btn-dark' %><br><br>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<%= link_to "Slett", course_place_path(c), data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
 					<% end %>
 				</div>
 			</div>
