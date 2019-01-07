@@ -33,7 +33,7 @@ function myFunction(id) {
   var x = document.getElementById(id);
   $(x).slideToggle();
   if (x.style.display === "block") {
-    x.style.display.slideUp() = "none";
+    (x.style.display).slideUp() = "none";
   } else {
     x.style.display = "block";
   }
