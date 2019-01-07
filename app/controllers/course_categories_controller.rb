@@ -29,7 +29,7 @@ class CourseCategoriesController < ApplicationController
 
     respond_to do |format|
       if @course_category.save
-        format.html { redirect_to @course_category, notice: 'Course category was successfully created.' }
+        format.html { redirect_to oversigt_path, notice: 'Course category was successfully created.' }
         format.json { render :show, status: :created, location: @course_category }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CourseCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @course_category.update(course_category_params)
-        format.html { redirect_to @course_category, notice: 'Course category was successfully updated.' }
+        format.html { redirect_to oversigt_path, notice: 'Course category was successfully updated.' }
         format.json { render :show, status: :ok, location: @course_category }
       else
         format.html { render :edit }

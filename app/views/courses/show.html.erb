@@ -1,62 +1,58 @@
+<h2 style="padding-top;padding-left: 50px;">Kurs</h2>
 
-<% @participants.each do |m| %>
-<%= m.first_name %>
-<% end %>
+<div class="page-card">
 
-<div class="row">
+<div class="row" style="margin-bottom: 20px;">
   <div class="col-md-4 col-sm-4">
     <% if @course.course_image? %>
     <%= image_tag (@course.course_image.url(:product)), class: 'course-image' if @course.course_image %>
-    <% end %>
+    <% end %><br><br>
+
+    <%= link_to 'Rediger', edit_course_path(@course), style: 'color: #1c1c1c !important' %> |
+    <%= link_to 'Kurs oversigt', edit_courses_path, style: 'color: #1c1c1c !important' %>
   </div>
   <div class="col-md-4 col-sm-4">
 
     <p>
-      <strong>Day:</strong>
-      <%= @course.day.strftime("%A %b %d") %>
+      <strong>Dato:</strong>
+      <%= @course.course_day if @course.day %>
     </p>
 
     <p>
-      <strong>Description:</strong>
-      <%= @course.description %>
+      <strong>Tid:</strong>
+      <%= @course.time_from.strftime('%H:%M') if @course.time_from %> - <%= @course.time_to.strftime('%H:%M') if @course.time_to %>
     </p>
 
     <p>
-      <strong>Price:</strong>
-      <%= @course.price %>
+      <strong>Pris:</strong>
+      <%= number_to_currency(@course.price) if @course.price %>
     </p>
 
     <p>
-      <strong>Coach:</strong>
-      <%= @course.coach_id %>
+      <strong>Trener:</strong>
+      <%= @course.coach.first_name if @course.coach %> <%= @course.coach.last_name if @course.coach %>
     </p>
 
     <p>
-      <strong>Course niveau:</strong>
-      <%= @course.course_niveau_id %>
+      <strong>Kurs nivå:</strong>
+      <%= @course.course_niveau.name if @course.course_niveau %>
     </p>
 
     <p>
-      <strong>Course place:</strong>
-      <%= @course.course_place_id %>
+      <strong>Sted:</strong>
+      <%= @course.course_place.name if @course.course_place %>
     </p>
 
     <p>
       <strong>Course category:</strong>
-      <%= @course.course_category_id %>
+      <%= @course.course_category.name if @course.course_category %>
     </p>
 
     <p>
-      <strong>Time from:</strong>
-      <%= @course.time_from.strftime('%H:%M') %>
+      <strong>Beskrivelse:</strong>
+      <%= simple_format(@course.description) if @course.description %>
     </p>
 
-    <p>
-      <strong>Time to:</strong>
-      <%= @course.time_to.strftime('%H:%M') %>
-    </p>
   </div>
-  <div class="col-md-4 col-sm-4">
-    <%= @course.coach.first_name %>
-  </div>
+</div>
 </div>

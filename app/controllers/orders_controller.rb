@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
   def show
     @order_items = OrderItem.where(order_id: @order.id)
-    @participants = Participation.where(order_id: @order)
+    @participations = Participation.where(order_id: @order)
     #@grandparents = Grandparent.where(order_id: @order)
   end
 

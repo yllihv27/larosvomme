@@ -10,14 +10,25 @@
   </div>
 </div>
 <div class="page-card">
+  <div class="row">
+    <div class="col-md-5">
+      <strong>Kurs</strong>
+    </div>
+    <div class="col-md-5">
+      <strong>Emne</strong>
+    </div>
+    <div class="col-md-2">
+      <strong>Status</strong>
+    </div>
+  </div><br>
   <% @emails.each do |email| %>
     <div style="background: #f3f2f2; padding: 20px;margin-bottom: 20px;border-radius: 5px;border: 1px;">
       <div style="font-size: 16px;font-weight: 500;cursor:pointer" onclick="myFunction('<%#= email.id %>')">
         <div class="row">
-          <div class="col-md-3">
-            <%= email.course.course_category.name %>
+          <div class="col-md-5">
+            <%= email.course.course_category.name %> <%= email.course.course_place.name %> | <%= email.course.day.strftime("%A | %b %d '%y") %>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-5">
             <%= email.subject %>
           </div>
           <div class="col-md-2">

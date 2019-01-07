@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :status]
   before_action :authenticate_coach!, only: [:edit_courses, :edit, :update, :destroy]
   #require 'gibbon'
 
@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def oversigt
+    @course = Course.new
     @courses = Course.all
     @course_categories = CourseCategory.all
     @course_places = CoursePlace.all
@@ -19,8 +20,8 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all.order('day DESC').page(params[:page])
-    @courses = Course.where(Course.statuses[0]).order('day DESC').page(params[:page])
+    @courses = Course.all.order('day ASC').page(params[:page])
+    @courses = Course.where(Course.statuses[0]).order('day ASC').page(params[:page])
 
     if params[:course_niveau_id].present?
       course_niveau = CourseNiveau.find(params[:course_niveau_id])
@@ -54,7 +55,7 @@ class CoursesController < ApplicationController
   end
 
   def edit_courses
-    @courses = Course.all
+    @courses = Course.all.order('day ASC')
     render :edit_courses
   end
 
@@ -62,7 +63,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @members = Member.all
-    @participants = @course.members
+    @participations = @course.members
   end
 
   # GET /courses/new
@@ -120,7 +121,6 @@ class CoursesController < ApplicationController
   private
 
     def create_list
-
       gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4", api_endpoint: "https://us4.api.mailchimp.com")
       gibbon.timeout = 10
       gibbon.lists.create(body: {
@@ -152,6 +152,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :time_from, :time_to, :course_image, :day, :member_id, :status)
+      params.require(:course).permit(:name, :description, :price, :coach_id, :course_niveau_id, :course_place_id, :course_day_id, :course_category_id, :time_from, :time_to, :course_image, :day, :member_id, :status, :limit)
     end
 end

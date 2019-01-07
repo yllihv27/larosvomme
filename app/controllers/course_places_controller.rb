@@ -29,7 +29,7 @@ class CoursePlacesController < ApplicationController
 
     respond_to do |format|
       if @course_place.save
-        format.html { redirect_to @course_place, notice: 'Course place was successfully created.' }
+        format.html { redirect_to oversigt_path, notice: 'Course place was successfully created.' }
         format.json { render :show, status: :created, location: @course_place }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CoursePlacesController < ApplicationController
   def update
     respond_to do |format|
       if @course_place.update(course_place_params)
-        format.html { redirect_to @course_place, notice: 'Course place was successfully updated.' }
+        format.html { redirect_to oversigt_path, notice: 'Course place was successfully updated.' }
         format.json { render :show, status: :ok, location: @course_place }
       else
         format.html { render :edit }

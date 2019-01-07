@@ -18,7 +18,7 @@ class EmailMailer < ActionMailer::Base
     mail(
 			to: recipient.email,
 			from: "<bestdealerchat@jonaspreisler.com>",
-			subject: "Vennligst les (larosvomme.no)",
+			subject: "#{email.subject}",
 			body: "#{render 'emails/sender'}",
 		  content_type: "text/html"
 			)

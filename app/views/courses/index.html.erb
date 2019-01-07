@@ -63,7 +63,7 @@
             </div>
             <div class="col-sm-7">
               <div class="card-wrapper">
-                <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %></h4>
+                <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %> <%= 'Full booket' if course.status == 'fullbooket' %> </h4>
                 <p class="card-date"><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %></p>
               </div>
             </div>
@@ -106,8 +106,12 @@
                     <%#= hidden_field :quantity, 1 %>
                     <%= number_field_tag :quantity, 1, style: 'display:none' %>
 
-                    <%= link_to 'Opprett konto for å delta', new_member_registration_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'buy-button'} if !member_signed_in? %>
-                    <%= submit_tag "Delta", class: 'buy-button' if member_signed_in? %>
+                    <% if course.status != 'fullbooket' %>
+                      <%= link_to 'Opprett konto for å delta', new_member_registration_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'buy-button'} if !member_signed_in? %>
+                      <%= submit_tag "Delta", class: 'buy-button' if member_signed_in? %>
+                    <% elsif %>
+                      Kurset er fullbooket!
+                    <% end %>
                   <% end %>
                 </div>
               </div>

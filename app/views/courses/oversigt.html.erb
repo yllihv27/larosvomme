@@ -1,4 +1,52 @@
-<div class="page-card">
+<h2 style="padding-top;padding-left: 50px;">Opprett kurs</h2>
+
+<div class="page-card" style="padding: 30px;">
+
+	<div class="small-card">
+		<%= form_for @course do |form| %>
+
+    <div class="row">
+	    <div class="col-md-6">
+        <%= form.label :dato %>
+        <%= form.date_field :day %><br><br><br>
+        <%= form.label :fra_kl %>
+        <%= form.time_field :time_from %>
+        <%= form.label :tiL_kl %>
+        <%= form.time_field :time_to %><br><br><br>
+        <%= form.label :maks_antall_deltagere %>
+        <%= form.number_field :limit, placeholder: 'Maks antall deltagere' %>
+	    </div>
+	    <div class="col-md-6">
+        Pris: <%= form.text_field :price, placeholder: 'Pris' %> NOK<br><br>
+        <%= form.text_area :description, placeholder: 'Beskrivelse' %><br><br>
+        <%= form.label :bilde %>
+        <%= form.file_field :course_image %>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+	    <div class="col-md-6">
+	      <%= form.select :course_category_id, CourseCategory.all.map { |u| ["#{u.name}", u.id] }, { include_blank: true, prompt: 'Velg kategori' }, { class: 'chosen-select' } %>
+     </div>
+	    <div class="col-md-6">
+       <%= form.select :coach_id, Coach.all.map { |u| ["#{u.first_name}, #{u.last_name}", u.id] }, { include_blank: true, prompt: 'Velg trener' }, { class: 'chosen-select' } %>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+	    <div class="col-md-6">
+	      <%= form.select :course_niveau_id, CourseNiveau.all.map { |u| ["#{u.name}", u.id] }, { include_blank: true, prompt: 'Velg nivå' }, { class: 'chosen-select' } %>
+	    </div>
+	    <div class="col-md-6">
+	      <%= form.select :course_place_id, CoursePlace.all.map { |u| ["#{u.name}", u.id] }, { include_blank: true, prompt: 'Velg sted' }, { class: 'chosen-select' } %>
+	    </div>
+	  </div>
+	  <br><br>
+    <%= form.submit "Oprett kurs", class: 'blue-button', style: 'width: 100%; padding: 10px' %>
+
+		<% end %>
+	</div>
+	<br><br>
 
 	<div class="row">
 		<div class="col-md-6">

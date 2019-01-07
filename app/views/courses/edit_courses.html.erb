@@ -1,13 +1,13 @@
 <div class="row" style="padding-top;padding-left: 50px;">
   <div class="col-md-6">
-    <h2>Deltakere</h2>
+    <h2>Kurs</h2>
   </div>
   <div class="col-md-6">
     <%= link_to "Nytt kurs", oversigt_path, class: 'large-button', style: 'float:right;color:#fff !important' %>
   </div>
 </div>
 <hr>
-<div class="row">
+<div class="row edit_course">
   <% @courses.each do |course| %>
     <% if course.day.future? %>
       <%= link_to edit_course_path(course) do %>
@@ -29,7 +29,7 @@
                 <hr style="margin: 3px;border:1px solid #f3f2f2">
                 <span class="text-muted" style="padding: 3px">Tid:</span> <%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %>
                 <hr style="margin: 3px;border:1px solid #f3f2f2">
-                <span class="text-muted" style="padding: 3px">Coach:</span> <%= course.coach.name if course.coach %>
+                <span class="text-muted" style="padding: 3px">Trener:</span> <%= course.coach.name if course.coach %>
               </div>
             </div>
             <%= link_to edit_course_path(course) do %>
@@ -37,6 +37,7 @@
                 <h3>Rediger kurs</h3>
               </div>
             <% end %>
+            <span style='color: #1f9f1f'><%= 'Fullbooket!' if course.status == 'fullbooket' %></span>
           </div>
           <hr>
         </div>
@@ -45,8 +46,7 @@
   <% end %>
 </div>
 
-
-<div class="row">
+<div class="row edit_course">
   <% @courses.each do |course| %>
     <% if course.day.past? %>
       <div style="opacity: 0.4">
@@ -69,7 +69,7 @@
                   <hr style="margin: 3px;border:1px solid #f3f2f2">
                   <span class="text-muted" style="padding: 3px">Tid:</span> <%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %>
                   <hr style="margin: 3px;border:1px solid #f3f2f2">
-                  <span class="text-muted" style="padding: 3px">Coach:</span> <%= course.coach.name if course.coach %>
+                  <span class="text-muted" style="padding: 3px">Trener:</span> <%= course.coach.name if course.coach %>
                 </div>
               </div>
               <%= link_to edit_course_path(course) do %>

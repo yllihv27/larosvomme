@@ -5,7 +5,7 @@ class ParticipationsController < ApplicationController
   # GET /participations
   # GET /participations.json
   def index
-    @courses = Course.all.order('day DESC')
+    @courses = Course.all.order('day ASC')
     @course = Course.find_by(params[:id])
     @counts = Participation.where(course_id: @course)
     @members = Member.all
@@ -35,6 +35,11 @@ class ParticipationsController < ApplicationController
     @participation = Participation.new(participation_params)
     @member = @participation.member_id
     @course = @participation.course_id
+
+    @bookings = Participation.where(course_id: @course)
+    if @bookings.count > @course.limit do
+      @course.status = 'fullbooket'; @course.save!
+    end
 
     respond_to do |format|
       if @participation.save

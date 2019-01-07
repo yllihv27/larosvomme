@@ -24,7 +24,7 @@
 
 			<p>
 			  <strong>Deltakere:</strong><br>
-			  <% @participants.each do |p| %>
+			  <% @participations.each do |p| %>
 				  <div style="font-size: 14px;"> 
 				  	<div class="row">
 				  		<div class="col-md-4 col-sm-4">
@@ -49,7 +49,7 @@
 						  <% end %>
 						</div>
 					</div>
-				  <%= "<hr>".html_safe if @participants.count > 1 %>
+				  <%= "<hr>".html_safe if @participations.count > 1 %>
 			  <% end %>
 			</p>
 		</div>
