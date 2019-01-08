@@ -7,7 +7,7 @@
         </div>
 
         <ul class="list-unstyled components">
-            <p><em><%= "#Konto: {current_coach.name}" if current_coach.name %></em></p>
+            <p><em><%= "#Konto: {current_coach.first_name}" if current_coach.name %></em></p>
             <li>
               <i class="fa fa-calendar" aria-hidden="true"></i> <%= link_to 'Kurs', edit_courses_path %>
             </li>
