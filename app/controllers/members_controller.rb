@@ -3,7 +3,6 @@ class MembersController < ApplicationController
   before_action :check_member, only: [:show, :edit]
   #before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, except: [:new, :edit, :update, :create, :show, :tilfoj_barn, :gdpr]
-  layout 'signup', only: :edit
   skip_before_action :verify_authenticity_token
   def gdpr
     @member = Member.find_by_id(params[:id])

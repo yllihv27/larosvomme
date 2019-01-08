@@ -86,6 +86,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">GDPR - BE OM PERSONLIG DATA <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <%= link_to "<li>GDPR</li>".html_safe, member_gdpr_path(current_member) if member_signed_in? %>
+                  <h2 style="font-size: 0.9em;"><%= "<li>Logg inn for GDPR data</li>".html_safe if !member_signed_in? %></h2>
                   <%= link_to "<li>Personvern</li>".html_safe, personvern_path %>
                   <%= link_to "<li>Cookies</li>".html_safe, cookies_path %>
                 </ul>
