@@ -1,10 +1,10 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :destroy]
   before_action :check_member, only: [:show, :edit]
   #before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: [:new, :edit, :create, :show, :tilfoj_barn, :gdpr]
+  before_action :authenticate_coach!, except: [:new, :edit, :update, :create, :show, :tilfoj_barn, :gdpr]
   layout 'signup', only: :edit
-
+  skip_before_action :verify_authenticity_token
   def gdpr
     @member = Member.find_by_id(params[:id])
     @children = Child.where(member_id: @member)
@@ -62,20 +62,6 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
-
-  def update
-    @member = Member.find_by_id(params[:id])
-    respond_to do |format|
-      if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Din kon.' }
-        format.json { render :show, status: :ok, location: @member }
-      else
-        format.html { render :edit }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @member.destroy
     respond_to do |format|
@@ -102,6 +88,6 @@ class MembersController < ApplicationController
     #end
 
     def member_params
-      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone, children_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])
+      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone, :gdpr, children_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])
     end
 end

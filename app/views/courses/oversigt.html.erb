@@ -19,8 +19,6 @@
 	    <div class="col-md-6">
         Pris: <%= form.text_field :price, placeholder: 'Pris' %> NOK<br><br>
         <%= form.text_area :description, placeholder: 'Beskrivelse' %><br><br>
-        <%= form.label :bilde %>
-        <%= form.file_field :course_image %>
       </div>
     </div>
     <br><br>
@@ -143,6 +141,8 @@
 							<div class="micro-form">
 								<%= f.label :navn %><br>
 								<%= f.text_field :name %><br><br>
+								<%= f.label :bilde %><br>
+								<%= f.file_field :course_image %><br><br>
 								<div class="row">
 									<div class="col-md-6 col-sm-6 col-xs-6">
 										<%= f.submit "Gem", class: 'btn-dark' %><br><br>

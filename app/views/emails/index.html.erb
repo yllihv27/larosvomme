@@ -12,7 +12,7 @@
 <div class="page-card">
   <div class="row">
     <div class="col-md-5">
-      <strong>Kurs</strong>
+      <strong>Deltaker/Kurs</strong>
     </div>
     <div class="col-md-5">
       <strong>Emne</strong>
@@ -23,20 +23,22 @@
   </div><br>
   <% @emails.each do |email| %>
     <div style="background: #f3f2f2; padding: 20px;margin-bottom: 20px;border-radius: 5px;border: 1px;">
-      <div style="font-size: 16px;font-weight: 500;cursor:pointer" onclick="myFunction('<%#= email.id %>')">
+      <div style="font-size: 16px;font-weight: 500;" onclick="myFunction('<%#= email.id %>')">
         <div class="row">
           <div class="col-md-5">
-            <%= email.course.course_category.name %> <%= email.course.course_place.name %> | <%= email.course.day.strftime("%A | %b %d '%y") %>
+            <% if email.course %>
+              <%= email.course.course_category.name %> <%= email.course.course_place.name %> | <%= email.course.day.strftime("%A | %b %d '%y") %>
+            <% elsif email.member %>
+              <%= email.member.first_name %> <%= email.member.last_name %>
+            <% end %>
           </div>
           <div class="col-md-5">
-            <%= email.subject %>
+            <%=h truncate(email.subject, length: 25) %>
           </div>
           <div class="col-md-2">
-            <% if email.status == "kladde" %>
-                <%= link_to 'SEND', edit_email_path(email), class: 'blue-button' %>
-            <% else %>
-              <span style="color: #777;">Sendt! ✓</span>
-            <% end %>
+            <%= link_to 'SEND', edit_email_path(email), class: 'blue-button' if email.status == 'deltaker' %>
+            <%= link_to 'SEND', edit_email_path(email), class: 'blue-button' if email.status == 'kurs' %>
+            <% if email.status == "sendt" %><span style="color: #777;">Sendt! ✓<br><%= email.updated_at.strftime('%b %d') %></span><% end %>
           </div>
         </div>
       </div>

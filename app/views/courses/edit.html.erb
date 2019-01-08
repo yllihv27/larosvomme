@@ -13,17 +13,15 @@
         <%= form.label :dato %>
         <%= form.date_field :day %><br><br><br>
         <%= form.label :fra_kl %>
-        <%= form.time_field :time_from %>
+        <%= form.time_field :time_from, value: "%H:%M" %>
         <%= form.label :tiL_kl %>
-        <%= form.time_field :time_to %><br><br><br>
+        <%= form.time_field :time_to, value: "%H:%M" %><br><br><br>
         <%= form.label :maks_antall_deltagere %>
         <%= form.number_field :limit, placeholder: 'Maks antall deltagere' %>
 	    </div>
 	    <div class="col-md-6">
-        Pris: <%= form.text_field :price, placeholder: 'Pris' %> NOK<br><br>
+        Pris: <%= form.text_field :price, placeholder: 'Pris' %><br><br>
         <%= form.text_area :description, placeholder: 'Beskrivelse' %><br><br>
-        <%= form.label :bilde %>
-        <%= form.file_field :course_image %>
       </div>
     </div>
     <br><br>

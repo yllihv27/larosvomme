@@ -24,5 +24,17 @@ class EmailMailer < ActionMailer::Base
 			)
   end
 
+  def quick_mail(email, member)
+    @email = email
+    @member = member
+    mail(
+      to: member.email,
+      from: "<bestdealerchat@jonaspreisler.com>",
+      subject: "#{email.subject}",
+      body: "#{render 'emails/sender'}",
+      content_type: "text/html"
+      )
+  end
+
 
 end

@@ -24,13 +24,13 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				<%= f.label :dit_fornavn %><br>
+				<%= f.label :ditt_fornavn %><br>
 				<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
 			</div><br>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
-				<%= f.label :dit_etternavn %><br>
+				<%= f.label :ditt_etternavn %><br>
 				<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
 			</div><br>
 		</div>
@@ -62,11 +62,11 @@
 	  <em style="cursor:pointer;font-size:16px;color:#f3f2f2" onclick="myFunction('vis');"></i> Henter en bedsteforeldre?</em><br><br>
 	  <div style="display: none" id="vis">
 	  	<% if current_member.grandparents.any? %>
-		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforeldre", class: "chosen-select" %><br>
-			  <div style="font-size: 13px;color:#777"> <span style="color:#666"><%= link_to 'Legg til', besteforeldre_path %></span> em besteforeldre.
+		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforelder", class: "chosen-select" %><br>
+			  <div style="font-size: 13px;color:#777">Skal en <span style="color:#666"><%= link_to 'besteforelder', besteforeldre_path %></span> hente barnet?.
 			  </div>
 	  	<% else %>
-			  <div style="font-size: 16px;color:#777"> Først <span style="color:#666"><%= link_to 'legg til en besteforeldre', besteforeldre_path, style: 'color: #ff3f00 !important' %></span>.
+			  <div style="font-size: 16px;color:#777"> Først <span style="color:#666"><%= link_to 'legg til besteforelder', besteforeldre_path, style: 'color: #ff3f00 !important' %></span>.
 			  </div>
 	  	<% end %>
 	  </div>

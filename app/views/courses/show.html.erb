@@ -4,8 +4,8 @@
 
 <div class="row" style="margin-bottom: 20px;">
   <div class="col-md-4 col-sm-4">
-    <% if @course.course_image? %>
-    <%= image_tag (@course.course_image.url(:product)), class: 'course-image' if @course.course_image %>
+    <% if @course.course_category.course_image? %>
+    <%= image_tag (@course.course_category.course_image.url(:product)), class: 'course-image' if @course.course_image %>
     <% end %><br><br>
 
     <%= link_to 'Rediger', edit_course_path(@course), style: 'color: #1c1c1c !important' %> |

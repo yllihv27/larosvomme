@@ -52,12 +52,14 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+
   <div class="actions">
     <%= f.submit "Oppdater konto", class: 'buy-button' %>
   </div>
 <% end %>
+  <%= hidden_field :id, value: current_member.id %>
 
-<p>Unhappy? <%= button_to "Slett konto", registration_path(resource_name), data: { confirm: "Er du sikker?" }, method: :delete %></p>
+<p>Ikke fornøyd? <%= button_to "Slett konto", registration_path(resource_name), data: { confirm: "Er du sikker?" }, method: :delete %></p>
 
 <%= link_to "Tilbake", :back %>
 

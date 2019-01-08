@@ -1,13 +1,14 @@
 class EmailsController < ApplicationController
-  before_action :set_email, only: [:sender, :show, :edit, :update, :destroy]
+  before_action :set_email, only: [:sender, :show, :send_email, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
   before_action :authenticate_coach!, except: [:gdpr]
 
+  def send_email
+  end
 
-  # GET /emails
-  # GET /emails.json
+
   def index
-    @emails = Email.all
+    @emails = Email.all.order('created_at DESC')
     #gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4", debug: true)
     #gibbon.timeout = 10
     #@lists = gibbon.lists.retrieve
@@ -34,10 +35,15 @@ class EmailsController < ApplicationController
   def create
     @email = Email.new(email_params)
     @email.coach_id = current_coach.id
+    if @email.course.present?
+      @email.kurs!
+    elsif @email.member.present?
+      @email.deltaker!
+    end
 
     respond_to do |format|
       if @email.save
-        format.html { redirect_to @email, notice: 'E-postutkast ble opprettet.' }
+        format.html { redirect_to emails_path, notice: 'E-postutkast ble opprettet.' }
         format.json { render :show, status: :created, location: @email }
       else
         format.html { render :new }
@@ -49,12 +55,19 @@ class EmailsController < ApplicationController
   def update
     @course = @email.course
     @coach = current_coach
-    @email.status = "sendt"
+    @member = @email.member
     @participations = Participation.where(course_id: @course)
+    if @email.course.present?
+      @email.sendt!
+      EmailMailer.send_replacement_request(@email,@course,@participations)
+    elsif @email.member.present?
+      @email.sendt!
+      EmailMailer.quick_mail(@email,@member).deliver
+    end
+    #@email.status = "sendt"
 
     respond_to do |format|
       if @email.update(email_params)
-        EmailMailer.send_replacement_request(@email,@course,@participations)
         format.html { redirect_to emails_path, notice: 'E-post ble sendt.' }
         format.json { render :show, status: :ok, location: @email }
       else

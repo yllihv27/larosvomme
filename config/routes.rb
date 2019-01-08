@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/kurs', to: 'courses#index'
   resources :emails
+  get '/send-email', to: 'emails#send_email'
   resources :grandparents
   get '/besteforeldre', to: 'grandparents#new'
   post '/besteforeldre', to: 'grandparents#create'
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
   resources :course_niveaus
   resources :courses
   devise_for :members, path: 'members', controllers: { sessions: "members/sessions", registrations: "members/registrations", confirmations: "members/confirmations", passwords: "members/passwords", unlocks: "members/unlocks", sessions: "members/sessions" }
-  resources :members, only: [:index, :show, :new, :create, :edit, :update, :destroy, :gdpr] do
+  resources :members, only: [:index, :show, :new, :create, :destroy, :gdpr] do
     resources :participations, controller: 'members/participations'
     get '/gdpr', to: 'members#gdpr'
   end

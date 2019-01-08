@@ -29,7 +29,7 @@ class CourseCategoriesController < ApplicationController
 
     respond_to do |format|
       if @course_category.save
-        format.html { redirect_to oversigt_path, notice: 'Course category was successfully created.' }
+        format.html { redirect_to oversigt_path, notice: 'Kurskategori ble opprettet.' }
         format.json { render :show, status: :created, location: @course_category }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CourseCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @course_category.update(course_category_params)
-        format.html { redirect_to oversigt_path, notice: 'Course category was successfully updated.' }
+        format.html { redirect_to oversigt_path, notice: 'Kurskategori ble oppdatert.' }
         format.json { render :show, status: :ok, location: @course_category }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class CourseCategoriesController < ApplicationController
   def destroy
     @course_category.destroy
     respond_to do |format|
-      format.html { redirect_to course_categories_url, notice: 'Course category was successfully destroyed.' }
+      format.html { redirect_to course_categories_url, notice: 'Kurskategori ble slettet.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +70,6 @@ class CourseCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_category_params
-      params.require(:course_category).permit(:name, :age_from, :age_to)
+      params.require(:course_category).permit(:name, :age_from, :age_to, :course_image)
     end
 end

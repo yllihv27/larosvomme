@@ -24,10 +24,18 @@
       <%= form.cktext_area :content, ckeditor: { language: 'nb'} %>
     </div><br>
 
-    <div class="field">
-      <%= form.label :kurs %><br>
-      <%= form.select :course_id, Course.all.map { |u| ["#{u.course_category.name}, #{u.course_place.name}, #{u.day.strftime('%A | %b %d')}", u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
-    </div><br>
+    <div class="row">
+      <div class="col-md-6">
+
+        <%= form.label :kurs %><br>
+        <%= form.select :course_id, Course.all.map { |u| ["#{u.course_category.name}, #{u.course_place.name}, #{u.day.strftime('%A | %b %d')}", u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :deltaker %><br>
+        <%= form.select :member_id, Member.all.map { |u| ["#{u.id} - #{u.first_name} #{u.last_name}", u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
+      </div>
+    </div>
+    <center><div class="text-muted" style="font-size: 14px;">Velg kurs eller deltaker. IKKE begge!</div></center> <br>
 
     <div class="actions">
       <%= form.submit "Gem kladde", class: 'buy-button' %>
