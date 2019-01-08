@@ -6,21 +6,21 @@ Vi har samlet følgende information:
 
 <br><br>
 
-<%= @member.first_name %> <%= @member.last_name %> 
+<strong>Navn:</strong> <%= @member.first_name %> <%= @member.last_name %> 
 
 <br><br>
 
-<% if @member.email %>Email: <%= @member.email %><% end %>
+<strong>Email:</strong> <%= @member.email %>
 
 <br><br>
 
-<% if @member.phone %>Telefon: <%= @member.phone %><% end %>
+<% if @member.phone %><strong>Telefon:</strong> <%= @member.phone %><% end %>
 
 <br><br>
 
-<% if @children.any? %>
-	Barn:<br><br>
-	<% @children.each do |c| %>
+<% if @member.children.any? %>
+	<strong>Dine barn:</strong><br><br>
+	<% @member.children.each do |c| %>
 	Navn: <%= c.first_name %> <%= c.last_name %><br>
 	Bursdag: <%= c.birthdate %><br><br>
 	<% end %>
