@@ -41,8 +41,9 @@ Rails.application.routes.draw do
   resources :course_niveaus
   resources :courses
   devise_for :members, path: 'members', controllers: { sessions: "members/sessions", registrations: "members/registrations", confirmations: "members/confirmations", passwords: "members/passwords", unlocks: "members/unlocks", sessions: "members/sessions" }
-  resources :members, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :members, only: [:index, :show, :new, :create, :edit, :update, :destroy, :gdpr] do
     resources :participations, controller: 'members/participations'
+    get '/gdpr', to: 'members#gdpr'
   end
   get '/kontoer', to: 'members#kontoer'
   get '/deltakere', to: 'participations#index'

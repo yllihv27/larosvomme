@@ -8,8 +8,11 @@ document.addEventListener("turbolinks:load", function() {
 		},
 		categories: [
 			{
+				listLocation: "children",
+				header: "<strong>Barn</strong>",
+			},{
 				listLocation: "members",
-				header: "<strong>Foreldre</strong>",
+				header: "<hr><strong>Foreldre</strong>",
 			}
 		],
 		list: {

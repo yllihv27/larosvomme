@@ -71,12 +71,12 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 						<div class="flipper">
 							<div class="front">
 								<div class="place">
-									<h2><%= city.name %></h2>							
+									<h2 style="padding-top: 45px;"><%= city.name %></h2>							
 								</div>
 							</div>
 							<div class="back">
 								<div class="place" style="background: #000 !important;border: 1px solid #323232">
-									<h2 style="color:#ff3f00">VELG KURSSTED</h2>
+									<h2 style="color:#ff3f00;font-size: 23px;">VELG KURSSTED</h2>
 									<% @course_places.each do |place| %>
 										<% if city.id == place.id %>
 											<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#f3f2f2 !important' %></p><br>

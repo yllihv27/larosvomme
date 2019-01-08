@@ -1,8 +1,8 @@
 <center>
-<div class="padding" style="background: #191919;margin:50px;border-radius: 5px;border:1px solid #323232">
+<div class="padding" style="background: #191919;border-radius: 5px;border:1px solid #323232">
 <h2>Redigér din konto</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -34,7 +34,7 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="field input-color">
     <%= f.label :passord %> <i>(la være tom hvis du ikke vil endre den)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
@@ -43,12 +43,12 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field input-color">
     <%= f.label :passord_bekreftelse %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="field input-color">
     <%= f.label :nåværende_passord %> <i>(vi trenger ditt nåværende passord for å bekrefte dine endringer)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>

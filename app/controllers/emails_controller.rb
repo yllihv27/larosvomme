@@ -1,6 +1,8 @@
 class EmailsController < ApplicationController
   before_action :set_email, only: [:sender, :show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_coach!, except: [:gdpr]
+
 
   # GET /emails
   # GET /emails.json

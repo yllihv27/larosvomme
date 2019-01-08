@@ -128,22 +128,21 @@ select { color: #000 !important }
 }
 
 .reset-button {
-  background: #fff;
-  color: #1c1c1c;
+  background: #ff5219;
   width: 100%;
   border-radius: 0.25rem !important;
-  border: 1px solid #ced4da !important;
+  border: 1px solid #ff855e !important;
   border-radius: 5px;
   padding: 7px;
   postition: relative;
-  box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px #7f290c inset, 0 1px 1px rgba(0, 0, 0, 0.1);
   line-height: 24px;
   transition: .2s;
   .reset-button-inner {
-  color: #1c1c1c !important;
+  color: #fff !important;
   }
   &:hover {
-    background: #c3c2c2;
+    background: #cc4114;
   }
 }
 
@@ -1332,5 +1331,15 @@ table a:hover { color: #8d8d8d !important; }
 
 /* ---------------------------------------------------
     END OF PARTICIPATIONS INDEX
+----------------------------------------------------- */
+
+/* ---------------------------------------------------
+    MEMBERS EDIT
+----------------------------------------------------- */
+
+.input-color input { color: #fff !important; }
+
+/* ---------------------------------------------------
+    END OF MEMBERS EDIT
 ----------------------------------------------------- */
 

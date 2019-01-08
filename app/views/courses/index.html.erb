@@ -64,7 +64,8 @@
             <div class="col-sm-7">
               <div class="card-wrapper">
                 <h4 class="card-title" style="line-height: 1em;"><%= course.course_category.name %> <%= course.course_niveau.name if course.course_niveau %> <span style="color: #ff5219"><%= 'Fullbooket!' if course.status == 'fullbooket' %></span></h4>
-                <p class="card-date"><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %></p>
+                <p class="card-date"><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %><br>
+                  <%= course.course_place.name %></p>
               </div>
             </div>
             <div class="col-sm-2 desktop">
@@ -120,9 +121,9 @@
             </li>
           </div>
           <div class="mobile">
-            <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %> <span style="color: #ff5219"><%= 'Fullbooket!' if course.status == 'fullbooket' %></span></h4>
+            <h4 class="card-title-sub"><%= course.course_place.name if course.course_place %></h4>
                 <div class="card-sub">
-                  <p style="font-weight: 700;font-size: 28px;" ><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></p><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %>
+                  <p style="font-weight: 700;font-size: 28px;" ><%= course.time_from.strftime("%H:%M") if course.time_from %>-<%= course.time_to.strftime("%H:%M") if course.time_to %></p><%= I18n.localize(course.day, format: "%A, %b %d").capitalize %><br><%= course.course_place.name %>
                 </div>
                 <div class="card-sub" style="font-size: 16px">
                   <% if course.status == "ledig" %><%= course.spots_left %> seter igjen<br><% end %>

@@ -4,6 +4,10 @@ class PagesController < ApplicationController
   #before_action :set_sub_nav, only: [:rediger, :destroy]
   before_action :authenticate_coach!, only: :rediger
 
+  def gdpr
+    @member = Member.all
+  end
+
   def personvern
   end
 

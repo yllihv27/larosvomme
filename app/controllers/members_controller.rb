@@ -1,8 +1,19 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :check_member, only: [:show]
+  before_action :check_member, only: [:show, :edit]
   #before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, except: [:new, :create, :show, :tilfoj_barn]
+  before_action :authenticate_coach!, except: [:new, :edit, :create, :show, :tilfoj_barn, :gdpr]
+  layout 'signup', only: :edit
+
+  def gdpr
+    @member = Member.find_by_id(params[:id])
+    @children = Child.where(member_id: @member)
+    @grandparents = Grandparent.where(member_id: @member)
+    if params[:commit]
+      MemberMailer.gdpr(current_member,@children,@grandparents).deliver
+      redirect_to member_gdpr_path, notice: "Dine data sendes til #{current_member.email}. For mer informasjon, sjekk vår personvernpolicy hvor du får mer info om hvor, hvordan og hvorfor vi lagrer dataene dine."
+    end
+  end
 
   def show
 	  @member = Member.find(params[:id])
@@ -53,9 +64,10 @@ class MembersController < ApplicationController
 
 
   def update
+    @member = Member.find_by_id(params[:id])
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to @member, notice: 'Din kon.' }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit }
