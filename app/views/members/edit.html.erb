@@ -39,6 +39,25 @@
       <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
         <div class="row">
           <div class="col-md-6 col-sm-6">
+            <strong>Kontaktperson:</strong>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= link_to 'Opprett', legg_til_kontaktperson_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;float:right' %>
+          </div>
+        </div>
+
+        <% if @contact_people.any? %>
+          <% @contact_people.each do |gp| %>
+            <%= gp.first_name %> <%= gp.first_name %> <%= link_to "Rediger", edit_conact_person_path(gp), style: 'color: #00394c !important;font-size:12px' %> <br>
+          <% end %>
+        <% else %>
+          <em>Ingen kontaktpersoner</em>
+        <% end %>
+      </div>
+        <br><br>
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
             <strong>Besteforelder:</strong>
           </div>
           <div class="col-md-6 col-sm-6">

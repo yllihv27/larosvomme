@@ -59,7 +59,7 @@
         <li>
           <div class="row course-card">
             <div class="col-sm-3">
-              <%= link_to (image_tag (course.course_category.course_image.url(:product)), class: 'course-image'), course_path(course) if course.course_category.course_image? %>
+              <%= image_tag (course.course_category.course_image.url(:product)), class: 'course-image' if course.course_category.course_image? %>
             </div>
             <div class="col-sm-7">
               <div class="card-wrapper">

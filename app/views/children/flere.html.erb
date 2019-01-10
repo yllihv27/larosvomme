@@ -26,9 +26,10 @@
   <%= f.date_field :birthdate %>
   <br>
   <em style="cursor:pointer;font-size:12px;color:#777" onclick="myFunction('vis');">Viser ikke datofelt?</em><br><br>
-  <div style="display: none" id="vis"><%= f.date_select :birthdate, :start_year => 1980, :end_year => 2019 %><br><br></div>
+  <div style="display: none" id="vis"><%= f.date_select :birthdate, :start_year => 1980, :end_year => 2019 %><br></div>
+  <hr style="border: 1px solid color: #606060"><br>
 
-  <%= link_to '..eller gå til kurs oversigt', kurs_path, style: 'font-weight:300;font-size: 22px;color:#c3c2c2 !important;font-style:italic;' %>
+  <%= link_to '..eller gå til kurs oversigt', kurs_path, class: 'discreet-button' %>
 
   <%= f.submit "Legg til barn", class: 'buy-button' %>
 

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<center><h2>Kontaktperson:</h2></center>
+<br>
+<p>
+  <strong>Fornavn:</strong>
+  <%= @contact_person.first_name %>
+</p>
+<br>
+<p>
+  <strong>Etternavn:</strong>
+  <%= @contact_person.last_name %>
+</p>
+<br>
+<p>
+  <strong>Relasjon:</strong>
+  <%= @contact_person.relation if @contact_person.relation %>
+</p>
+<br>
+<p>
+  <strong>Telefon:</strong>
+  <%= @contact_person.phone if @contact_person.phone %>
+</p>
+<br>
+
+<p>
+  <strong>Konto:</strong>
+  <%= @contact_person.member.first_name %> <%= @contact_person.member.last_name %> 
+</p>
+

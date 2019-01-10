@@ -32,13 +32,21 @@
 						  </div>
 				  		<div class="col-md-8col-sm-8">
 				  			<%= p.child.first_name %> <%= p.child.last_name %>
-				  		</div><br>
+				  		</div>
 				  		<div class="col-md-4 col-sm-4">
 							  <i class="fa fa-flag"></i> Alder:
 							</div>
 				  		<div class="col-md-8 col-sm-8">
 								<%= p.child.order_age %> år
 							</div><br>
+							<% if p.contact_person %>
+					  		<div class="col-md-4 col-sm-4">
+								  <i class="fa fa-car"></i> Hentes av:
+								</div>
+					  		<div class="col-md-8 col-sm-8">
+					  			<%= p.contact_person.first_name.capitalize %> <%= p.contact_person.last_name.capitalize %>
+								</div>
+						  <% end %><br>
 							<% if p.grandparent %>
 					  		<div class="col-md-4 col-sm-4">
 								  <i class="fa fa-car"></i> Hentes av:

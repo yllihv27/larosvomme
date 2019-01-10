@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   get '/kurs', to: 'courses#index'
   resources :emails
   get '/send-email', to: 'emails#send_email'
+  resources :contact_people
+  get '/kontaktperson', to: 'contact_people#new'
+  post '/kontaktperson', to: 'contact_people#create'
+  get '/legg-til-kontaktperson', to: 'contact_people#legg_til_kontaktperson'
+  post '/legg-til-kontaktperson', to: 'contact_people#create'
   resources :grandparents
   get '/besteforeldre', to: 'grandparents#new'
   post '/besteforeldre', to: 'grandparents#create'
@@ -28,6 +33,8 @@ Rails.application.routes.draw do
   resources :orders do
     resources :grandparents
     get '/bedsteforelder', to: 'grandparents#new'
+    resources :contact_people
+    get '/kontaktperson', to: 'contact_people#new'
   end
   resources :course_ages
   resources :course_categories
@@ -48,6 +55,11 @@ Rails.application.routes.draw do
   end
   get '/kontoer', to: 'members#kontoer'
   get '/deltakere', to: 'participations#index'
+  namespace 'deltakere' do
+    resources :courses do
+      resources :participations, controller: '/participations'
+    end
+  end
   devise_scope :member do
     get '/logg-in', to: 'members/sessions#new'
     post '/logg-in', to: 'members/sessions#create'

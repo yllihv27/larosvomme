@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   has_and_belongs_to_many :courses
   has_many :children
   has_many :grandparents
+  has_many :contact_people
   has_many :emails
   mount_uploader :profile_pic, ProfilePicUploader
   paginates_per 10

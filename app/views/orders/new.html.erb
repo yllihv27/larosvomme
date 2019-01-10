@@ -1,4 +1,4 @@
-<div id="notice"><%= notice %></div
+<div id="notice"><%= notice %></div>
 <div class="order-page">
 	<h2>Sjekk utt</h2>
 
@@ -54,19 +54,28 @@
 				</div>
 			<% end %><br>
 
-			<div style="font-size: 13px;color:#777"> Barnet vises ikke? <span style="color:#666"><%= link_to 'Legg til en', barn_path, target: :blank %></span> (og refresh siden).</div><br>
+			<div style="font-size: 13px;color:#777"> Barnet vises ikke? <span style="color:#666"><%= link_to 'Legg til', barn_path, target: :blank %></span> (og refresh siden).</div>
 		<% end %>
 
 		<hr>
 
-	  <em style="cursor:pointer;font-size:16px;color:#f3f2f2" onclick="myFunction('vis');"></i> Henter en bedsteforeldre?</em><br><br>
+	  <em style="cursor:pointer;font-size:16px;color:#f3f2f2" onclick="myFunction('vis');"></i>Skal en kontaktperson hente barnet?</em><br><br>
 	  <div style="display: none" id="vis">
-	  	<% if current_member.grandparents.any? %>
-		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforelder", class: "chosen-select" %><br>
-			  <div style="font-size: 13px;color:#777">Skal en <span style="color:#666"><%= link_to 'besteforelder', besteforeldre_path %></span> hente barnet?.
+	  	<% if current_member.contact_people.any? %>
+		  	<%= select_tag "contact_person_id", options_from_collection_for_select(ContactPerson.all.where(member_id: current_member.id), "id", "first_name",params[:contact_person_id]), :prompt => "Velg kontaktperson", class: "chosen-select" %><br>
+			  <div style="font-size: 13px;color:#777">Legg til en annen kontakperson <span style="color:#666"><%= link_to 'hér', kontaktperson_path %></span>.
 			  </div>
 	  	<% else %>
-			  <div style="font-size: 16px;color:#777"> Først <span style="color:#666"><%= link_to 'legg til besteforelder', besteforeldre_path, style: 'color: #ff3f00 !important' %></span>.
+			  <div style="font-size: 13px;color:#777"> Legg til kontaktperson <span style="color:#666"><%= link_to 'hér', kontaktperson_path, style: 'color: #ff3f00 !important' %></span>.
+			  </div>
+	  	<% end %>
+	  	<% if current_member.grandparents.any? %>
+	  	<br>
+		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforelder", class: "chosen-select" %><br>
+			  <div style="font-size: 13px;color:#777">Legg til en annen besteforelder <span style="color:#666"><%= link_to 'her', besteforeldre_path %></span>.
+			  </div>
+	  	<% else %>
+			  <div style="font-size: 13px;color:#777"> Legg til besteforelder <span style="color:#666"><%= link_to 'hér', besteforeldre_path %></span>.
 			  </div>
 	  	<% end %>
 	  </div>

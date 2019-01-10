@@ -17,6 +17,16 @@
 			<% end %>
 		</div>
 		<% end %><br>
+		<% if @member.contact_people.any? %>
+		<div style="background: #1c1c1c;padding:10px;">
+			Dine kontaktpersoner: <hr>
+			<% @member.contact_people.each do |cp| %>
+			<%= cp.first_name %> <%= cp.last_name %><br>
+			<%= cp.relation if cp.relation %><br>
+			<%= cp.phone if cp.phone %><br>
+			<% end %>
+		</div>
+		<% end %>
 		<% if @member.grandparents.any? %>
 		<div style="background: #1c1c1c;padding:10px;">
 			Dine besteforeldre: <hr>
@@ -25,18 +35,28 @@
 			<% end %>
 		</div>
 		<% end %>
-		<% @participations.each do |p| %>
-			<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
-		<% end %>
-		<% @courses.each do |c| %>
-			<% if c.day.future? %>
-				<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+		<div style="background: #1c1c1c;padding:10px;">
+			Dine deltakelser:
+			<hr>
+			<% @participations.each do |p| %>
+				<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
 			<% end %>
-		<% end %>
+		</div>
+		<br>
+		<div style="background: #1c1c1c;padding:10px;">
+			Dine kurs:
+			<hr>
+			<% @courses.each do |c| %>
+				<% if c.day.future? %>
+					<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
 	<div class="col-xs-6 col-md-4">
 		<%= link_to "Redigér konto", edit_member_registration_path, class: 'btn btn-primary' %><br><br>
 		<%= link_to "Legg til barn", barn_path, class: 'btn btn-primary' %><br><br>
+		<%= link_to "Legg til kontaktperson", kontaktperson_path, class: 'btn btn-primary' %><br><br>
 		<%= link_to "Legg til besteforeldre", besteforeldre_path, class: 'btn btn-primary' %><br><br>
 		<%= link_to "Dine kurs", orders_path, class: 'btn btn-primary' %><br><br>
 		<%= link_to "Find kurs", courses_path, class: 'btn btn-primary' %>

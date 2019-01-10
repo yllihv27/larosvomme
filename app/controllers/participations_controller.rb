@@ -13,6 +13,17 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find_by(params[:id])
     @member = Member.find_by(params[:id])
     @children = Child.all
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CourseParticipations.new
+        send_data pdf.render, filename: "deltakere_#{Date.today.strftime("%A %b %d")}",
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
+
   end
 
   # GET /participations/1
@@ -91,6 +102,6 @@ class ParticipationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participation_params
-      params.require(:participation).permit(:member_id, :course_id, :child_id, :grandparent_id, :order_id)
+      params.require(:participation).permit(:member_id, :course_id, :child_id, :grandparent_id, :contact_person_id, :order_id)
     end
 end

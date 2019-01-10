@@ -26,6 +26,15 @@ Vi har samlet følgende information:
 	<% end %>
 <% end %>
 
+
+<% if @contact_people.any? %>
+	Kontaktpersoner:<br><br>
+	<% @contact_people.each do |cp| %>
+	Navn: <%= cp.first_name %> <%= cp.last_name %><br>
+	<%= "Telefon: #{cp.phone}" if cp.phone %><br><br>
+	<% end %>
+<% end %>
+
 <% if @grandparents.any? %>
 	Besteforeldre:<br><br>
 	<% @grandparents.each do |b| %>

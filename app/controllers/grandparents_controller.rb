@@ -38,7 +38,7 @@ class GrandparentsController < ApplicationController
     respond_to do |format|
       if member_signed_in?
         if @grandparent.save
-          format.html { redirect_to kurv_sjekk_ut_path, notice: 'Besteforeldre ble opprettet' }
+          format.html { redirect_to kurv_sjekk_ut_path, notice: 'Besteforelder ble opprettet' }
           format.json { render :show, status: :created, location: @grandparent }
         else
           format.html { render :new }
@@ -46,7 +46,7 @@ class GrandparentsController < ApplicationController
         end
       else
         if @grandparent.save
-          format.html { redirect_to @grandparent, notice: 'Besteforeldre ble opprettet' }
+          format.html { redirect_to @grandparent, notice: 'Besteforelder ble opprettet' }
           format.json { render :show, status: :created, location: @grandparent }
         else
           format.html { render :new }
@@ -61,7 +61,7 @@ class GrandparentsController < ApplicationController
   def update
     respond_to do |format|
       if @grandparent.update(grandparent_params)
-        format.html { redirect_to @grandparent, notice: 'Besteforeldre ble oppdattert.' }
+        format.html { redirect_to @grandparent, notice: 'Besteforelder ble oppdattert.' }
         format.json { render :show, status: :ok, location: @grandparent }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class GrandparentsController < ApplicationController
   def destroy
     @grandparent.destroy
     respond_to do |format|
-      format.html { redirect_to grandparents_url, notice: 'Besteforeldre ble slettet.' }
+      format.html { redirect_to grandparents_url, notice: 'Besteforelder ble slettet.' }
       format.json { head :no_content }
     end
   end

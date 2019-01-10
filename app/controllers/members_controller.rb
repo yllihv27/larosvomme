@@ -8,8 +8,9 @@ class MembersController < ApplicationController
     @member = Member.find_by_id(params[:id])
     @children = Child.where(member_id: @member)
     @grandparents = Grandparent.where(member_id: @member)
+    @contact_people = Grandparent.where(member_id: @member)
     if params[:commit]
-      MemberMailer.gdpr(current_member,@children,@grandparents).deliver
+      MemberMailer.gdpr(current_member,@children,@grandparents,@contact_people).deliver
       redirect_to member_gdpr_path, notice: "Dine data er sendt til #{current_member.email}. For mer informasjon, sjekk vår personvernpolicy hvor du får mer info om hvor, hvordan og hvorfor vi lagrer dataene dine."
     end
   end

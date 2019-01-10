@@ -54,7 +54,7 @@ class CoursesController < ApplicationController
     end
 
     @member = Member.new
-
+    
   end
 
   def edit_courses

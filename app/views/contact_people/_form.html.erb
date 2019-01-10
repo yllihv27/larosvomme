@@ -1,10 +1,10 @@
-<%= form_with(model: grandparent, local: true) do |form| %>
-  <% if grandparent.errors.any? %>
+<%= form_with(model: contact_person, local: true) do |form| %>
+  <% if contact_person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(grandparent.errors.count, "error") %> prohibited this grandparent from being saved:</h2>
+      <h2><%= pluralize(contact_person.errors.count, "error") %> prohibited this contact_person from being saved:</h2>
 
       <ul>
-      <% grandparent.errors.full_messages.each do |message| %>
+      <% contact_person.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -22,10 +22,20 @@
   <div class="field">
     <%= form.label :etternavn %>
     <%= form.text_field :last_name %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :telefon %> (valgfri)
+    <%= form.text_field :phone %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :relasjon %>
+    <%= form.text_field :relation %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Legg til besteforelder' %>
+    <%= form.submit 'Legg til kontaktperson' %>
   </div>
   <%= link_to '← tilbake', kurv_sjekk_ut_path, style: 'font-weight:300;font-size: 22px;color:#c3c2c2 !important;font-style:italic;' %>
 <% end %>

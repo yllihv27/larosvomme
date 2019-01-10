@@ -13,7 +13,7 @@ class MemberMailer < ActionMailer::Base
 			)
 	end
 
-	def gdpr(member, children, grandparents)
+	def gdpr(member, children, grandparents, contact_people)
 		@member = member
 		@children = children
 		@grandparents = grandparents

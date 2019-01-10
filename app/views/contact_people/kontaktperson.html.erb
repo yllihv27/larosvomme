@@ -1,0 +1,28 @@
+<%= form_with(model: @contact_person, local: true) do |f| %>
+  <% if @contact_person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_person.errors.count, "error") %> prohibited this contact_person from being saved:</h2>
+
+      <ul>
+      <% @contact_person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<center>
+
+  <h2>Legg til kontaktperson</h2>
+
+  <%= f.text_field :first_name, placeholder: 'Kontaktperson Fornavn' %><br />
+  <%= f.text_field :last_name, placeholder: 'Kontaktperson Etternavn' %><br />
+  <%= f.text_field :relation, placeholder: 'Relasjon' %><br />
+  <%= f.text_field :phone, placeholder: 'Telefon' %> valgfri<br />
+  <hr style="border: 1px solid color: #606060"><br>
+
+  <%= link_to 'Hopp over', kurs_path, class: 'discreet-button' %>
+
+  <%= f.submit "Legg til kontaktperson", class: 'buy-button' %>
+
+  </center>
+<% end %>
