@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Members::SessionsController < Devise::SessionsController
-  skip_before_action :verify_authenticity_token, :only => :create
+  skip_before_action :verify_authenticity_token
   layout 'signup'
   #include Accessible
   #skip_before_action :check_coach, only: :destroy
