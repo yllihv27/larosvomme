@@ -13,7 +13,18 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find_by(params[:id])
     @member = Member.find_by(params[:id])
     @children = Child.all
+  end
 
+  def pending
+    @participations = Participation.all
+    @ventende = Participation.pending
+    if params[:commit]
+      @participation = Participation.find_by_id(params[:id])
+      @member = Member.find_by_id(params[:member_id])
+      @participation.accepted!
+      MemberMailer.accepted(@member,@participation).deliver
+      flash[:notice] = "Registrering er godkjent!"
+    end
   end
 
   # GET /participations/1
@@ -92,6 +103,6 @@ class ParticipationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participation_params
-      params.require(:participation).permit(:member_id, :course_id, :child_id, :grandparent_id, :contact_person_id, :order_id)
+      params.require(:participation).permit(:member_id, :course_id, :child_id, :grandparent_id, :contact_person_id, :order_id, :status, :activity)
     end
 end

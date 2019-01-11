@@ -1329,6 +1329,20 @@ table a:hover { color: #8d8d8d !important; }
     PARTICIPATIONS INDEX
 ----------------------------------------------------- */
 
+.pending-registrations-button {
+  float: right;
+  border: 1px solid #ff3f00;
+  border-radius: 5px;
+  padding: 5px;
+  color: #ff3f00 !important;
+  font-size: 14px; margin-right: 20px;
+  font-family: helvetica neue;
+  transition: .3s;
+  &:hover {
+    box-shadow: 2px 2px #ff3f00;
+  }
+}
+
 /* ---------------------------------------------------
     END OF PARTICIPATIONS INDEX
 ----------------------------------------------------- */
@@ -1342,4 +1356,3 @@ table a:hover { color: #8d8d8d !important; }
 /* ---------------------------------------------------
     END OF MEMBERS EDIT
 ----------------------------------------------------- */
-

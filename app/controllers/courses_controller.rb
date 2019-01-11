@@ -93,10 +93,10 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-    create_list
+    #create_list
     respond_to do |format|
       if @course.save
-        create_list
+        #create_list
         format.html { redirect_to @course, notice: 'Kurset ble opprettet.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -134,31 +134,31 @@ class CoursesController < ApplicationController
 
   private
 
-    def create_list
-      gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4", api_endpoint: "https://us4.api.mailchimp.com")
-      gibbon.timeout = 10
-      gibbon.lists.create(body: {
-          name: "#{@course.id} #{@course.course_category.name}",
-          contact: {
-              company: "Preisler Media",
-              address1: "address one",
-              address2: "address two",
-              city: "Egedal",
-              state: "Denmark",
-              zip: "3650",
-              country: "Denmark",
-              phone: "+4542836608"
-          },
-          permission_reminder: "You are receiving this email, because you subscribed our product.",
-          campaign_defaults: {
-              from_name: "Jonas Preisler",
-              from_email: "jonas.preisler@gmail.com",
-              subject: "hello!",
-              language: "en"
-          },
-          email_type_option: true
-      })
-    end
+    #def create_list
+    #  gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4", api_endpoint: "https://us4.api.mailchimp.com")
+    #  gibbon.timeout = 10
+    #  gibbon.lists.create(body: {
+    #      name: "#{@course.id} #{@course.course_category.name}",
+    #      contact: {
+    #          company: "Preisler Media",
+    #          address1: "address one",
+    #          address2: "address two",
+    #          city: "Egedal",
+    #          state: "Denmark",
+    #          zip: "3650",
+    #          country: "Denmark",
+    #          phone: "+4542836608"
+    #      },
+    #      permission_reminder: "You are receiving this email, because you subscribed our product.",
+    #      campaign_defaults: {
+    #          from_name: "Jonas Preisler",
+    #          from_email: "jonas.preisler@gmail.com",
+    #          subject: "hello!",
+    #          language: "en"
+    #      },
+    #      email_type_option: true
+    #  })
+    #end
 
     def set_course
       @course = Course.find(params[:id])

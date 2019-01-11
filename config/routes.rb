@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :sub_navs
   resources :contents
   resources :participations
+  get '/ventende', to: 'participations#pending'
   resources :cities
   resources :pages
   resources :navs
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
   end
   get '/kontoer', to: 'members#kontoer'
   get '/deltakere', to: 'participations#index'
+  post '/ventende', to: 'participations#pending'
   namespace 'deltakere' do
     resources :courses, controller: '/courses'
   end

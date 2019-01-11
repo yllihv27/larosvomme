@@ -12,4 +12,12 @@ class Child < ApplicationRecord
 		now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
 	end
 
+	def update_level
+		@participation = Participation.where(child_id: @children)
+		@child = Child.where(id: @participation.child_id)
+		if @participation.current
+			@child.update(level: Child.levels[(@child.level.to_i + 1).to_sym])
+		end
+	end
+	
 end

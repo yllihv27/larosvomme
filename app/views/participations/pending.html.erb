@@ -1,0 +1,34 @@
+<h2 style="padding-top;padding-left: 50px;">Ventende registreringer</h2>
+<div class="page-card">
+  <table class="table table-hover">
+  <thead>
+    <tr style="font-size: 14px">
+      <th>ID</th>
+      <th>Barn</th>
+      <th>Alder</th>
+      <th>Email</th>
+      <th>Kurs</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @ventende.each do |p| %>
+        <tr style="color:#000 !important;">
+          <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
+          <td><i class="fa fa-child"></i>  <%= link_to p.child.first_name, edit_child_path(p.child) if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child) if p.child %><br>
+            <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
+          <td><% if p.child %><%= p.child.order_age if p.child.birthdate.present? %><% end %></td>
+          <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
+          <td><%= link_to p.course.course_category.name, course_path(p.course) %> <%= link_to p.course.course_niveau.name, course_path(p.course) %> <br><%= link_to p.course.course_place.name, course_path(p.course) %></td>
+          <td><div style="float:right">
+            <%= form_tag('/ventende', method: :get) do |f| %>
+              <%= hidden_field_tag :id, p.id %>
+              <%= hidden_field_tag :member_id, p.member_id %>
+              <%= submit_tag 'Godkjenne', class: 'blue-button' %>
+            <% end %>
+            <%#= form_for p do |f| %><%#= f.hidden_field :status, value: 'accepted' %><%#= f.submit 'Godkjenne', class: 'blue-button' %><%# end %></div></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

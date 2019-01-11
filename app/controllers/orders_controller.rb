@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   def show
     @order_items = OrderItem.where(order_id: @order.id)
     @participations = Participation.where(order_id: @order)
+    @participation = Participation.where(order_id: @order)
     #@grandparents = Grandparent.where(order_id: @order)
   end
 
@@ -59,7 +60,7 @@ class OrdersController < ApplicationController
   <polyline class='path check' fill='none' stroke='#73AF55' stroke-width='6' stroke-linecap='round' stroke-miterlimit='10' points='100.2,40.2 51.5,88.8 29.8,67.5 '/>
 </svg>
 <br>
-<p class='success' style='text-align: center;margin: 20px 0 60px;font-size: 1.25em;'>Ordre gennemført!</p>"
+<p class='success' style='text-align: center;margin: 20px 0 60px;font-size: 1.25em;'>Ordrer sendes til PowerOffice, slik at vi kan sørge for at du er satt opp for riktig kurs - vent på bekreftelse!</p>"
     else
       render :new
     end

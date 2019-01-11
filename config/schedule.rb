@@ -1,4 +1,7 @@
-if child.course.day == Date.today
-	every 1.day, :at => '4.30 am' do
-  runner "YourModel.check_updated_at"
+every 2.minutes do
+  runner "Participation.update_participation"
+end
+
+every 2.minutes do
+  rake "Child.update_level"
 end

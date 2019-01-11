@@ -11,13 +11,13 @@
 		<% @courses.each do |c| %>
 			<% if c.day.past? %>
 				<div class="text-muted">
-					<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+					<%= c.course_niveau.name %> <%= c.course_category.name %> <%= c.course_place.name %> <%= c.day.strftime('%A | %b %d') %><hr style="border: 1px solid #c3c2c2">
 				</div>
 			<% end %>
 		<% end %>
 		<% @courses.each do |c| %>
 			<% if c.day.future? %>
-				<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+				<%= c.course_niveau.name %> <%= c.course_category.name %> <%= c.course_place.name %> <%= c.day.strftime('%A | %b %d') %><hr style="border: 1px solid #c3c2c2">
 			<% end %>
 		<% end %>
 	</div>
