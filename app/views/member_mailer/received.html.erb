@@ -1,0 +1,20 @@
+<stong>Velkommen <%= @member.first_name %>!</stong>
+<br><br><br>
+Dette er en e-post for å bekrefte ditt ønske om å registrere deg for kurs:<br><br>
+
+<strong><%= @participation.course.course_category.name %> <%= @participation.course.course_niveau.name %> <br>
+<%= @participation.course.course_place.name %><br>
+<%= @participation.course.course_day %></strong>
+<br><br>
+Din registrering er <strong>ikke bekreftet ennå</strong>.<br>
+Du vil motta en e-postbekreftelse innen de neste 3 dagene.
+<br>
+
+<br><br>
+Ha en god dag!
+<br><br>
+Med vennlig hilsen
+<br>
+XXX XXXX
+<br>
+www.larosvomme.no

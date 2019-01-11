@@ -52,6 +52,9 @@ class OrdersController < ApplicationController
     if @participations.count == @course.limit
       @course.fullbooket!
     end
+    @member = current_member
+    @participation = @participations.first
+    MemberMailer.received(@member,@participation).deliver
 
     if @order.update_attributes(order_params.merge(status: 'open'))
       session[:cart_token] = nil

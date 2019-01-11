@@ -12,6 +12,19 @@ class MemberMailer < ActionMailer::Base
 			)
 	end
 
+	def received(member, participation)
+		@member = member
+		@participation = participation
+	  #attachments["Leads (#{Date.today.strftime("%A %b %d")}).xml"] = {mime_type: 'text/xml', content: xml}
+		mail(
+			to: member.email,
+			from: "<bestdealerchat@jonaspreisler.com>",
+			subject: "Vi har mottatt din registrering. Vent til bekreftelse.",
+			body: "#{render 'member_mailer/received'}",
+		  content_type: "text/html"
+			)
+	end
+
 	def accepted(member, participation)
 		@member = member
 		@participation = participation
@@ -24,6 +37,7 @@ class MemberMailer < ActionMailer::Base
 		  content_type: "text/html"
 			)
 	end
+
 	def gdpr(member, children, grandparents, contact_people)
 		@member = member
 		@children = children
