@@ -9,9 +9,9 @@ class Participation < ApplicationRecord
 
 	def update_participation
 		if course.day.between?(Date.today - 10.days, Date.today)
-			status == 'current'
+  		@participation.update(activity: 'current')
 		else
-			status == 'not_current'
+  		@participation.update(activity: 'not_current')
 		end
 	end
 end
