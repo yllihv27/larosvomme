@@ -56,9 +56,7 @@ Rails.application.routes.draw do
   get '/kontoer', to: 'members#kontoer'
   get '/deltakere', to: 'participations#index'
   namespace 'deltakere' do
-    resources :courses do
-      resources :participations, controller: '/participations'
-    end
+    resources :courses, controller: '/courses'
   end
   devise_scope :member do
     get '/logg-in', to: 'members/sessions#new'

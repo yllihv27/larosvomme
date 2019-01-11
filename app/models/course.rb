@@ -16,6 +16,10 @@ class Course < ApplicationRecord
   	I18n.localize(day, format: '%A | %b %d').split.map(&:capitalize).join(' ')
   end
 
+  def course_day_pdf
+    I18n.localize(day, format: "%A %d. %b - '%y").split.map(&:capitalize).join(' ')
+  end
+
   def course_name
     unless day.past?
       if course_niveau.present?

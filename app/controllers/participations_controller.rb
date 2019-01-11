@@ -14,16 +14,6 @@ class ParticipationsController < ApplicationController
     @member = Member.find_by(params[:id])
     @children = Child.all
 
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = CourseParticipations.new
-        send_data pdf.render, filename: "deltakere_#{Date.today.strftime("%A %b %d")}",
-        type: "application/pdf",
-        disposition: "inline"
-      end
-    end
-
   end
 
   # GET /participations/1

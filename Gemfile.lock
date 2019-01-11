@@ -383,6 +383,8 @@ GEM
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -548,6 +550,7 @@ DEPENDENCIES
   pg
   popper_js
   prawn
+  prawn-table (~> 0.2.2)
   puma (~> 3.11)
   rails (~> 5.2.1, >= 5.2.1.1)
   ransack

@@ -45,6 +45,7 @@ class ChildrenController < ApplicationController
   def create
     @child = Child.new(child_params)
     @child.member_id = current_member.id if member_signed_in?
+    @child.course_niveau_id = 1
 
     respond_to do |format|
       if @child.save
@@ -89,6 +90,6 @@ class ChildrenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
-      params.require(:child).permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate)
+      params.require(:child).permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate, :course_niveau_id)
     end
 end

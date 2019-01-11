@@ -66,7 +66,18 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @members = Member.all
-    @participations = @course.members
+    #@participations = @course.members
+    @participations = Participation.where(course_id: @course)
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CoursePdf.new(@course,@participations)
+        send_data pdf.render, filename: "deltakere_#{@course.id}_#{Date.today.strftime("%A %b %d")}.pdf",
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
   end
 
   # GET /courses/new
@@ -115,7 +126,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      mailchimp_client.lists(mailchimp_list_id).webhooks("1694275d82").delete
+      #mailchimp_client.lists(mailchimp_list_id).webhooks("1694275d82").delete
       format.html { redirect_to courses_url, notice: 'Kurset ble slettet.' }
       format.json { head :no_content }
     end
