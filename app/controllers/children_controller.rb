@@ -90,6 +90,6 @@ class ChildrenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
-      params.require(:child).permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate, :course_niveau_id)
+      params.require(:child).permit(:first_name, :last_name, :member_id, :course_id, :order_id, :birthdate, :course_niveau_id, :level)
     end
 end

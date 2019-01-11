@@ -23,7 +23,6 @@ class Members::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         sign_up(resource_name, resource)
         #respond_with resource, location: after_sign_up_path_for(resource)
-        subscribe
 
         MemberMailer.welcome(@member).deliver
         sign_in(@member)
