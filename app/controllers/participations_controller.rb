@@ -13,6 +13,7 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find_by(params[:id])
     @member = Member.find_by(params[:id])
     @children = Child.all
+    @currents = Participation.all.current
   end
 
   def pending

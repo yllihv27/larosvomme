@@ -56,6 +56,7 @@ class MembersController < ApplicationController
     @participation = Participation.new
     @children = Child.where(member_id: @member)
     @grandparents = Grandparent.where(member_id: @member)
+    @contact_people = ContactPerson.where(member_id: @member)
   end
 
   def new

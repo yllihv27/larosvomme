@@ -1329,6 +1329,12 @@ table a:hover { color: #8d8d8d !important; }
     PARTICIPATIONS INDEX
 ----------------------------------------------------- */
 
+@keyframes blinker {  
+100%{opacity: 1;}
+50%{opacity: .9;}
+15%{opacity: .8;}
+0%{opacity: 0;}
+}
 .pending-registrations-button {
   float: right;
   border: 1px solid #ff3f00;
@@ -1338,6 +1344,7 @@ table a:hover { color: #8d8d8d !important; }
   font-size: 14px; margin-right: 20px;
   font-family: helvetica neue;
   transition: .3s;
+  animation: blinker 6s ease-out infinite;
   &:hover {
     box-shadow: 2px 2px #ff3f00;
   }

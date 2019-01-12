@@ -3,10 +3,6 @@ class EmailsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_coach!, except: [:gdpr]
 
-  def send_email
-  end
-
-
   def index
     @emails = Email.all.order('created_at DESC')
     #gibbon = Gibbon::Request.new(api_key: "a36eb6b7f8545edd6e029a78dcd8dca2-us4", debug: true)

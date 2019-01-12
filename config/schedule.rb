@@ -1,7 +1,9 @@
-every 2.minutes do
-  runner "Participation.update_participation"
+set :environment, "development"
+
+every 1.day do
+  rake "update_participation"
 end
 
-every 2.minutes do
-  rake "Child.update_level"
+every 1.day do
+  rake "update_child_level"
 end

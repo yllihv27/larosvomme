@@ -26,6 +26,7 @@
 //= require cocoon
 //= ekko-lightbox
 //= ekko-lightbox.min
+//= loading-bar
 //= require global
 //= require_tree .
 
