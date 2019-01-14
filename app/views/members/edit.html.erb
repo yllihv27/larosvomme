@@ -48,7 +48,7 @@
 
         <% if @contact_people.any? %>
           <% @contact_people.each do |gp| %>
-            <%= gp.first_name %> <%= gp.first_name %> <%= link_to "Rediger", edit_conact_person_path(gp), style: 'color: #00394c !important;font-size:12px' %> <br>
+            <%= gp.first_name %> <%= gp.first_name %> <%= link_to "Rediger", edit_contact_person_path(gp), style: 'color: #00394c !important;font-size:12px' %> <br>
           <% end %>
         <% else %>
           <em>Ingen kontaktpersoner</em>

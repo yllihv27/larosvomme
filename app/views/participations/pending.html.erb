@@ -24,7 +24,8 @@
             <%= form_tag('/ventende', method: :get) do |f| %>
               <%= hidden_field_tag :id, p.id %>
               <%= hidden_field_tag :member_id, p.member_id %>
-              <%= submit_tag 'Godkjenne', class: 'blue-button' %>
+              <%= submit_tag 'Godkjenne', class: 'blue-button' %><br>
+              <center><span style="color: #777;"><%= p.created_at.strftime('%b %d') %></span></center>
             <% end %>
             <%#= form_for p do |f| %><%#= f.hidden_field :status, value: 'accepted' %><%#= f.submit 'Godkjenne', class: 'blue-button' %><%# end %></div></td>
         </tr>

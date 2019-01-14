@@ -65,7 +65,51 @@ Trivsel i vann er som ett puslespill bestående av mange små brikker. Opplevels
 <div class="bg-header-2" style="background-image: url(jente-som-svommer-under-vann.jpg);color:#aaa9a9;padding-top:50px;">
 	<center>
 		<div class="row" style="padding: 50px" data-aos="fade-up">
-			<% @cities.each do |city| %>
+			<% @cities.limit(3).each do |city| %>
+				<div class="col-md-3 col-sm-3">
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+								<div class="place">
+									<h2 style="padding-top: 45px;"><%= city.name %></h2>							
+								</div>
+							</div>
+							<div class="back">
+								<div class="place" style="background: #000 !important;border: 1px solid #323232">
+									<h2 style="color:#ff3f00;font-size: 23px;">VELG KURSSTED</h2>
+									<% @course_places.each do |place| %>
+										<% if city.id == place.id %>
+											<p style="font-size: 16px"><%= link_to place.name, place, style: 'color:#f3f2f2 !important' %></p><br>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			<% end %>
+				<div class="col-md-3 col-sm-3">
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+								<div class="place">
+									<h2 style="padding-top: 25px;">ANDRE AKTIVITETER</h2>							
+								</div>
+							</div>
+							<div class="back">
+								<div class="place" style="background: #000 !important;border: 1px solid #323232">
+									<h2 style="color:#ff3f00;font-size: 23px;"> </h2>
+									<p style="font-size: 16px;color:#f3f2f2"> </p><br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+		</div>
+		<div class="row" style="padding: 50px" data-aos="fade-up">
+			<% @cities.offset(3).each do |city| %>
 				<div class="col-md-3 col-sm-3">
 					<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 						<div class="flipper">

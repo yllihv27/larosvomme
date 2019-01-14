@@ -1,4 +1,4 @@
-coaches = Coach.create!([{name: 'Jonas', email: 'jonas.preisler@gmail.com', password: 'testtest', password_confirmation: 'testtest'}, {name: 'Roy', email: 'roy@gmail.com', password: 'testtest', password_confirmation: 'testtest'}])
+coaches = Coach.create!([{name: 'Jonas', email: 'jonas.preisler@gmail.com', password: 'testtest', password_confirmation: 'testtest'}])
 course_categories = CourseCategory.create!([{name: 'BABY 0-1 år'}, {name: 'SMÅBARN 1-5 år'}, {name: 'BARN 5+ år'}, {name: 'VOKSEN CRAWL'}])
 course_niveaus = CourseNiveau.create!([{name: 'Nybegynner'}, {name: 'Øvet'}, {name: 'Videregående'}])
 cities = City.create!([{name: 'Asker'}, {name: 'Oslo'}, {name: 'Hokksund'}, {name: 'Andre aktiviteter'}])
