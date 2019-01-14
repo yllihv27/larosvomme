@@ -1329,6 +1329,22 @@ table a:hover { color: #8d8d8d !important; }
     PARTICIPATIONS INDEX
 ----------------------------------------------------- */
 
+.bar_container {
+  height: 29px;
+  background: 0;
+  padding: 0;
+  width: 8em;
+}
+.bar_mortice {
+  background: #c3c2c2;
+  border: 1px solid #1c1c1c;
+  .progress {
+    background: #4c1300;
+    border: 0;
+    height: 100%;
+  }
+}
+
 @keyframes blinker {  
 100%{opacity: 1;}
 50%{opacity: .9;}

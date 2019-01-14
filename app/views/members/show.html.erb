@@ -13,7 +13,9 @@
 			Dine barn: <hr>
 			<% @member.children.each do |c| %>
 			<%= c.first_name %> <%= c.last_name %><br>
-			<strong>Bursdag:</strong> <%= c.birthdate %><hr>
+			<strong>Bursdag:</strong> <%= c.birthdate %><br>
+			<strong>Nivå:</strong> <%= c.course_niveau.name if p.course_niveau %>
+			<%= progress_bar("#{c.level}0", :color => 'black', :rounded => true, style: '#4c1300') %><hr>
 			<% end %>
 		</div>
 		<% end %><br>

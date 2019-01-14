@@ -112,6 +112,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    css3-progress-bar-rails (0.5.1)
+      rails (>= 3.1)
     declarative (0.0.10)
     declarative-option (0.1.0)
     devise (4.5.0)
@@ -537,6 +539,7 @@ DEPENDENCIES
   ckeditor
   cocoon
   coffee-rails (~> 4.2)
+  css3-progress-bar-rails
   devise
   fog
   gibbon (~> 3.2)

@@ -52,6 +52,8 @@
 					  		<div class="col-md-8 col-sm-8">
 					  			<%= p.contact_person.first_name.capitalize %> <%= p.contact_person.last_name.capitalize %>
 								</div>
+							<strong>Nivå:</strong> <%= p.course_niveau.name if p.course_niveau %>
+							<%= progress_bar("#{p.level}0", :color => 'black', :rounded => true, style: '#4c1300') %>
 						  <% end %><br>
 							<% if p.grandparent %>
 					  		<div class="col-md-4 col-sm-4">

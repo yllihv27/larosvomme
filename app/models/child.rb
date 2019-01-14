@@ -11,5 +11,9 @@ class Child < ApplicationRecord
 		now = Time.zone.now.to_date
 		now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
 	end
+
+	def levelz
+		level + 0
+	end
 	
 end

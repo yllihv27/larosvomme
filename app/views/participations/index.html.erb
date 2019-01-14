@@ -12,7 +12,7 @@
           <tr style="font-size: 14px">
             <th>ID</th>
             <th>Barn</th>
-            <th>Bursdag</th>
+            <th>Alder</th>
             <th>Email</th>
             <th>Tlf</th>
             <th colspan="3"></th>
@@ -25,9 +25,11 @@
                   <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
                   <td><i class="fa fa-child"></i>  <%= link_to p.child.first_name, edit_child_path(p.child) if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child) if p.child %> <%= "(#{p.child.course_niveau.name})".downcase if p.child.course_niveau %> <br>
                     <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
-                  <td><% if p.child %><%= p.child.birthdate.to_date.strftime("%b '%y") if p.child.birthdate.present? %><% end %></td>
-                  <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
-                  <td><div class="ldBar" data-value="#<%= p.child.level if p.child.level %>"></div><%= link_to p.member.phone, edit_member_path(p.member) if p.member.phone %></td>
+                  <td><%= p.child.order_age %></td>
+                  <td><%= p.child.course_niveau.name if p.child.course_niveau %>
+                    <%= progress_bar("#{p.child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %>
+                  </td>
+                  <td><%= link_to p.member.phone, edit_member_path(p.member) if p.member.phone %></td>
                   <td><div style="cursor:pointer;float:right" onclick="myFunction('<%= p.id %>');"><a class="fa fa-cogs" aria-hidden="true"></a><a style="font-size: 10px;"> Rask redigering</a></div></td>
                 </tr>
                 <div id="<%= p.id %>" style="display: none;">

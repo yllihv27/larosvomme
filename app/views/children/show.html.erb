@@ -23,5 +23,7 @@
   <%= @child.course_id %>
 </p>
 
+<%= progress_bar("#{@child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %>
+
 <%= link_to 'Edit', edit_child_path(@child) %> |
 <%= link_to 'Back', children_path %>
