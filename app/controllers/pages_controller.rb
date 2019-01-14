@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   #before_action :set_nav, only: [:rediger, :destroy]
   #before_action :set_sub_nav, only: [:rediger, :destroy]
   before_action :authenticate_coach!, only: :rediger
+  before_action :redirect_from_home, only: :home
 
   def gdpr
     @member = Member.all
@@ -89,7 +90,13 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def redirect_from_home
+      if coach_signed_in?
+        redirect_to edit_courses_path
+      end
+    end
+
     def set_page
       @page = Page.find(params[:id])
     end

@@ -1,4 +1,4 @@
-set :environment, "development"
+set :environment, "production"
 
 every 1.day do
   rake "update_participation"

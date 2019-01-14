@@ -6,7 +6,7 @@
       <th>ID</th>
       <th>Barn</th>
       <th>Alder</th>
-      <th>Email</th>
+      <th>Nivå</th>
       <th>Kurs</th>
       <th colspan="3"></th>
     </tr>
@@ -18,7 +18,7 @@
           <td><i class="fa fa-child"></i>  <%= link_to p.child.first_name, edit_child_path(p.child) if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child) if p.child %><br>
             <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
           <td><% if p.child %><%= p.child.order_age if p.child.birthdate.present? %><% end %></td>
-          <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
+          <td><center><%= p.child.course_niveau.name if p.child.course_niveau %></center><%= progress_bar("#{p.child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %></td>
           <td><%= link_to p.course.course_category.name, course_path(p.course) %> <%= link_to p.course.course_niveau.name, course_path(p.course) %> <br><%= link_to p.course.course_place.name, course_path(p.course) %></td>
           <td><div style="float:right">
             <%= form_tag('/ventende', method: :get) do |f| %>
