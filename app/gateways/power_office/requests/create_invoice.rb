@@ -11,10 +11,15 @@ module PowerOffice
 
       def request_params
         {
-          totalAmount: sub_total,
-          orderNo:     order_id,
-          orderDate:   order_created_at
+          totalAmount:          sub_total,
+          orderNo:              order_id,
+          orderDate:            order_created_at,
+          outgoingInvoiceLines: order_cource_names
         }
+      end
+
+      def order_cource_names
+        order.items.map(&:cource).map(&:name)
       end
     end
   end
