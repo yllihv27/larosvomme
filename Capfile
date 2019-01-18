@@ -5,7 +5,7 @@ require "capistrano/setup"
 require "capistrano/deploy"
 require 'capistrano/rails'
 require 'capistrano/bundler'
-require 'capistrano/passenger'
+#require 'capistrano/passenger'
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"
