@@ -32,10 +32,8 @@ class OrdersController < ApplicationController
       @contact_person = ContactPerson.find(params[:contact_person_id])
     end
     @order.member_id = current_member.id
-<<<<<<< HEAD
+
     @order.create_power_office_customer
-=======
->>>>>>> PowerOffice
 
     @children.each do |child|
       @items.each do |item|
