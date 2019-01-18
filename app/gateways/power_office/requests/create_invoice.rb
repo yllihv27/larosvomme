@@ -15,13 +15,13 @@ module PowerOffice
           totalAmount:          sub_total,
           orderNo:              order_id,
           orderDate:            order_created_at,
-          outgoingInvoiceLines: order_cource_names,
+          outgoingInvoiceLines: order_course_names,
           netAmount:            sub_total,
         }
       end
 
-      def order_cource_names
-        order.items.map(&:cource).map(&:name)
+      def order_course_names
+        order.items.map(&:course).map(&:name)
       end
     end
   end
