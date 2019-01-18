@@ -77,15 +77,6 @@ ActiveRecord::Schema.define(version: 2019_01_12_140828) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contents", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.string "url"
-    t.integer "placement"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "course_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false

@@ -45,6 +45,7 @@ gem 'prawn'
 gem 'prawn-table', '~> 0.2.2'
 gem 'whenever', require: false
 gem 'css3-progress-bar-rails'
+gem 'oauth2', '1.4.1'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'

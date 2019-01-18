@@ -34,7 +34,5 @@ module Larosvomme
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     config.exceptions_app = self.routes
-
-
   end
 end
