@@ -134,6 +134,8 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (2.1.0)
@@ -545,6 +547,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   css3-progress-bar-rails
   devise
+  figaro
   fog
   gibbon (~> 3.2)
   has_scope
