@@ -11,10 +11,12 @@ module PowerOffice
 
       def request_params
         {
+
           totalAmount:          sub_total,
           orderNo:              order_id,
           orderDate:            order_created_at,
           outgoingInvoiceLines: order_cource_names
+          netAmount:   sub_total,
         }
       end
 
