@@ -2,7 +2,7 @@
 <br><br><br>
 Dette er en e-post for å bekrefte ditt ønske om å registrere deg for kurs:<br><br>
 
-<strong><%= @participation.course.course_category.name %> <%= @participation.course.course_niveau.name %> <br>
+<strong><%= @participation.course.course_category.name %> <%= @participation.course.course_niveau.name if @participation.course.course_niveau %> <br>
 <%= @participation.course.course_place.name %><br>
 <%= @participation.course.course_day %></strong>
 <br><br>
