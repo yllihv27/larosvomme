@@ -1,5 +1,5 @@
 require 'carrierwave/orm/activerecord'
-#if Rails.env.production?
+if Rails.env.production?
   CarrierWave.configure do |config|
     config.fog_credentials = {
       # Configuration for Amazon S3
@@ -9,5 +9,5 @@ require 'carrierwave/orm/activerecord'
       :region                => ENV['S3_REGION']
     }
     config.fog_directory     =  ENV['S3_BUCKET']
-  #end
+  end
 end
