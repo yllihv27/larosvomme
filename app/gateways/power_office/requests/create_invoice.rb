@@ -6,7 +6,7 @@ module PowerOffice
 
       attr_reader :order
 
-      delegate :sub_total, to: :order
+      delegate :sub_total, :power_office_customer_id, to: :order
       delegate :id, :created_at, to: :order, prefix: true
 
       def initialize(order)
@@ -26,6 +26,7 @@ module PowerOffice
           orderDate:            order_created_at,
           outgoingInvoiceLines: order_course_names,
           netAmount:            sub_total,
+          customerCode:         power_office_customer_id
         }
       end
 

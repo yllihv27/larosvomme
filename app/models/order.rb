@@ -14,4 +14,8 @@ class Order < ApplicationRecord
   def create_power_office_invoice
     PowerOffice::Requests::CreateInvoice.for(self).submit
   end
+
+  def power_office_customer_id
+    @power_office_customer_id ||= Member.where(id: member_id).pluck(:poweroffice_external_id)
+  end
 end
