@@ -15,7 +15,11 @@ class Order < ApplicationRecord
     PowerOffice::Requests::CreateInvoice.for(self).submit
   end
 
+  def owner
+    @owner ||= Member.find_by(id: member_id)
+  end
+
   def power_office_customer_id
-    @power_office_customer_id ||= Member.where(id: member_id).pluck(:poweroffice_external_id)
+    owner.try(:poweroffice_external_id)
   end
 end
