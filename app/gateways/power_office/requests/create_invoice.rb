@@ -31,7 +31,7 @@ module PowerOffice
       end
 
       def order_course_names
-        order.items.map(&:course).map(&:name)
+        order.items.map(&:course).map(&:name).compact
       end
     end
   end
