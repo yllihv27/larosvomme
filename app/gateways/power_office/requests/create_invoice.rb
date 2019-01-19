@@ -24,14 +24,20 @@ module PowerOffice
           totalAmount:          sub_total,
           orderNo:              order_id,
           orderDate:            order_created_at,
-          outgoingInvoiceLines: order_course_names,
+          outgoingInvoiceLines: included_courses,
           netAmount:            sub_total,
           customerCode:         power_office_customer_id
         }
       end
 
-      def order_course_names
-        order.items.map(&:course).map(&:name).compact
+      def included_courses
+        order.items.map(&:course).map do |course|
+          {
+            description: course.course_name,
+            quantity:    1,
+            unitPrice:   course.price
+          }
+        end
       end
     end
   end
