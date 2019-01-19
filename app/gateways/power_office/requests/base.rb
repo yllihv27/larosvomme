@@ -2,18 +2,12 @@ module PowerOffice
   module Requests
     class Base
 
-      attr_reader :order
-
-      def self.from(order)
-        new(order)
-      end
-
-      def initialize(order)
-        @order = order
+      def self.for(entity)
+        new(entity)
       end
 
       def submit
-        response.success?
+        raise NotImplementedError
       end
 
       private
@@ -28,6 +22,10 @@ module PowerOffice
 
       def request_params
         raise NotImplementedError
+      end
+
+      def parsed_response_body
+        @parsed_response ||= JSON.parse(response.body, symbolize_names: true)
       end
     end
   end

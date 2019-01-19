@@ -4,14 +4,23 @@ module PowerOffice
 
       RESOURCE_NAME = 'OutgoingInvoice'.freeze
 
+      attr_reader :order
+
       delegate :sub_total, to: :order
       delegate :id, :created_at, to: :order, prefix: true
+
+      def initialize(order)
+        @order = order
+      end
+
+      def submit
+        response.success?
+      end
 
       private
 
       def request_params
         {
-
           totalAmount:          sub_total,
           orderNo:              order_id,
           orderDate:            order_created_at,

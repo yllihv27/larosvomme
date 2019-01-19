@@ -11,11 +11,7 @@ class Order < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def create_power_office_customer
-    PowerOffice::Requests::CreateCustomer.from(self).submit
-  end
-
   def create_power_office_invoice
-    PowerOffice::Requests::CreateInvoice.from(self).submit
+    PowerOffice::Requests::CreateInvoice.for(self).submit
   end
 end
