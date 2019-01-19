@@ -16,9 +16,11 @@ module PowerOffice
           name:                full_name,
           currencyCode:        NORWEGIAN_KRONE_CURRENCY_CODE,
           invoiceEmailAddress: email,
-          EmailAddress:        email,
-          NetAmount:           sub_total,
-          TotalAmount:         sub_total
+          emailAddress:        email,
+          netAmount:           sub_total,
+          totalAmount:         sub_total,
+          isPerson:            true,
+          IsArchived:          false
         }
       end
     end
