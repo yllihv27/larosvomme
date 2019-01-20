@@ -5,8 +5,8 @@ module PowerOffice
     AUTH_TOKEN_ENDPOINT     = "#{AUTHENTICATION_ENDPOINT}/oAuth/token".freeze
 
     #Move those credentials out of the codebase and put them somewhere secure
-    TEST_CLIENT_ID     = 'baca5a33-586c-4ca1-b35a-a94315072189'.freeze
-    TEST_CLIENT_SECRET = 'f144ea7c-1db7-484f-847c-429f197f26b8'.freeze
+    TEST_CLIENT_ID     = '2bdf3b52-d879-418a-953e-2212a54de6e8'.freeze
+    TEST_CLIENT_SECRET = '0bbb718b-eeae-4185-9a27-6a0984a6a3d3'.freeze
 
     def get_token
       OAuth2::Client.new(client_id, client_secret, site: AUTHENTICATION_ENDPOINT)

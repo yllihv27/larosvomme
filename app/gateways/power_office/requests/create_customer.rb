@@ -21,8 +21,8 @@ module PowerOffice
 
       def request_params
         {
-          firstName:           last_name,
-          lastName:            first_name,
+          firstName:           first_name,
+          lastName:            last_name,
           name:                full_name,
           currencyCode:        NORWEGIAN_KRONE_CURRENCY_CODE,
           invoiceEmailAddress: email,
