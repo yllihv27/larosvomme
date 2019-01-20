@@ -46,11 +46,11 @@ gem 'prawn-table', '~> 0.2.2'
 gem 'whenever', require: false
 gem 'css3-progress-bar-rails'
 gem 'oauth2', '1.4.1'
-gem 'capistrano', '~> 3.11'
-gem 'capistrano-rails', '~> 1.4'
-gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-rvm', '~> 0.1.2'
-gem 'capistrano-rbenv', '~> 2.1'
+gem 'capistrano',         require: false
+gem 'capistrano-rvm',     require: false
+gem 'capistrano-rails',   require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano3-puma',   require: false
 gem "figaro"
 
 group :development, :test do
@@ -65,8 +65,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'capistrano', '~> 3.11'
-  gem 'capistrano-rails', '~> 1.4'
 end
 
 group :test do
