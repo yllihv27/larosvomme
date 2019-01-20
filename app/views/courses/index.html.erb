@@ -94,7 +94,7 @@
               <div class="col-sm-4">
                 <div class="card-sub" style="font-size: 16px;padding-top:30px">
                   <% if course.status == "ledig" %><%= course.spots_left %> seter igjen<br><% end %>
-                  Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br>
+                  Trener: <%= link_to course.coach.first_name, coach_path(course) if course.coach %> <%= link_to course.coach.last_name, coach_path(course) if course.coach %><br>
                   Pris:   <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
                 </div>
               </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="card-sub" style="font-size: 16px">
                   <% if course.status == "ledig" %><%= course.spots_left %> seter igjen<br><% end %>
-                  Trener: <%= link_to course.coach.name, coach_path(course) if course.coach %><br>
+                  Trener: <%= link_to course.coach.first_name, coach_path(course) if course.coach %> <%= link_to course.coach.last_name, coach_path(course) if course.coach %><br>
                   <%= number_to_currency(course.price, :unit => "NOK") if course.price %>
                 </div>
                 <br>
