@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'devise'
+gem 'devise', '4.4.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
