@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'devise'
+gem 'devise', '4.4.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
@@ -46,11 +46,11 @@ gem 'prawn-table', '~> 0.2.2'
 gem 'whenever', require: false
 gem 'css3-progress-bar-rails'
 gem 'oauth2', '1.4.1'
-gem 'capistrano', '~> 3.11'
-gem 'capistrano-rails', '~> 1.4'
-gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-rvm', '~> 0.1.2'
-gem 'capistrano-rbenv', '~> 2.1'
+gem 'capistrano', '3.11.0'
+gem 'capistrano-rvm',     '0.1.2'
+gem 'capistrano-rails',   '1.4.0'
+gem 'capistrano-bundler', '1.5.0'
+gem 'capistrano3-puma',   '3.1.1'
 gem "figaro"
 
 group :development, :test do
@@ -65,8 +65,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'capistrano', '~> 3.11'
-  gem 'capistrano-rails', '~> 1.4'
 end
 
 group :test do
