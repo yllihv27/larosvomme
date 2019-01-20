@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'devise', '4.4.3'
+gem 'devise', '4.5.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
@@ -46,11 +46,11 @@ gem 'prawn-table', '~> 0.2.2'
 gem 'whenever', require: false
 gem 'css3-progress-bar-rails'
 gem 'oauth2', '1.4.1'
-gem 'capistrano',         require: false
-gem 'capistrano-rvm',     require: false
-gem 'capistrano-rails',   require: false
-gem 'capistrano-bundler', require: false
-gem 'capistrano3-puma',   require: false
+gem 'capistrano', '3.11.0'
+gem 'capistrano-rvm',     '0.1.2'
+gem 'capistrano-rails',   '1.4.0'
+gem 'capistrano-bundler', '1.5.0'
+gem 'capistrano3-puma',   '3.1.1'
 gem "figaro"
 
 group :development, :test do

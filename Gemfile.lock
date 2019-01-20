@@ -539,11 +539,11 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.3, >= 3.3.7)
   byebug
-  capistrano
-  capistrano-bundler
-  capistrano-rails
-  capistrano-rvm
-  capistrano3-puma
+  capistrano (= 3.11.0)
+  capistrano-bundler (= 1.5.0)
+  capistrano-rails (= 1.4.0)
+  capistrano-rvm (= 0.1.2)
+  capistrano3-puma (= 3.1.1)
   capybara (>= 2.15)
   carrierwave (~> 1.2, >= 1.2.3)
   chosen-rails
@@ -552,7 +552,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   css3-progress-bar-rails
-  devise
+  devise (= 4.5.0)
   figaro
   fog
   gibbon (~> 3.2)
