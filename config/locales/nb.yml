@@ -239,3 +239,7 @@ nb:
       next: Neste &rsaquo;
       previous: "&lsaquo; Forrige"
       truncate: "&hellip;"
+  devise:
+    failure:
+      member: 
+        not_found_in_database: 'Bruker ikke funnet'
