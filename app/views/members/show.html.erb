@@ -8,52 +8,84 @@
 		<%= @member.first_name %> <%= @member.last_name %><br>
 		<%= @member.email %><br>
 		<%= @member.phone if @member.phone %><br>
-		<% if @member.children.any? %>
-		<div style="background: #1c1c1c;padding:10px;">
-			Dine barn: <hr>
-			<% @member.children.each do |c| %>
-			<%= c.first_name %> <%= c.last_name %><br>
-			<strong>Bursdag:</strong> <%= c.birthdate %><br>
-			<strong>Nivå:</strong> <%= c.course_niveau.name if c.course_niveau %>
-			<%= progress_bar("#{c.level}0", :color => 'black', :rounded => true, style: '#4c1300') %><hr>
-			<% end %>
-		</div>
-		<% end %><br>
-		<% if @member.contact_people.any? %>
-		<div style="background: #1c1c1c;padding:10px;">
-			Dine kontaktpersoner: <hr>
-			<% @member.contact_people.each do |cp| %>
-			<%= cp.first_name %> <%= cp.last_name %><br>
-			<%= cp.relation if cp.relation %><br>
-			<%= cp.phone if cp.phone %><br>
-			<% end %>
-		</div>
-		<% end %>
-		<% if @member.grandparents.any? %>
-		<div style="background: #1c1c1c;padding:10px;">
-			Dine besteforeldre: <hr>
-			<% @member.grandparents.each do |g| %>
-			<%= g.first_name %> <%= g.last_name %><br>
-			<% end %>
-		</div>
-		<% end %>
-		<div style="background: #1c1c1c;padding:10px;">
-			Dine deltakelser:
-			<hr>
-			<% @participations.each do |p| %>
-				<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
-			<% end %>
-		</div>
-		<br>
-		<div style="background: #1c1c1c;padding:10px;">
-			Dine kurs:
-			<hr>
-			<% @courses.each do |c| %>
-				<% if c.day.future? %>
-					<%= c.course.course_niveau.name %> <%= c.course.course_category.name %> <%= c.course.course_place.name %> <%= c.day.strftime('%A | %b %d') %><br>
+
+		<% if !coach_signed_in? %>
+			<% if @member.children.any? %>
+			<div style="background: #1c1c1c;padding:10px;">
+				<hr>Dine barn:<br><br>
+				<% @member.children.each do |c| %>
+				<%= c.first_name %> <%= c.last_name %><br>
+				<strong>Bursdag:</strong> <%= c.birthdate %><br>
+				<strong>Nivå:</strong> <%= c.course_niveau.name if c.course_niveau %>
+				<%= progress_bar("#{c.level}0", :color => 'black', :rounded => true, style: '#4c1300') %><hr>
 				<% end %>
+			</div>
+			<% end %><br>
+			<% if @member.contact_people.any? %>
+			<div style="background: #1c1c1c;padding:10px;">
+				<hr>Dine kontaktpersoner:<br><br>
+				<% @member.contact_people.each do |cp| %>
+				<%= cp.first_name %> <%= cp.last_name %><br>
+				<%= cp.relation if cp.relation %><br>
+				<%= cp.phone if cp.phone %><br>
+				<% end %>
+			</div>
 			<% end %>
-		</div>
+			<% if @member.grandparents.any? %>
+			<div style="background: #1c1c1c;padding:10px;">
+				<hr>Dine besteforeldre:<br><br>
+				<% @member.grandparents.each do |g| %>
+				<%= g.first_name %> <%= g.last_name %><br>
+				<% end %>
+			</div>
+			<% end %>
+			<div style="background: #1c1c1c;padding:10px;">
+				<hr>Dine deltakelser:<br><br>
+				<% @participations.each do |p| %>
+					<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
+				<% end %>
+			</div>
+			<br>
+
+		<% else %>
+
+			<% if @member.children.any? %>
+			<div style="padding:10px;">
+				<hr><h3>Barn:</h3>
+				<% @member.children.each do |c| %>
+				<%= c.first_name %> <%= c.last_name %><br>
+				<strong>Bursdag:</strong> <%= c.birthdate %><br>
+				<strong>Nivå:</strong> <%= c.course_niveau.name if c.course_niveau %>
+				<%= progress_bar("#{c.level}0", :color => 'black', :rounded => true, style: '#4c1300') %><hr>
+				<% end %>
+			</div>
+			<% end %><br>
+			<% if @member.contact_people.any? %>
+			<div style="padding:10px;">
+				<hr><h3>Kontaktpersoner:</h3>
+				<% @member.contact_people.each do |cp| %>
+				<%= cp.first_name %> <%= cp.last_name %><br>
+				<%= cp.relation if cp.relation %><br>
+				<%= cp.phone if cp.phone %><br>
+				<% end %>
+			</div>
+			<% end %>
+			<% if @member.grandparents.any? %>
+			<div style="padding:10px;">
+				<hr><h3>Besteforeldre:</h3>
+				<% @member.grandparents.each do |g| %>
+				<%= g.first_name %> <%= g.last_name %><br>
+				<% end %>
+			</div>
+			<% end %>
+			<div style="padding:10px;">
+				<hr><h3>Deltakelser:</h3>
+				<% @participations.each do |p| %>
+					<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
+				<% end %>
+			</div>
+			<br>
+		<% end %>
 	</div>
 	<div class="col-xs-6 col-md-4">
 		<%= link_to "Redigér konto", edit_member_registration_path, class: 'btn btn-primary' %><br><br>

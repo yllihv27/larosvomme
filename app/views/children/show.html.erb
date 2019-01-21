@@ -1,7 +1,8 @@
+<center>
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>First name:</strong>
-  <%= @child.first_name %>
+  <strong>Navn:</strong>
+  <%= @child.first_name %> <%= @child.last_name %>
 </p>
 <p>
   <strong>Bursdag:</strong>
@@ -9,21 +10,13 @@
 </p>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @child.last_name %>
+  <strong>Forelder:</strong>
+  <%= @child.member.first_name %> <%= @child.member.last_name %>
 </p>
 
-<p>
-  <strong>Member:</strong>
-  <%= @child.member_id %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @child.course_id %>
-</p>
-
+<br>
+Nivå: <%= @child.level %>
 <%= progress_bar("#{@child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %>
-
-<%= link_to 'Edit', edit_child_path(@child) %> |
-<%= link_to 'Back', children_path %>
+<br>
+<%= link_to 'Rediger', edit_child_path(@child) %>
+</center>
