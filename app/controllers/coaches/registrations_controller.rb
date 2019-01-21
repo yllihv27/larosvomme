@@ -81,6 +81,6 @@ end
   # end
   private
   def sign_up_params
-    params.require(:coach).permit(:name, :email, :password, :password_confirmation, :profile_pic, :first_name, :last_name, :coach_id)
+    params.require(:coach).permit(:name, :email, :password, :password_confirmation, :profile_pic, :first_name, :last_name, :coach_id, :phone)
   end
 end

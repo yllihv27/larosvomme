@@ -19,7 +19,7 @@
             <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
           <td><% if p.child %><%= p.child.order_age if p.child.birthdate.present? %><% end %></td>
           <td><center><%= p.child.course_niveau.name if p.child.course_niveau %></center><%= progress_bar("#{p.child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %></td>
-          <td><%= link_to p.course.course_category.name, course_path(p.course) %> <%= link_to p.course.course_niveau.name, course_path(p.course) %> <br><%= link_to p.course.course_place.name, course_path(p.course) %></td>
+          <td><%= link_to p.course.course_category.name, course_path(p.course) %> <%= link_to p.course.course_niveau.name, course_path(p.course) if p.course.course_niveau %> <br><%= link_to p.course.course_place.name, course_path(p.course) %></td>
           <td><div style="float:right">
             <%= form_tag('/ventende', method: :get) do |f| %>
               <%= hidden_field_tag :id, p.id %>
@@ -33,3 +33,4 @@
     </tbody>
   </table>
 </div>
+<%= link_to 'Tilbake', deltakere_path, style: 'color: #1c1c1c !important;padding-left: 20px;' %>

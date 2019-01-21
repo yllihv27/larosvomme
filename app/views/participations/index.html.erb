@@ -1,4 +1,4 @@
-<h2 style="padding-top;padding-left: 50px;">Deltakere<%= link_to "#{@participations.pending.count} ventende godkjennelser", ventende_path, class: 'pending-registrations-button' %>
+<h2 style="padding-top;padding-left: 50px;">Deltakere<%= link_to "#{@participations.pending.count} ventende godkjennelser", ventende_path, class: 'pending-registrations-button' if @participations.pending.any? %>
 </h2>
 <div class="page-card">
 <% @courses.each do |c| %>

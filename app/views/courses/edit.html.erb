@@ -30,7 +30,7 @@
 	      <%= form.select :course_category_id, CourseCategory.all.map { |u| ["#{u.name}", u.id] }, { include_blank: true, prompt: 'Velg kategori' }, { class: 'chosen-select' } %>
      </div>
 	    <div class="col-md-6">
-       <%= form.select :coach_id, Coach.all.map { |u| ["#{u.first_name}, #{u.last_name}", u.id] }, { include_blank: true, prompt: 'Velg trener' }, { class: 'chosen-select' } %>
+       <%= form.select :coach_id, Coach.all.map { |u| ["#{u.first_name} #{u.last_name}", u.id] }, { include_blank: true, prompt: 'Velg trener' }, { class: 'chosen-select' } %>
       </div>
     </div>
     <br><br>
