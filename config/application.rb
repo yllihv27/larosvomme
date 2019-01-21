@@ -31,7 +31,7 @@ module Larosvomme
       enable_starttls_auto: true
     }
 
-    ActiveRecord::Base.establish_connection(username: postgres)
+    ActiveRecord::Base.establish_connection(username: deploy)
 
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
