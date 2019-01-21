@@ -31,6 +31,8 @@ module Larosvomme
       enable_starttls_auto: true
     }
 
+    ActiveRecord::Base.establish_connection(username: postgres)
+
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     config.exceptions_app = self.routes

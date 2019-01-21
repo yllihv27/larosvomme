@@ -1,4 +1,4 @@
-# SQLite version 3.x
+ # SQLite version 3.x
 #   gem install sqlite3
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
@@ -22,12 +22,16 @@ test:
 
 production:
   <<: *default
-  host: localhost
+  host: 'localhost'
   adapter: postgresql
   encoding: utf8
   database: viachat
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
   username: preisler
-  password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
+  password: viachat!@
   #aws_access_key_id: <%= ENV['aws_access_key_id'] %>
   #aws_secret_access_key: <%= ENV['aws_secret_access_key'] %>
+default: &default
+  adapter: postgresql
+  username: preisler
+  password: viachat!@
