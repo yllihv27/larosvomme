@@ -28,8 +28,9 @@ test:
 
 production:
   <<: *default
-  host: 'localhost'
+  host: localhost
   adapter: postgresql
+  pool: 5
   encoding: utf8
   database: viachat
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
