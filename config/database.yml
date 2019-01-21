@@ -27,11 +27,11 @@ production:
   encoding: utf8
   database: viachat
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
-  username: preisler
-  password: viachat!@
+  username: <%= ENV["username"] %>
+  password: <%= ENV["password"] %>
   #aws_access_key_id: <%= ENV['aws_access_key_id'] %>
   #aws_secret_access_key: <%= ENV['aws_secret_access_key'] %>
 default: &default
   adapter: postgresql
-  username: preisler
-  password: viachat!@
+  username: <%= ENV["username"] %>
+  password: <%= ENV["password"] %>
