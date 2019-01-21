@@ -9,7 +9,8 @@ class ParticipationsController < ApplicationController
     @course = Course.find_by(params[:id])
     @counts = Participation.where(course_id: @course)
     @members = Member.all
-    @participations = Participation.all
+    @participations = Participation.all.accepted
+    @pendings = Participation.all.pending
     @participation = Participation.find_by(params[:id])
     @member = Member.find_by(params[:id])
     @children = Child.all

@@ -1,6 +1,6 @@
 Hei <%= @member.first_name %> <%= @member.last_name %>
 <br><br>
-<%= @participation.course.course_category.name %> <%= @participation.course.course_niveau.name %> 
+<%= @participation.course.course_category.name %> <%= @participation.course.course_niveau.name if @participation.course.course_niveau %> 
 <br><br>
 <strong>Sted:</strong> <%= @participation.course.course_place.name %> 
 <br><br>
