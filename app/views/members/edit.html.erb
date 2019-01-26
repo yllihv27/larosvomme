@@ -5,13 +5,7 @@
 <div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <%= render 'participations/new' %>
 </div>
-<div class="row">
-  <div class="col-md-6">
-    <h2 style="padding-top;padding-left: 50px;">Rediger konto</h2>
-  </div>
-  <div class="col-md-6">
-    ID: <%= @member.id %>
-  </div>
+  <h2 style="padding-top;padding-left: 50px;">Rediger konto  <span style="font-size: 14px;">ID: <%= @member.id %></span></h2>
 </div>
 <div class="edit-member">
 <div class="row">
@@ -138,11 +132,19 @@
 
     <% @participations.each do |p| %>
       <div class="hover-bg">
-        <%= link_to p.course.course_niveau.name, participation_path(p) if p.course.course_niveau %> <%= link_to p.course.course_category.name, participation_path(p) if p.course.course_category %><br><%= link_to p.course.course_place.name, participation_path(p) if p.course.course_place %><br><%= link_to p.course.course_day, participation_path(p) if p.course.day %><br>
-        <div class="danger" style="float:right">
-          <%= link_to "Slett deltakelse", participation_path(p),
-              data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn-danger-small' %>
-        </div><br>
+        <%= link_to p.course.course_name, participation_path(p) if p.course.course_niveau %>
+        <%= form_for(p) do |pa| %>
+          <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Flytt til et annet kurs", class: "chosen-select" %>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <%= pa.submit "Flytt", class: 'btn btn-dark' %>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <%= link_to "Slett deltakelse", participation_path(p),
+              data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+            </div>
+          </div>
+        <% end %><br>
       </div>
       <hr style="border: 1px solid #c3c2c2">
     <% end %>

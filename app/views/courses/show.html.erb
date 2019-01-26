@@ -19,37 +19,37 @@
     </p>
 
     <p>
-      <strong>Tid:</strong>
+      <strong>Tid:</strong><br>
       <%= @course.time_from.strftime('%H:%M') if @course.time_from %> - <%= @course.time_to.strftime('%H:%M') if @course.time_to %>
     </p>
 
     <p>
-      <strong>Pris:</strong>
+      <strong>Pris:</strong><br>
       <%= number_to_currency(@course.price) if @course.price %>
     </p>
 
     <p>
-      <strong>Trener:</strong>
+      <strong>Trener:</strong><br>
       <%= @course.coach.first_name if @course.coach %> <%= @course.coach.last_name if @course.coach %>
     </p>
 
     <p>
-      <strong>Kurs nivå:</strong>
+      <strong>Kurs nivå:</strong><br>
       <%= @course.course_niveau.name if @course.course_niveau %>
     </p>
 
     <p>
-      <strong>Sted:</strong>
+      <strong>Sted:</strong><br>
       <%= @course.course_place.name if @course.course_place %>
     </p>
 
     <p>
-      <strong>Course category:</strong>
+      <strong>Course category:</strong><br>
       <%= @course.course_category.name if @course.course_category %>
     </p>
 
     <p>
-      <strong>Beskrivelse:</strong>
+      <strong>Beskrivelse:</strong><br>
       <%= simple_format(@course.description) if @course.description %>
     </p>
 

@@ -4,8 +4,8 @@ task update_participation: :environment do
 	@participations.each do |p|
 		if p.course.day.between?(Date.today - 10.days, Date.today)
 			p.update(activity: 'current')
-		else
-			p.update(activity: 'not_current')
+		elsif p.course.day.past?
+			p.update(activity: 'past')
 		end
 	end
 end

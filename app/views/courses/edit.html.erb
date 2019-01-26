@@ -11,11 +11,11 @@
     <div class="row">
 	    <div class="col-md-6">
         <%= form.label :dato %>
-        <%= form.date_field :day %><br><br><br>
+        <%= form.text_field :day, 'data-provide': 'datepicker', size:10, 'data-date-format': "yyyy-mm-dd" %><br><br><br>
         <%= form.label :fra_kl %>
-        <%= form.time_field :time_from, value: "%H:%M" %>
-        <%= form.label :tiL_kl %>
-        <%= form.time_field :time_to, value: "%H:%M" %><br><br><br>
+        <%= form.time_field :time_from, placeholder: '00:00' %>
+        <%= form.label :til_kl %>
+        <%= form.time_field :time_to, placeholder: '00:00' %><br><br><br>
         <%= form.label :maks_antall_deltagere %>
         <%= form.number_field :limit, placeholder: 'Maks antall deltagere' %>
 	    </div>

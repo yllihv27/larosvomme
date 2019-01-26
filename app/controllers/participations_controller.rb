@@ -66,7 +66,7 @@ class ParticipationsController < ApplicationController
   def update
     respond_to do |format|
       if @participation.update(participation_params)
-        format.html { redirect_to @participation, notice: 'Participation was successfully updated.' }
+        format.html { redirect_to participations_path, notice: 'Participation was successfully updated.' }
         format.json { render :show, status: :ok, location: @participation }
       else
         format.html { render :edit }
@@ -105,6 +105,6 @@ class ParticipationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participation_params
-      params.require(:participation).permit(:member_id, :course_id, :child_id, :grandparent_id, :contact_person_id, :order_id, :status, :activity)
+      params.permit(:member_id, :course_id, :child_id, :grandparent_id, :contact_person_id, :order_id, :status, :activity)
     end
 end

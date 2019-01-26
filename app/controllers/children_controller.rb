@@ -3,7 +3,7 @@ class ChildrenController < ApplicationController
   before_action :authenticate_coach!, only: [:ny_deltaker, :edit]
   skip_before_action :verify_authenticity_token
   
-  layout 'signup'#, except: :deltaker
+  layout 'signup', except: :rediger
 
   def index
     @children = Child.all

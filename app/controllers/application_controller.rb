@@ -8,12 +8,14 @@ class ApplicationController < ActionController::Base
 	end
 
 	def search
+		#@participations = Participation.future.ransack(name_cont: params[:q]).result(distinct: true)
 		@children = Child.ransack(name_cont: params[:q]).result(distinct: true)
 		@members = Member.ransack(name_cont: params[:q]).result(distinct: true)
 
 		respond_to do |format|
 			format.html {}
 			format.json {
+				#@participations = @participations.limit(5)
 				@children = @children.limit(5)
 				@members = @members.limit(5)
 			}

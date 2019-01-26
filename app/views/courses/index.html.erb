@@ -53,7 +53,7 @@
 
 <div class="row course-index">
   <% @courses.each do |course| %>
-    <% unless course.day.past? %>
+    <% unless course.day.future? %>
       <ul style="list-style: none;cursor:pointer" onclick="myFunction('<%= course.id %>');">
         <li>
           <div class="row course-card">
