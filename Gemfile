@@ -52,7 +52,6 @@ gem 'capistrano-rails',   '1.4.0'
 gem 'capistrano-bundler', '1.5.0'
 gem 'capistrano3-puma',   '3.1.1'
 gem "figaro"
-gem 'pickadate-rails'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
 
 group :development, :test do

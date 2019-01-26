@@ -395,8 +395,6 @@ GEM
       json (>= 1, < 3)
     pdf-core (0.7.0)
     pg (1.1.4)
-    pickadate-rails (3.5.6.0)
-      railties (>= 3.1.0)
     popper_js (1.14.5)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
@@ -573,7 +571,6 @@ DEPENDENCIES
   nokogiri (~> 1.8.5)
   oauth2 (= 1.4.1)
   pg
-  pickadate-rails
   popper_js
   prawn
   prawn-table (~> 0.2.2)

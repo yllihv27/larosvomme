@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
         end
       end
     end
-    if params[:child_first_name].present? && params[:child_last_name].present?
+    if params[:child_first_name].present? && params[:child_last_name].present? && params[:order][:participant_birthday].present?
       Child.create!([{first_name: params[:child_first_name], last_name: params[:child_last_name], birthdate: params[:order][:participant_birthday], member_id: "#{current_member.id}", course_niveau_id: "1"}])
       @items.each do |item|
         Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{Child.last.id}", grandparent_id: "#{@grandparent.id if @grandparent.present?}", contact_person_id: "#{@contact_person.id if @contact_person.present?}", order_id: "#{@order.id}"}])

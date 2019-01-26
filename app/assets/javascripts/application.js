@@ -29,8 +29,6 @@
 //= require global
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
-//= require picker
-//= require picker.date
 //= require_tree .
 
 

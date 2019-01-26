@@ -43,7 +43,7 @@
 
 		<%= f.hidden_field :member_id, value: current_member.id %>
 
-		<em style="cursor:pointer;font-size:13px;color:#777" onclick="myFunction('add_child');"></i>Ny deltaker</em><br>
+		<em style="cursor:pointer;font-size:13px;color:#777" onclick="myFunction('add_child');"></i>Ny deltaker?</em><br>
 	  <div style="display: none" id="add_child">
 		  <%= f.label :fornavn %>
 		  <%= text_field_tag :child_first_name %><br />
@@ -51,10 +51,7 @@
 		  <%= text_field_tag :child_last_name %><br />
 		  <%= f.label :bursdag %><br>
 		  <%= f.text_field :participant_birthday, 'data-provide': 'datepicker', size:10, 'data-date-format': "yyyy-mm-dd" %>
-		  <%#= f.text_field :participant_birthday, html_options = { class: 'form-control datepicker', placeholder: 'Velg dato' } %>
 		</div>
-
-		<div style="font-size: 13px;color:#777"> Deltaker vises ikke? <span style="color:#666"><%= link_to 'Legg til', deltaker_path, target: :blank %></span> (og refresh siden).</div>
 	<% end %>
 	
 	<em style="cursor:pointer;font-size:13px;color:#777" onclick="myFunction('vis');"></i>Skal en kontaktperson hente deltakeren?</em><br>

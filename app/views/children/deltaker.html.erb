@@ -19,7 +19,7 @@
   <%= f.text_field :last_name, placeholder: 'Deltaker Etternavn', required: true %><br />
   <center>
   <%= f.label :bursdag %><br>
-  <%= text_field_tag("child[birthdate]", value = @child.birthdate, html_options = { class: 'form-control datepicker', placeholder: 'Velg dato' }) %>
+  <%= f.text_field :birthdate, 'data-provide': 'datepicker', size:10, 'data-date-format': "yyyy-mm-dd" %>
   <br>
 
   <%= f.submit "Legg til deltaker", class: 'buy-button' %>
