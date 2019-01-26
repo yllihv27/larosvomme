@@ -9,24 +9,38 @@
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, placeholder: "Fornavn" %>
+    <%= f.text_field :first_name, autofocus: true, placeholder: "Fornavn", required: true %>
   </div>
   
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, placeholder: "Efternavn" %>
+    <%= f.text_field :last_name, placeholder: "Efternavn", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :telefon %><br />
-    <%= f.text_field :phone, placeholder: "Telefon" %>
+    <%= f.text_field :phone, placeholder: "Telefon", required: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :adresse %><br />
+    <%= f.text_field :address, placeholder: "Adresse", required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode, placeholder: "Postnr.", required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefon %><br />
+    <%= f.text_field :city, placeholder: "By", required: true %>
+  </div>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

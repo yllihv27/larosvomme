@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require jquery.easy-autocomplete
 //= require popper
+//= require jquery.turbolinks
 //= require chosen-jquery
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require jquery.turbolinks
 //= require activestorage
 //= require aos
 //= require ckeditor/init
@@ -27,6 +27,10 @@
 //= ekko-lightbox
 //= ekko-lightbox.min
 //= require global
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require picker
+//= require picker.date
 //= require_tree .
 
 
@@ -49,9 +53,14 @@ function replaceword(that, word, oword) {
     that.textContent = that.textContent == word ? oword : word;
 }
 
-
 $(document).on('turbolinks:load', function(){
 	$(".chosen-select").chosen();
 	allow_single_deselect: true
     no_results_text: 'No results matched';
+});
+
+
+$(document).ready(function(){
+  $('.datepicker').datepicker();
+  format: 'mm-dd-yyyy'
 });

@@ -16,7 +16,7 @@
 <br>
   <%= link_to "Gå tilbake til konto oversikt", kontoer_path, class: 'buy-button' if coach_signed_in? %>
 
-  <h2>Legg til et barn mer</h2>
+  <h2>Legg til en deltaker mer</h2>
   
   <%= f.select "member_id", options_from_collection_for_select(Member.all.order('first_name ASC'), "id", "full_name",params[:member_id]), :prompt => "Velg konto", class: "chosen-select"if coach_signed_in? %><br><br>
   <%= f.text_field :first_name, placeholder: 'Barn Fornavn' %><br />
@@ -31,7 +31,7 @@
 
   <%= link_to '..eller gå til kurs oversigt', kurs_path, class: 'discreet-button' %>
 
-  <%= f.submit "Legg til barn", class: 'buy-button' %>
+  <%= f.submit "Legg til deltaker", class: 'buy-button' %>
 
   </center>
 <% end %>

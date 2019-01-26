@@ -7,8 +7,14 @@
     <%= f.text_field :last_name, autofocus: true, class: 'text email', required: true %><br>
     <%= f.label :email %>
     <%= f.email_field :email, class: 'text email', required: true %><br>
-    <%= f.label :telefon %> (valgfri)
-    <%= f.text_field :phone, class: 'text email' %><br>
+    <%= f.label :telefon %>
+    <%= f.text_field :phone, class: 'text email', required: true %><br>
+    <%= f.label :adresse %>
+    <%= f.text_field :address, class: 'text email', required: true %><br>
+    <%= f.label :by %>
+    <%= f.text_field :city, class: 'text email', required: true %><br>
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, class: 'text email', required: true %><br>
     <%= f.label :passord %>
     <%= f.password_field :password, autocomplete: "new-password", class: 'text email', required: true %><br>
     <%= f.label :passord_bekreftelse %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_111936) do
+ActiveRecord::Schema.define(version: 2019_01_26_140042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,9 @@ ActiveRecord::Schema.define(version: 2019_01_19_111936) do
     t.string "phone"
     t.integer "gdpr"
     t.integer "poweroffice_external_id"
+    t.string "zipcode"
+    t.string "address"
+    t.string "city"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
@@ -212,6 +215,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_111936) do
     t.string "email"
     t.string "child_first_name"
     t.string "child_last_name"
+    t.date "participant_birthday"
   end
 
   create_table "pages", force: :cascade do |t|

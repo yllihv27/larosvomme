@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def new
     @order = current_cart.order
     @items = current_cart.order.items
+    @child = @order.children.build
     render layout:'order'
   end
 
@@ -24,7 +25,21 @@ class OrdersController < ApplicationController
     @order = current_cart.order
     @items = current_cart.order.items
     #@children = current_member.children
-    @children = Child.find(params[:child_ids])
+    if params[:child_ids].present?
+      @children = Child.find(params[:child_ids])
+      @children.each do |child|
+        @items.each do |item|
+          Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}", grandparent_id: "#{@grandparent.id if @grandparent.present?}", contact_person_id: "#{@contact_person.id if @contact_person.present?}", order_id: "#{@order.id}"}])
+        end
+      end
+    end
+    if params[:child_first_name].present? && params[:child_last_name].present?
+      Child.create!([{first_name: params[:child_first_name], last_name: params[:child_last_name], birthdate: params[:order][:participant_birthday], member_id: "#{current_member.id}", course_niveau_id: "1"}])
+      @items.each do |item|
+        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{Child.last.id}", grandparent_id: "#{@grandparent.id if @grandparent.present?}", contact_person_id: "#{@contact_person.id if @contact_person.present?}", order_id: "#{@order.id}"}])
+      end
+    end
+
     if params[:grandparent_id].present?
       @grandparent = Grandparent.find(params[:grandparent_id])
     end
@@ -32,12 +47,16 @@ class OrdersController < ApplicationController
       @contact_person = ContactPerson.find(params[:contact_person_id])
     end
     @order.member_id = current_member.id
+    @order.sub_total = current_cart.sub_total
+    #if params[:child].present?
+    #  Child.create!([{first_name: params[:first_name], last_name: 'params[:child][:last_name]', birthdate: 'params[:child][:birthdate]', member_id: current_member.id, course_niveau_id: '1'}])
+    #end
 
-    @children.each do |child|
-      @items.each do |item|
-        Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{child.id}", grandparent_id: "#{@grandparent.id if @grandparent.present?}", contact_person_id: "#{@contact_person.id if @contact_person.present?}", order_id: "#{@order.id}"}])
-      end
-    end
+    #if @child.present?
+    #  @items.each do |item|
+    #    Participation.create!([{member_id: "#{current_member.id}", course_id: "#{item.course.id}", child_id: "#{@child.id}", grandparent_id: "#{@grandparent.id if @grandparent.present?}", contact_person_id: "#{@contact_person.id if @contact_person.present?}", order_id: "#{@order.id}"}])
+    #  end
+    #end
 
     @items.each do |i|
       @participations = Participation.where(course_id: i.course)
@@ -85,6 +104,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :member_id, :email, :sub_total, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy])
+    params.require(:order).permit(:child_first_name, :child_last_name, :participant_birthday, :first_name, :last_name, :member_id, :email, :sub_total, :participant_birthday, members_attributes: [:first_name, :last_name, :email, :password, :password_confirmation, :id, :destroy], children_attributes: [:id, :destroy, :first_name, :last_name, :member_id, :course_id, :order_id, :birthdate, :course_niveau_id, :level])
   end
 end

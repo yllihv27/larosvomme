@@ -56,6 +56,8 @@ GEM
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
+    bootstrap-datepicker-rails (1.8.0.1)
+      railties (>= 3.0)
     bootstrap-sass (3.4.0)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -393,6 +395,8 @@ GEM
       json (>= 1, < 3)
     pdf-core (0.7.0)
     pg (1.1.4)
+    pickadate-rails (3.5.6.0)
+      railties (>= 3.1.0)
     popper_js (1.14.5)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
@@ -537,6 +541,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  bootstrap-datepicker-rails (~> 1.6, >= 1.6.1.1)
   bootstrap-sass (~> 3.3, >= 3.3.7)
   byebug
   capistrano (= 3.11.0)
@@ -568,6 +573,7 @@ DEPENDENCIES
   nokogiri (~> 1.8.5)
   oauth2 (= 1.4.1)
   pg
+  pickadate-rails
   popper_js
   prawn
   prawn-table (~> 0.2.2)

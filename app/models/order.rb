@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   has_one :contact_person
   has_many :participations
   accepts_nested_attributes_for :children, allow_destroy: true,
-                              reject_if: ->(attrs) { attrs['first_name'].blank? }
+                              reject_if: ->(attrs) { attrs['birthdate'].blank? }
 
   def full_name
     "#{first_name} #{last_name}"

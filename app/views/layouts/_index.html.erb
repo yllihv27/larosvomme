@@ -71,7 +71,7 @@
                 </li>
               <% end %>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Registrer deg<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Min konto<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
                   <%#= link_to "<li>Din konto</li>".html_safe, konto_path(current_member) if  member_signed_in? %>
@@ -89,15 +89,7 @@
                   <%= link_to "<li>Cookies</li>".html_safe, cookies_path %>
                 </ul>
               </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">BESTILL KURSPLASS <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <%= link_to "<li>Finn Kurs</li>".html_safe, kurs_path %>
-                  <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
-                  <%= link_to "<li>Din konto</li>".html_safe, member_path(current_member) if  member_signed_in? %>
-                  <%= link_to "<li>Logg ut</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
-                </ul>
-              </li>
+              <li><%= link_to "Finn kurs", kurs_path %></li>
               <li>
                 <%= link_to kurv_path do %>
                 <i class="fa fa-shopping-cart" style="font-size: 18px"></i>

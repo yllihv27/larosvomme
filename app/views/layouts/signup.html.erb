@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div class="signup">
+    <div class="<%= "signup" unless controller.action_name == 'deltaker' %><%= "signup_deltaker" if controller.action_name == 'deltaker' %>">
       <div class="main-w3layouts wrapper">
         <div class="main-agileinfo">
           <div class="agileits-top">

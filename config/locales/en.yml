@@ -8,6 +8,12 @@ nb:
           has_one: Kan ikke slette registreringen, fordi 1 %{record} avhenger av denne.
           has_many: Kan ikke slette registreringen, fordi %{record} avhenger av denne.
   date:
+    datepicker:
+      default: "dd/mm/yyyy"
+      long: "dd MM, yyyy"
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%d %B, %Y'
     abbr_day_names:
     - søn
     - man

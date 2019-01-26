@@ -1,9 +1,9 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, only: [:nytt_barn, :edit]
+  before_action :authenticate_coach!, only: [:ny_deltaker, :edit]
   skip_before_action :verify_authenticity_token
   
-  layout 'signup'
+  layout 'signup'#, except: :deltaker
 
   def index
     @children = Child.all
@@ -17,16 +17,16 @@ class ChildrenController < ApplicationController
     @member = current_member
   end
 
-  def nytt_barn
+  def ny_deltaker
     @child = Child.new
   end
 
-  def barn
+  def deltaker
     @child = Child.new
     @member = current_member
   end
   
-  def legg_til_barn
+  def legg_til_deltaker
     @child = Child.new
     @member = current_member
   end
@@ -49,7 +49,7 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to barn_flere_path, notice: 'Barn ble lagt til.' }
+        format.html { redirect_to dine_kurs_path, notice: 'Deltaker ble lagt til.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class ChildrenController < ApplicationController
   def update
     respond_to do |format|
       if @child.update(child_params)
-        format.html { redirect_to @child, notice: 'Barn ble oppdattert.' }
+        format.html { redirect_to @child, notice: 'Deltaker ble oppdattert.' }
         format.json { render :show, status: :ok, location: @child }
       else
         format.html { render :edit }
@@ -77,7 +77,7 @@ class ChildrenController < ApplicationController
   def destroy
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to children_url, notice: 'Barn ble slettet.' }
+      format.html { redirect_to children_url, notice: 'Deltaker ble slettet.' }
       format.json { head :no_content }
     end
   end

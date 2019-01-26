@@ -53,7 +53,6 @@ input[type='checkbox'] {
   font-size: 14px;
 }
 .pagination { margin: 10px !important; }
-.nav .open > a { background-color: #1c1c1c !important; }
 
 h2 { font-family: "JuliusSansOne", Arial, Helvetica, sans-serif !important }
 
@@ -305,7 +304,29 @@ select { color: #000 !important }
 input { color: #000 !important; border-radius: 5px; border: 0; padding: 7px; font-size: 15px; }
 
 
-/* NAVBAR */
+/* ----- NAVBAR ----- */
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: none !important;
+}
+.navbar-nav > li > .dropdown-menu {
+  padding: 5px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: none !important;
+}
+a.dropdown-toggle {
+  background: #000 !important;
+}
+.navbar-nav > li > a {
+  background: none !important;
+}
+.dropdown open {
+  background: none !important;
+}
+li.dropdown {
+  background: none !important;
+}
 
 .navbar { margin-bottom: 0px !important }
 
@@ -314,15 +335,6 @@ input { color: #000 !important; border-radius: 5px; border: 0; padding: 7px; fon
 li a:hover { text-decoration: none }
 
 .top-navbar { font-size: 12px;color:#f3f2f2 !important }
-
-.sidebar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
 
 .navbar-btn {
     box-shadow: none;
@@ -341,12 +353,24 @@ li a:hover { text-decoration: none }
   background-color: none !important;
 }
 .navbar-default ul { padding-top: 20px; }
-/* END OF NAVBAR*/
+
+/* ----- END OF NAVBAR ----- */
 
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+
+
+.sidebar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 .wrapper {
     display: flex;
     align-items: stretch;
@@ -408,9 +432,6 @@ ul ul a {
 .navbar .dropdown-menu li {
   padding: 10px !important;
   transition: .2s;
-  &:hover {
-  background: #323232;
-  }
 }
 .navbar ul ul a {
   padding: 0 !important

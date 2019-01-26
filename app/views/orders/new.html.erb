@@ -13,81 +13,105 @@
 			<%= i.course.course_place.name if i.course.course_place %>
 		<% end %>
 
-		<br><br>
-		<u>Total: <%= number_to_currency current_cart.sub_total %></u>
 	</td><br><br>
 	</div>
 
 	<hr>
 
+
 	<%= form_for @order, url: checkout_path do |f| %>
-	<div class="row">
-		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.label :ditt_fornavn %><br>
-				<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
-			</div><br>
-		</div>
-		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.label :ditt_etternavn %><br>
-				<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
-			</div><br>
-		</div>
-		<div class="form-group">
-			<%= f.label :email %><br>
-			<%= f.text_field :email, :class => 'textField' , value: current_member.email %>
-		</div>
-	</div><br>
+
+	<div id="child">
+    <%#= f.fields_for :children do |child| %>
+    <%#= render 'child_fields', f: child %>
+    <%# end %>
+  </div>
+
 	<% if current_member.children.any? %>
-	<hr>
-		Velg barn:<br><br>
+		Deltaker:<br><br>
 
-			<% current_member.children.each do |child| %>
-				<div class="row">
-					<div class="col-md-1 col-sm-1 col-xs-1">
-					  <%= check_box_tag "child_ids[]", child.id, {checked: true} %>
-					</div>
-					<div class="col-md-11 col-sm-11 col-xs-11">
-					  <%= child.first_name %> <%= child.last_name %>
-					</div>
+		<% current_member.children.each do |child| %>
+			<div class="row">
+				<div class="col-md-1 col-sm-1 col-xs-1">
+				  <%= check_box_tag "child_ids[]", child.id, {checked: true} %>
 				</div>
-			<% end %><br>
+				<div class="col-md-11 col-sm-11 col-xs-11">
+				  <%= child.first_name %> <%= child.last_name %>
+				</div>
+			</div>
+		<% end %><br>
 
-			<div style="font-size: 13px;color:#777"> Barnet vises ikke? <span style="color:#666"><%= link_to 'Legg til', barn_path, target: :blank %></span> (og refresh siden).</div>
+		<%= f.hidden_field :member_id, value: current_member.id %>
+
+		<em style="cursor:pointer;font-size:13px;color:#777" onclick="myFunction('add_child');"></i>Ny deltaker</em><br>
+	  <div style="display: none" id="add_child">
+		  <%= f.label :fornavn %>
+		  <%= text_field_tag :child_first_name %><br />
+		  <%= f.label :etternavn %>
+		  <%= text_field_tag :child_last_name %><br />
+		  <%= f.label :bursdag %><br>
+		  <%= f.text_field :participant_birthday, 'data-provide': 'datepicker', size:10, 'data-date-format': "yyyy-mm-dd" %>
+		  <%#= f.text_field :participant_birthday, html_options = { class: 'form-control datepicker', placeholder: 'Velg dato' } %>
+		</div>
+
+		<div style="font-size: 13px;color:#777"> Deltaker vises ikke? <span style="color:#666"><%= link_to 'Legg til', deltaker_path, target: :blank %></span> (og refresh siden).</div>
+	<% end %>
+	
+	<em style="cursor:pointer;font-size:13px;color:#777" onclick="myFunction('vis');"></i>Skal en kontaktperson hente deltakeren?</em><br>
+  <div style="display: none" id="vis">
+  	<% if current_member.contact_people.any? %>
+	  	<%= select_tag "contact_person_id", options_from_collection_for_select(ContactPerson.all.where(member_id: current_member.id), "id", "first_name",params[:contact_person_id]), :prompt => "Velg kontaktperson", class: "chosen-select" %><br>
+		  <div style="font-size: 13px;color:#777">Legg til en annen kontakperson <span style="color:#666"><%= link_to 'hér', kontaktperson_path %></span>.
+		  </div>
+  	<% else %>
+		  <div style="font-size: 13px;color:#777"> Legg til kontaktperson <span style="color:#666"><%= link_to 'hér', kontaktperson_path, style: 'color: #ff3f00 !important' %></span>.
+		  </div>
+  	<% end %>
+  	<% if current_member.grandparents.any? %>
+  	<br>
+	  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforelder", class: "chosen-select" %><br>
+		  <div style="font-size: 13px;color:#777">Legg til en annen besteforelder <span style="color:#666"><%= link_to 'her', besteforeldre_path %></span>.
+		  </div>
+  	<% else %>
+		  <div style="font-size: 13px;color:#777"> Legg til besteforelder <span style="color:#666"><%= link_to 'hér', besteforeldre_path %></span>.
+		  </div>
+  	<% end %>
+  </div>
+
+	<hr><br>
+	<u>Subtotal: <%= number_to_currency current_cart.sub_total %></u>
+	<br><br><hr>
+	<br>
+		<td colspan="4" align="right">
+		<% @items.each do |i| %>
+			<%= i.course.course_day %>
 		<% end %>
-
-		<hr>
-
-	  <em style="cursor:pointer;font-size:16px;color:#f3f2f2" onclick="myFunction('vis');"></i>Skal en kontaktperson hente barnet?</em><br><br>
-	  <div style="display: none" id="vis">
-	  	<% if current_member.contact_people.any? %>
-		  	<%= select_tag "contact_person_id", options_from_collection_for_select(ContactPerson.all.where(member_id: current_member.id), "id", "first_name",params[:contact_person_id]), :prompt => "Velg kontaktperson", class: "chosen-select" %><br>
-			  <div style="font-size: 13px;color:#777">Legg til en annen kontakperson <span style="color:#666"><%= link_to 'hér', kontaktperson_path %></span>.
-			  </div>
-	  	<% else %>
-			  <div style="font-size: 13px;color:#777"> Legg til kontaktperson <span style="color:#666"><%= link_to 'hér', kontaktperson_path, style: 'color: #ff3f00 !important' %></span>.
-			  </div>
-	  	<% end %>
-	  	<% if current_member.grandparents.any? %>
-	  	<br>
-		  	<%= select_tag "grandparent_id", options_from_collection_for_select(Grandparent.all.where(member_id: current_member.id), "id", "first_name",params[:grandparent_id]), :prompt => "Velg besteforelder", class: "chosen-select" %><br>
-			  <div style="font-size: 13px;color:#777">Legg til en annen besteforelder <span style="color:#666"><%= link_to 'her', besteforeldre_path %></span>.
-			  </div>
-	  	<% else %>
-			  <div style="font-size: 13px;color:#777"> Legg til besteforelder <span style="color:#666"><%= link_to 'hér', besteforeldre_path %></span>.
-			  </div>
-	  	<% end %>
-	  </div>
-
-	  <%= f.hidden_field :sub_total, :value => current_cart.sub_total %>
-	  <%= f.hidden_field :member_id, :value => current_member.id %>
+	</td>
+	<br><br><hr>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<%= f.label :ditt_fornavn %><br>
+					<%= f.text_field :first_name, :class => 'textField' , value: current_member.first_name %>
+				</div><br>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<%= f.label :ditt_etternavn %><br>
+					<%= f.text_field :last_name, :class => 'textField' , value: current_member.last_name %>
+				</div><br>
+			</div>
+			<div class="form-group">
+				<%= f.label :email %><br>
+				<%= f.text_field :email, :class => 'textField' , value: current_member.email %>
+			</div>
+		</div><br>
 
 		<% if current_member.children.any? %>
 			<%= f.submit 'Sjekk ut' %>
 		<% else %>
 		<br>
-			<%= link_to 'Legg til barn for å bestille', legg_til_barn_path, target: :blank, class: 'greyed-out-button' %>
+			<%= link_to 'Legg til deltaker for å bestille', legg_til_deltaker_path, target: :blank, class: 'greyed-out-button' %>
 			<div style="font-size: 13px;color:#777"> (og refresh siden).</div><br><br>
 		<% end %>
 		<%= link_to '← Tilbake', kurv_path %>

@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   get '/legg-til-besteforeldre', to: 'grandparents#legg_til_besteforelder'
   post '/legg-til-besteforeldre', to: 'grandparents#create'
   resources :children
-  get '/barn', to: 'children#barn'
-  post '/barn', to: 'children#create'
-  get '/nytt-barn', to: 'children#nytt_barn'
-  post '/nytt-barn', to: 'children#create'
-  get '/legg-til-barn', to: 'children#legg_til_barn'
+  get '/deltaker', to: 'children#deltaker'
+  post '/deltaker', to: 'children#create'
+  get '/ny-deltaker', to: 'children#ny_deltaker'
+  post '/ny-deltaker', to: 'children#create'
+  get '/legg-til-deltaker', to: 'children#legg_til_deltaker'
   post '/legg-til-barn', to: 'children#create'
   get '/barn/flere', to: 'children#flere'
   post '/barn/flere', to: 'children#create'
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :navs
   resources :order_items
+  get 'dine-kurs', to: 'orders#index'
   resources :orders do
     resources :grandparents
     get '/bedsteforelder', to: 'grandparents#new'

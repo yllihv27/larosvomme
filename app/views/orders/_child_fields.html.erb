@@ -1,0 +1,12 @@
+<div class="nested-fields">
+
+  <%= f.label :fornavn %>
+  <%= f.text_field :first_name, placeholder: 'Deltaker Fornavn' %><br />
+  <%= f.label :etternavn %>
+  <%= f.text_field :last_name, placeholder: 'Deltaker Etternavn' %><br />
+  <%= f.label :bursdag %><br>
+  <%= f.text_field :birthdate, html_options = { class: 'form-control datepicker', placeholder: 'Velg dato' } %>
+	<%= f.hidden_field :member_id, value: current_member.id %>
+  <%= f.hidden_field :course_niveau_id, value: "0" %>
+
+</div>
