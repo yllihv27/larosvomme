@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   resources :course_niveaus
   resources :courses
   devise_for :members, path: 'members', controllers: { sessions: "members/sessions", registrations: "members/registrations", confirmations: "members/confirmations", passwords: "members/passwords", unlocks: "members/unlocks", sessions: "members/sessions" }
-  resources :members, only: [:index, :show, :new, :edit, :update, :create, :destroy, :gdpr] do
+  resources :members, only: [:index, :show, :new, :edit, :create, :destroy, :gdpr] do
     resources :participations, controller: 'members/participations'
     get '/gdpr', to: 'members#gdpr'
   end
@@ -73,6 +73,8 @@ Rails.application.routes.draw do
     get '/:id/rediger-konto', to: 'members#edit', as: :rediger_konto
     post '/:id/rediger-konto', to: 'members#update'
     get '/:id/konto', to: 'members#show'
+    get '/members/edit', to: 'members/registrations#edit'
+    post '/members/:id', to: 'members/registrations#update'
   end
   devise_for :coaches, path: 'coaches', controllers: { sessions: "coaches/sessions", registrations: "coaches/registrations", confirmations: "coaches/confirmations", passwords: "coaches/passwords", unlocks: "coaches/unlocks", sessions: "coaches/sessions" }
   devise_scope :coach do

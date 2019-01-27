@@ -1,90 +1,185 @@
-<div class="row" style="padding: 50px">
-	<%= link_to "Redigér konto", rediger_konto_path(@member), class: 'btn btn-primary', style: 'float: right' %>
-	<div class="col-xs-6 col-md-6">
-			<%= image_tag @member.profile_pic.url(:profile_pic) if @member.profile_pic? %>
-			<%= image_tag '/profile.png' if !@member.profile_pic? %>
-	</div>
-	<div class="col-xs-6 col-md-6">
-		<%= @member.first_name %> <%= @member.last_name %><br>
-		<%= @member.email %><br>
-		<%= @member.phone if @member.phone %><br>
+<script>
+  $("#modal-window").html("<%= escape_javascript(render 'participations/new') %>");
+</script>
 
-		<% if !coach_signed_in? %>
-			<% if @member.children.any? %>
-			<div style="background: #1c1c1c;padding:10px;">
-				<hr>Dine deltakere:<br><br>
-				<% @member.children.each do |c| %>
-				<%= c.first_name %> <%= c.last_name %><br>
-				<strong>Bursdag:</strong> <%= c.birthdate %><br>
-				<strong>Nivå:</strong> <%= c.course_niveau.name if c.course_niveau %>
-				<%= progress_bar("#{c.level}0", :color => 'black', :rounded => true, style: '#4c1300') %><hr>
-				<% end %>
-			</div>
-			<% end %><br>
-			<% if @member.contact_people.any? %>
-			<div style="background: #1c1c1c;padding:10px;">
-				<hr>Dine kontaktpersoner:<br><br>
-				<% @member.contact_people.each do |cp| %>
-				<%= cp.first_name %> <%= cp.last_name %><br>
-				<%= cp.relation if cp.relation %><br>
-				<%= cp.phone if cp.phone %><br>
-				<% end %>
-			</div>
-			<% end %>
-			<% if @member.grandparents.any? %>
-			<div style="background: #1c1c1c;padding:10px;">
-				<hr>Dine besteforeldre:<br><br>
-				<% @member.grandparents.each do |g| %>
-				<%= g.first_name %> <%= g.last_name %><br>
-				<% end %>
-			</div>
-			<% end %>
-			<div style="background: #1c1c1c;padding:10px;">
-				<hr>Dine deltakelser:<br><br>
-				<% @participations.each do |p| %>
-					<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
-				<% end %>
-			</div>
-			<br>
-
-		<% else %>
-
-			<% if @member.children.any? %>
-			<div style="padding:10px;">
-				<hr><h3>Deltakere:</h3>
-				<% @member.children.each do |c| %>
-				<%= c.first_name %> <%= c.last_name %><br>
-				<strong>Bursdag:</strong> <%= c.birthdate %><br>
-				<strong>Nivå:</strong> <%= c.course_niveau.name if c.course_niveau %>
-				<%= progress_bar("#{c.level}0", :color => 'black', :rounded => true, style: '#4c1300') %><hr>
-				<% end %>
-			</div>
-			<% end %><br>
-			<% if @member.contact_people.any? %>
-			<div style="padding:10px;">
-				<hr><h3>Kontaktpersoner:</h3>
-				<% @member.contact_people.each do |cp| %>
-				<%= cp.first_name %> <%= cp.last_name %><br>
-				<%= cp.relation if cp.relation %><br>
-				<%= cp.phone if cp.phone %><br>
-				<% end %>
-			</div>
-			<% end %>
-			<% if @member.grandparents.any? %>
-			<div style="padding:10px;">
-				<hr><h3>Besteforeldre:</h3>
-				<% @member.grandparents.each do |g| %>
-				<%= g.first_name %> <%= g.last_name %><br>
-				<% end %>
-			</div>
-			<% end %>
-			<div style="padding:10px;">
-				<hr><h3>Deltakelser:</h3>
-				<% @participations.each do |p| %>
-					<%= p.course.course_niveau.name if p.course.course_niveau %> <%= p.course.course_category.name if p.course.course_category %> <%= p.course.course_place.name if p.course.course_place %> <%= p.course.day.strftime('%A | %b %d') if p.course.day %><br><br>
-				<% end %>
-			</div>
-			<br>
-		<% end %>
-	</div>
+<div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <%= render 'participations/new' %>
 </div>
+<h2 style="padding-top;padding-left: 50px;">Konto</h2>
+
+<div class="edit-member">
+  <div class="row">
+    <div class="col-sm-5 col-md-5">
+        <%= image_tag @member.profile_pic.url(:profile_pic), style: 'width: 100%;' if @member.profile_pic? %>
+        <%= image_tag '/profile.png' if !@member.profile_pic? %>
+    </div><br>
+    <div class="col-sm-5 col-md-5">
+      <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+          Navn:
+        </div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <strong><%= @member.first_name %> <%= @member.last_name %></strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+          Email:
+        </div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <strong><%= @member.email %></strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+          Telefon:
+        </div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <strong><%= @member.phone %></strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+          ID:
+        </div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <strong><%= @member.id %></strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+          Gade:
+        </div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <strong><%= @member.address %></strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+          By:
+        </div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <strong><%= @member.zipcode %> <%= @member.city %></strong>
+        </div>
+      </div>
+    </div><br>
+    <div class="col-sm-2 col-md-2">
+      <%= link_to "Rediger konto", edit_member_path(@member), class: 'blue-button', style: 'float: right;color:#fff !important' if member_signed_in? %>
+    </div>
+
+  </div><br>
+  <div class="row">
+    <div class="col-md-6">
+      
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row" style="cursor:pointer" onclick="myFunction('kontaktperson');">
+          <div class="col-md-6 col-sm-6">
+            <strong><%= @contact_people.count if @contact_people.any? %> kontaktpersoner</strong>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= link_to 'Opprett', legg_til_kontaktperson_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;float:right' %>
+          </div>
+        </div>
+
+        <div id="kontaktperson" style="display: none">
+
+          <% if @contact_people.any? %>
+            <% @contact_people.each do |gp| %>
+              <%= gp.first_name %> <%= gp.first_name %> <%= link_to "Rediger", edit_contact_person_path(gp), style: 'color: #00394c !important;font-size:12px' %> <br>
+            <% end %>
+          <% else %>
+            <em>Ingen kontaktpersoner</em>
+          <% end %>
+        </div>
+      </div>
+        <br>
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row">
+          <div class="col-md-6 col-sm-6" style="cursor:pointer" onclick="myFunction('besteforeldre');">
+            <strong><%= @grandparents.count if @grandparents.any? %> besteforeldre</strong>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= link_to 'Opprett', legg_til_besteforeldre_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;float:right' %>
+          </div>
+        </div>
+
+        <div id="besteforeldre", style="display: none">
+          <% if @grandparents.any? %>
+            <% @grandparents.each do |g| %>
+              <%= g.first_name %> <%= g.first_name %> <%= link_to "Rediger", edit_grandparent_path(g), style: 'color: #00394c !important;font-size:12px' %> <br>
+            <% end %>
+          <% else %>
+            <em>Ingen besteforeldre</em>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row">
+          <div class="col-md-6" style="cursor:pointer" onclick="myFunction('kurs');">
+            <strong style="font-size: 18px;"><%= @participations.count %> registrerte kurs</strong>
+          </div>
+          <div class="col-md-6">
+            <div class="danger" style="float: right;"><%= link_to 'Tilføj deltakelse', new_member_participation_path(@member), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'blue-button'} %>
+            </div>
+          </div>
+        </div>
+
+        <div id="kurs" style="display: none">
+
+          <% @participations.each do |p| %>
+            <div class="hover-bg no-padding">
+              Deltaker: <strong><%= p.child.first_name %> <%= p.child.last_name %></strong><br>
+              <%= link_to p.course.course_name, participation_path(p) if p.course.course_niveau %>
+              <%= form_for(p) do |pa| %>
+                <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Flytt til et annet kurs", class: "chosen-select" %>
+                <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                    <%= pa.submit "Flytt", class: 'btn btn-dark' %>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                    <%= link_to "Slett deltakelse", participation_path(p),
+                    data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+                  </div>
+                </div>
+              <% end %><br>
+            </div>
+            <hr style="border: 1px solid #c3c2c2;margin-top: 0">
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
+        <div class="row">
+          <div class="col-md-6 col-sm-6" style="cursor:pointer" onclick="myFunction('deltaker');">
+            <strong><%= @participations.count if @participations.any? %> deltakere</strong>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <%= link_to 'Opprett', ny_deltaker_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;float:right' %>
+          </div>
+        </div>
+        <div id="deltaker" style="display: none">
+        <% if @children.any? %>
+          <% @children.each do |c| %>
+            <i class="fa fa-child"></i> <%= c.first_name %> <%= c.first_name %>, <%= c.age %> år. <%= link_to "Rediger", edit_child_path(c), style: 'color: #00394c !important;font-size:12px' %> <br>
+          <% end %>
+        <% else %>
+          <em>Ingen barn ennå</em>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <br>
+<div class="danger">
+  <%= link_to "Slett konto", member_path(@member),
+            data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-danger' %>
+          </div>
+</div>
+
+<hr>
+
+
+<%= link_to "← Tilbake", :back %>

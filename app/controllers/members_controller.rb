@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :destroy]
-  before_action :check_member, only: [:show, :edit]
+  before_action :set_member, only: [:show, :update, :edit, :destroy]
+  before_action :check_member, only: [:show, :edit, :update]
+  #before_action :authenticate_member!, only: [:show]
   #before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, except: [:new, :edit, :update, :create, :show, :tilfoj_barn, :gdpr]
   skip_before_action :verify_authenticity_token
@@ -17,10 +18,15 @@ class MembersController < ApplicationController
   end
 
   def show
-	  @member = Member.find(params[:id])
     @courses = Course.where(member_id: @member)
     @participations = Participation.where(member_id: @member)
-    render layout:'account'
+    @participation = Participation.new
+    @children = Child.where(member_id: @member)
+    @grandparents = Grandparent.where(member_id: @member)
+    @contact_people = ContactPerson.where(member_id: @member)
+    if member_signed_in? 
+      render layout: 'account'
+    end
   end
 
   def tilfoj_barn
@@ -73,6 +79,18 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to members_url, notice: 'member day was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @member.update(member_params)
+        format.html { redirect_to @member, notice: 'Din konto ble oppdatteret.' }
+        format.json { render :show, status: :ok, location: @member }
+      else
+        format.html { render :edit }
+        format.json { render json: @member.errors, status: :unprocessable_entity }
+      end
     end
   end
   private

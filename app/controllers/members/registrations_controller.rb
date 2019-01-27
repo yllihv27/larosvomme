@@ -3,6 +3,7 @@
 class Members::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token, :only => :create
   layout 'signup', except: :edit
+
   #include Accessible
   #skip_before_action :check_coach, except: [:new, :create]
   # before_action :configure_sign_up_params, only: [:create]
@@ -44,7 +45,15 @@ class Members::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def edit 
+  def edit
+    render layout: 'account'
+    @member = current_member
+    @courses = Course.where(member_id: @member)
+    @participations = Participation.where(member_id: @member)
+    @participation = Participation.new
+    @children = Child.where(member_id: @member)
+    @grandparents = Grandparent.where(member_id: @member)
+    @contact_people = ContactPerson.where(member_id: @member)
   end
 
   def update
@@ -54,11 +63,11 @@ class Members::RegistrationsController < Devise::RegistrationsController
     resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
-      redirect_to current_member_path
-      set_flash_message_for_update(resource, prev_unconfirmed_email)
-      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+      redirect_to resource
+      #set_flash_message_for_update(resource, prev_unconfirmed_email)
+      #bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
 
-      respond_with resource, location: after_update_path_for(resource)
+      #respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
       set_minimum_password_length
@@ -119,4 +128,8 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+    def member_params
+      params.require(:member).permit(:id, :first_name, :last_name, :profile_pic, :email, :password, :password_confirmation, :course_id, :phone, :gdpr, :address, :zipcode, :city, children_attributes: [:first_name, :last_name, :member_id, :course_id, :id, :destroy])
+    end
 end

@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
 		case resource.class
     when current_coach
-      members_path  
+      members_path
     when current_member
       courses_path
     end
@@ -77,8 +77,8 @@ class ApplicationController < ActionController::Base
   	@sub_navs = SubNav.all.order('number ASC')
   end
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone, :gdpr, :address, :zipcode, :city])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone, :address, :zipcode, :city])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone, :gdpr, :address, :zipcode, :city, :current_password])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :course_id, :profile_pic, :phone, :address, :zipcode, :city, :current_password])
     #in keys you list all the input you want to accept.
   end
 

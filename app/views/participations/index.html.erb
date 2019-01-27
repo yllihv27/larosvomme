@@ -37,7 +37,7 @@
                     <tr style="color:#000 !important;">
                       <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
                       <td><i class="fa fa-child"></i> <strong><%= link_to p.child.first_name, edit_child_path(p.child), target: :blank if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child), target: :blank if p.child %></strong><br>
-                        <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
+                        <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, member_path(p.member) %> <%= link_to p.member.last_name, member_path(p.member) %></p></td>   
                       <td><center><%= p.child.order_age %></center></td>
                       <td>
                         <% if p.child.course_niveau %>
@@ -45,14 +45,14 @@
                           <%= progress_bar("#{p.child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %>
                         <% end %>
                       </td>
-                      <td><%= link_to p.member.phone, edit_member_path(p.member) if p.member.phone %></td>
+                      <td><%= p.member.phone if p.member.phone %></td>
                       <td><div style="cursor:pointer;float:right" onclick="myFunction('<%= p.id %>');"><a class="fa fa-cogs" aria-hidden="true"></a><a style="font-size: 10px;"> Flyt deltaker</a></div></td>
                     </tr>
                     <div id="<%= p.id %>" style="display: none;">
                       <hr>
                       <%= form_for(p) do |m| %>
                         <div class="small-form">
-                          Flytt deltaker med ID <%= p.child.id%> <%= link_to "Flere detaljer", edit_member_path(p.member), class: 'blue-button', style: 'float: right' %>
+                          Flytt deltaker med ID <%= p.child.id%> <%= link_to "Flere detaljer", member_path(p.member), class: 'blue-button', style: 'float: right' %>
                             <div style="padding-top: 20px">
                             <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Flytt til et annet kurs", class: "chosen-select" %>
                           <hr>
@@ -100,7 +100,7 @@
                     <tr style="color:#000 !important;">
                       <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
                       <td><i class="fa fa-child"></i> <strong><%= link_to p.child.first_name, edit_child_path(p.child), target: :blank if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child), target: :blank if p.child %></strong><br>
-                        <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
+                        <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, member_path(p.member) %> <%= link_to p.member.last_name, member_path(p.member) %></p></td>   
                       <td><center><%= p.child.order_age %></center></td>
                       <td>
                         <% if p.child.course_niveau %>
@@ -108,14 +108,14 @@
                           <%= progress_bar("#{p.child.level}0", :color => 'black', :rounded => true, style: '#4c1300') %>
                         <% end %>
                       </td>
-                      <td><%= link_to p.member.phone, edit_member_path(p.member) if p.member.phone %></td>
+                      <td><%= link_to p.member.phone, member_path(p.member) if p.member.phone %></td>
                       <td><div style="cursor:pointer;float:right" onclick="myFunction('<%= p.id %>');"><a class="fa fa-cogs" aria-hidden="true"></a><a style="font-size: 10px;"> Flyt deltaker</a></div></td>
                     </tr>
                     <div id="<%= p.id %>" style="display: none;">
                       <hr>
                       <%= form_for(p) do |m| %>
                         <div class="small-form">
-                          Flytt deltaker med ID <%= p.child.id%> <%= link_to "Flere detaljer", edit_member_path(p.member), class: 'blue-button', style: 'float: right' %>
+                          Flytt deltaker med ID <%= p.child.id%> <%= link_to "Flere detaljer", member_path(p.member), class: 'blue-button', style: 'float: right' %>
                             <div style="padding-top: 20px">
                             <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Flytt til et annet kurs", class: "chosen-select" %>
                           <hr>
@@ -163,17 +163,17 @@
                     <tr style="color:#000 !important;">
                       <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
                       <td><i class="fa fa-child"></i> <strong><%= link_to p.child.first_name, edit_child_path(p.child), target: :blank if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child), target: :blank if p.child %></strong><br>
-                        <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
+                        <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, member_path(p.member) %> <%= link_to p.member.last_name, member_path(p.member) %></p></td>   
                       <td><center><%= p.child.order_age %></center></td>
-                      <td><%= link_to p.member.email, edit_member_path(p.member) %></td>
-                      <td><%= link_to p.member.phone, edit_member_path(p.member) if p.member.phone %></td>
+                      <td><%= link_to p.member.email, member_path(p.member) %></td>
+                      <td><%= link_to p.member.phone, member_path(p.member) if p.member.phone %></td>
                       <td><div style="cursor:pointer;float:right" onclick="myFunction('past<%= p.id %>');"><a class="fa fa-cogs" aria-hidden="true"></a><a style="font-size: 10px;"> Flyt deltaker</a></div></td>
                     </tr>
                     <div id="past<%= p.id %>" style="display: none;">
                       <hr>
                       <%= form_for(p) do |m| %>
                         <div class="small-form">
-                          Flytt deltaker med ID <%= p.child.id%> <%= link_to "Flere detaljer", edit_member_path(p.member), class: 'blue-button', style: 'float: right' %>
+                          Flytt deltaker med ID <%= p.child.id%> <%= link_to "Flere detaljer", member_path(p.member), class: 'blue-button', style: 'float: right' %>
                             <div style="padding-top: 20px">
                             <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Flytt til et annet kurs", class: "chosen-select" %>
                           <hr>
@@ -215,7 +215,7 @@
           <tr style="color:#000 !important;">
             <td style="padding-right: 10px"><%= p.child.id if p.child %></td>   
             <td><i class="fa fa-child"></i>  <strong><%= link_to p.child.first_name, edit_child_path(p.child), target: :blank if p.child %> <%= link_to p.child.last_name, edit_child_path(p.child), target: :blank if p.child %></strong> <br>
-              <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, edit_member_path(p.member) %> <%= link_to p.member.last_name, edit_member_path(p.member) %></p></td>   
+              <p style="font-size: 12px;">Forelder: <%= link_to p.member.first_name, member_path(p.member) %> <%= link_to p.member.last_name, member_path(p.member) %></p></td>   
             <td>
               <% if p.child.course_niveau %>
                 <center><%= p.child.course_niveau.name if p.child.course_niveau %></center>
