@@ -784,6 +784,13 @@ border-style: solid; }
     ORDER SHOW PAGE
 ----------------------------------------------------- */
 
+.order_page {
+  padding: 50px;
+  @media only screen and (max-width: 465px) {
+  padding: 0 !important;
+  }
+}
+
 .transparent {
   background: rgba(243, 242, 242, 0.1);
   border-radius: 15px;
