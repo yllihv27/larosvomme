@@ -5,7 +5,7 @@
 <div id="modal-window" class="modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <%= render 'participations/new' %>
 </div>
-<h2 style="padding-top;padding-left: 50px;">Konto</h2>
+<h2 style="padding-left: 50px;">Konto</h2>
 
 <div class="edit-member">
   <div class="row">
@@ -68,7 +68,7 @@
     </div>
 
   </div><br>
-  <div class="row">
+  <div class="row desktop">
     <div class="col-md-6">
       
       <div style="background: #f3f2f2;padding:20px;border-radius: 5px;">
@@ -161,6 +161,75 @@
           </div>
         </div>
         <div id="deltaker" style="display: none">
+          <% if @children.any? %>
+            <% @children.each do |c| %>
+              <i class="fa fa-child"></i> <%= c.first_name %> <%= c.first_name %>, <%= c.age %> år. <%= link_to "Rediger", edit_child_path(c), style: 'color: #00394c !important;font-size:12px' %> <br>
+            <% end %>
+          <% else %>
+            <em>Ingen barn ennå</em>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="mobile">
+  
+      <div style="background: #f3f2f2;border-radius: 5px;"><br>
+          <strong><%= @contact_people.count if @contact_people.any? %> kontaktpersoner</strong><br><br>
+          <%= link_to 'Opprett', legg_til_kontaktperson_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;' %><br><br>
+
+        <% if @contact_people.any? %>
+          <% @contact_people.each do |gp| %>
+            <%= gp.first_name %> <%= gp.first_name %> <%= link_to "Rediger", edit_contact_person_path(gp), style: 'color: #00394c !important;font-size:12px' %> <br>
+          <% end %>
+        <% else %>
+          <em>Ingen kontaktpersoner</em>
+        <% end %>
+      </div>
+        <br>
+      <div style="background: #f3f2f2;border-radius: 5px;"><br>
+        <strong><%= @grandparents.count if @grandparents.any? %> besteforeldre</strong><br><br>
+        <%= link_to 'Opprett', legg_til_besteforeldre_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;' %><br><br>
+
+        <% if @grandparents.any? %>
+          <% @grandparents.each do |g| %>
+            <%= g.first_name %> <%= g.first_name %> <%= link_to "Rediger", edit_grandparent_path(g), style: 'color: #00394c !important;font-size:12px' %> <br>
+          <% end %>
+        <% else %>
+          <em>Ingen besteforeldre</em>
+        <% end %>
+      </div><br>
+    
+      <div style="background: #f3f2f2;border-radius: 5px;"><br>
+        <strong style="font-size: 18px;"><%= @participations.count %> registrerte kurs</strong><br><br>
+        <div class="danger" style="float: right;"><%= link_to 'Tilføj deltakelse', new_member_participation_path(@member), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'blue-button'} if current_coach %>
+        </div>
+
+
+        <% @participations.each do |p| %>
+          <div class="hover-bg no-padding">
+            Deltaker: <br><strong><%= p.child.first_name %> <%= p.child.last_name %></strong><br>
+            <%= link_to p.course.course_name, participation_path(p) if p.course.course_niveau %>
+            <%= form_for(p) do |pa| %>
+              <%= select_tag "course_id", options_from_collection_for_select(Course.all, "id", "course_name",params[:course_id]), :prompt => "Flytt til et annet kurs", class: "chosen-select" %>
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <%= pa.submit "Flytt", class: 'btn btn-dark' %>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <%= link_to "Slett deltakelse", participation_path(p),
+                  data: {:confirm => 'Er du sikker?'}, method: :delete, class: 'btn btn-red', style: 'color: #fff !important' %>
+                </div>
+              </div>
+            <% end %><br>
+          </div>
+          <hr style="border: 1px solid #c3c2c2;margin-top: 0">
+        <% end %>
+      </div>
+      <br>
+      <div style="background: #f3f2f2;border-radius: 5px;"><br>
+        <strong><%= @participations.count if @participations.any? %> deltakere</strong><br><br>
+        <%= link_to 'Opprett', deltaker_path, target: :_blank, class: 'blue-button', style: 'color: #fff! important;' %><br><br>
         <% if @children.any? %>
           <% @children.each do |c| %>
             <i class="fa fa-child"></i> <%= c.first_name %> <%= c.first_name %>, <%= c.age %> år. <%= link_to "Rediger", edit_child_path(c), style: 'color: #00394c !important;font-size:12px' %> <br>
@@ -170,8 +239,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
   <br>
 <div class="danger">
   <%= link_to "Slett konto", member_path(@member),

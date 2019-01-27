@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper desktop">
       <div id="content" class="coach">
         <div class="container">
           <%= link_to "Logg ut", destroy_member_session_path, method: :delete, class: '', style: 'float:right;padding:13px;color:#000 !important' %>
@@ -49,25 +49,54 @@
         </ul>
 
       </nav>
+    </div>
+    <div class="mobile mobile_account" style="background: #f3f2f2;">
+      <div class="mobile wrapper_member"><br>
+        <%= image_tag '/logo_trans.png' %>
+        <br><br>
 
-      
+        <ul class="list-unstyled components">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= link_to '<i class="fa fa-cogs" aria-hidden="true"></i><br>Min konto'.html_safe, member_path(current_member) %>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= link_to '<i class="fa fa-calendar" aria-hidden="true"></i><br>Mine kurs'.html_safe, mine_kurs_path %>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= link_to '<i class="fa fa-child" aria-hidden="true"></i><br>Legg til deltaker'.html_safe, deltaker_path %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= link_to '<i class="fa fa-user-circle" aria-hidden="true"></i><br>Legg til kontaktperson'.html_safe, legg_til_kontakt_person_path %>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= link_to '<i class="fa fa-user-circle" aria-hidden="true"></i><br>Legg til besteforelder'.html_safe, legg_til_beste_foreldre_path %>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i><br>Tilbake til kursoversikt (nettbutikk)'.html_safe, kurs_path %>
+            </div>
+          </div>
+        </ul>
+        <br>
+      </div>
+      <div class="member_body" style="color:#1c1c1c">
+        <p id="notice"><%= notice%></p>
+        <%= yield %>
+      </div>
       
     </div>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-
-
-<!-- jQuery CDN -->
- <!-- Bootstrap Js CDN -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
- <script type="text/javascript">
-     $(document).ready(function () {
-         $('#sidebarCollapse').on('click', function () {
-             $('#sidebar').toggleClass('active');
-         });
-     });
- </script>
+    <script type="text/javascript">
+       $(document).ready(function () {
+           $('#sidebarCollapse').on('click', function () {
+               $('#sidebar').toggleClass('active');
+           });
+       });
+    </script>
   </body>
 </html>

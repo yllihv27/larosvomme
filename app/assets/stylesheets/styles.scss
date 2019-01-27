@@ -361,7 +361,6 @@ li a:hover { text-decoration: none }
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
-
 .sidebar {
     padding: 15px 10px;
     background: #fff;
@@ -374,6 +373,13 @@ li a:hover { text-decoration: none }
 .wrapper {
     display: flex;
     align-items: stretch;
+}
+.wrapper_member {
+  background: #00394c !important;
+}
+.member_body {
+  background: #f3f2f2;
+  color: #1c1c1c;
 }
 
 #sidebar {
