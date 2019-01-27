@@ -14,11 +14,9 @@
 //= require jquery_ujs
 //= require jquery.easy-autocomplete
 //= require popper
-//= require jquery.turbolinks
 //= require chosen-jquery
 //= require bootstrap
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require activestorage
 //= require aos
 //= require ckeditor/init
@@ -59,7 +57,7 @@ function replaceword(that, word, oword) {
 }
 
 
-$(document).on('turbolinks:load', function(){
+$(document).ready(function(){
 	$(".chosen-select").chosen();
 	allow_single_deselect: true
     no_results_text: 'Ingen resultater';
