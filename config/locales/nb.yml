@@ -243,3 +243,5 @@ nb:
     failure:
       member: 
         not_found_in_database: 'Bruker ikke funnet'
+      coach: 
+        not_found_in_database: 'Email ikke funnet'

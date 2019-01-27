@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LÆR Å SVØMME</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div id="content" class="coach">
+        <div class="container">
+          <%= link_to "Logg ut", destroy_member_session_path, method: :delete, class: '', style: 'float:right;padding:13px;color:#000 !important' %>
+          <p id="notice"><%= notice%></p>
+          <%= yield %>
+        </div>
+      </div>
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <%= image_tag '/logo_trans.png' %>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+              <i class="fa fa-calendar" aria-hidden="true"></i> <%= link_to 'Min konto', rediger_konto_path(@member) %>
+            </li>
+            <li>
+              <i class="fa fa-calendar" aria-hidden="true"></i> <%= link_to 'Mine kurs', mine_kurs_path %>
+            </li>
+            <li>
+              <i class="fa fa-child" aria-hidden="true"></i> Legg til deltaker
+            </li>
+            <li>
+              <i class="fa fa-user-circle" aria-hidden="true"></i> <%= link_to 'Legg til kontaktperson', legg_til_kontakt_person_path %>
+            </li>
+            <li>
+              <i class="fa fa-user-circle" aria-hidden="true"></i> <%= link_to 'Legg til besteforelder', legg_til_beste_foreldre_path %>
+            </li>
+            <li>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i> <%= link_to 'Tilbake til kursoversikt (nettbutikk)', kurs_path %>
+            </li>
+        </ul>
+
+      </nav>
+
+      
+      
+    </div>
+
+
+
+
+
+<!-- jQuery CDN -->
+ <!-- Bootstrap Js CDN -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $('#sidebarCollapse').on('click', function () {
+             $('#sidebar').toggleClass('active');
+         });
+     });
+ </script>
+  </body>
+</html>

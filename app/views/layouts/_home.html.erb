@@ -76,7 +76,7 @@
                 <ul class="dropdown-menu">
                   <%= link_to "<li>Logg inn</li>".html_safe, logg_in_path if !member_signed_in? %>
                   <%#= link_to "<li>Din konto</li>".html_safe, konto_path(current_member) if  member_signed_in? %>
-                  <%= link_to "<li>Din konto</li>".html_safe, member_path(current_member) if  member_signed_in? %>
+                  <%= link_to "<li>Min konto</li>".html_safe, rediger_konto_path(current_member) if  member_signed_in? %>
                   <%= link_to "<li>Logg ut</li>".html_safe, destroy_member_session_path, method: :delete if member_signed_in? %>
                 </ul>
               </li>

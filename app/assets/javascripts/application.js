@@ -47,14 +47,22 @@ function myFunction(id) {
   }
 }
 
+$(document).ready(function(){
+  $('.on_click').on('click', function(){
+    $('.on_click').removeClass('selected');
+    $(this).addClass('selected');
+  })
+});
+
 function replaceword(that, word, oword) {
     that.textContent = that.textContent == word ? oword : word;
 }
 
+
 $(document).on('turbolinks:load', function(){
 	$(".chosen-select").chosen();
 	allow_single_deselect: true
-    no_results_text: 'No results matched';
+    no_results_text: 'Ingen resultater';
 });
 
 

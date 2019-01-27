@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.where(member_id: current_member.id)
     @courses = Course.all
+    render layout: 'account'
   end
 
   def show

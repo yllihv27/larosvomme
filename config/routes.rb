@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   post '/kontaktperson', to: 'contact_people#create'
   get '/legg-til-kontaktperson', to: 'contact_people#legg_til_kontaktperson'
   post '/legg-til-kontaktperson', to: 'contact_people#create'
+  get '/legg-til-kontakt-person', to: 'contact_people#legg_til_kontakt_person'
+  post '/legg-til-kontakt-person', to: 'contact_people#create'
   resources :grandparents
   get '/besteforeldre', to: 'grandparents#new'
   post '/besteforeldre', to: 'grandparents#create'
   get '/legg-til-besteforeldre', to: 'grandparents#legg_til_besteforelder'
   post '/legg-til-besteforeldre', to: 'grandparents#create'
+  get '/legg-til-beste-foreldre', to: 'grandparents#legg_til_beste_forelder'
+  post '/legg-til-beste-foreldre', to: 'grandparents#create'
   resources :children
   get '/deltaker', to: 'children#deltaker'
   post '/deltaker', to: 'children#create'
@@ -31,7 +35,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :navs
   resources :order_items
-  get 'dine-kurs', to: 'orders#index'
+  get 'mine-kurs', to: 'orders#index'
   resources :orders do
     resources :grandparents
     get '/bedsteforelder', to: 'grandparents#new'
@@ -66,7 +70,8 @@ Rails.application.routes.draw do
     post '/logg-in', to: 'members/sessions#create'
     get '/registrer', to: 'members/registrations#new'
     post '/registrer', to: 'members/registrations#create'
-    get '/rediger-konto', to: 'members#edit'
+    get '/:id/rediger-konto', to: 'members#edit', as: :rediger_konto
+    post '/:id/rediger-konto', to: 'members#update'
     get '/:id/konto', to: 'members#show'
   end
   devise_for :coaches, path: 'coaches', controllers: { sessions: "coaches/sessions", registrations: "coaches/registrations", confirmations: "coaches/confirmations", passwords: "coaches/passwords", unlocks: "coaches/unlocks", sessions: "coaches/sessions" }

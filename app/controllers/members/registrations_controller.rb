@@ -2,7 +2,7 @@
 
 class Members::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token, :only => :create
-  layout 'signup'
+  layout 'signup', except: :edit
   #include Accessible
   #skip_before_action :check_coach, except: [:new, :create]
   # before_action :configure_sign_up_params, only: [:create]
@@ -42,6 +42,9 @@ class Members::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end
+  end
+
+  def edit 
   end
 
   def update

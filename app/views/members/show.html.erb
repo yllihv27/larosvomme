@@ -1,10 +1,10 @@
 <div class="row" style="padding: 50px">
-	<p id="notice"><%= notice.html_safe if notice %></p>
-	<div class="col-xs-6 col-md-4">
+	<%= link_to "Redigér konto", rediger_konto_path(@member), class: 'btn btn-primary', style: 'float: right' %>
+	<div class="col-xs-6 col-md-6">
 			<%= image_tag @member.profile_pic.url(:profile_pic) if @member.profile_pic? %>
 			<%= image_tag '/profile.png' if !@member.profile_pic? %>
 	</div>
-	<div class="col-xs-6 col-md-4">
+	<div class="col-xs-6 col-md-6">
 		<%= @member.first_name %> <%= @member.last_name %><br>
 		<%= @member.email %><br>
 		<%= @member.phone if @member.phone %><br>
@@ -86,13 +86,5 @@
 			</div>
 			<br>
 		<% end %>
-	</div>
-	<div class="col-xs-6 col-md-4">
-		<%= link_to "Redigér konto", edit_member_registration_path, class: 'btn btn-primary' %><br><br>
-		<%= link_to "Legg til deltaker", deltaker_path, class: 'btn btn-primary' %><br><br>
-		<%= link_to "Legg til kontaktperson", kontaktperson_path, class: 'btn btn-primary' %><br><br>
-		<%= link_to "Legg til besteforeldre", besteforeldre_path, class: 'btn btn-primary' %><br><br>
-		<%= link_to "Dine kurs", orders_path, class: 'btn btn-primary' %><br><br>
-		<%= link_to "Find kurs", courses_path, class: 'btn btn-primary' %>
 	</div>
 </div>

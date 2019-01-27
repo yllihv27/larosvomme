@@ -2,7 +2,7 @@ class GrandparentsController < ApplicationController
   before_action :set_grandparent, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, only: :show
   skip_before_action :verify_authenticity_token
-  layout 'signup'
+  layout 'signup', except: :legg_til_beste_forelder
 
   def index
     @grandparents = Grandparent.all
@@ -19,6 +19,12 @@ class GrandparentsController < ApplicationController
 
   def legg_til_besteforelder
     @grandparent = Grandparent.new
+  end
+
+  def legg_til_beste_forelder
+    @grandparents = Grandparent.where(member_id: current_member)
+    @grandparent = Grandparent.new
+    render layout: 'account'
   end
 
   def besteforeldre
@@ -38,7 +44,7 @@ class GrandparentsController < ApplicationController
     respond_to do |format|
       if member_signed_in?
         if @grandparent.save
-          format.html { redirect_to kurv_sjekk_ut_path, notice: 'Besteforelder ble opprettet' }
+          format.html { redirect_to legg_til_beste_foreldre_path, notice: 'Besteforelder ble opprettet' }
           format.json { render :show, status: :created, location: @grandparent }
         else
           format.html { render :new }

@@ -52,7 +52,7 @@ class ParticipationsController < ApplicationController
     respond_to do |format|
       if @participation.save
         #subscribe
-        format.html { redirect_to edit_member_path(@member), notice: 'Participation was successfully created.' }
+        format.html { redirect_to edit_member_path(@member), notice: 'Deltaker ble opprettett.' }
         format.json { render :show, status: :created, location: @participation }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class ParticipationsController < ApplicationController
   def update
     respond_to do |format|
       if @participation.update(participation_params)
-        format.html { redirect_to participations_path, notice: 'Participation was successfully updated.' }
+        format.html { redirect_to participations_path, notice: 'Deltaker ble oppdatert.' }
         format.json { render :show, status: :ok, location: @participation }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class ParticipationsController < ApplicationController
   def destroy
     @participation.destroy
     respond_to do |format|
-      format.html { redirect_to participations_url, notice: 'Participation was successfully destroyed.' }
+      format.html { redirect_to participations_url, notice: 'Deltaker ble slettet' }
       format.json { head :no_content }
     end
   end

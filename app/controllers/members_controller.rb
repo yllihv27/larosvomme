@@ -4,6 +4,7 @@ class MembersController < ApplicationController
   #before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_coach!, except: [:new, :edit, :update, :create, :show, :tilfoj_barn, :gdpr]
   skip_before_action :verify_authenticity_token
+
   def gdpr
     @member = Member.find_by_id(params[:id])
     @children = Child.where(member_id: @member)
@@ -19,6 +20,7 @@ class MembersController < ApplicationController
 	  @member = Member.find(params[:id])
     @courses = Course.where(member_id: @member)
     @participations = Participation.where(member_id: @member)
+    render layout:'account'
   end
 
   def tilfoj_barn
@@ -57,6 +59,9 @@ class MembersController < ApplicationController
     @children = Child.where(member_id: @member)
     @grandparents = Grandparent.where(member_id: @member)
     @contact_people = ContactPerson.where(member_id: @member)
+    if member_signed_in? 
+      render layout: 'account'
+    end
   end
 
   def new

@@ -1,9 +1,14 @@
 class ContactPeopleController < ApplicationController
   before_action :set_contact_person, only: [:show, :edit, :update, :destroy]
-  layout 'signup'
+  layout 'signup', except: :legg_til_kontakt_person
 
   def legg_til_kontaktperson
     @contact_person = ContactPerson.new
+  end
+  def legg_til_kontakt_person
+    @contact_person = ContactPerson.new
+    @contact_people = ContactPerson.where(member_id: current_member)
+    render layout: 'account'
   end
 
   def kontaktperson
@@ -38,7 +43,7 @@ class ContactPeopleController < ApplicationController
     respond_to do |format|
       if member_signed_in?
         if @contact_person.save
-          format.html { redirect_to kurv_sjekk_ut_path, notice: 'Kontaktperson ble opprettet.' }
+          format.html { redirect_to legg_til_kontakt_person_path, notice: 'Kontaktperson ble opprettet.' }
           format.json { render :show, status: :created, location: @contact_person }
         else
           format.html { render :new }

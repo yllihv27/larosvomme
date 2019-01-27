@@ -1,0 +1,45 @@
+<div class="page-card">
+
+<%= form_with(model: @contact_person, local: true) do |form| %>
+  <% if @contact_person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_person.errors.count, "error") %> prohibited this contact_person from being saved:</h2>
+
+      <ul>
+      <% @contact_person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2>Legg til kontaktperson</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+        <%= form.label :fornavn %><br>
+        <%= form.text_field :first_name %><br><br>
+      </div>
+
+      <div class="field">
+        <%= form.label :etternavn %><br>
+        <%= form.text_field :last_name %><br><br>
+      </div>
+
+      <div class="field">
+        <%= form.label :relasjon %><br>
+        <%= form.text_field :relation %><br><br>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Legg til kontaktperson', class: 'blue-button' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <strong>Dine kontaktpersoner:</strong><br><br>
+      <% @contact_people.each do |cp| %>
+      <%= cp.first_name %> <%= cp.last_name%> | <%= cp.relation %><br><br>
+    <% end %>
+    </div>
+<% end %>
+
+</div>
