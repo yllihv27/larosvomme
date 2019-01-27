@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_coach!, only: [:ny_deltaker, :edit]
+  #before_action :authenticate_coach!, only: [:ny_deltaker, :edit]
   skip_before_action :verify_authenticity_token
   
   layout 'signup', except: :rediger

@@ -11,19 +11,17 @@
     </div>
   <% end %>
 
-  <h2>Legg til barn</h2><br>
+  <h2>Legg til deltaker</h2><br>
 
   <%= f.select "member_id", options_from_collection_for_select(Member.all.order('first_name ASC'), "id", "full_name",params[:member_id]), :prompt => "Velg konto", class: "chosen-select"if coach_signed_in? %><br><br>
   <%= f.label :fornavn %>
-  <%= f.text_field :first_name, placeholder: 'Barn Fornavn' %><br />
+  <%= f.text_field :first_name, placeholder: 'Deltaker Fornavn' %><br />
   <%= f.label :etternavn %>
-  <%= f.text_field :last_name, placeholder: 'Barn Etternavn' %><br />
+  <%= f.text_field :last_name, placeholder: 'Deltaker Etternavn' %><br />
   <center>
   <%= f.label :bursdag %><br>
-  <%= f.date_field :birthdate %>
+  <%= f.text_field :birthdate, 'data-provide': 'datepicker', size:10, 'data-date-format': "yyyy-mm-dd" %>
   <br>
-  <em style="cursor:pointer;font-size:12px;color:#777" onclick="myFunction('vis');">Viser ikke datofelt?</em><br><br>
-  <div style="display: none" id="vis"><%= f.date_select :birthdate, :start_year => 1980, :end_year => 2019 %><br><br></div>
 
   <%= f.submit "Legg til barn", class: 'buy-button' %>
 
