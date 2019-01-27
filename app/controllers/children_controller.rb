@@ -49,7 +49,7 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to dine_kurs_path, notice: 'Deltaker ble lagt til.' }
+        format.html { redirect_to mine_kurs_path, notice: 'Deltaker ble lagt til.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
