@@ -6,7 +6,11 @@
     Legg kurs til bruker <em><%= @member.first_name %> <%= @member.last_name %></em>
   </div><br>
 
+  <br>
+  Deltaker: <br> <%= form.select :child_id, Child.where(member_id: current_member).map { |u| ["#{u.first_name}, #{u.last_name}, #{u.order_age}", u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
+
   Kurs: <br> <%= form.select :course_id, Course.all.map { |u| ["#{u.course_category.name}, #{u.course_place.name}, #{u.day.strftime('%A | %b %d')}", u.id] }, { include_blank: true }, { class: 'chosen-select' } %>
+
 
   <br><br>
 

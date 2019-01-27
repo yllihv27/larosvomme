@@ -122,7 +122,7 @@
             <strong style="font-size: 18px;"><%= @participations.count %> registrerte kurs</strong>
           </div>
           <div class="col-md-6">
-            <div class="danger" style="float: right;"><%= link_to 'Tilføj deltakelse', new_member_participation_path(@member), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'blue-button'} %>
+            <div class="danger" style="float: right;"><%= link_to 'Tilføj deltakelse', new_member_participation_path(@member), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'blue-button'} if current_coach %>
             </div>
           </div>
         </div>
