@@ -1,9 +1,9 @@
 # Change these
-server '193.69.47.103', roles: [:web, :app, :db], primary: true
+server 'localhost', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:JonasPreisler/larosvomme.git'
 set :application,     'larosvomme'
-set :user,            'deploy'
+set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
