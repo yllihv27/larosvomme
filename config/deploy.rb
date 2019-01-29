@@ -1,7 +1,7 @@
 # Change these
 server 'localhost', roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:JonasPreisler/larosvomme.git'
+set :repo_url,        'git@github.com:yllihv27/larosvomme.git'
 set :application,     'larosvomme'
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
